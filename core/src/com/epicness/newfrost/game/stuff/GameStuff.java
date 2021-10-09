@@ -23,7 +23,11 @@ public class GameStuff extends Stuff {
         diningTable.setColor(Color.BROWN);
 
         citizens = new DelayedRemovalArray<>();
-        citizens.add(new Citizen(assets.getCitizen()));
+        for (int i = 0; i < 15; i++) {
+            Citizen citizen = new Citizen(assets.getCitizen());
+            citizen.setX(CAMERA_WIDTH / 6f);
+            citizens.add(citizen);
+        }
     }
 
     public Sprited getDiningTable() {

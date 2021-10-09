@@ -18,5 +18,17 @@ public class GameRenderer extends Renderer {
             stuff.getCitizens().get(i).draw(spriteBatch);
         }
         spriteBatch.end();
+
+        drawDebug();
+    }
+
+    private void drawDebug() {
+        GameStuff stuff = (GameStuff) this.stuff;
+
+        shapeRenderer.begin();
+        for (int i = 0; i < stuff.getCitizens().size; i++) {
+            stuff.getCitizens().get(i).drawDebug(shapeRenderer);
+        }
+        shapeRenderer.end();
     }
 }
