@@ -21,6 +21,10 @@ public class Sprited implements Buttonable {
         return sprite.getBoundingRectangle().contains(x, y);
     }
 
+    public float getX() {
+        return sprite.getX();
+    }
+
     public void setX(float x) {
         sprite.setX(x);
     }
@@ -35,6 +39,10 @@ public class Sprited implements Buttonable {
 
     public void setPosition(float x, float y) {
         sprite.setPosition(x, y);
+    }
+
+    public void translateX(float amount) {
+        sprite.translateX(amount);
     }
 
     public void translateY(float amount) {
@@ -55,6 +63,14 @@ public class Sprited implements Buttonable {
 
     public void setSize(float size) {
         setSize(size, size);
+    }
+
+    public boolean isFlipX() {
+        return sprite.isFlipX();
+    }
+
+    public void setFlip(boolean flipX, boolean flipY) {
+        sprite.setFlip(flipX, flipY);
     }
 
     public void setColor(Color color) {
