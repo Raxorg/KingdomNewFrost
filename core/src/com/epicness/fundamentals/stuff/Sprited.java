@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Sprited implements Buttonable {
 
-    private final Sprite sprite;
+    private Sprite sprite;
 
     public Sprited(Sprite sprite) {
         this.sprite = new Sprite(sprite);
@@ -14,6 +14,10 @@ public class Sprited implements Buttonable {
 
     public void draw(SpriteBatch spriteBatch) {
         sprite.draw(spriteBatch);
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 
     @Override

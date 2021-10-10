@@ -2,8 +2,8 @@ package com.epicness.newfrost.splash;
 
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
-import com.epicness.newfrost.game.GameAssets;
-import com.epicness.newfrost.game.GameInitializer;
+import com.epicness.newfrost.menu.MenuAssets;
+import com.epicness.newfrost.menu.MenuInitializer;
 
 public class SplashLogic extends Logic {
 
@@ -13,13 +13,13 @@ public class SplashLogic extends Logic {
 
     @Override
     public void initialLogic() {
-        sharedLogic.getTransitionHandler().startTransition(new GameInitializer(new GameAssets()));
+        sharedLogic.getTransitionHandler().startTransition(new MenuInitializer(new MenuAssets()));
         sharedLogic.getTransitionHandler().allowTransition();
     }
 
     @Override
     public void update(float delta) {
-        sharedLogic.getTransitionHandler().update();
         sharedLogic.getAssetLoader().update();
+        sharedLogic.getTransitionHandler().update();
     }
 }

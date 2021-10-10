@@ -2,13 +2,12 @@ package com.epicness.newfrost.game;
 
 import com.epicness.fundamentals.Initializer;
 import com.epicness.fundamentals.SharedResources;
-import com.epicness.fundamentals.assets.Assets;
 import com.epicness.newfrost.game.logic.GameLogic;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameInitializer extends Initializer {
 
-    public GameInitializer(Assets assets) {
+    public GameInitializer(GameAssets assets) {
         super(assets);
     }
 
