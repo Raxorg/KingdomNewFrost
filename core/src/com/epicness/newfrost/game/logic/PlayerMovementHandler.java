@@ -12,6 +12,7 @@ public class PlayerMovementHandler {
     public void update(float delta) {
         Player player = stuff.getPlayer();
         player.translateX(player.getSpeed() * delta);
+        player.setAnimationTime(player.getAnimationTime() + delta);
     }
 
     public void aPress() {

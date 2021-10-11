@@ -48,7 +48,7 @@ public class HighlightHandler {
         if (lastHighlightedCitizen != null) {
             lastHighlightedCitizen.setColor(Color.WHITE);
         }
-        closest.setColor(Color.RED);
+        closest.setColor(Color.GRAY);
         lastHighlightedCitizen = closest;
     }
 

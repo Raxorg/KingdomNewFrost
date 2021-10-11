@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.newfrost.game.enums.BuildingType;
 
-public class Building {
+public abstract class Building {
 
     protected Sprited sprited;
     private final BuildingType type;
@@ -19,6 +19,10 @@ public class Building {
         sprited.draw(spriteBatch);
     }
 
+    public void setPosition(float x, float y) {
+        sprited.setPosition(x, y);
+    }
+
     public float getCenterX() {
         return sprited.getX() + sprited.getWidth() / 2f;
     }
@@ -29,6 +33,10 @@ public class Building {
 
     public float getHeight() {
         return sprited.getHeight();
+    }
+
+    public void flipX() {
+        sprited.setFlip(true, false);
     }
 
     public BuildingType getType() {

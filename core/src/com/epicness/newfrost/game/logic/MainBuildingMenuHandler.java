@@ -82,10 +82,15 @@ public class MainBuildingMenuHandler {
 
     private void updateActionPanel() {
         ActionPanel actionPanel = stuff.getMainBuildingMenu().getActionPanel();
-        if (actionPanel.getExpeditionButton().contains(lastX, lastY)) {
-            actionPanel.getExpeditionButton().setColor(Color.GREEN);
+        if (actionPanel.getFoodExpeditionButton().contains(lastX, lastY)) {
+            actionPanel.getFoodExpeditionButton().setColor(new Color(0.5f, 0.2f, 0.2f, 1f));
         } else {
-            actionPanel.getExpeditionButton().setColor(Color.WHITE);
+            actionPanel.getFoodExpeditionButton().setColor(Color.WHITE);
+        }
+        if (actionPanel.getWoodExpeditionButton().contains(lastX, lastY)) {
+            actionPanel.getWoodExpeditionButton().setColor(new Color(0.5f, 0.3f, 0.2f, 1f));
+        } else {
+            actionPanel.getWoodExpeditionButton().setColor(Color.WHITE);
         }
     }
 
@@ -97,10 +102,14 @@ public class MainBuildingMenuHandler {
 
     }
 
-    public void touchUp(float x, float y) {
+    public boolean touchUp(float x, float y) {
         MainBuildingMenu menu = stuff.getMainBuildingMenu();
         if (menu.getState() == HIDDEN) {
-            return;
+            return false;
+        }
+        if (!menu.contains(x, y)) {
+            hideMenu();
+            return false;
         }
         if (menu.getActionsTab().contains(x, y)) {
             menu.setState(SHOWING_ACTIONS_PANEL);
@@ -123,12 +132,15 @@ public class MainBuildingMenuHandler {
             case SHOWING_LAW_TREE:
                 break;
         }
+        return true;
     }
 
     private void touchUpActionPanel(float x, float y) {
         ActionPanel actionPanel = stuff.getMainBuildingMenu().getActionPanel();
-        if (actionPanel.getExpeditionButton().contains(x, y)) {
-            logic.getExpeditionHandler().sendExpedition();
+        if (actionPanel.getFoodExpeditionButton().contains(x, y)) {
+            logic.getExpeditionHandler().sendExpedition(true);
+        } else if (actionPanel.getWoodExpeditionButton().contains(x, y)) {
+            logic.getExpeditionHandler().sendExpedition(false);
         }
     }
 

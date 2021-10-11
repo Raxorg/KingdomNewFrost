@@ -14,8 +14,10 @@ public class GameLogic extends Logic {
     private final CitizenActivityHandler citizenActivityHandler;
     private final CitizenHungerHandler citizenHungerHandler;
     private final DayHandler dayHandler;
+    private final DialogueHandler dialogueHandler;
     private final EventHandler eventHandler;
     private final ExpeditionHandler expeditionHandler;
+    private final FoodHandler foodHandler;
     private final GameInputHandler gameInputHandler;
     private final HighlightHandler highlightHandler;
     private final IntroHandler introHandler;
@@ -23,6 +25,7 @@ public class GameLogic extends Logic {
     private final PlayerMovementHandler playerMovementHandler;
     private final RainHandler rainHandler;
     private final TipHandler tipHandler;
+    private final WoodHandler woodHandler;
 
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
@@ -31,8 +34,10 @@ public class GameLogic extends Logic {
         citizenActivityHandler = new CitizenActivityHandler();
         citizenHungerHandler = new CitizenHungerHandler();
         dayHandler = new DayHandler();
+        dialogueHandler = new DialogueHandler(); // todo
         eventHandler = new EventHandler();
         expeditionHandler = new ExpeditionHandler();
+        foodHandler = new FoodHandler();
         gameInputHandler = new GameInputHandler();
         highlightHandler = new HighlightHandler();
         introHandler = new IntroHandler();
@@ -41,8 +46,11 @@ public class GameLogic extends Logic {
         playerMovementHandler = new PlayerMovementHandler();
         rainHandler = new RainHandler();
         tipHandler = new TipHandler();
+        woodHandler = new WoodHandler();
 
         actionHandler.setLogic(this);
+        dayHandler.setLogic(this);
+        expeditionHandler.setLogic(this);
         gameInputHandler.setLogic(this);
         mainBuildingMenuHandler.setLogic(this);
     }
@@ -51,6 +59,7 @@ public class GameLogic extends Logic {
     public void initialLogic() {
         actionHandler.hideActionIcon();
         eventHandler.hideEventView();
+        expeditionHandler.hideExpeditionInfo();
         introHandler.startMusic();
         mainBuildingMenuHandler.hideMenu();
         gameInputHandler.setupInput();
@@ -63,6 +72,7 @@ public class GameLogic extends Logic {
         actionHandler.update();
         citizenActivityHandler.update(delta);
         dayHandler.update(delta);
+        expeditionHandler.update(delta);
         highlightHandler.update();
         mainBuildingMenuHandler.update();
         playerMovementHandler.update(delta);
@@ -90,16 +100,22 @@ public class GameLogic extends Logic {
         dayHandler.setStuff(gameStuff);
         eventHandler.setStuff(gameStuff);
         expeditionHandler.setStuff(gameStuff);
+        foodHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(stuff);
         highlightHandler.setStuff(gameStuff);
         mainBuildingMenuHandler.setStuff(gameStuff);
         playerMovementHandler.setStuff(gameStuff);
         rainHandler.setStuff(gameStuff);
         tipHandler.setStuff(gameStuff);
+        woodHandler.setStuff(gameStuff);
     }
 
     public ActionHandler getActionHandler() {
         return actionHandler;
+    }
+
+    public CitizenHungerHandler getCitizenHungerHandler() {
+        return citizenHungerHandler;
     }
 
     public DayHandler getDayHandler() {
@@ -108,6 +124,10 @@ public class GameLogic extends Logic {
 
     public ExpeditionHandler getExpeditionHandler() {
         return expeditionHandler;
+    }
+
+    public FoodHandler getFoodHandler() {
+        return foodHandler;
     }
 
     public HighlightHandler getHighlightHandler() {
@@ -124,5 +144,9 @@ public class GameLogic extends Logic {
 
     public TipHandler getTipHandler() {
         return tipHandler;
+    }
+
+    public WoodHandler getWoodHandler() {
+        return woodHandler;
     }
 }

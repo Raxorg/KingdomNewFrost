@@ -17,20 +17,24 @@ public class GameRenderer extends Renderer {
         for (int i = 0; i < stuff.getBuildings().size; i++) {
             stuff.getBuildings().get(i).draw(spriteBatch);
         }
-        stuff.getDiningTable().draw(spriteBatch);
         for (int i = 0; i < stuff.getCitizens().size; i++) {
             stuff.getCitizens().get(i).draw(spriteBatch);
         }
-        stuff.getPlayer().draw(spriteBatch);
         stuff.getActionIcon().draw(spriteBatch);
+        stuff.getWoodInfo().draw(spriteBatch);
+        stuff.getFoodInfo().draw(spriteBatch);
+        stuff.getPlayer().draw(spriteBatch);
+        stuff.getTipIcon().draw(spriteBatch);
         stuff.getMainBuildingMenu().draw(spriteBatch);
         stuff.getTip().draw(spriteBatch);
-        stuff.getTipIcon().draw(spriteBatch);
+        stuff.getExpeditionInfo().draw(spriteBatch);
+        stuff.getDay().draw(spriteBatch);
+        stuff.getDayTimer().draw(spriteBatch);
         stuff.getEventView().draw(spriteBatch);
         stuff.getRain().draw(spriteBatch);
         spriteBatch.end();
 
-        drawDebug();
+        //drawDebug();
     }
 
     private void drawDebug() {

@@ -8,6 +8,7 @@ import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.newfrost.game.GameAssets;
 import com.epicness.newfrost.game.enums.MainMenuState;
+import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.TechTree;
 
 import static com.epicness.fundamentals.SharedConstants.OPAQUE_TRANSPARENT;
 import static com.epicness.newfrost.game.GameConstants.LAW_TAB_X;
@@ -45,9 +46,14 @@ public class MainBuildingMenu implements Buttonable {
         lawTab.setSize(TAB_WIDTH, TAB_HEIGHT);
         lawTab.setText("LAWS");
 
-        actionPanel = new ActionPanel(sharedAssets.getPixel(), assets.getPixelFont());
+        actionPanel = new ActionPanel(
+                sharedAssets.getPixel(),
+                assets.getPixelFont(),
+                assets.getMeatIcon(),
+                assets.getWoodFrame()
+        );
 
-        techTree = new TechTree(assets);
+        techTree = new TechTree(assets, sharedAssets);
 
         lawTree = new LawTree();
 

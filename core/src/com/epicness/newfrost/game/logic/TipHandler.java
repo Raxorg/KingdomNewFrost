@@ -9,6 +9,7 @@ import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
 import static com.epicness.newfrost.game.GameConstants.TIP_ICON_X;
 import static com.epicness.newfrost.game.GameConstants.TIP_ICON_Y;
+import static com.epicness.newfrost.game.GameConstants.TIP_INTERVAL;
 import static com.epicness.newfrost.game.GameConstants.TIP_X;
 import static com.epicness.newfrost.game.GameConstants.TIP_Y;
 
@@ -74,7 +75,7 @@ public class TipHandler {
         if (!paused) {
             time += delta;
         }
-        if (time >= 30f) {
+        if (time >= TIP_INTERVAL) {
             showTipIcon();
             time = 0f;
         }
@@ -96,6 +97,11 @@ public class TipHandler {
         tipIcon.setColor(new Color(1f, 1f, 1f, alpha));
     }
 
+    public boolean isShowingTip() {
+        return showingTip;
+    }
+
+    // Structure
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
     }

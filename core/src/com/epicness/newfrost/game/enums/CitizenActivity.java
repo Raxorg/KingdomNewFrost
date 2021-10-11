@@ -9,5 +9,6 @@ public enum CitizenActivity {
     RETURNING_FROM_EATING,
     GOING_TO_EXPEDITION,
     ON_EXPEDITION,
+    RETURNING_FROM_EXPEDITION,
     DYING
 }

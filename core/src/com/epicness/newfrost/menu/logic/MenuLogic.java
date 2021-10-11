@@ -1,6 +1,5 @@
 package com.epicness.newfrost.menu.logic;
 
-import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;

@@ -69,6 +69,10 @@ public class Sprited implements Buttonable {
         setSize(size, size);
     }
 
+    public void setScale(float scale) {
+        sprite.setScale(scale);
+    }
+
     public boolean isFlipX() {
         return sprite.isFlipX();
     }

@@ -21,10 +21,10 @@ public class GameInputHandler extends InputHandler {
     public void touchUp(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
 
-        if (logic.getTipHandler().touchUp(x, y)) {
+        if (logic.getMainBuildingMenuHandler().touchUp(x, y)) {
             return;
         }
-        logic.getMainBuildingMenuHandler().touchUp(x, y);
+        logic.getTipHandler().touchUp(x, y);
     }
 
     @Override

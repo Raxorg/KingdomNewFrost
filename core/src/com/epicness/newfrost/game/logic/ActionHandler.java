@@ -1,15 +1,16 @@
 package com.epicness.newfrost.game.logic;
 
 import com.badlogic.gdx.utils.DelayedRemovalArray;
-import com.epicness.newfrost.game.enums.BuildingType;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.buildings.Building;
+import com.epicness.newfrost.game.stuff.buildings.Tent;
 import com.epicness.newfrost.game.stuff.people.Player;
 
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
 import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.TENT_UPGRADE_COST;
 
 public class ActionHandler {
 
@@ -17,7 +18,7 @@ public class ActionHandler {
     private GameLogic logic;
     private GameStuff stuff;
     // Logic
-    private BuildingType buildingType;
+    private Building selectedBuilding;
 
     public void hideActionIcon() {
         stuff.getActionIcon().setPosition(HIDDEN_X, HIDDEN_Y);
@@ -28,25 +29,28 @@ public class ActionHandler {
         DelayedRemovalArray<Building> buildings = stuff.getBuildings();
         for (int i = 0; i < buildings.size; i++) {
             Building building = buildings.get(i);
+            if (building instanceof Tent && ((Tent) building).isUpgraded()) {
+                continue;
+            }
             float distance = Math.abs(building.getCenterX() - player.getCenterX());
             if (distance <= MAIN_BUILDING_WIDTH / 2f) {
                 float x = building.getCenterX() - ACTION_ICON_WIDTH / 2f;
-                float y = building.getY() + building.getHeight() * 0.75f;
+                float y = building.getY() + building.getHeight() * 0.85f;
                 stuff.getActionIcon().setPosition(x, y);
-                buildingType = building.getType();
+                selectedBuilding = building;
                 return;
             }
         }
         logic.getActionHandler().hideActionIcon();
         hidePanel();
-        buildingType = null;
+        selectedBuilding = null;
     }
 
     private void hidePanel() {
-        if (buildingType == null) {
+        if (selectedBuilding == null) {
             return;
         }
-        switch (buildingType) {
+        switch (selectedBuilding.getType()) {
             case MAIN_BUILDING:
                 logic.getMainBuildingMenuHandler().hideMenu();
                 break;
@@ -57,13 +61,25 @@ public class ActionHandler {
     }
 
     public void sPress() {
-        if (buildingType == null) {
+        if (selectedBuilding == null) {
             return;
         }
-        switch (buildingType) {
+        if (logic.getTipHandler().isShowingTip()) {
+            return;
+        }
+        switch (selectedBuilding.getType()) {
             case MAIN_BUILDING:
                 logic.getMainBuildingMenuHandler().showMenu();
                 logic.getHighlightHandler().setEnabled(false);
+                break;
+            case TENT:
+                int wood = logic.getWoodHandler().getWood();
+                if (wood < TENT_UPGRADE_COST) {
+                    return;
+                }
+                Tent tent = (Tent) selectedBuilding;
+                tent.upgrade();
+                logic.getWoodHandler().spendWood(TENT_UPGRADE_COST);
                 break;
             case MEDICAL_POST:
                 break;

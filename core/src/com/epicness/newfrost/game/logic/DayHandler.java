@@ -1,11 +1,13 @@
 package com.epicness.newfrost.game.logic;
 
-import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.fundamentals.stuff.Text;
 import com.epicness.newfrost.game.stuff.GameStuff;
-import com.epicness.newfrost.game.stuff.people.Citizen;
+
+import static com.epicness.newfrost.game.GameConstants.DAY_DURATION;
 
 public class DayHandler {
 
+    private GameLogic logic;
     private GameStuff stuff;
     // Logic
     private float time;
@@ -16,22 +18,29 @@ public class DayHandler {
             return;
         }
         time += delta;
-        if (time == 60f) {
-            passDay();
+        if (time >= 1f) {
+            int timer = Integer.parseInt(stuff.getDayTimer().getText());
+            stuff.getDayTimer().setText(timer - 1 + "");
+            time = 0f;
+            if (timer == 0) {
+                passDay();
+            }
         }
     }
 
     public void passDay() {
-        DelayedRemovalArray<Citizen> citizens = stuff.getCitizens();
-        for (int i = 0; i < citizens.size; i++) {
-            Citizen citizen = citizens.get(i);
-            citizen.setHunger(citizen.getHunger() + 1);
-        }
-        time = 0f;
+        Text dayTimer = stuff.getDayTimer();
+        dayTimer.setText(DAY_DURATION + "");
+        logic.getCitizenHungerHandler().addHunger();
     }
 
     public void setPaused(boolean paused) {
         this.paused = paused;
+    }
+
+    // Structure
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
     }
 
     public void setStuff(GameStuff stuff) {
