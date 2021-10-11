@@ -5,6 +5,7 @@ import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.people.Citizen;
 
 import static com.epicness.newfrost.game.GameConstants.DINING_X;
+import static com.epicness.newfrost.game.enums.CitizenActivity.DYING;
 import static com.epicness.newfrost.game.enums.CitizenActivity.GOING_TO_EAT;
 
 public class CitizenHungerHandler {
@@ -22,6 +23,11 @@ public class CitizenHungerHandler {
                 case RETURNING_FROM_EXPEDITION:
                 case DYING:
                     continue;
+            }
+            if (citizen.getHunger() == 2) {
+                citizen.setActivity(DYING);
+                citizen.setAnimationTime(0f);
+                continue;
             }
             int hunger = Math.min(citizen.getHunger() + 1, 2);
             citizen.setHunger(hunger);

@@ -62,9 +62,8 @@ public class Citizen {
                 new Sprited(assets.getDyingCitizen3())
         );
         for (int i = 0; i < dyingAnimation.getKeyFrames().length; i++) {
-            dyingAnimation.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
+            dyingAnimation.getKeyFrames()[i].setSize(CITIZEN_HEIGHT, CITIZEN_HEIGHT);
         }
-        dyingAnimation.setPlayMode(LOOP);
 
         setX(MathUtils.random(CAMERA_WIDTH - CITIZEN_HEIGHT));
         setY(GROUND_Y - MathUtils.random(10f, 50f));
@@ -74,6 +73,8 @@ public class Citizen {
         activity = IDLE;
 
         temperature = CITIZEN_STARTING_TEMPERATURE;
+
+        hunger = MathUtils.random(1);
 
         activityTime = MathUtils.random(2f, 7f);
 

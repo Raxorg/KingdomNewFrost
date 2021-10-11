@@ -4,11 +4,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.mainbuildingmenu.ActionPanel;
 import com.epicness.newfrost.game.stuff.mainbuildingmenu.MainBuildingMenu;
+import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.TechTree;
+import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.Technology;
 
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
 import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_X;
 import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_Y;
+import static com.epicness.newfrost.game.GameConstants.TECH_TREE_WOOD_ICON_SIZE;
 import static com.epicness.newfrost.game.enums.MainMenuState.HIDDEN;
 import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_ACTIONS_PANEL;
 import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_LAW_TREE;
@@ -27,6 +30,7 @@ public class MainBuildingMenuHandler {
         menu.setActionPanelPosition(HIDDEN_X, HIDDEN_Y);
         menu.setTechTreePosition(HIDDEN_X, HIDDEN_Y);
         menu.setLawTreePosition(HIDDEN_X, HIDDEN_Y);
+        logic.getDayHandler().setPaused(false);
     }
 
     public void showMenu() {
@@ -58,6 +62,7 @@ public class MainBuildingMenuHandler {
                 menu.setLawTabColor(Color.RED.cpy().lerp(Color.BLACK, 0.3f));
                 break;
         }
+        logic.getDayHandler().setPaused(true);
     }
 
     public void mouseMoved(float x, float y) {
@@ -95,7 +100,20 @@ public class MainBuildingMenuHandler {
     }
 
     private void updateTechTree() {
-
+        TechTree techTree = stuff.getMainBuildingMenu().getTechTree();
+        Technology[] technologies = techTree.getTechnologies();
+        for (int i = 0; i < technologies.length; i++) {
+            Technology technology = technologies[i];
+            if (technology.contains(lastX, lastY)) {
+                techTree.setTechDescription(technology.getDescription());
+                techTree.setTechnologyCost(technology.getCost());
+                float y = technology.getY() - TECH_TREE_WOOD_ICON_SIZE;
+                techTree.setTechCostPosition(technology.getX(), y);
+                return;
+            }
+        }
+        techTree.setTechDescription("");
+        techTree.setTechCostPosition(HIDDEN_X, HIDDEN_Y);
     }
 
     private void updateLawTree() {
@@ -128,6 +146,7 @@ public class MainBuildingMenuHandler {
                 touchUpActionPanel(x, y);
                 break;
             case SHOWING_TECH_TREE:
+                touchUpTechTree(x, y);
                 break;
             case SHOWING_LAW_TREE:
                 break;
@@ -144,8 +163,20 @@ public class MainBuildingMenuHandler {
         }
     }
 
-    public void touchDown(float x, float y) {
-
+    private void touchUpTechTree(float x, float y) {
+        Technology[] technologies = stuff.getMainBuildingMenu().getTechTree().getTechnologies();
+        for (int i = 0; i < technologies.length; i++) {
+            Technology technology = technologies[i];
+            if (technology.getColor().equals(Color.WHITE)) {
+                continue;
+            }
+            if (technology.contains(x, y)) {
+                if (logic.getWoodHandler().getWood() >= technology.getCost()) {
+                    logic.getWoodHandler().spendWood(technology.getCost());
+                    technology.setColor(Color.WHITE);
+                }
+            }
+        }
     }
 
     // Structure

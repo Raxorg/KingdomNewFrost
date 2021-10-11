@@ -53,8 +53,6 @@ public class CitizenActivityHandler {
                 case RETURNING_FROM_EXPEDITION:
                     handleReturningFromExpeditionActivity(citizen, delta);
                     break;
-                case DYING:
-                    break;
             }
         }
     }
@@ -93,11 +91,19 @@ public class CitizenActivityHandler {
 
     private void handleGoingToEatActivity(Citizen citizen, float delta) {
         float citizenCenter = citizen.getX() + CITIZEN_HEIGHT / 2f;
-        float distance = Math.abs(citizenCenter - DINING_X);
-        if (distance <= 25f) {
+        float distance = citizenCenter - DINING_X;
+        if ((citizen.isFacingLeft() && distance <= 0f) ||
+                (!citizen.isFacingLeft() && distance >= 0f)) {
+            int food = stuff.getFoodInfo().getFood();
+            if (food > 0) {
+                stuff.getFoodInfo().setFood(food - 1);
+                citizen.setHunger(0);
+                citizen.setActivity(EATING);
+                citizen.setActivityTime(MathUtils.random(1f, 3f));
+            } else {
+                citizen.setActivity(RETURNING_FROM_EATING);
+            }
             citizen.setAnimationTime(0f);
-            citizen.setActivity(EATING);
-            citizen.setActivityTime(MathUtils.random(1f, 3f));
             return;
         }
         float translation = citizen.isFacingLeft() ? -CITIZEN_SPEED : CITIZEN_SPEED;
@@ -110,14 +116,15 @@ public class CitizenActivityHandler {
         if (activityTime <= 0f) {
             citizen.setAnimationTime(0f);
             citizen.setActivity(RETURNING_FROM_EATING);
-            citizen.setFacingLeft((citizen.getXBeforeActivity() < citizen.getX()));
+            citizen.setFacingLeft((citizen.getXBeforeActivity() < citizen.getCenterX()));
         }
     }
 
     private void handleReturningFromEating(Citizen citizen, float delta) {
         float citizenCenter = citizen.getX() + CITIZEN_HEIGHT / 2f;
-        float distance = Math.abs(citizenCenter - citizen.getXBeforeActivity());
-        if (distance <= 20f) {
+        float distance = citizenCenter - citizen.getXBeforeActivity();
+        if ((citizen.isFacingLeft() && distance <= 0f) ||
+                (!citizen.isFacingLeft() && distance >= 0f)) {
             citizen.setAnimationTime(0f);
             citizen.setActivity(IDLE);
             citizen.setActivityTime(MathUtils.random(0.5f, 7f));

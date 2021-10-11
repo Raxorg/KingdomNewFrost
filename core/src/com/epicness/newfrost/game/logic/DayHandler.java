@@ -31,6 +31,9 @@ public class DayHandler {
     public void passDay() {
         Text dayTimer = stuff.getDayTimer();
         dayTimer.setText(DAY_DURATION + "");
+        String[] parts = stuff.getDay().getText().split(" ");
+        int day = Integer.parseInt(parts[1]);
+        stuff.getDay().setText("DAY " + (day + 1));
         logic.getCitizenHungerHandler().addHunger();
     }
 

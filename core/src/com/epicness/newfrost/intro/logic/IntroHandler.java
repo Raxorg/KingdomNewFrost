@@ -23,7 +23,6 @@ public class IntroHandler {
 
     public void playNarration() {
         assets.getNarration().play();
-        assets.getNarration().setOnCompletionListener(music -> stuff.getContinueText().setColor(Color.WHITE));
     }
 
     public void update(float delta) {
@@ -40,6 +39,9 @@ public class IntroHandler {
             if (snowFlake.getY() <= 0f) {
                 snowFlake.setY(CAMERA_HEIGHT + snowFlake.getY());
             }
+        }
+        if (!assets.getNarration().isPlaying()) {
+            stuff.getContinueText().setColor(Color.WHITE);
         }
     }
 

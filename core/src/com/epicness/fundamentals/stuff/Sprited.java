@@ -81,6 +81,10 @@ public class Sprited implements Buttonable {
         sprite.setFlip(flipX, flipY);
     }
 
+    public Color getColor() {
+        return sprite.getColor();
+    }
+
     public void setColor(Color color) {
         sprite.setColor(color);
     }

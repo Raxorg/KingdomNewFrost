@@ -6,7 +6,6 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 public class GameConstants {
 
     // Assets
-    public static final String NARRATION_PATH = "newfrost/audio/narration.ogg";
     public static final String FROST_SONG_PATH = "newfrost/audio/frostSong.ogg";
     public static final String CRAFTING_PATH = "newfrost/audio/woodenCrafting.wav";
 
@@ -135,11 +134,11 @@ public class GameConstants {
     public static final float TIP_HEIGHT = CAMERA_HEIGHT / 2f;
     public static final float TIP_X = CAMERA_WIDTH / 2f - TIP_WIDTH / 2f;
     public static final float TIP_Y = CAMERA_HEIGHT / 2f - TIP_HEIGHT / 2f;
-    public static final float TIP_INTERVAL = 10f;
+    public static final float TIP_INTERVAL = 5f;
 
     public static final float TIP_ICON_SIZE = 100f;
-    public static final float TIP_ICON_X = CAMERA_WIDTH / 2f - TIP_ICON_SIZE;
-    public static final float TIP_ICON_Y = TIP_ICON_SIZE;
+    public static final float TIP_ICON_X = CAMERA_WIDTH / 2f - TIP_ICON_SIZE / 2f;
+    public static final float TIP_ICON_Y = 150f;
     // Expedition
     public static final float GOING_TO_EXPEDITION_TIME = 2.5f;
     public static final float RETURNING_FROM_EXPEDITION_TIME = 2.5f;
@@ -178,17 +177,24 @@ public class GameConstants {
     public static final float TECHNOLOGIES_X = MAIN_MENU_WIDTH / 2f - TECHNOLOGIES_WIDTH / 2f;
     public static final float TECHNOLOGIES_Y = MAIN_MENU_HEIGHT / 2f - TECHNOLOGIES_HEIGHT / 2f;
     public static final String[] TECHNOLOGY_DESCRIPTIONS = {
-            "EXPEDITIONS",
+            "BETTER CLOTHING",
             "FASTER EXPEDITIONS",
             "MORE FOOD PER EXPEDITION",
             "MORE WOOD PER EXPEDITION",
-            "TEST",
-            "TEST",
-            "TEST",
-            "TEST",
-            "TEST",
-            "TEST"
+            "CHIMNEYS",
+            "DWELLING REINFORCEMENT",
+            "COOKING TECHNIQUES",
+            "MORE EXPEDITIONS",
+            "MEDICAL POST CAPACITY",
+            "EXPEDITIONS"
     };
+    public static final int[] TECHNOLOGY_COSTS = {
+            50, 10, 20, 30, 25, 50, 30, 100, 40, 10
+    };
+    public static final float TECH_DESCRIPTION_WIDTH = MAIN_MENU_WIDTH;
+    public static final float TECH_DESCRIPTION_HEIGHT = 100f;
+
+    public static final float TECH_TREE_WOOD_ICON_SIZE = 50f;
     // Day
     public static final int DAY_DURATION = 7;
     // Other

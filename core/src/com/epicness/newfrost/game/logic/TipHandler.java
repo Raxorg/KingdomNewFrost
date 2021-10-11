@@ -32,17 +32,15 @@ public class TipHandler {
         hideTipIcon();
     }
 
-    public boolean touchUp(float x, float y) {
+    public void touchUp(float x, float y) {
         if (showingTip) {
             hideTip();
             paused = false;
-            return true;
+            return;
         }
         if (stuff.getTipIcon().contains(x, y)) {
             showTip();
-            return true;
         }
-        return false;
     }
 
     public void showTipIcon() {
@@ -53,10 +51,16 @@ public class TipHandler {
                 tip.setText("Press A and D to move S to interact when the interaction icon appears");
                 break;
             case 1:
-                tip.setText("Feed your people with expeditions from the main building");
+                tip.setText("Feed your people with food from expeditions you can deploy from the base");
                 break;
             case 2:
-                tip.setText("Keep your buildings repaired or they will get cold");
+                tip.setText("People feel hungry each 2 days and need 1 food ration to stabilize");
+                break;
+            case 3:
+                tip.setText("Upgrade the dwellings for better protection against cold");
+                break;
+            case 4:
+                tip.setText("When half the population dies the game is over");
                 break;
             default:
                 break;
