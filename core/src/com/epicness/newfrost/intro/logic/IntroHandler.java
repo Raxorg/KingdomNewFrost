@@ -17,9 +17,12 @@ import static com.epicness.newfrost.intro.IntroConstants.SNOWFLAKE_Y_SPEED_2;
 
 public class IntroHandler {
 
+    // Structure
     private IntroAssets assets;
     private SharedLogic sharedLogic;
     private IntroStuff stuff;
+    // Logic
+    private float time;
 
     public void playNarration() {
         assets.getNarration().play();
@@ -40,7 +43,8 @@ public class IntroHandler {
                 snowFlake.setY(CAMERA_HEIGHT + snowFlake.getY());
             }
         }
-        if (!assets.getNarration().isPlaying()) {
+        time += delta;
+        if (time >= 51) {
             stuff.getContinueText().setColor(Color.WHITE);
         }
     }

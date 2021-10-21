@@ -70,6 +70,7 @@ public class GameConstants {
     public static final float PLAYER_HEIGHT = PLAYER_WIDTH * 2f;
     public static final float PLAYER_SPEED = 400f;
     // Citizens
+    public static final int STARTING_CITIZENS = 15;
     public static final float CITIZEN_WIDTH = 75f;
     public static final float CITIZEN_HEIGHT = CITIZEN_WIDTH * 2f;
     public static final float CITIZEN_SPEED = 100f;
@@ -142,7 +143,7 @@ public class GameConstants {
     // Expedition
     public static final float GOING_TO_EXPEDITION_TIME = 2.5f;
     public static final float RETURNING_FROM_EXPEDITION_TIME = 2.5f;
-    public static final float EXPEDITION_DURATION = 3f;
+    public static final float EXPEDITION_DURATION = 25f;
     public static final float EXPEDITION_ICON_SIZE = 100f;
     public static final float EXPEDITION_INFO_X = CAMERA_WIDTH - EXPEDITION_ICON_SIZE;
     public static final float EXPEDITION_INFO_Y = CAMERA_HEIGHT - WOOD_ICON_SIZE - EXPEDITION_ICON_SIZE;
@@ -196,7 +197,7 @@ public class GameConstants {
 
     public static final float TECH_TREE_WOOD_ICON_SIZE = 50f;
     // Day
-    public static final int DAY_DURATION = 7;
+    public static final int DAY_DURATION = 60;
     // Other
     public static final float HIDDEN_X = -10 * CAMERA_WIDTH;
     public static final float HIDDEN_Y = -10 * CAMERA_HEIGHT;

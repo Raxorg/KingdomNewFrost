@@ -10,8 +10,11 @@ import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameLogic extends Logic {
 
+    // todo silencio seplucral
+
     private final ActionHandler actionHandler;
     private final CitizenActivityHandler citizenActivityHandler;
+    private final CitizenHandler citizenHandler;
     private final CitizenHungerHandler citizenHungerHandler;
     private final DayHandler dayHandler;
     private final DialogueHandler dialogueHandler;
@@ -19,6 +22,7 @@ public class GameLogic extends Logic {
     private final ExpeditionHandler expeditionHandler;
     private final FoodHandler foodHandler;
     private final GameInputHandler gameInputHandler;
+    private final GameOverHandler gameOverHandler;
     private final HighlightHandler highlightHandler;
     private final IntroHandler introHandler;
     private final MainBuildingMenuHandler mainBuildingMenuHandler;
@@ -32,6 +36,7 @@ public class GameLogic extends Logic {
 
         actionHandler = new ActionHandler();
         citizenActivityHandler = new CitizenActivityHandler();
+        citizenHandler = new CitizenHandler();
         citizenHungerHandler = new CitizenHungerHandler();
         dayHandler = new DayHandler();
         dialogueHandler = new DialogueHandler(); // todo
@@ -39,9 +44,9 @@ public class GameLogic extends Logic {
         expeditionHandler = new ExpeditionHandler();
         foodHandler = new FoodHandler();
         gameInputHandler = new GameInputHandler();
+        gameOverHandler = new GameOverHandler();
         highlightHandler = new HighlightHandler();
         introHandler = new IntroHandler();
-
         mainBuildingMenuHandler = new MainBuildingMenuHandler();
         playerMovementHandler = new PlayerMovementHandler();
         rainHandler = new RainHandler();
@@ -49,20 +54,25 @@ public class GameLogic extends Logic {
         woodHandler = new WoodHandler();
 
         actionHandler.setLogic(this);
+        citizenHungerHandler.setLogic(this);
         dayHandler.setLogic(this);
         expeditionHandler.setLogic(this);
         gameInputHandler.setLogic(this);
+        gameOverHandler.setLogic(this);
         mainBuildingMenuHandler.setLogic(this);
     }
 
     @Override
     public void initialLogic() {
         actionHandler.hideActionIcon();
+        citizenHandler.spawnCitizens();
+        dayHandler.init();
         eventHandler.hideEventView();
         expeditionHandler.hideExpeditionInfo();
         introHandler.startMusic();
         mainBuildingMenuHandler.hideMenu();
         gameInputHandler.setupInput();
+        gameOverHandler.init();
         tipHandler.hideTip();
         tipHandler.showTipIcon();
     }
@@ -83,6 +93,7 @@ public class GameLogic extends Logic {
     @Override
     public void setAssets(Assets assets) {
         GameAssets gameAssets = (GameAssets) assets;
+        citizenHandler.setAssets(gameAssets);
         introHandler.setAssets(gameAssets);
     }
 
@@ -96,12 +107,14 @@ public class GameLogic extends Logic {
         GameStuff gameStuff = (GameStuff) stuff;
         actionHandler.setStuff(gameStuff);
         citizenActivityHandler.setStuff(gameStuff);
+        citizenHandler.setStuff(gameStuff);
         citizenHungerHandler.setStuff(gameStuff);
         dayHandler.setStuff(gameStuff);
         eventHandler.setStuff(gameStuff);
         expeditionHandler.setStuff(gameStuff);
         foodHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(stuff);
+        gameOverHandler.setStuff(gameStuff);
         highlightHandler.setStuff(gameStuff);
         mainBuildingMenuHandler.setStuff(gameStuff);
         playerMovementHandler.setStuff(gameStuff);
@@ -128,6 +141,10 @@ public class GameLogic extends Logic {
 
     public FoodHandler getFoodHandler() {
         return foodHandler;
+    }
+
+    public GameOverHandler getGameOverHandler() {
+        return gameOverHandler;
     }
 
     public HighlightHandler getHighlightHandler() {

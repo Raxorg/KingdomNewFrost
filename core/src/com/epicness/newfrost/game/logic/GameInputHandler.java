@@ -5,6 +5,7 @@ import com.epicness.fundamentals.input.InputHandler;
 import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.M;
+import static com.badlogic.gdx.Input.Keys.R;
 import static com.badlogic.gdx.Input.Keys.S;
 
 public class GameInputHandler extends InputHandler {
@@ -32,6 +33,9 @@ public class GameInputHandler extends InputHandler {
         GameLogic logic = (GameLogic) this.logic;
 
         switch (keycode) {
+            case R:
+                logic.getGameOverHandler().restart();
+                break;
             case M:
                 logic.getDayHandler().passDay();
                 break;

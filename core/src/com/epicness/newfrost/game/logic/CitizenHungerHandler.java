@@ -10,6 +10,8 @@ import static com.epicness.newfrost.game.enums.CitizenActivity.GOING_TO_EAT;
 
 public class CitizenHungerHandler {
 
+    // Structure
+    private GameLogic logic;
     private GameStuff stuff;
 
     public void addHunger() {
@@ -27,6 +29,7 @@ public class CitizenHungerHandler {
             if (citizen.getHunger() == 2) {
                 citizen.setActivity(DYING);
                 citizen.setAnimationTime(0f);
+                logic.getGameOverHandler().citizenDied();
                 continue;
             }
             int hunger = Math.min(citizen.getHunger() + 1, 2);
@@ -45,6 +48,11 @@ public class CitizenHungerHandler {
         citizen.setXBeforeActivity(citizen.getX());
         citizen.setActivity(GOING_TO_EAT);
         citizen.setFacingLeft(DINING_X < citizen.getCenterX());
+    }
+
+    // Structure
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
     }
 
     public void setStuff(GameStuff stuff) {

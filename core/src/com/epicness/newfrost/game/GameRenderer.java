@@ -32,6 +32,7 @@ public class GameRenderer extends Renderer {
         stuff.getDayTimer().draw(spriteBatch);
         stuff.getEventView().draw(spriteBatch);
         stuff.getRain().draw(spriteBatch);
+        stuff.getGameOver().draw(spriteBatch);
         spriteBatch.end();
 
         //drawDebug();

@@ -13,6 +13,13 @@ public class DayHandler {
     private float time;
     private boolean paused;
 
+    public void init() {
+        time = 0f;
+        paused = false;
+        stuff.getDay().setText("DAY 1");
+        stuff.getDayTimer().setText(DAY_DURATION + "");
+    }
+
     public void update(float delta) {
         if (paused) {
             return;

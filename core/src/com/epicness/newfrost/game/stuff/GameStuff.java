@@ -31,6 +31,7 @@ import static com.epicness.newfrost.game.GameConstants.DIALOGUE_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
 import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_X;
+import static com.epicness.newfrost.game.GameConstants.STARTING_CITIZENS;
 import static com.epicness.newfrost.game.GameConstants.TENT_SIZE;
 import static com.epicness.newfrost.game.GameConstants.TIP_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.TIP_ICON_SIZE;
@@ -40,6 +41,7 @@ public class GameStuff extends Stuff {
 
     private Sprited background;
     private DelayedRemovalArray<Building> buildings;
+    private DialogueStorage dialogueStorage;
     private DelayedRemovalArray<Citizen> citizens;
     private Player player;
     private Sprited actionIcon;
@@ -53,6 +55,7 @@ public class GameStuff extends Stuff {
     private SpritedText dialogue;
     private EventView eventView;
     private Rain rain;
+    private SpritedText gameOver;
 
     @Override
     public void initializeStuff() {
@@ -64,13 +67,9 @@ public class GameStuff extends Stuff {
 
         initializeBuildings(assets);
 
-        DialogueStorage dialogueStorage = new DialogueStorage();
+        dialogueStorage = new DialogueStorage();
 
         citizens = new DelayedRemovalArray<>();
-        for (int i = 0; i < 15; i++) {
-            Citizen citizen = new Citizen(assets, dialogueStorage.getRandomDialogue());
-            citizens.add(citizen);
-        }
 
         player = new Player(assets);
 
@@ -95,13 +94,11 @@ public class GameStuff extends Stuff {
         day = new Text(assets.getPixelFont());
         day.setTextTargetWidth(CAMERA_WIDTH);
         day.setHorizontalAlignment(Align.center);
-        day.setText("DAY 1");
         day.setY(CAMERA_HEIGHT - 25f);
 
         dayTimer = new Text(assets.getPixelFont());
         dayTimer.setTextTargetWidth(CAMERA_WIDTH);
         dayTimer.setHorizontalAlignment(Align.center);
-        dayTimer.setText(DAY_DURATION + "");
         dayTimer.setY(CAMERA_HEIGHT - 75f);
 
         dialogue = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
@@ -111,6 +108,10 @@ public class GameStuff extends Stuff {
         eventView = new EventView(sharedAssets.getPixel(), sharedAssets.getPixel(), assets.getPixelFont());
 
         rain = new Rain(sharedAssets.getPixel());
+
+        gameOver = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
+        gameOver.setText("GAME OVER\nR TO RESTART");
+        gameOver.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
     }
 
     private void initializeBuildings(GameAssets assets) {
@@ -135,6 +136,10 @@ public class GameStuff extends Stuff {
 
     public DelayedRemovalArray<Building> getBuildings() {
         return buildings;
+    }
+
+    public DialogueStorage getDialogueStorage() {
+        return dialogueStorage;
     }
 
     public DelayedRemovalArray<Citizen> getCitizens() {
@@ -191,5 +196,9 @@ public class GameStuff extends Stuff {
 
     public Rain getRain() {
         return rain;
+    }
+
+    public SpritedText getGameOver() {
+        return gameOver;
     }
 }

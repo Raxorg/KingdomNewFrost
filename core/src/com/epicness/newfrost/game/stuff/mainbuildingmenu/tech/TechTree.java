@@ -88,6 +88,7 @@ public class TechTree {
             technologies[i].setPosition(x + technologyX, y + technologyY);
         }
         techDescription.setPosition(x, y);
+        woodIcon.setPosition(x, y);
     }
 
     public void setTechnologyCost(int techCost) {
