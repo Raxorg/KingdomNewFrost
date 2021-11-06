@@ -89,12 +89,12 @@ public class DualSprited implements Buttonable {
         background.setOriginCenter();
     }
 
-    public void setForegroundColor(Color color) {
-        foreground.setColor(color);
-    }
-
     public void setBackgroundColor(Color color) {
         background.setColor(color);
+    }
+
+    public void setForegroundColor(Color color) {
+        foreground.setColor(color);
     }
 
     public void setColor(Color color) {

@@ -37,7 +37,8 @@ public class AnimatedBackground {
 
     protected void initialize() {
         // Calculate Image Size
-        imageSize = bounds.height / imageRows;
+        float smallerDimension = Math.min(bounds.width, bounds.height);
+        imageSize = smallerDimension / imageRows;
         // Calculate Spacing
         float xSpacing = imageSize + ((bounds.width + imageSize) - imageSize * (imageColumns - 1)) / imageColumns;
         float ySpacing = imageSize + ((bounds.height + imageSize) - imageSize * imageRows) / (imageRows * 0.7f);
@@ -96,7 +97,7 @@ public class AnimatedBackground {
         Rectangle clipBounds = new Rectangle(x, y, w, h);
         ScissorStack.calculateScissors(camera, spriteBatch.getTransformMatrix(), clipBounds, scissors);
         boolean pop = ScissorStack.pushScissors(scissors);
-        spriteBatch.setColor(color.r, color.g, color.b, color.a / 2f);
+        spriteBatch.setColor(color.r / 2f, color.g / 2f, color.b / 2f, color.a);
         for (Vector2 position : positions) {
             spriteBatch.draw(
                     repeatedImage,
