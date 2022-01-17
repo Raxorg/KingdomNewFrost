@@ -8,7 +8,7 @@ public class IntroHandler {
 
     public void startMusic() {
         assets.getFrostSong().setLooping(true);
-        assets.getFrostSong().setVolume(0.25f/4);
+        assets.getFrostSong().setVolume(0.25f/2);
         assets.getFrostSong().play();
     }
 

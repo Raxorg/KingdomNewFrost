@@ -30,11 +30,16 @@ public class GameRenderer extends Renderer {
             stuff.getCitizens().get(i).draw(spriteBatch);
         }
         stuff.getActionIcon().draw(spriteBatch);
+        useStatic();
         stuff.getWoodInfo().draw(spriteBatch);
+        useDynamic();
         stuff.getFoodInfo().draw(spriteBatch);
         stuff.getPlayer().draw(spriteBatch);
+        useStatic();
         stuff.getTipIcon().draw(spriteBatch);
+        useDynamic();
         stuff.getMainBuildingMenu().draw(spriteBatch);
+        useStatic();
         stuff.getTutorialNotification().draw(spriteBatch);
         stuff.getTip().draw(spriteBatch);
         stuff.getExpeditionInfo().draw(spriteBatch);
@@ -42,6 +47,7 @@ public class GameRenderer extends Renderer {
         stuff.getDayTimer().draw(spriteBatch);
         stuff.getEventView().draw(spriteBatch);
         stuff.getRain().draw(spriteBatch);
+        useDynamic();
         stuff.getGameOver().draw(spriteBatch);
         spriteBatch.end();
 

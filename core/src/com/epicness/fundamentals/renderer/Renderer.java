@@ -29,6 +29,16 @@ public abstract class Renderer {
 
     public abstract void render();
 
+    protected void useStatic() {
+        spriteBatch.setProjectionMatrix(screen.getStaticCamera().combined);
+        shapeRenderer.setProjectionMatrix(screen.getStaticCamera().combined);
+    }
+
+    protected void useDynamic() {
+        spriteBatch.setProjectionMatrix(screen.getDynamicCamera().combined);
+        shapeRenderer.setProjectionMatrix(screen.getDynamicCamera().combined);
+    }
+
     // Structure
     public void setScreen(SharedScreen screen) {
         this.screen = screen;
