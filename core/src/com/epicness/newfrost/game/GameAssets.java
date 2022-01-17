@@ -1,14 +1,14 @@
 package com.epicness.newfrost.game;
 
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.epicness.fundamentals.assets.Assets;
-
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_PATH;
-import static com.epicness.newfrost.game.GameConstants.BACKGROUND_PATH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_0_PATH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_1_PATH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_2_PATH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_3_PATH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_4_PATH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_5_PATH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_6_PATH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_7_PATH;
 import static com.epicness.newfrost.game.GameConstants.CITIZEN_PATH;
 import static com.epicness.newfrost.game.GameConstants.CLOUD_1_PATH;
 import static com.epicness.newfrost.game.GameConstants.CLOUD_2_PATH;
@@ -29,6 +29,7 @@ import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_PATH;
 import static com.epicness.newfrost.game.GameConstants.MEAT_ICON_PATH;
 import static com.epicness.newfrost.game.GameConstants.MEAT_PATH;
 import static com.epicness.newfrost.game.GameConstants.PIXEL_FONT_PATH;
+import static com.epicness.newfrost.game.GameConstants.PIXEL_FONT_SMALL_PATH;
 import static com.epicness.newfrost.game.GameConstants.TECH_ICON_0_PATH;
 import static com.epicness.newfrost.game.GameConstants.TECH_ICON_1_PATH;
 import static com.epicness.newfrost.game.GameConstants.TECH_ICON_2_PATH;
@@ -55,15 +56,23 @@ import static com.epicness.newfrost.game.GameConstants.WALKING_GOVERNOR_7_PATH;
 import static com.epicness.newfrost.game.GameConstants.WALKING_GOVERNOR_8_PATH;
 import static com.epicness.newfrost.game.GameConstants.WOOD_FRAME_PATH;
 
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.epicness.fundamentals.assets.Assets;
+
 public class GameAssets extends Assets {
 
     // Audio
     private Music frostSong;
     private Sound crafting;
     // Fonts
-    private BitmapFont pixelFont;
+    private BitmapFont pixelFont, pixelFontSmall;
     // Sprites
     private Sprite background;
+    private Sprite background0, background1, background2, background3, background4, background5, background6, background7;
     private Sprite cloud1, cloud2, cloud3;
     private Sprite mainBuilding, cook, tent, tentUpgrade;
     private Sprite meat;
@@ -85,8 +94,16 @@ public class GameAssets extends Assets {
         assetManager.load(CRAFTING_PATH, Sound.class);
         // Fonts
         assetManager.load(PIXEL_FONT_PATH, BitmapFont.class);
+        assetManager.load(PIXEL_FONT_SMALL_PATH, BitmapFont.class);
         // Sprites
-        assetManager.load(BACKGROUND_PATH, Texture.class);
+        assetManager.load(BACKGROUND_0_PATH, Texture.class);
+        assetManager.load(BACKGROUND_1_PATH, Texture.class);
+        assetManager.load(BACKGROUND_2_PATH, Texture.class);
+        assetManager.load(BACKGROUND_3_PATH, Texture.class);
+        assetManager.load(BACKGROUND_4_PATH, Texture.class);
+        assetManager.load(BACKGROUND_5_PATH, Texture.class);
+        assetManager.load(BACKGROUND_6_PATH, Texture.class);
+        assetManager.load(BACKGROUND_7_PATH, Texture.class);
         assetManager.load(CLOUD_1_PATH, Texture.class);
         assetManager.load(CLOUD_2_PATH, Texture.class);
         assetManager.load(CLOUD_3_PATH, Texture.class);
@@ -146,8 +163,18 @@ public class GameAssets extends Assets {
         // Fonts
         pixelFont = assetManager.get(PIXEL_FONT_PATH, BitmapFont.class);
         pixelFont.getData().setScale(4f);
+        pixelFontSmall = assetManager.get(PIXEL_FONT_SMALL_PATH, BitmapFont.class);
+        pixelFontSmall.getData().setScale(2f);
         // Sprites
-        background = new Sprite(assetManager.get(BACKGROUND_PATH, Texture.class));
+        background0 = new Sprite(assetManager.get(BACKGROUND_0_PATH, Texture.class));
+        background1 = new Sprite(assetManager.get(BACKGROUND_1_PATH, Texture.class));
+        background2 = new Sprite(assetManager.get(BACKGROUND_2_PATH, Texture.class));
+        background3 = new Sprite(assetManager.get(BACKGROUND_3_PATH, Texture.class));
+        background4 = new Sprite(assetManager.get(BACKGROUND_4_PATH, Texture.class));
+        background5 = new Sprite(assetManager.get(BACKGROUND_5_PATH, Texture.class));
+        background6 = new Sprite(assetManager.get(BACKGROUND_6_PATH, Texture.class));
+        background7 = new Sprite(assetManager.get(BACKGROUND_7_PATH, Texture.class));
+
         cloud1 = new Sprite(assetManager.get(CLOUD_1_PATH, Texture.class));
         cloud2 = new Sprite(assetManager.get(CLOUD_2_PATH, Texture.class));
         cloud3 = new Sprite(assetManager.get(CLOUD_3_PATH, Texture.class));
@@ -213,9 +240,41 @@ public class GameAssets extends Assets {
         return pixelFont;
     }
 
+    public BitmapFont getPixelFontSmall() {
+        return pixelFontSmall;
+    }
+
     // Sprites
-    public Sprite getBackground() {
-        return background;
+    public Sprite getBackground0() {
+        return background0;
+    }
+
+    public Sprite getBackground1() {
+        return background1;
+    }
+
+    public Sprite getBackground2() {
+        return background2;
+    }
+
+    public Sprite getBackground3() {
+        return background3;
+    }
+
+    public Sprite getBackground4() {
+        return background4;
+    }
+
+    public Sprite getBackground5() {
+        return background5;
+    }
+
+    public Sprite getBackground6() {
+        return background6;
+    }
+
+    public Sprite getBackground7() {
+        return background7;
     }
 
     public Sprite getCloud1() {

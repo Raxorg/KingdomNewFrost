@@ -10,8 +10,16 @@ public class GameConstants {
     public static final String CRAFTING_PATH = "newfrost/audio/woodenCrafting.wav";
 
     public static final String PIXEL_FONT_PATH = "newfrost/fonts/pixelFont.fnt";
+    public static final String PIXEL_FONT_SMALL_PATH = "newfrost/fonts/pixelFontSmall.fnt";
 
-    public static final String BACKGROUND_PATH = "newfrost/images/background.png";
+    public static final String BACKGROUND_0_PATH = "newfrost/images/background/bg0.png";
+    public static final String BACKGROUND_1_PATH = "newfrost/images/background/bg1.png";
+    public static final String BACKGROUND_2_PATH = "newfrost/images/background/bg2.png";
+    public static final String BACKGROUND_3_PATH = "newfrost/images/background/bg3.png";
+    public static final String BACKGROUND_4_PATH = "newfrost/images/background/bg4.png";
+    public static final String BACKGROUND_5_PATH = "newfrost/images/background/bg5.png";
+    public static final String BACKGROUND_6_PATH = "newfrost/images/background/bg6.png";
+    public static final String BACKGROUND_7_PATH = "newfrost/images/background/bg7.png";
     public static final String CLOUD_1_PATH = "newfrost/images/cloud1.png";
     public static final String CLOUD_2_PATH = "newfrost/images/cloud2.png";
     public static final String CLOUD_3_PATH = "newfrost/images/cloud3.png";
@@ -62,7 +70,7 @@ public class GameConstants {
     public static final String MEAT_ICON_PATH = "newfrost/images/meatIcon.png";
     public static final String GLASS_ICON_PATH = "newfrost/images/glass.png";
     // Scene
-    public static final float GROUND_Y = CAMERA_HEIGHT / 3f;
+    public static final float GROUND_Y = CAMERA_HEIGHT / 5f;
     // Player
     public static final float PLAYER_STARTING_X = CAMERA_WIDTH / 2f;
     public static final float PLAYER_STARTING_Y = GROUND_Y - 50f;

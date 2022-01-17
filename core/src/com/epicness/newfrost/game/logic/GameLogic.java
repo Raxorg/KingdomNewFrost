@@ -1,9 +1,11 @@
 package com.epicness.newfrost.game.logic;
 
+import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
+import com.epicness.fundamentals.logic.behaviors.ParallaxBehavior;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.newfrost.game.GameAssets;
 import com.epicness.newfrost.game.stuff.GameStuff;
@@ -13,6 +15,7 @@ public class GameLogic extends Logic {
     // todo silencio seplucral
 
     private final ActionHandler actionHandler;
+    private final CameraHandler cameraHandler;
     private final CitizenActivityHandler citizenActivityHandler;
     private final CitizenHandler citizenHandler;
     private final CitizenHungerHandler citizenHungerHandler;
@@ -28,13 +31,16 @@ public class GameLogic extends Logic {
     private final MainBuildingMenuHandler mainBuildingMenuHandler;
     private final PlayerMovementHandler playerMovementHandler;
     private final RainHandler rainHandler;
-    private final TipHandler tipHandler;
+    private final TutorialHandler tutorialHandler;
     private final WoodHandler woodHandler;
+
+    private final ParallaxBehavior parallaxBehavior;
 
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
 
         actionHandler = new ActionHandler();
+        cameraHandler = new CameraHandler();
         citizenActivityHandler = new CitizenActivityHandler();
         citizenHandler = new CitizenHandler();
         citizenHungerHandler = new CitizenHungerHandler();
@@ -50,10 +56,13 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler = new MainBuildingMenuHandler();
         playerMovementHandler = new PlayerMovementHandler();
         rainHandler = new RainHandler();
-        tipHandler = new TipHandler();
+        tutorialHandler = new TutorialHandler();
         woodHandler = new WoodHandler();
 
+        parallaxBehavior = new ParallaxBehavior();
+
         actionHandler.setLogic(this);
+        cameraHandler.setLogic(this);
         citizenHungerHandler.setLogic(this);
         dayHandler.setLogic(this);
         expeditionHandler.setLogic(this);
@@ -65,6 +74,7 @@ public class GameLogic extends Logic {
     @Override
     public void initialLogic() {
         actionHandler.hideActionIcon();
+        cameraHandler.configureParallax();
         citizenHandler.spawnCitizens();
         dayHandler.init();
         eventHandler.hideEventView();
@@ -73,13 +83,14 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler.hideMenu();
         gameInputHandler.setupInput();
         gameOverHandler.init();
-        tipHandler.hideTip();
-        tipHandler.showTipIcon();
+        tutorialHandler.hideTip();
+        tutorialHandler.showTipIcon();
     }
 
     @Override
     public void update(float delta) {
         actionHandler.update();
+        cameraHandler.update();
         citizenActivityHandler.update(delta);
         dayHandler.update(delta);
         expeditionHandler.update(delta);
@@ -87,7 +98,7 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler.update();
         playerMovementHandler.update(delta);
         rainHandler.update(delta);
-        tipHandler.update(delta);
+        tutorialHandler.update(delta);
     }
 
     @Override
@@ -103,9 +114,15 @@ public class GameLogic extends Logic {
     }
 
     @Override
+    public void setScreen(SharedScreen screen) {
+        cameraHandler.setScreen(screen);
+    }
+
+    @Override
     public void setStuff(Stuff stuff) {
         GameStuff gameStuff = (GameStuff) stuff;
         actionHandler.setStuff(gameStuff);
+        cameraHandler.setStuff(gameStuff);
         citizenActivityHandler.setStuff(gameStuff);
         citizenHandler.setStuff(gameStuff);
         citizenHungerHandler.setStuff(gameStuff);
@@ -119,7 +136,7 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler.setStuff(gameStuff);
         playerMovementHandler.setStuff(gameStuff);
         rainHandler.setStuff(gameStuff);
-        tipHandler.setStuff(gameStuff);
+        tutorialHandler.setStuff(gameStuff);
         woodHandler.setStuff(gameStuff);
     }
 
@@ -159,11 +176,15 @@ public class GameLogic extends Logic {
         return playerMovementHandler;
     }
 
-    public TipHandler getTipHandler() {
-        return tipHandler;
+    public TutorialHandler getTipHandler() {
+        return tutorialHandler;
     }
 
     public WoodHandler getWoodHandler() {
         return woodHandler;
+    }
+
+    public ParallaxBehavior getParallaxBehavior() {
+        return parallaxBehavior;
     }
 }

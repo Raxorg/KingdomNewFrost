@@ -13,7 +13,16 @@ public class GameRenderer extends Renderer {
         ScreenUtils.clear(Color.SKY);
 
         spriteBatch.begin();
+
+        spriteBatch.setProjectionMatrix(screen.getStaticCamera().combined);
+
         stuff.getBackground().draw(spriteBatch);
+
+        spriteBatch.setProjectionMatrix(screen.getDynamicCamera().combined);
+
+        for (int i = 0; i < stuff.getBGLayers().length; i++) {
+            stuff.getBGLayers()[i].draw(spriteBatch);
+        }
         for (int i = 0; i < stuff.getBuildings().size; i++) {
             stuff.getBuildings().get(i).draw(spriteBatch);
         }
@@ -26,6 +35,7 @@ public class GameRenderer extends Renderer {
         stuff.getPlayer().draw(spriteBatch);
         stuff.getTipIcon().draw(spriteBatch);
         stuff.getMainBuildingMenu().draw(spriteBatch);
+        stuff.getTutorialNotification().draw(spriteBatch);
         stuff.getTip().draw(spriteBatch);
         stuff.getExpeditionInfo().draw(spriteBatch);
         stuff.getDay().draw(spriteBatch);

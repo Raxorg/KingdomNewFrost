@@ -1,7 +1,25 @@
 package com.epicness.newfrost.game.stuff;
 
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.OPAQUE_TRANSPARENT;
+import static com.epicness.fundamentals.SharedConstants.TRANSPARENT;
+import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.DIALOGUE_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.DIALOGUE_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
+import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_X;
+import static com.epicness.newfrost.game.GameConstants.TENT_SIZE;
+import static com.epicness.newfrost.game.GameConstants.TIP_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.TIP_ICON_SIZE;
+import static com.epicness.newfrost.game.GameConstants.TIP_WIDTH;
+
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.fundamentals.stuff.IconedSpritedText;
+import com.epicness.fundamentals.stuff.MultiSprited;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.fundamentals.stuff.Stuff;
@@ -19,25 +37,10 @@ import com.epicness.newfrost.game.stuff.resourceinfos.ExpeditionInfo;
 import com.epicness.newfrost.game.stuff.resourceinfos.FoodInfo;
 import com.epicness.newfrost.game.stuff.resourceinfos.WoodInfo;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.OPAQUE_TRANSPARENT;
-import static com.epicness.fundamentals.SharedConstants.TRANSPARENT;
-import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_HEIGHT;
-import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_WIDTH;
-import static com.epicness.newfrost.game.GameConstants.DIALOGUE_HEIGHT;
-import static com.epicness.newfrost.game.GameConstants.DIALOGUE_WIDTH;
-import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
-import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_WIDTH;
-import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_X;
-import static com.epicness.newfrost.game.GameConstants.TENT_SIZE;
-import static com.epicness.newfrost.game.GameConstants.TIP_HEIGHT;
-import static com.epicness.newfrost.game.GameConstants.TIP_ICON_SIZE;
-import static com.epicness.newfrost.game.GameConstants.TIP_WIDTH;
-
 public class GameStuff extends Stuff {
 
     private Sprited background;
+    private MultiSprited[] bgLayers;
     private DelayedRemovalArray<Building> buildings;
     private DialogueStorage dialogueStorage;
     private DelayedRemovalArray<Citizen> citizens;
@@ -46,6 +49,7 @@ public class GameStuff extends Stuff {
     private WoodInfo woodInfo;
     private FoodInfo foodInfo;
     private MainBuildingMenu mainBuildingMenu;
+    private IconedSpritedText tutorialNotification;
     private SpritedText tip;
     private Sprited tipIcon;
     private ExpeditionInfo expeditionInfo;
@@ -59,9 +63,22 @@ public class GameStuff extends Stuff {
     public void initializeStuff() {
         GameAssets assets = (GameAssets) this.assets;
 
-        background = new Sprited(assets.getBackground());
-        background.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT);
-        background.setX(-CAMERA_WIDTH / 2f);
+        background = new Sprited(assets.getBackground0());
+        background.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+
+        bgLayers = new MultiSprited[7];
+        bgLayers[0] = new MultiSprited(assets.getBackground1(), 3);
+        bgLayers[1] = new MultiSprited(assets.getBackground2(), 3);
+        bgLayers[2] = new MultiSprited(assets.getBackground3(), 3);
+        bgLayers[3] = new MultiSprited(assets.getBackground4(), 3);
+        bgLayers[4] = new MultiSprited(assets.getBackground5(), 3);
+        bgLayers[5] = new MultiSprited(assets.getBackground6(), 3);
+        bgLayers[6] = new MultiSprited(assets.getBackground7(), 3);
+        for (int i = 0; i < bgLayers.length; i++) {
+            bgLayers[i].setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+            bgLayers[i].setX(-CAMERA_WIDTH, 1);
+            bgLayers[i].setX(CAMERA_WIDTH, 2);
+        }
 
         initializeBuildings(assets);
 
@@ -79,6 +96,11 @@ public class GameStuff extends Stuff {
         foodInfo = new FoodInfo(assets.getMeatIcon(), assets.getPixelFont());
 
         mainBuildingMenu = new MainBuildingMenu(assets, sharedAssets);
+
+        tutorialNotification = new IconedSpritedText(sharedAssets.getPixel(), assets.getPixelFontSmall(), assets.getMeat());
+        tutorialNotification.setSize(300f, 100f);
+        tutorialNotification.setText("DERPY DERP");
+        tutorialNotification.setBackgroundColor(OPAQUE_TRANSPARENT);
 
         tip = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
         tip.setSize(TIP_WIDTH, TIP_HEIGHT);
@@ -132,6 +154,10 @@ public class GameStuff extends Stuff {
         return background;
     }
 
+    public MultiSprited[] getBGLayers() {
+        return bgLayers;
+    }
+
     public DelayedRemovalArray<Building> getBuildings() {
         return buildings;
     }
@@ -162,6 +188,10 @@ public class GameStuff extends Stuff {
 
     public MainBuildingMenu getMainBuildingMenu() {
         return mainBuildingMenu;
+    }
+
+    public IconedSpritedText getTutorialNotification() {
+        return tutorialNotification;
     }
 
     public SpritedText getTip() {

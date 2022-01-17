@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Sprited implements Buttonable {
+public class Sprited implements Buttonable, Parallaxable {
 
     private Sprite sprite;
 
@@ -25,6 +25,11 @@ public class Sprited implements Buttonable {
         return sprite.getBoundingRectangle().contains(x, y);
     }
 
+    @Override
+    public void translateX(float amount) {
+        sprite.translateX(amount);
+    }
+
     public float getX() {
         return sprite.getX();
     }
@@ -43,10 +48,6 @@ public class Sprited implements Buttonable {
 
     public void setPosition(float x, float y) {
         sprite.setPosition(x, y);
-    }
-
-    public void translateX(float amount) {
-        sprite.translateX(amount);
     }
 
     public void translateY(float amount) {

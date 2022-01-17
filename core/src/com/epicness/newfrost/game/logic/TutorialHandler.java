@@ -13,7 +13,7 @@ import static com.epicness.newfrost.game.GameConstants.TIP_INTERVAL;
 import static com.epicness.newfrost.game.GameConstants.TIP_X;
 import static com.epicness.newfrost.game.GameConstants.TIP_Y;
 
-public class TipHandler {
+public class TutorialHandler {
 
     private GameStuff stuff;
     // Logic

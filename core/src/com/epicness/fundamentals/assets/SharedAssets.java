@@ -1,10 +1,5 @@
 package com.epicness.fundamentals.assets;
 
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-
 import static com.epicness.fundamentals.SharedConstants.EXPLOSION_PATH;
 import static com.epicness.fundamentals.SharedConstants.GLOW_PATH;
 import static com.epicness.fundamentals.SharedConstants.PIXEL_FONT_PATH;
@@ -12,6 +7,11 @@ import static com.epicness.fundamentals.SharedConstants.PIXEL_PATH;
 import static com.epicness.fundamentals.SharedConstants.SQUARE_32_INVERTED_PATH;
 import static com.epicness.fundamentals.SharedConstants.SQUARE_32_PATH;
 import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
+
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class SharedAssets extends Assets {
 
