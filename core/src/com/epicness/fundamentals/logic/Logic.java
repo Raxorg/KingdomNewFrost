@@ -10,7 +10,7 @@ import com.epicness.fundamentals.stuff.Stuff;
 
 public abstract class Logic {
 
-    protected SharedLogic sharedLogic;
+    protected final SharedLogic sharedLogic;
 
     public Logic(SharedLogic sharedLogic) {
         this.sharedLogic = sharedLogic;

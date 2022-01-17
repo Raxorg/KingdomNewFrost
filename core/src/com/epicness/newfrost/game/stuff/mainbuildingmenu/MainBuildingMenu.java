@@ -3,7 +3,7 @@ package com.epicness.newfrost.game.stuff.mainbuildingmenu;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.fundamentals.assets.SharedAssets;
-import com.epicness.fundamentals.stuff.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.newfrost.game.GameAssets;

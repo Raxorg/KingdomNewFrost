@@ -3,6 +3,8 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
 public class DualSprited implements Buttonable, Scrollable {
 

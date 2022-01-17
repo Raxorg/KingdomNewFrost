@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Parallaxable;
 
 public class MultiSprited implements Buttonable, Parallaxable {
 

@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
 public class IconedSpritedText implements Buttonable, Scrollable {
 

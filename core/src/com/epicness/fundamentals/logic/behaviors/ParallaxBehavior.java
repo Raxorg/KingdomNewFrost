@@ -1,6 +1,6 @@
 package com.epicness.fundamentals.logic.behaviors;
 
-import com.epicness.fundamentals.stuff.Parallaxable;
+import com.epicness.fundamentals.stuff.interfaces.Parallaxable;
 
 import java.util.HashMap;
 import java.util.Map;

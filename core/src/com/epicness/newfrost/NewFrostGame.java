@@ -8,6 +8,6 @@ public class NewFrostGame extends Game {
 
     @Override
     public void create() {
-        new SplashInitializer().initialize(new SharedResources(this));
+        new SplashInitializer().initialize(new SharedResources());
     }
 }
