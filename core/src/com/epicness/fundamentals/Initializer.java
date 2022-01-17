@@ -37,7 +37,7 @@ public abstract class Initializer {
         stuff.setSharedAssets(sharedResources.getAssets());
         stuff.setAssets(assets);
 
-        renderer.setProjectionMatrix();
+        renderer.useStaticCamera();
         stuff.initializeStuff();
 
         logic.initialLogic();

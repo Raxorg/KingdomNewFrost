@@ -22,19 +22,14 @@ public abstract class Renderer {
         shapeRenderer.setAutoShapeType(true);
     }
 
-    public void setProjectionMatrix() {
-        spriteBatch.setProjectionMatrix(screen.getStaticCamera().combined);
-        shapeRenderer.setProjectionMatrix(screen.getStaticCamera().combined);
-    }
-
     public abstract void render();
 
-    protected void useStatic() {
+    public void useStaticCamera() {
         spriteBatch.setProjectionMatrix(screen.getStaticCamera().combined);
         shapeRenderer.setProjectionMatrix(screen.getStaticCamera().combined);
     }
 
-    protected void useDynamic() {
+    protected void useDynamicCamera() {
         spriteBatch.setProjectionMatrix(screen.getDynamicCamera().combined);
         shapeRenderer.setProjectionMatrix(screen.getDynamicCamera().combined);
     }
