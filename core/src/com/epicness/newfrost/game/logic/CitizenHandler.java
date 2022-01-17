@@ -1,7 +1,7 @@
 package com.epicness.newfrost.game.logic;
 
 import com.badlogic.gdx.utils.DelayedRemovalArray;
-import com.epicness.newfrost.game.GameAssets;
+import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.dialogues.DialogueStorage;
 import com.epicness.newfrost.game.stuff.people.Citizen;

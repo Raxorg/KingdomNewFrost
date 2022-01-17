@@ -3,7 +3,7 @@ package com.epicness.newfrost.intro.logic;
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.newfrost.game.GameAssets;
+import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.GameInitializer;
 import com.epicness.newfrost.intro.IntroAssets;
 import com.epicness.newfrost.intro.IntroStuff;

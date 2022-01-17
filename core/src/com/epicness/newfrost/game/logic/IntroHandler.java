@@ -1,6 +1,6 @@
 package com.epicness.newfrost.game.logic;
 
-import com.epicness.newfrost.game.GameAssets;
+import com.epicness.newfrost.game.assets.GameAssets;
 
 public class IntroHandler {
 

@@ -8,7 +8,7 @@ import com.epicness.fundamentals.assets.SharedAssets;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.fundamentals.stuff.Text;
-import com.epicness.newfrost.game.GameAssets;
+import com.epicness.newfrost.game.assets.GameAssets;
 
 import static com.epicness.newfrost.game.GameConstants.TECHNOLOGIES;
 import static com.epicness.newfrost.game.GameConstants.TECHNOLOGIES_X;

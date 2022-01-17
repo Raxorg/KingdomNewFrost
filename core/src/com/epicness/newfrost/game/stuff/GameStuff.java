@@ -6,6 +6,10 @@ import static com.epicness.fundamentals.SharedConstants.OPAQUE_TRANSPARENT;
 import static com.epicness.fundamentals.SharedConstants.TRANSPARENT;
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.DAY_TIMER_Y;
+import static com.epicness.newfrost.game.GameConstants.DAY_Y;
 import static com.epicness.newfrost.game.GameConstants.DIALOGUE_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.DIALOGUE_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
@@ -24,7 +28,7 @@ import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.fundamentals.stuff.Text;
-import com.epicness.newfrost.game.GameAssets;
+import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.stuff.buildings.Building;
 import com.epicness.newfrost.game.stuff.buildings.MainBuilding;
 import com.epicness.newfrost.game.stuff.buildings.Tent;
@@ -64,7 +68,7 @@ public class GameStuff extends Stuff {
         GameAssets assets = (GameAssets) this.assets;
 
         background = new Sprited(assets.getBackground0());
-        background.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+        background.setSize(BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
 
         bgLayers = new MultiSprited[7];
         bgLayers[0] = new MultiSprited(assets.getBackground1(), 3);
@@ -75,9 +79,9 @@ public class GameStuff extends Stuff {
         bgLayers[5] = new MultiSprited(assets.getBackground6(), 3);
         bgLayers[6] = new MultiSprited(assets.getBackground7(), 3);
         for (int i = 0; i < bgLayers.length; i++) {
-            bgLayers[i].setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
-            bgLayers[i].setX(-CAMERA_WIDTH, 1);
-            bgLayers[i].setX(CAMERA_WIDTH, 2);
+            bgLayers[i].setSize(BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
+            bgLayers[i].setX(-BACKGROUND_WIDTH, 1);
+            bgLayers[i].setX(BACKGROUND_WIDTH, 2);
         }
 
         initializeBuildings(assets);
@@ -114,12 +118,12 @@ public class GameStuff extends Stuff {
         day = new Text(assets.getPixelFont());
         day.setTextTargetWidth(CAMERA_WIDTH);
         day.setHorizontalAlignment(Align.center);
-        day.setY(CAMERA_HEIGHT - 25f);
+        day.setY(DAY_Y);
 
         dayTimer = new Text(assets.getPixelFont());
         dayTimer.setTextTargetWidth(CAMERA_WIDTH);
         dayTimer.setHorizontalAlignment(Align.center);
-        dayTimer.setY(CAMERA_HEIGHT - 75f);
+        dayTimer.setY(DAY_TIMER_Y);
 
         dialogue = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
         dialogue.setSize(DIALOGUE_WIDTH, DIALOGUE_HEIGHT);

@@ -51,16 +51,18 @@ public class GameRenderer extends Renderer {
         stuff.getGameOver().draw(spriteBatch);
         spriteBatch.end();
 
-        //drawDebug();
+        drawDebug();
     }
 
     private void drawDebug() {
         GameStuff stuff = (GameStuff) this.stuff;
 
         shapeRenderer.begin();
+        shapeRenderer.setColor(Color.GREEN);
         for (int i = 0; i < stuff.getCitizens().size; i++) {
             stuff.getCitizens().get(i).drawDebug(shapeRenderer);
         }
+        stuff.getPlayer().drawDebug(shapeRenderer);
         shapeRenderer.end();
     }
 }

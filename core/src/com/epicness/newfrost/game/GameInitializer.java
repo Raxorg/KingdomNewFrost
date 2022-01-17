@@ -2,6 +2,7 @@ package com.epicness.newfrost.game;
 
 import com.epicness.fundamentals.Initializer;
 import com.epicness.fundamentals.SharedResources;
+import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.logic.GameLogic;
 import com.epicness.newfrost.game.stuff.GameStuff;
 

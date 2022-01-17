@@ -1,16 +1,17 @@
 package com.epicness.newfrost.game.stuff.people;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
-import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.newfrost.game.GameAssets;
-
 import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP;
 import static com.epicness.newfrost.game.GameConstants.PLAYER_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.PLAYER_STARTING_X;
 import static com.epicness.newfrost.game.GameConstants.PLAYER_STARTING_Y;
 import static com.epicness.newfrost.game.GameConstants.PLAYER_WIDTH;
+
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
+import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.newfrost.game.assets.GameAssets;
 
 public class Player {
 
@@ -61,6 +62,18 @@ public class Player {
         }
     }
 
+    public void drawDebug(ShapeRenderer shapeRenderer) {
+        if (speed == 0f) {
+            idleAnimation.getKeyFrame(animationTime).drawDebug(shapeRenderer);
+        } else {
+            walkingAnimation.getKeyFrame(animationTime).drawDebug(shapeRenderer);
+        }
+    }
+
+    public float getX() {
+        return idleAnimation.getKeyFrames()[0].getX();
+    }
+
     private void setX(float x) {
         for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
             idleAnimation.getKeyFrames()[i].setX(x);
@@ -80,7 +93,7 @@ public class Player {
     }
 
     public float getCenterX() {
-        Sprited sprited = idleAnimation.getKeyFrame(0f);
+        Sprited sprited = idleAnimation.getKeyFrames()[0];
         return sprited.getX() + sprited.getWidth() / 2f;
     }
 

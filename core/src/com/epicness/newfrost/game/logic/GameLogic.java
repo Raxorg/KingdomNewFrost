@@ -7,7 +7,7 @@ import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.logic.behaviors.ParallaxBehavior;
 import com.epicness.fundamentals.stuff.Stuff;
-import com.epicness.newfrost.game.GameAssets;
+import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameLogic extends Logic {

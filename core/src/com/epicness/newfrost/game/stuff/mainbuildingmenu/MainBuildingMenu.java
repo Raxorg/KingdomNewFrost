@@ -6,7 +6,7 @@ import com.epicness.fundamentals.assets.SharedAssets;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
-import com.epicness.newfrost.game.GameAssets;
+import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.enums.MainMenuState;
 import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.TechTree;
 

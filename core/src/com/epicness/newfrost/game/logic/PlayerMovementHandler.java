@@ -1,9 +1,11 @@
 package com.epicness.newfrost.game.logic;
 
+import static com.epicness.newfrost.game.GameConstants.PLAYER_MAX_X;
+import static com.epicness.newfrost.game.GameConstants.PLAYER_MIN_X;
+import static com.epicness.newfrost.game.GameConstants.PLAYER_SPEED;
+
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.people.Player;
-
-import static com.epicness.newfrost.game.GameConstants.PLAYER_SPEED;
 
 public class PlayerMovementHandler {
 
@@ -12,7 +14,19 @@ public class PlayerMovementHandler {
     public void update(float delta) {
         Player player = stuff.getPlayer();
         player.translateX(player.getSpeed() * delta);
+        checkPlayerLimits(player);
         player.setAnimationTime(player.getAnimationTime() + delta);
+    }
+
+    private void checkPlayerLimits(Player player) {
+        float difference = player.getX() - PLAYER_MAX_X;
+        if (difference > 0f) {
+            player.translateX(-difference);
+        }
+        difference = player.getX() - PLAYER_MIN_X;
+        if (difference < 0f) {
+            player.translateX(-difference);
+        }
     }
 
     public void aPress() {
