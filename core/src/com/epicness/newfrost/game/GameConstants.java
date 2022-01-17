@@ -147,7 +147,7 @@ public class GameConstants {
 
     public static final float TIP_ICON_SIZE = 100f;
     public static final float TIP_ICON_X = CAMERA_WIDTH / 2f - TIP_ICON_SIZE / 2f;
-    public static final float TIP_ICON_Y = 150f;
+    public static final float TIP_ICON_Y = 25f;
     // Expedition
     public static final float GOING_TO_EXPEDITION_TIME = 2.5f;
     public static final float RETURNING_FROM_EXPEDITION_TIME = 2.5f;

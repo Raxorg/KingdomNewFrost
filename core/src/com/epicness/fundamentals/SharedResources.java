@@ -25,7 +25,7 @@ public class SharedResources {
         stuff = new SharedStuff();
         initializers = new Array<>();
 
-        input.setCamera(screen.getStaticCamera());
+        input.setScreen(screen);
         logic.setSharedResources(this);
         stuff.setAssets(assets);
         stuff.setScreen(screen);
