@@ -54,17 +54,27 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_GOVERNOR_
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_GOVERNOR_6_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_GOVERNOR_7_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_GOVERNOR_8_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WAREHOUSE_BACK_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WAREHOUSE_FRONT_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WAREHOUSE_LOG_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WOOD_FRAME_PATH;
 
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epicness.fundamentals.assets.Assets;
 
 public class GameAssets extends Assets {
 
+    // Animations
+    private Sprite idleCitizen0, idleCitizen1;
+    private Sprite walkingCitizen0, walkingCitizen1, walkingCitizen2, walkingCitizen3, walkingCitizen4,
+            walkingCitizen5, walkingCitizen6, walkingCitizen7;
+    private Sprite dyingCitizen0, dyingCitizen1, dyingCitizen2, dyingCitizen3;
+    private Sprite idleGovernor0, idleGovernor1;
+    private Sprite walkingGovernor0, walkingGovernor1, walkingGovernor2, walkingGovernor3, walkingGovernor4,
+            walkingGovernor5, walkingGovernor6, walkingGovernor7, walkingGovernor8;
     // Audio
     private Music frostSong;
     private Sound crafting;
@@ -74,260 +84,162 @@ public class GameAssets extends Assets {
     private Sprite background0, background1, background2, background3, background4, background5, background6, background7;
     private Sprite cloud1, cloud2, cloud3;
     private Sprite mainBuilding, cook, tent, tentUpgrade;
+    private Sprite warehouseBack, warehouseFront, warehouseLog;
     private Sprite meat;
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
     private Sprite citizen;
-    private Sprite idleCitizen0, idleCitizen1;
-    private Sprite walkingCitizen0, walkingCitizen1, walkingCitizen2, walkingCitizen3, walkingCitizen4,
-            walkingCitizen5, walkingCitizen6, walkingCitizen7;
-    private Sprite dyingCitizen0, dyingCitizen1, dyingCitizen2, dyingCitizen3;
-    private Sprite idleGovernor0, idleGovernor1;
-    private Sprite walkingGovernor0, walkingGovernor1, walkingGovernor2, walkingGovernor3, walkingGovernor4,
-            walkingGovernor5, walkingGovernor6, walkingGovernor7, walkingGovernor8;
     private Sprite actionIcon, tipIcon, woodFrame, meatIcon, glassIcon;
 
     @Override
     public void queueAssetLoading() {
+        // Animations
+        loadTexture(IDLE_CITIZEN_0_PATH);
+        loadTexture(IDLE_CITIZEN_1_PATH);
+
+        loadTexture(WALKING_CITIZEN_0_PATH);
+        loadTexture(WALKING_CITIZEN_1_PATH);
+        loadTexture(WALKING_CITIZEN_2_PATH);
+        loadTexture(WALKING_CITIZEN_3_PATH);
+        loadTexture(WALKING_CITIZEN_4_PATH);
+        loadTexture(WALKING_CITIZEN_5_PATH);
+        loadTexture(WALKING_CITIZEN_6_PATH);
+        loadTexture(WALKING_CITIZEN_7_PATH);
+
+        loadTexture(DYING_CITIZEN_0_PATH);
+        loadTexture(DYING_CITIZEN_1_PATH);
+        loadTexture(DYING_CITIZEN_2_PATH);
+        loadTexture(DYING_CITIZEN_3_PATH);
+
+        loadTexture(IDLE_GOVERNOR_0_PATH);
+        loadTexture(IDLE_GOVERNOR_1_PATH);
+
+        loadTexture(WALKING_GOVERNOR_0_PATH);
+        loadTexture(WALKING_GOVERNOR_1_PATH);
+        loadTexture(WALKING_GOVERNOR_2_PATH);
+        loadTexture(WALKING_GOVERNOR_3_PATH);
+        loadTexture(WALKING_GOVERNOR_4_PATH);
+        loadTexture(WALKING_GOVERNOR_5_PATH);
+        loadTexture(WALKING_GOVERNOR_6_PATH);
+        loadTexture(WALKING_GOVERNOR_7_PATH);
+        loadTexture(WALKING_GOVERNOR_8_PATH);
         // Audio
-        assetManager.load(FROST_SONG_PATH, Music.class);
-        assetManager.load(CRAFTING_PATH, Sound.class);
+        loadMusic(FROST_SONG_PATH);
+        loadSound(CRAFTING_PATH);
         // Fonts
-        assetManager.load(PIXEL_FONT_PATH, BitmapFont.class);
-        assetManager.load(PIXEL_FONT_SMALL_PATH, BitmapFont.class);
+        loadFont(PIXEL_FONT_PATH);
+        loadFont(PIXEL_FONT_SMALL_PATH);
         // Sprites
-        assetManager.load(BACKGROUND_0_PATH, Texture.class);
-        assetManager.load(BACKGROUND_1_PATH, Texture.class);
-        assetManager.load(BACKGROUND_2_PATH, Texture.class);
-        assetManager.load(BACKGROUND_3_PATH, Texture.class);
-        assetManager.load(BACKGROUND_4_PATH, Texture.class);
-        assetManager.load(BACKGROUND_5_PATH, Texture.class);
-        assetManager.load(BACKGROUND_6_PATH, Texture.class);
-        assetManager.load(BACKGROUND_7_PATH, Texture.class);
-        assetManager.load(CLOUD_1_PATH, Texture.class);
-        assetManager.load(CLOUD_2_PATH, Texture.class);
-        assetManager.load(CLOUD_3_PATH, Texture.class);
-        assetManager.load(MAIN_BUILDING_PATH, Texture.class);
-        assetManager.load(COOK_PATH, Texture.class);
-        assetManager.load(TENT_PATH, Texture.class);
-        assetManager.load(TENT_UPGRADE_PATH, Texture.class);
-        assetManager.load(MEAT_PATH, Texture.class);
-        assetManager.load(TECH_ICON_0_PATH, Texture.class);
-        assetManager.load(TECH_ICON_1_PATH, Texture.class);
-        assetManager.load(TECH_ICON_2_PATH, Texture.class);
-        assetManager.load(TECH_ICON_3_PATH, Texture.class);
-        assetManager.load(CITIZEN_PATH, Texture.class);
+        loadTexture(BACKGROUND_0_PATH);
+        loadTexture(BACKGROUND_1_PATH);
+        loadTexture(BACKGROUND_2_PATH);
+        loadTexture(BACKGROUND_3_PATH);
+        loadTexture(BACKGROUND_4_PATH);
+        loadTexture(BACKGROUND_5_PATH);
+        loadTexture(BACKGROUND_6_PATH);
+        loadTexture(BACKGROUND_7_PATH);
+        loadTexture(CLOUD_1_PATH);
+        loadTexture(CLOUD_2_PATH);
+        loadTexture(CLOUD_3_PATH);
+        loadTexture(MAIN_BUILDING_PATH);
+        loadTexture(COOK_PATH);
+        loadTexture(TENT_PATH);
+        loadTexture(TENT_UPGRADE_PATH);
 
-        assetManager.load(IDLE_CITIZEN_0_PATH, Texture.class);
-        assetManager.load(IDLE_CITIZEN_1_PATH, Texture.class);
+        loadTexture(WAREHOUSE_BACK_PATH);
+        loadTexture(WAREHOUSE_FRONT_PATH);
+        loadTexture(WAREHOUSE_LOG_PATH);
 
-        assetManager.load(WALKING_CITIZEN_0_PATH, Texture.class);
-        assetManager.load(WALKING_CITIZEN_1_PATH, Texture.class);
-        assetManager.load(WALKING_CITIZEN_2_PATH, Texture.class);
-        assetManager.load(WALKING_CITIZEN_3_PATH, Texture.class);
-        assetManager.load(WALKING_CITIZEN_4_PATH, Texture.class);
-        assetManager.load(WALKING_CITIZEN_5_PATH, Texture.class);
-        assetManager.load(WALKING_CITIZEN_6_PATH, Texture.class);
-        assetManager.load(WALKING_CITIZEN_7_PATH, Texture.class);
+        loadTexture(MEAT_PATH);
+        loadTexture(TECH_ICON_0_PATH);
+        loadTexture(TECH_ICON_1_PATH);
+        loadTexture(TECH_ICON_2_PATH);
+        loadTexture(TECH_ICON_3_PATH);
+        loadTexture(CITIZEN_PATH);
 
-        assetManager.load(DYING_CITIZEN_0_PATH, Texture.class);
-        assetManager.load(DYING_CITIZEN_1_PATH, Texture.class);
-        assetManager.load(DYING_CITIZEN_2_PATH, Texture.class);
-        assetManager.load(DYING_CITIZEN_3_PATH, Texture.class);
-
-        assetManager.load(IDLE_GOVERNOR_0_PATH, Texture.class);
-        assetManager.load(IDLE_GOVERNOR_1_PATH, Texture.class);
-
-        assetManager.load(WALKING_GOVERNOR_0_PATH, Texture.class);
-        assetManager.load(WALKING_GOVERNOR_1_PATH, Texture.class);
-        assetManager.load(WALKING_GOVERNOR_2_PATH, Texture.class);
-        assetManager.load(WALKING_GOVERNOR_3_PATH, Texture.class);
-        assetManager.load(WALKING_GOVERNOR_4_PATH, Texture.class);
-        assetManager.load(WALKING_GOVERNOR_5_PATH, Texture.class);
-        assetManager.load(WALKING_GOVERNOR_6_PATH, Texture.class);
-        assetManager.load(WALKING_GOVERNOR_7_PATH, Texture.class);
-        assetManager.load(WALKING_GOVERNOR_8_PATH, Texture.class);
-
-        assetManager.load(ACTION_ICON_PATH, Texture.class);
-        assetManager.load(TIP_ICON_PATH, Texture.class);
-        assetManager.load(WOOD_FRAME_PATH, Texture.class);
-        assetManager.load(MEAT_ICON_PATH, Texture.class);
-        assetManager.load(GLASS_ICON_PATH, Texture.class);
+        loadTexture(ACTION_ICON_PATH);
+        loadTexture(TIP_ICON_PATH);
+        loadTexture(WOOD_FRAME_PATH);
+        loadTexture(MEAT_ICON_PATH);
+        loadTexture(GLASS_ICON_PATH);
     }
 
     @Override
     public void initializeAssets() {
         // Audio
-        frostSong = assetManager.get(FROST_SONG_PATH, Music.class);
-        crafting = assetManager.get(CRAFTING_PATH, Sound.class);
+        frostSong = getMusic(FROST_SONG_PATH);
+        crafting = getSound(CRAFTING_PATH);
         // Fonts
-        pixelFont = assetManager.get(PIXEL_FONT_PATH, BitmapFont.class);
+        pixelFont = getFont(PIXEL_FONT_PATH);
         pixelFont.getData().setScale(4f);
-        pixelFontSmall = assetManager.get(PIXEL_FONT_SMALL_PATH, BitmapFont.class);
+        pixelFontSmall = getFont(PIXEL_FONT_SMALL_PATH);
         pixelFontSmall.getData().setScale(2f);
         // Sprites
-        background0 = new Sprite(assetManager.get(BACKGROUND_0_PATH, Texture.class));
-        background1 = new Sprite(assetManager.get(BACKGROUND_1_PATH, Texture.class));
-        background2 = new Sprite(assetManager.get(BACKGROUND_2_PATH, Texture.class));
-        background3 = new Sprite(assetManager.get(BACKGROUND_3_PATH, Texture.class));
-        background4 = new Sprite(assetManager.get(BACKGROUND_4_PATH, Texture.class));
-        background5 = new Sprite(assetManager.get(BACKGROUND_5_PATH, Texture.class));
-        background6 = new Sprite(assetManager.get(BACKGROUND_6_PATH, Texture.class));
-        background7 = new Sprite(assetManager.get(BACKGROUND_7_PATH, Texture.class));
+        background0 = new Sprite(getTexture(BACKGROUND_0_PATH));
+        background1 = new Sprite(getTexture(BACKGROUND_1_PATH));
+        background2 = new Sprite(getTexture(BACKGROUND_2_PATH));
+        background3 = new Sprite(getTexture(BACKGROUND_3_PATH));
+        background4 = new Sprite(getTexture(BACKGROUND_4_PATH));
+        background5 = new Sprite(getTexture(BACKGROUND_5_PATH));
+        background6 = new Sprite(getTexture(BACKGROUND_6_PATH));
+        background7 = new Sprite(getTexture(BACKGROUND_7_PATH));
 
-        cloud1 = new Sprite(assetManager.get(CLOUD_1_PATH, Texture.class));
-        cloud2 = new Sprite(assetManager.get(CLOUD_2_PATH, Texture.class));
-        cloud3 = new Sprite(assetManager.get(CLOUD_3_PATH, Texture.class));
-        mainBuilding = new Sprite(assetManager.get(MAIN_BUILDING_PATH, Texture.class));
-        cook = new Sprite(assetManager.get(COOK_PATH, Texture.class));
-        tent = new Sprite(assetManager.get(TENT_PATH, Texture.class));
-        tentUpgrade = new Sprite(assetManager.get(TENT_UPGRADE_PATH, Texture.class));
-        meat = new Sprite(assetManager.get(MEAT_PATH, Texture.class));
-        techIcon0 = new Sprite(assetManager.get(TECH_ICON_0_PATH, Texture.class));
-        techIcon1 = new Sprite(assetManager.get(TECH_ICON_1_PATH, Texture.class));
-        techIcon2 = new Sprite(assetManager.get(TECH_ICON_2_PATH, Texture.class));
-        techIcon3 = new Sprite(assetManager.get(TECH_ICON_3_PATH, Texture.class));
-        citizen = new Sprite(assetManager.get(CITIZEN_PATH, Texture.class));
+        cloud1 = new Sprite(getTexture(CLOUD_1_PATH));
+        cloud2 = new Sprite(getTexture(CLOUD_2_PATH));
+        cloud3 = new Sprite(getTexture(CLOUD_3_PATH));
+        mainBuilding = new Sprite(getTexture(MAIN_BUILDING_PATH));
+        cook = new Sprite(getTexture(COOK_PATH));
+        tent = new Sprite(getTexture(TENT_PATH));
+        tentUpgrade = new Sprite(getTexture(TENT_UPGRADE_PATH));
 
-        idleCitizen0 = new Sprite(assetManager.get(IDLE_CITIZEN_0_PATH, Texture.class));
-        idleCitizen1 = new Sprite(assetManager.get(IDLE_CITIZEN_1_PATH, Texture.class));
+        warehouseBack = new Sprite(getTexture(WAREHOUSE_BACK_PATH));
+        warehouseFront = new Sprite(getTexture(WAREHOUSE_FRONT_PATH));
+        warehouseLog = new Sprite(getTexture(WAREHOUSE_LOG_PATH));
 
-        walkingCitizen0 = new Sprite(assetManager.get(WALKING_CITIZEN_0_PATH, Texture.class));
-        walkingCitizen1 = new Sprite(assetManager.get(WALKING_CITIZEN_1_PATH, Texture.class));
-        walkingCitizen2 = new Sprite(assetManager.get(WALKING_CITIZEN_2_PATH, Texture.class));
-        walkingCitizen3 = new Sprite(assetManager.get(WALKING_CITIZEN_3_PATH, Texture.class));
-        walkingCitizen4 = new Sprite(assetManager.get(WALKING_CITIZEN_4_PATH, Texture.class));
-        walkingCitizen5 = new Sprite(assetManager.get(WALKING_CITIZEN_5_PATH, Texture.class));
-        walkingCitizen6 = new Sprite(assetManager.get(WALKING_CITIZEN_6_PATH, Texture.class));
-        walkingCitizen7 = new Sprite(assetManager.get(WALKING_CITIZEN_7_PATH, Texture.class));
+        meat = new Sprite(getTexture(MEAT_PATH));
+        techIcon0 = new Sprite(getTexture(TECH_ICON_0_PATH));
+        techIcon1 = new Sprite(getTexture(TECH_ICON_1_PATH));
+        techIcon2 = new Sprite(getTexture(TECH_ICON_2_PATH));
+        techIcon3 = new Sprite(getTexture(TECH_ICON_3_PATH));
+        citizen = new Sprite(getTexture(CITIZEN_PATH));
 
-        dyingCitizen0 = new Sprite(assetManager.get(DYING_CITIZEN_0_PATH, Texture.class));
-        dyingCitizen1 = new Sprite(assetManager.get(DYING_CITIZEN_1_PATH, Texture.class));
-        dyingCitizen2 = new Sprite(assetManager.get(DYING_CITIZEN_2_PATH, Texture.class));
-        dyingCitizen3 = new Sprite(assetManager.get(DYING_CITIZEN_3_PATH, Texture.class));
+        idleCitizen0 = new Sprite(getTexture(IDLE_CITIZEN_0_PATH));
+        idleCitizen1 = new Sprite(getTexture(IDLE_CITIZEN_1_PATH));
 
-        idleGovernor0 = new Sprite(assetManager.get(IDLE_GOVERNOR_0_PATH, Texture.class));
-        idleGovernor1 = new Sprite(assetManager.get(IDLE_GOVERNOR_1_PATH, Texture.class));
+        walkingCitizen0 = new Sprite(getTexture(WALKING_CITIZEN_0_PATH));
+        walkingCitizen1 = new Sprite(getTexture(WALKING_CITIZEN_1_PATH));
+        walkingCitizen2 = new Sprite(getTexture(WALKING_CITIZEN_2_PATH));
+        walkingCitizen3 = new Sprite(getTexture(WALKING_CITIZEN_3_PATH));
+        walkingCitizen4 = new Sprite(getTexture(WALKING_CITIZEN_4_PATH));
+        walkingCitizen5 = new Sprite(getTexture(WALKING_CITIZEN_5_PATH));
+        walkingCitizen6 = new Sprite(getTexture(WALKING_CITIZEN_6_PATH));
+        walkingCitizen7 = new Sprite(getTexture(WALKING_CITIZEN_7_PATH));
 
-        walkingGovernor0 = new Sprite(assetManager.get(WALKING_GOVERNOR_0_PATH, Texture.class));
-        walkingGovernor1 = new Sprite(assetManager.get(WALKING_GOVERNOR_1_PATH, Texture.class));
-        walkingGovernor2 = new Sprite(assetManager.get(WALKING_GOVERNOR_2_PATH, Texture.class));
-        walkingGovernor3 = new Sprite(assetManager.get(WALKING_GOVERNOR_3_PATH, Texture.class));
-        walkingGovernor4 = new Sprite(assetManager.get(WALKING_GOVERNOR_4_PATH, Texture.class));
-        walkingGovernor5 = new Sprite(assetManager.get(WALKING_GOVERNOR_5_PATH, Texture.class));
-        walkingGovernor6 = new Sprite(assetManager.get(WALKING_GOVERNOR_6_PATH, Texture.class));
-        walkingGovernor7 = new Sprite(assetManager.get(WALKING_GOVERNOR_7_PATH, Texture.class));
-        walkingGovernor8 = new Sprite(assetManager.get(WALKING_GOVERNOR_8_PATH, Texture.class));
+        dyingCitizen0 = new Sprite(getTexture(DYING_CITIZEN_0_PATH));
+        dyingCitizen1 = new Sprite(getTexture(DYING_CITIZEN_1_PATH));
+        dyingCitizen2 = new Sprite(getTexture(DYING_CITIZEN_2_PATH));
+        dyingCitizen3 = new Sprite(getTexture(DYING_CITIZEN_3_PATH));
 
-        actionIcon = new Sprite(assetManager.get(ACTION_ICON_PATH, Texture.class));
-        tipIcon = new Sprite(assetManager.get(TIP_ICON_PATH, Texture.class));
-        woodFrame = new Sprite(assetManager.get(WOOD_FRAME_PATH, Texture.class));
-        meatIcon = new Sprite(assetManager.get(MEAT_ICON_PATH, Texture.class));
-        glassIcon = new Sprite(assetManager.get(GLASS_ICON_PATH, Texture.class));
+        idleGovernor0 = new Sprite(getTexture(IDLE_GOVERNOR_0_PATH));
+        idleGovernor1 = new Sprite(getTexture(IDLE_GOVERNOR_1_PATH));
+
+        walkingGovernor0 = new Sprite(getTexture(WALKING_GOVERNOR_0_PATH));
+        walkingGovernor1 = new Sprite(getTexture(WALKING_GOVERNOR_1_PATH));
+        walkingGovernor2 = new Sprite(getTexture(WALKING_GOVERNOR_2_PATH));
+        walkingGovernor3 = new Sprite(getTexture(WALKING_GOVERNOR_3_PATH));
+        walkingGovernor4 = new Sprite(getTexture(WALKING_GOVERNOR_4_PATH));
+        walkingGovernor5 = new Sprite(getTexture(WALKING_GOVERNOR_5_PATH));
+        walkingGovernor6 = new Sprite(getTexture(WALKING_GOVERNOR_6_PATH));
+        walkingGovernor7 = new Sprite(getTexture(WALKING_GOVERNOR_7_PATH));
+        walkingGovernor8 = new Sprite(getTexture(WALKING_GOVERNOR_8_PATH));
+
+        actionIcon = new Sprite(getTexture(ACTION_ICON_PATH));
+        tipIcon = new Sprite(getTexture(TIP_ICON_PATH));
+        woodFrame = new Sprite(getTexture(WOOD_FRAME_PATH));
+        meatIcon = new Sprite(getTexture(MEAT_ICON_PATH));
+        glassIcon = new Sprite(getTexture(GLASS_ICON_PATH));
     }
 
-    // Audio
-    public Music getFrostSong() {
-        return frostSong;
-    }
-
-    public Sound getCrafting() {
-        return crafting;
-    }
-
-    // Fonts
-    public BitmapFont getPixelFont() {
-        return pixelFont;
-    }
-
-    public BitmapFont getPixelFontSmall() {
-        return pixelFontSmall;
-    }
-
-    // Sprites
-    public Sprite getBackground0() {
-        return background0;
-    }
-
-    public Sprite getBackground1() {
-        return background1;
-    }
-
-    public Sprite getBackground2() {
-        return background2;
-    }
-
-    public Sprite getBackground3() {
-        return background3;
-    }
-
-    public Sprite getBackground4() {
-        return background4;
-    }
-
-    public Sprite getBackground5() {
-        return background5;
-    }
-
-    public Sprite getBackground6() {
-        return background6;
-    }
-
-    public Sprite getBackground7() {
-        return background7;
-    }
-
-    public Sprite getCloud1() {
-        return cloud1;
-    }
-
-    public Sprite getCloud2() {
-        return cloud2;
-    }
-
-    public Sprite getCloud3() {
-        return cloud3;
-    }
-
-    public Sprite getMainBuilding() {
-        return mainBuilding;
-    }
-
-    public Sprite getCook() {
-        return cook;
-    }
-
-    public Sprite getTent() {
-        return tent;
-    }
-
-    public Sprite getTentUpgrade() {
-        return tentUpgrade;
-    }
-
-    public Sprite getMeat() {
-        return meat;
-    }
-
-    public Sprite getTechIcon0() {
-        return techIcon0;
-    }
-
-    public Sprite getTechIcon1() {
-        return techIcon1;
-    }
-
-    public Sprite getTechIcon2() {
-        return techIcon2;
-    }
-
-    public Sprite getTechIcon3() {
-        return techIcon3;
-    }
-
-    public Sprite getCitizen() {
-        return citizen;
-    }
-
+    // Animations
     public Sprite getIdleCitizen0() {
         return idleCitizen0;
     }
@@ -426,6 +338,121 @@ public class GameAssets extends Assets {
 
     public Sprite getWalkingGovernor8() {
         return walkingGovernor8;
+    }
+
+    // Audio
+    public Music getFrostSong() {
+        return frostSong;
+    }
+
+    public Sound getCrafting() {
+        return crafting;
+    }
+
+    // Fonts
+    public BitmapFont getPixelFont() {
+        return pixelFont;
+    }
+
+    public BitmapFont getPixelFontSmall() {
+        return pixelFontSmall;
+    }
+
+    // Sprites
+    public Sprite getBackground0() {
+        return background0;
+    }
+
+    public Sprite getBackground1() {
+        return background1;
+    }
+
+    public Sprite getBackground2() {
+        return background2;
+    }
+
+    public Sprite getBackground3() {
+        return background3;
+    }
+
+    public Sprite getBackground4() {
+        return background4;
+    }
+
+    public Sprite getBackground5() {
+        return background5;
+    }
+
+    public Sprite getBackground6() {
+        return background6;
+    }
+
+    public Sprite getBackground7() {
+        return background7;
+    }
+
+    public Sprite getCloud1() {
+        return cloud1;
+    }
+
+    public Sprite getCloud2() {
+        return cloud2;
+    }
+
+    public Sprite getCloud3() {
+        return cloud3;
+    }
+
+    public Sprite getMainBuilding() {
+        return mainBuilding;
+    }
+
+    public Sprite getCook() {
+        return cook;
+    }
+
+    public Sprite getTent() {
+        return tent;
+    }
+
+    public Sprite getTentUpgrade() {
+        return tentUpgrade;
+    }
+
+    public Sprite getWarehouseBack() {
+        return warehouseBack;
+    }
+
+    public Sprite getWarehouseFront() {
+        return warehouseFront;
+    }
+
+    public Sprite getWarehouseLog() {
+        return warehouseLog;
+    }
+
+    public Sprite getMeat() {
+        return meat;
+    }
+
+    public Sprite getTechIcon0() {
+        return techIcon0;
+    }
+
+    public Sprite getTechIcon1() {
+        return techIcon1;
+    }
+
+    public Sprite getTechIcon2() {
+        return techIcon2;
+    }
+
+    public Sprite getTechIcon3() {
+        return techIcon3;
+    }
+
+    public Sprite getCitizen() {
+        return citizen;
     }
 
     public Sprite getActionIcon() {

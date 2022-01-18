@@ -1,11 +1,10 @@
 package com.epicness.newfrost.menu;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.epicness.fundamentals.assets.Assets;
-
 import static com.epicness.newfrost.menu.MenuConstants.MENU_BACKGROUND_PATH;
 import static com.epicness.newfrost.menu.MenuConstants.START_BUTTON_PATH;
+
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.epicness.fundamentals.assets.Assets;
 
 public class MenuAssets extends Assets {
 
@@ -14,14 +13,14 @@ public class MenuAssets extends Assets {
 
     @Override
     public void queueAssetLoading() {
-        assetManager.load(MENU_BACKGROUND_PATH, Texture.class);
-        assetManager.load(START_BUTTON_PATH, Texture.class);
+        loadTexture(MENU_BACKGROUND_PATH);
+        loadTexture(START_BUTTON_PATH);
     }
 
     @Override
     public void initializeAssets() {
-        background = new Sprite(assetManager.get(MENU_BACKGROUND_PATH, Texture.class));
-        playButton = new Sprite(assetManager.get(START_BUTTON_PATH, Texture.class));
+        background = new Sprite(getTexture(MENU_BACKGROUND_PATH));
+        playButton = new Sprite(getTexture(START_BUTTON_PATH));
     }
 
     public Sprite getBackground() {

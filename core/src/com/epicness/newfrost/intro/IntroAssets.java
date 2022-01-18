@@ -1,14 +1,13 @@
 package com.epicness.newfrost.intro;
 
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.epicness.fundamentals.assets.Assets;
-
 import static com.epicness.newfrost.intro.IntroConstants.NARRATION_PATH;
 import static com.epicness.newfrost.intro.IntroConstants.PIXEL_FONT_PATH;
 import static com.epicness.newfrost.intro.IntroConstants.SNOWFLAKE_PATH;
+
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.epicness.fundamentals.assets.Assets;
 
 public class IntroAssets extends Assets {
 
@@ -21,20 +20,20 @@ public class IntroAssets extends Assets {
 
     @Override
     public void queueAssetLoading() {
-        assetManager.load(NARRATION_PATH, Music.class);
-        assetManager.load(PIXEL_FONT_PATH, BitmapFont.class);
-        assetManager.load(SNOWFLAKE_PATH, Texture.class);
+        loadMusic(NARRATION_PATH);
+        loadFont(PIXEL_FONT_PATH);
+        loadTexture(SNOWFLAKE_PATH);
     }
 
     @Override
     public void initializeAssets() {
         // Audio
-        narration = assetManager.get(NARRATION_PATH, Music.class);
+        narration = getMusic(NARRATION_PATH);
         // Fonts
-        pixelFont = assetManager.get(PIXEL_FONT_PATH, BitmapFont.class);
+        pixelFont = getFont(PIXEL_FONT_PATH);
         pixelFont.getData().setScale(8f);
         // Sprites
-        snowflake = new Sprite(assetManager.get(SNOWFLAKE_PATH, Texture.class));
+        snowflake = new Sprite(getTexture(SNOWFLAKE_PATH));
     }
 
     // Audio
