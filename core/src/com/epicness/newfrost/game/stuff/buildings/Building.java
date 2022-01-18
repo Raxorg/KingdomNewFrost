@@ -7,12 +7,12 @@ import com.epicness.newfrost.game.enums.BuildingType;
 
 public abstract class Building {
 
-    protected Sprited sprited;
     private final BuildingType type;
+    protected Sprited sprited;
 
     public Building(Sprite sprite, BuildingType type) {
-        sprited = new Sprited(sprite);
         this.type = type;
+        sprited = new Sprited(sprite);
     }
 
     public void draw(SpriteBatch spriteBatch) {

@@ -4,5 +4,7 @@ public enum BuildingType {
 
     MAIN_BUILDING,
     TENT,
-    MEDICAL_POST
+    MEDICAL_POST,
+    WAREHOUSE,
+    COOKHOUSE
 }

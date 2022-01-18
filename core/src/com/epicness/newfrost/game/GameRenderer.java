@@ -14,18 +14,17 @@ public class GameRenderer extends Renderer {
 
         spriteBatch.begin();
 
-        spriteBatch.setProjectionMatrix(screen.getStaticCamera().combined);
-
+        useStaticCamera();
         stuff.getBackground().draw(spriteBatch);
-
-        spriteBatch.setProjectionMatrix(screen.getDynamicCamera().combined);
-
+        useDynamicCamera();
         for (int i = 0; i < stuff.getBGLayers().length; i++) {
             stuff.getBGLayers()[i].draw(spriteBatch);
         }
         for (int i = 0; i < stuff.getBuildings().size; i++) {
             stuff.getBuildings().get(i).draw(spriteBatch);
         }
+        // draw logs
+        stuff.getWarehouse().drawForeground(spriteBatch);
         for (int i = 0; i < stuff.getCitizens().size; i++) {
             stuff.getCitizens().get(i).draw(spriteBatch);
         }
@@ -47,8 +46,8 @@ public class GameRenderer extends Renderer {
         stuff.getDayTimer().draw(spriteBatch);
         stuff.getEventView().draw(spriteBatch);
         stuff.getRain().draw(spriteBatch);
-        useDynamicCamera();
         stuff.getGameOver().draw(spriteBatch);
+
         spriteBatch.end();
 
         drawDebug();
@@ -59,6 +58,7 @@ public class GameRenderer extends Renderer {
 
         shapeRenderer.begin();
         shapeRenderer.setColor(Color.GREEN);
+        useDynamicCamera();
         for (int i = 0; i < stuff.getCitizens().size; i++) {
             stuff.getCitizens().get(i).drawDebug(shapeRenderer);
         }

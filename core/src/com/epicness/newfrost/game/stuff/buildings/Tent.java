@@ -1,11 +1,11 @@
 package com.epicness.newfrost.game.stuff.buildings;
 
+import static com.epicness.newfrost.game.GameConstants.TENT_SIZE;
+import static com.epicness.newfrost.game.enums.BuildingType.TENT;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.fundamentals.stuff.Sprited;
-
-import static com.epicness.newfrost.game.GameConstants.TENT_SIZE;
-import static com.epicness.newfrost.game.enums.BuildingType.TENT;
 
 public class Tent extends Building {
 

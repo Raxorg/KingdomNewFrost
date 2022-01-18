@@ -63,6 +63,18 @@ public class GameConstants {
 
     public static final float TENT_SIZE = CAMERA_HEIGHT / 3f;
     public static final int TENT_UPGRADE_COST = 10;
+    public static final float TENT1_X = MAIN_BUILDING_X + MAIN_BUILDING_WIDTH + 25f;
+    public static final float TENT2_X = MAIN_BUILDING_X - TENT_SIZE - 25f;
+
+    public static final float WAREHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
+    public static final float WAREHOUSE_WIDTH = WAREHOUSE_HEIGHT * 2.64f;
+    public static final float WAREHOUSE_X = TENT1_X + TENT_SIZE + 25f;
+    public static final float WAREHOUSE_Y = GROUND_Y;
+
+    public static final float COOKHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
+    public static final float COOKHOUSE_WIDTH = COOKHOUSE_HEIGHT * (4f / 3f);
+    public static final float COOKHOUSE_X = TENT2_X - COOKHOUSE_WIDTH - 25f;
+    public static final float COOKHOUSE_Y = GROUND_Y;
     // Food
     public static final float FOOD_ICON_SIZE = 50f;
     public static final float FOOD_INFO_X = MAIN_BUILDING_X + MAIN_BUILDING_WIDTH * 0.75f;

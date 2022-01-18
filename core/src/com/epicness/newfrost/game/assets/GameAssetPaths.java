@@ -70,4 +70,7 @@ public class GameAssetPaths {
     public static final String WAREHOUSE_BACK_PATH = "newfrost/images/warehouse/warehouseBack.png";
     public static final String WAREHOUSE_FRONT_PATH = "newfrost/images/warehouse/warehouseFront.png";
     public static final String WAREHOUSE_LOG_PATH = "newfrost/images/warehouse/log.png";
+
+    public static final String COOKHOUSE_PATH = "newfrost/images/cookhouse/cookhouse.png";
+    public static final String COOKHOUSE_MEAT_PATH = "newfrost/images/cookhouse/meat.png";
 }

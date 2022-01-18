@@ -13,9 +13,8 @@ import static com.epicness.newfrost.game.GameConstants.DAY_Y;
 import static com.epicness.newfrost.game.GameConstants.DIALOGUE_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.DIALOGUE_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
-import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_WIDTH;
-import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_X;
-import static com.epicness.newfrost.game.GameConstants.TENT_SIZE;
+import static com.epicness.newfrost.game.GameConstants.TENT1_X;
+import static com.epicness.newfrost.game.GameConstants.TENT2_X;
 import static com.epicness.newfrost.game.GameConstants.TIP_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.TIP_ICON_SIZE;
 import static com.epicness.newfrost.game.GameConstants.TIP_WIDTH;
@@ -30,8 +29,10 @@ import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.fundamentals.stuff.Text;
 import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.stuff.buildings.Building;
+import com.epicness.newfrost.game.stuff.buildings.Cookhouse;
 import com.epicness.newfrost.game.stuff.buildings.MainBuilding;
 import com.epicness.newfrost.game.stuff.buildings.Tent;
+import com.epicness.newfrost.game.stuff.buildings.Warehouse;
 import com.epicness.newfrost.game.stuff.dialogues.DialogueStorage;
 import com.epicness.newfrost.game.stuff.events.EventView;
 import com.epicness.newfrost.game.stuff.mainbuildingmenu.MainBuildingMenu;
@@ -46,6 +47,7 @@ public class GameStuff extends Stuff {
     private Sprited background;
     private MultiSprited[] bgLayers;
     private DelayedRemovalArray<Building> buildings;
+    private Warehouse warehouse;
     private DialogueStorage dialogueStorage;
     private DelayedRemovalArray<Citizen> citizens;
     private Player player;
@@ -145,13 +147,19 @@ public class GameStuff extends Stuff {
         buildings.add(mainBuilding);
 
         Tent tent = new Tent(assets.getTent(), assets.getTentUpgrade());
-        tent.setPosition(MAIN_BUILDING_X + MAIN_BUILDING_WIDTH + 25f, GROUND_Y);
+        tent.setPosition(TENT1_X, GROUND_Y);
         buildings.add(tent);
 
         Tent tent2 = new Tent(assets.getTent(), assets.getTentUpgrade());
-        tent2.setPosition(MAIN_BUILDING_X - TENT_SIZE - 25f, GROUND_Y);
+        tent2.setPosition(TENT2_X, GROUND_Y);
         tent2.flipX();
         buildings.add(tent2);
+
+        warehouse = new Warehouse(assets.getWarehouseBack(), assets.getWarehouseFront());
+        buildings.add(warehouse);
+
+        Cookhouse cookhouse = new Cookhouse(assets.getCookhouse());
+        buildings.add(cookhouse);
     }
 
     public Sprited getBackground() {
@@ -164,6 +172,10 @@ public class GameStuff extends Stuff {
 
     public DelayedRemovalArray<Building> getBuildings() {
         return buildings;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
     }
 
     public DialogueStorage getDialogueStorage() {

@@ -13,6 +13,8 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.CITIZEN_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CLOUD_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CLOUD_2_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CLOUD_3_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.COOKHOUSE_MEAT_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.COOKHOUSE_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.COOK_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CRAFTING_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_0_PATH;
@@ -85,6 +87,7 @@ public class GameAssets extends Assets {
     private Sprite cloud1, cloud2, cloud3;
     private Sprite mainBuilding, cook, tent, tentUpgrade;
     private Sprite warehouseBack, warehouseFront, warehouseLog;
+    private Sprite cookhouse, cookhouseMeat;
     private Sprite meat;
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
     private Sprite citizen;
@@ -149,6 +152,8 @@ public class GameAssets extends Assets {
         loadTexture(WAREHOUSE_FRONT_PATH);
         loadTexture(WAREHOUSE_LOG_PATH);
 
+        loadTexture(COOKHOUSE_PATH);
+
         loadTexture(MEAT_PATH);
         loadTexture(TECH_ICON_0_PATH);
         loadTexture(TECH_ICON_1_PATH);
@@ -165,6 +170,36 @@ public class GameAssets extends Assets {
 
     @Override
     public void initializeAssets() {
+        // Animations
+        idleCitizen0 = new Sprite(getTexture(IDLE_CITIZEN_0_PATH));
+        idleCitizen1 = new Sprite(getTexture(IDLE_CITIZEN_1_PATH));
+
+        walkingCitizen0 = new Sprite(getTexture(WALKING_CITIZEN_0_PATH));
+        walkingCitizen1 = new Sprite(getTexture(WALKING_CITIZEN_1_PATH));
+        walkingCitizen2 = new Sprite(getTexture(WALKING_CITIZEN_2_PATH));
+        walkingCitizen3 = new Sprite(getTexture(WALKING_CITIZEN_3_PATH));
+        walkingCitizen4 = new Sprite(getTexture(WALKING_CITIZEN_4_PATH));
+        walkingCitizen5 = new Sprite(getTexture(WALKING_CITIZEN_5_PATH));
+        walkingCitizen6 = new Sprite(getTexture(WALKING_CITIZEN_6_PATH));
+        walkingCitizen7 = new Sprite(getTexture(WALKING_CITIZEN_7_PATH));
+
+        dyingCitizen0 = new Sprite(getTexture(DYING_CITIZEN_0_PATH));
+        dyingCitizen1 = new Sprite(getTexture(DYING_CITIZEN_1_PATH));
+        dyingCitizen2 = new Sprite(getTexture(DYING_CITIZEN_2_PATH));
+        dyingCitizen3 = new Sprite(getTexture(DYING_CITIZEN_3_PATH));
+
+        idleGovernor0 = new Sprite(getTexture(IDLE_GOVERNOR_0_PATH));
+        idleGovernor1 = new Sprite(getTexture(IDLE_GOVERNOR_1_PATH));
+
+        walkingGovernor0 = new Sprite(getTexture(WALKING_GOVERNOR_0_PATH));
+        walkingGovernor1 = new Sprite(getTexture(WALKING_GOVERNOR_1_PATH));
+        walkingGovernor2 = new Sprite(getTexture(WALKING_GOVERNOR_2_PATH));
+        walkingGovernor3 = new Sprite(getTexture(WALKING_GOVERNOR_3_PATH));
+        walkingGovernor4 = new Sprite(getTexture(WALKING_GOVERNOR_4_PATH));
+        walkingGovernor5 = new Sprite(getTexture(WALKING_GOVERNOR_5_PATH));
+        walkingGovernor6 = new Sprite(getTexture(WALKING_GOVERNOR_6_PATH));
+        walkingGovernor7 = new Sprite(getTexture(WALKING_GOVERNOR_7_PATH));
+        walkingGovernor8 = new Sprite(getTexture(WALKING_GOVERNOR_8_PATH));
         // Audio
         frostSong = getMusic(FROST_SONG_PATH);
         crafting = getSound(CRAFTING_PATH);
@@ -195,42 +230,15 @@ public class GameAssets extends Assets {
         warehouseFront = new Sprite(getTexture(WAREHOUSE_FRONT_PATH));
         warehouseLog = new Sprite(getTexture(WAREHOUSE_LOG_PATH));
 
+        cookhouse = new Sprite(getTexture(COOKHOUSE_PATH));
+        cookhouseMeat = new Sprite(getTexture(COOKHOUSE_MEAT_PATH));
+
         meat = new Sprite(getTexture(MEAT_PATH));
         techIcon0 = new Sprite(getTexture(TECH_ICON_0_PATH));
         techIcon1 = new Sprite(getTexture(TECH_ICON_1_PATH));
         techIcon2 = new Sprite(getTexture(TECH_ICON_2_PATH));
         techIcon3 = new Sprite(getTexture(TECH_ICON_3_PATH));
         citizen = new Sprite(getTexture(CITIZEN_PATH));
-
-        idleCitizen0 = new Sprite(getTexture(IDLE_CITIZEN_0_PATH));
-        idleCitizen1 = new Sprite(getTexture(IDLE_CITIZEN_1_PATH));
-
-        walkingCitizen0 = new Sprite(getTexture(WALKING_CITIZEN_0_PATH));
-        walkingCitizen1 = new Sprite(getTexture(WALKING_CITIZEN_1_PATH));
-        walkingCitizen2 = new Sprite(getTexture(WALKING_CITIZEN_2_PATH));
-        walkingCitizen3 = new Sprite(getTexture(WALKING_CITIZEN_3_PATH));
-        walkingCitizen4 = new Sprite(getTexture(WALKING_CITIZEN_4_PATH));
-        walkingCitizen5 = new Sprite(getTexture(WALKING_CITIZEN_5_PATH));
-        walkingCitizen6 = new Sprite(getTexture(WALKING_CITIZEN_6_PATH));
-        walkingCitizen7 = new Sprite(getTexture(WALKING_CITIZEN_7_PATH));
-
-        dyingCitizen0 = new Sprite(getTexture(DYING_CITIZEN_0_PATH));
-        dyingCitizen1 = new Sprite(getTexture(DYING_CITIZEN_1_PATH));
-        dyingCitizen2 = new Sprite(getTexture(DYING_CITIZEN_2_PATH));
-        dyingCitizen3 = new Sprite(getTexture(DYING_CITIZEN_3_PATH));
-
-        idleGovernor0 = new Sprite(getTexture(IDLE_GOVERNOR_0_PATH));
-        idleGovernor1 = new Sprite(getTexture(IDLE_GOVERNOR_1_PATH));
-
-        walkingGovernor0 = new Sprite(getTexture(WALKING_GOVERNOR_0_PATH));
-        walkingGovernor1 = new Sprite(getTexture(WALKING_GOVERNOR_1_PATH));
-        walkingGovernor2 = new Sprite(getTexture(WALKING_GOVERNOR_2_PATH));
-        walkingGovernor3 = new Sprite(getTexture(WALKING_GOVERNOR_3_PATH));
-        walkingGovernor4 = new Sprite(getTexture(WALKING_GOVERNOR_4_PATH));
-        walkingGovernor5 = new Sprite(getTexture(WALKING_GOVERNOR_5_PATH));
-        walkingGovernor6 = new Sprite(getTexture(WALKING_GOVERNOR_6_PATH));
-        walkingGovernor7 = new Sprite(getTexture(WALKING_GOVERNOR_7_PATH));
-        walkingGovernor8 = new Sprite(getTexture(WALKING_GOVERNOR_8_PATH));
 
         actionIcon = new Sprite(getTexture(ACTION_ICON_PATH));
         tipIcon = new Sprite(getTexture(TIP_ICON_PATH));
@@ -429,6 +437,14 @@ public class GameAssets extends Assets {
 
     public Sprite getWarehouseLog() {
         return warehouseLog;
+    }
+
+    public Sprite getCookhouse() {
+        return cookhouse;
+    }
+
+    public Sprite getCookhouseMeat() {
+        return cookhouseMeat;
     }
 
     public Sprite getMeat() {
