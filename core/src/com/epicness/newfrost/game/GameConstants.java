@@ -18,6 +18,9 @@ public class GameConstants {
     public static final float PLAYER_SPEED = 400f;
     public static final float PLAYER_MAX_X = BACKGROUND_WIDTH * 2f;
     public static final float PLAYER_MIN_X = -BACKGROUND_WIDTH;
+    // Camera
+    public static final float MIN_CAMERA_X = -CAMERA_WIDTH * 0.5f;
+    public static final float MAX_CAMERA_X = CAMERA_WIDTH * 1.5f + PLAYER_WIDTH;
     // Citizens
     public static final int STARTING_CITIZENS = 15;
     public static final float CITIZEN_WIDTH = 75f;

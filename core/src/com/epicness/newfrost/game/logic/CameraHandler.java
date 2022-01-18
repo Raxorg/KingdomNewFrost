@@ -1,6 +1,10 @@
 package com.epicness.newfrost.game.logic;
 
+import static com.epicness.newfrost.game.GameConstants.MAX_CAMERA_X;
+import static com.epicness.newfrost.game.GameConstants.MIN_CAMERA_X;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.MathUtils;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.logic.behaviors.ParallaxBehavior;
 import com.epicness.newfrost.game.stuff.GameStuff;
@@ -11,6 +15,8 @@ public class CameraHandler {
     private GameLogic logic;
     private SharedScreen screen;
     private GameStuff stuff;
+    // Logic
+    private float lastCameraX;
 
     public void configureParallax() {
         ParallaxBehavior parallaxBehavior = logic.getParallaxBehavior();
@@ -26,9 +32,11 @@ public class CameraHandler {
     public void update() {
         float playerX = stuff.getPlayer().getCenterX();
         OrthographicCamera camera = screen.getDynamicCamera();
-        logic.getParallaxBehavior().update(playerX - camera.position.x);
-        camera.position.x = playerX;
+        float cameraX = camera.position.x;
+        logic.getParallaxBehavior().update(cameraX - lastCameraX);
+        camera.position.x = MathUtils.clamp(playerX, MIN_CAMERA_X, MAX_CAMERA_X);
         camera.update();
+        lastCameraX = cameraX;
     }
 
     // Structure
