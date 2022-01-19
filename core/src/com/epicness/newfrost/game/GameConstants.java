@@ -71,6 +71,13 @@ public class GameConstants {
     public static final float WAREHOUSE_X = TENT1_X + TENT_SIZE + 25f;
     public static final float WAREHOUSE_Y = GROUND_Y;
 
+    public static final float WAREHOUSE_LOG_STARTING_X = WAREHOUSE_X + 50f;
+    public static final float WAREHOUSE_LOG_STARTING_Y = WAREHOUSE_Y;
+    public static final float WAREHOUSE_LOG_HEIGHT = WAREHOUSE_HEIGHT / 10.66f;
+    public static final float WAREHOUSE_LOG_WIDTH = WAREHOUSE_LOG_HEIGHT * 2.16f;
+    public static final float WAREHOUSE_LOG_HEAD_SIZE = WAREHOUSE_LOG_WIDTH * 0.46f;
+    public static final float WAREHOUSE_LOG_PILE_WIDTH = WAREHOUSE_LOG_HEAD_SIZE * 3 + WAREHOUSE_LOG_WIDTH;
+
     public static final float COOKHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float COOKHOUSE_WIDTH = COOKHOUSE_HEIGHT * (4f / 3f);
     public static final float COOKHOUSE_X = TENT2_X - COOKHOUSE_WIDTH - 25f;

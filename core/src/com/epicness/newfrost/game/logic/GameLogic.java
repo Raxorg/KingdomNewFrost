@@ -1,5 +1,8 @@
 package com.epicness.newfrost.game.logic;
 
+import static com.badlogic.gdx.Input.Keys.J;
+
+import com.badlogic.gdx.Gdx;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.input.SharedInput;
@@ -8,12 +11,16 @@ import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.logic.behaviors.ParallaxBehavior;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.newfrost.game.assets.GameAssets;
+import com.epicness.newfrost.game.logic.buildings.WarehouseHandler;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameLogic extends Logic {
 
     // todo silencio seplucral
 
+    // Buildings
+    private final WarehouseHandler warehouseHandler;
+    // Uncategorized
     private final ActionHandler actionHandler;
     private final CameraHandler cameraHandler;
     private final CitizenActivityHandler citizenActivityHandler;
@@ -39,6 +46,8 @@ public class GameLogic extends Logic {
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
 
+        warehouseHandler = new WarehouseHandler();
+        // Uncategorized
         actionHandler = new ActionHandler();
         cameraHandler = new CameraHandler();
         citizenActivityHandler = new CitizenActivityHandler();
@@ -89,6 +98,9 @@ public class GameLogic extends Logic {
 
     @Override
     public void update(float delta) {
+        if (Gdx.input.isKeyJustPressed(J)) {
+            warehouseHandler.addLogs(1);
+        }
         actionHandler.update();
         cameraHandler.update();
         citizenActivityHandler.update(delta);
@@ -104,6 +116,9 @@ public class GameLogic extends Logic {
     @Override
     public void setAssets(Assets assets) {
         GameAssets gameAssets = (GameAssets) assets;
+        // Buildings
+        warehouseHandler.setAssets(gameAssets);
+        // Uncategorized
         citizenHandler.setAssets(gameAssets);
         introHandler.setAssets(gameAssets);
     }
@@ -121,6 +136,9 @@ public class GameLogic extends Logic {
     @Override
     public void setStuff(Stuff stuff) {
         GameStuff gameStuff = (GameStuff) stuff;
+        // Buildings
+        warehouseHandler.setStuff(gameStuff);
+        // Uncategorized
         actionHandler.setStuff(gameStuff);
         cameraHandler.setStuff(gameStuff);
         citizenActivityHandler.setStuff(gameStuff);

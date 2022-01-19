@@ -23,7 +23,9 @@ public class GameRenderer extends Renderer {
         for (int i = 0; i < stuff.getBuildings().size; i++) {
             stuff.getBuildings().get(i).draw(spriteBatch);
         }
-        // draw logs
+        for (int i = 0; i < stuff.getWarehouseLogs().size; i++) {
+            stuff.getWarehouseLogs().get(i).draw(spriteBatch);
+        }
         stuff.getWarehouse().drawForeground(spriteBatch);
         for (int i = 0; i < stuff.getCitizens().size; i++) {
             stuff.getCitizens().get(i).draw(spriteBatch);
