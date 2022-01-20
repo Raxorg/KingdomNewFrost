@@ -4,6 +4,7 @@ import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.Stuff;
+import com.epicness.newfrost.menu.MenuStuff;
 
 public class MenuLogic extends Logic {
 
@@ -33,11 +34,15 @@ public class MenuLogic extends Logic {
 
     @Override
     public void setInput(SharedInput input) {
+        buttonHandler.setInput(input);
         menuInputHandler.setInput(input);
     }
 
     @Override
     public void setStuff(Stuff stuff) {
+        MenuStuff menuStuff = (MenuStuff) stuff;
+
+        buttonHandler.setStuff(menuStuff);
         menuInputHandler.setStuff(stuff);
     }
 
