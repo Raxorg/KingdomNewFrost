@@ -1,17 +1,20 @@
 package com.epicness.newfrost.game.logic.buildings;
 
+import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_INDEX;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_HEAD_SIZE;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_PILE_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_STARTING_X;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_STARTING_Y;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_MAX_LOGS;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.stuff.GameStuff;
+import com.epicness.newfrost.game.stuff.buildings.Warehouse;
 
 public class WarehouseHandler {
 
@@ -22,8 +25,9 @@ public class WarehouseHandler {
     private int logs, logPiles;
 
     public void addLogs(int quantity) {
-        DelayedRemovalArray<Sprited> warehouseLogs = stuff.getWarehouseLogs();
-        for (int i = 0; i < quantity && logs < 50; i++) {
+        Warehouse warehouse = (Warehouse) stuff.getBuildings().get(WAREHOUSE_INDEX);
+        DelayedRemovalArray<Sprited> warehouseLogs = warehouse.getWarehouseLogs();
+        for (int i = 0; i < quantity && logs < WAREHOUSE_MAX_LOGS; i++) {
             Sprited log = new Sprited(assets.getWarehouseLog());
             log.setSize(WAREHOUSE_LOG_WIDTH, WAREHOUSE_LOG_HEIGHT);
             float logX = WAREHOUSE_LOG_STARTING_X, logY = WAREHOUSE_LOG_STARTING_Y;
@@ -72,7 +76,8 @@ public class WarehouseHandler {
     }
 
     public void removeLogs(int quantity) {
-        DelayedRemovalArray<Sprited> warehouseLogs = stuff.getWarehouseLogs();
+        Warehouse warehouse = (Warehouse) stuff.getBuildings().get(WAREHOUSE_INDEX);
+        DelayedRemovalArray<Sprited> warehouseLogs = warehouse.getWarehouseLogs();
         logPiles = logs / 10;
     }
 

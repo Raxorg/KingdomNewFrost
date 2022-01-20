@@ -55,33 +55,42 @@ public class GameConstants {
     public static final float DIALOGUE_HEIGHT = CAMERA_HEIGHT / 2f;
     public static final float DIALOGUE_X = CAMERA_WIDTH / 2f - DIALOGUE_WIDTH / 2f;
     public static final float DIALOGUE_Y = CAMERA_HEIGHT / 2f - DIALOGUE_HEIGHT / 2f;
-    // Buildings
+    // Main building
     public static final float MAIN_BUILDING_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float MAIN_BUILDING_WIDTH = MAIN_BUILDING_HEIGHT * 1.5f;
     public static final float MAIN_BUILDING_X = CAMERA_WIDTH / 2f - MAIN_BUILDING_WIDTH / 2f;
     public static final float MAIN_BUILDING_Y = GROUND_Y;
-
+    // Tents
     public static final float TENT_SIZE = CAMERA_HEIGHT / 3f;
     public static final int TENT_UPGRADE_COST = 10;
     public static final float TENT1_X = MAIN_BUILDING_X + MAIN_BUILDING_WIDTH + 25f;
     public static final float TENT2_X = MAIN_BUILDING_X - TENT_SIZE - 25f;
-
+    // Warehouse
+    public static final int WAREHOUSE_INDEX = 3;
     public static final float WAREHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float WAREHOUSE_WIDTH = WAREHOUSE_HEIGHT * 2.64f;
     public static final float WAREHOUSE_X = TENT1_X + TENT_SIZE + 25f;
     public static final float WAREHOUSE_Y = GROUND_Y;
-
+    // Warehouse logs
     public static final float WAREHOUSE_LOG_STARTING_X = WAREHOUSE_X + 50f;
     public static final float WAREHOUSE_LOG_STARTING_Y = WAREHOUSE_Y;
     public static final float WAREHOUSE_LOG_HEIGHT = WAREHOUSE_HEIGHT / 10.66f;
     public static final float WAREHOUSE_LOG_WIDTH = WAREHOUSE_LOG_HEIGHT * 2.16f;
     public static final float WAREHOUSE_LOG_HEAD_SIZE = WAREHOUSE_LOG_WIDTH * 0.46f;
     public static final float WAREHOUSE_LOG_PILE_WIDTH = WAREHOUSE_LOG_HEAD_SIZE * 3 + WAREHOUSE_LOG_WIDTH;
-
+    public static final int WAREHOUSE_MAX_LOGS = 50;
+    // Cookhouse
+    public static final int COOKHOUSE_INDEX = 4;
     public static final float COOKHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float COOKHOUSE_WIDTH = COOKHOUSE_HEIGHT * (4f / 3f);
     public static final float COOKHOUSE_X = TENT2_X - COOKHOUSE_WIDTH - 25f;
     public static final float COOKHOUSE_Y = GROUND_Y;
+    // Cookhouse meats
+    public static final float COOKHOUSE_MEAT_STARTING_X = COOKHOUSE_X + COOKHOUSE_WIDTH * 0.53f;
+    public static final float COOKHOUSE_MEAT_STARTING_Y = COOKHOUSE_Y + COOKHOUSE_HEIGHT * 0.33f;
+    public static final float COOKHOUSE_MEAT_HEIGHT = COOKHOUSE_HEIGHT * 0.21f;
+    public static final float COOKHOUSE_MEAT_WIDTH = COOKHOUSE_MEAT_HEIGHT * 0.47f;
+    public static final float COOKHOUSE_MEAT_SPACING = COOKHOUSE_MEAT_WIDTH * 0.6f;
     // Food
     public static final float FOOD_ICON_SIZE = 50f;
     public static final float FOOD_INFO_X = MAIN_BUILDING_X + MAIN_BUILDING_WIDTH * 0.75f;

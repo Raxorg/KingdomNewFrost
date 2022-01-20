@@ -13,6 +13,7 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.CITIZEN_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CLOUD_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CLOUD_2_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CLOUD_3_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.COOKHOUSE_MEAT_HOOK_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.COOKHOUSE_MEAT_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.COOKHOUSE_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.COOK_PATH;
@@ -87,7 +88,7 @@ public class GameAssets extends Assets {
     private Sprite cloud1, cloud2, cloud3;
     private Sprite mainBuilding, cook, tent, tentUpgrade;
     private Sprite warehouseBack, warehouseFront, warehouseLog;
-    private Sprite cookhouse, cookhouseMeat;
+    private Sprite cookhouse, cookhouseMeat, cookhouseMeatHook;
     private Sprite meat;
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
     private Sprite citizen;
@@ -153,6 +154,8 @@ public class GameAssets extends Assets {
         loadTexture(WAREHOUSE_LOG_PATH);
 
         loadTexture(COOKHOUSE_PATH);
+        loadTexture(COOKHOUSE_MEAT_PATH);
+        loadTexture(COOKHOUSE_MEAT_HOOK_PATH);
 
         loadTexture(MEAT_PATH);
         loadTexture(TECH_ICON_0_PATH);
@@ -232,6 +235,7 @@ public class GameAssets extends Assets {
 
         cookhouse = new Sprite(getTexture(COOKHOUSE_PATH));
         cookhouseMeat = new Sprite(getTexture(COOKHOUSE_MEAT_PATH));
+        cookhouseMeatHook = new Sprite(getTexture(COOKHOUSE_MEAT_HOOK_PATH));
 
         meat = new Sprite(getTexture(MEAT_PATH));
         techIcon0 = new Sprite(getTexture(TECH_ICON_0_PATH));
@@ -445,6 +449,10 @@ public class GameAssets extends Assets {
 
     public Sprite getCookhouseMeat() {
         return cookhouseMeat;
+    }
+
+    public Sprite getCookhouseMeatHook() {
+        return cookhouseMeatHook;
     }
 
     public Sprite getMeat() {

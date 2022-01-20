@@ -47,8 +47,6 @@ public class GameStuff extends Stuff {
     private Sprited background;
     private MultiSprited[] bgLayers;
     private DelayedRemovalArray<Building> buildings;
-    private Warehouse warehouse;
-    private DelayedRemovalArray<Sprited> warehouseLogs;
     private DialogueStorage dialogueStorage;
     private DelayedRemovalArray<Citizen> citizens;
     private Player player;
@@ -88,8 +86,6 @@ public class GameStuff extends Stuff {
         }
 
         initializeBuildings(assets);
-
-        warehouseLogs = new DelayedRemovalArray<>();
 
         dialogueStorage = new DialogueStorage();
 
@@ -158,7 +154,7 @@ public class GameStuff extends Stuff {
         tent2.flipX();
         buildings.add(tent2);
 
-        warehouse = new Warehouse(assets.getWarehouseBack(), assets.getWarehouseFront());
+        Warehouse warehouse = new Warehouse(assets.getWarehouseBack(), assets.getWarehouseFront());
         buildings.add(warehouse);
 
         Cookhouse cookhouse = new Cookhouse(assets.getCookhouse());
@@ -175,14 +171,6 @@ public class GameStuff extends Stuff {
 
     public DelayedRemovalArray<Building> getBuildings() {
         return buildings;
-    }
-
-    public DelayedRemovalArray<Sprited> getWarehouseLogs() {
-        return warehouseLogs;
-    }
-
-    public Warehouse getWarehouse() {
-        return warehouse;
     }
 
     public DialogueStorage getDialogueStorage() {

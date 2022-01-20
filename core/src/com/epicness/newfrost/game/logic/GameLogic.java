@@ -1,6 +1,7 @@
 package com.epicness.newfrost.game.logic;
 
 import static com.badlogic.gdx.Input.Keys.J;
+import static com.badlogic.gdx.Input.Keys.K;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.fundamentals.SharedScreen;
@@ -11,6 +12,7 @@ import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.logic.behaviors.ParallaxBehavior;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.newfrost.game.assets.GameAssets;
+import com.epicness.newfrost.game.logic.buildings.CookhouseHandler;
 import com.epicness.newfrost.game.logic.buildings.WarehouseHandler;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
@@ -19,6 +21,7 @@ public class GameLogic extends Logic {
     // todo silencio seplucral
 
     // Buildings
+    private final CookhouseHandler cookhouseHandler;
     private final WarehouseHandler warehouseHandler;
     // Uncategorized
     private final ActionHandler actionHandler;
@@ -45,7 +48,8 @@ public class GameLogic extends Logic {
 
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
-
+        // Buildings
+        cookhouseHandler = new CookhouseHandler();
         warehouseHandler = new WarehouseHandler();
         // Uncategorized
         actionHandler = new ActionHandler();
@@ -101,6 +105,9 @@ public class GameLogic extends Logic {
         if (Gdx.input.isKeyJustPressed(J)) {
             warehouseHandler.addLogs(1);
         }
+        if (Gdx.input.isKeyJustPressed(K)) {
+            cookhouseHandler.addMeats(1);
+        }
         actionHandler.update();
         cameraHandler.update();
         citizenActivityHandler.update(delta);
@@ -117,6 +124,7 @@ public class GameLogic extends Logic {
     public void setAssets(Assets assets) {
         GameAssets gameAssets = (GameAssets) assets;
         // Buildings
+        cookhouseHandler.setAssets(gameAssets);
         warehouseHandler.setAssets(gameAssets);
         // Uncategorized
         citizenHandler.setAssets(gameAssets);
@@ -137,6 +145,7 @@ public class GameLogic extends Logic {
     public void setStuff(Stuff stuff) {
         GameStuff gameStuff = (GameStuff) stuff;
         // Buildings
+        cookhouseHandler.setStuff(gameStuff);
         warehouseHandler.setStuff(gameStuff);
         // Uncategorized
         actionHandler.setStuff(gameStuff);
