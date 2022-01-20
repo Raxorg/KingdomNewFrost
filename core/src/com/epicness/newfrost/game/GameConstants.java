@@ -110,16 +110,11 @@ public class GameConstants {
 
     public static final float WOOD_INFO_TEXT_X = WOOD_INFO_X + WOOD_ICON_SIZE;
     public static final float WOOD_INFO_TEXT_Y = WOOD_INFO_Y + WOOD_ICON_SIZE / 2f;
-    // Tips
-    public static final float TIP_WIDTH = CAMERA_WIDTH / 2f;
-    public static final float TIP_HEIGHT = CAMERA_HEIGHT / 2f;
-    public static final float TIP_X = CAMERA_WIDTH / 2f - TIP_WIDTH / 2f;
-    public static final float TIP_Y = CAMERA_HEIGHT / 2f - TIP_HEIGHT / 2f;
-    public static final float TIP_INTERVAL = 5f;
-
-    public static final float TIP_ICON_SIZE = 100f;
-    public static final float TIP_ICON_X = CAMERA_WIDTH / 2f - TIP_ICON_SIZE / 2f;
-    public static final float TIP_ICON_Y = 25f;
+    // Tutorial dialogue
+    public static final float TUTORIAL_DIALOGUE_WIDTH = CAMERA_WIDTH / 2f;
+    public static final float TUTORIAL_DIALOGUE_HEIGHT = CAMERA_HEIGHT / 2f;
+    public static final float TUTORIAL_DIALOGUE_X = CAMERA_WIDTH / 2f - TUTORIAL_DIALOGUE_WIDTH / 2f;
+    public static final float TUTORIAL_DIALOGUE_Y = CAMERA_HEIGHT / 2f - TUTORIAL_DIALOGUE_HEIGHT / 2f;
     // Expedition
     public static final float GOING_TO_EXPEDITION_TIME = 2.5f;
     public static final float RETURNING_FROM_EXPEDITION_TIME = 2.5f;
@@ -181,6 +176,16 @@ public class GameConstants {
     public static final float DAY_Y = CAMERA_HEIGHT - 25f;
     // Day timer
     public static final float DAY_TIMER_Y = CAMERA_HEIGHT - 75f;
+    // Tutorial texts
+    public static final String CONTROLS_TUTORIAL_TEXT = "Press A and D to move S to interact when the interaction icon appears";
+    public static final String FEED_TUTORIAL_TEXT = "Feed your people with food from expeditions you can deploy from the base";
+    public static final String HUNGER_TUTORIAL_TEXT = "People feel hungry each 2 days and need 1 food ration to stabilize";
+    public static final String COLD_PROTECTION_TUTORIAL_TEXT = "Upgrade the dwellings for better protection against cold";
+    public static final String GAME_OVER_TUTORIAL_TEXT = "When half the population dies the game is over";
+    // Tutorial widget
+    public static final float TUTORIAL_WIDGET_WIDTH = 300f;
+    public static final float TUTORIAL_WIDGET_HEIGHT = 100f;
+    public static final float TUTORIAL_WIDGET_SLIDE_DURATION = 0.7f;
     // Other
     public static final float HIDDEN_X = -10 * CAMERA_WIDTH;
     public static final float HIDDEN_Y = -10 * CAMERA_HEIGHT;

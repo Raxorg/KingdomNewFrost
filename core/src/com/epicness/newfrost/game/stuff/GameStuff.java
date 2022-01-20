@@ -15,9 +15,10 @@ import static com.epicness.newfrost.game.GameConstants.DIALOGUE_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
 import static com.epicness.newfrost.game.GameConstants.TENT1_X;
 import static com.epicness.newfrost.game.GameConstants.TENT2_X;
-import static com.epicness.newfrost.game.GameConstants.TIP_HEIGHT;
-import static com.epicness.newfrost.game.GameConstants.TIP_ICON_SIZE;
-import static com.epicness.newfrost.game.GameConstants.TIP_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.TUTORIAL_DIALOGUE_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.TUTORIAL_DIALOGUE_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.TUTORIAL_WIDGET_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.TUTORIAL_WIDGET_WIDTH;
 
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
@@ -54,9 +55,8 @@ public class GameStuff extends Stuff {
     private WoodInfo woodInfo;
     private FoodInfo foodInfo;
     private MainBuildingMenu mainBuildingMenu;
-    private IconedSpritedText tutorialNotification;
+    private IconedSpritedText tutorialWidget;
     private SpritedText tip;
-    private Sprited tipIcon;
     private ExpeditionInfo expeditionInfo;
     private Text day, dayTimer;
     private SpritedText dialogue;
@@ -102,17 +102,15 @@ public class GameStuff extends Stuff {
 
         mainBuildingMenu = new MainBuildingMenu(assets, sharedAssets);
 
-        tutorialNotification = new IconedSpritedText(sharedAssets.getPixel(), assets.getPixelFontSmall(), assets.getMeat());
-        tutorialNotification.setSize(300f, 100f);
-        tutorialNotification.setText("DERPY DERP");
-        tutorialNotification.setBackgroundColor(OPAQUE_TRANSPARENT);
+        tutorialWidget = new IconedSpritedText(sharedAssets.getPixel(), assets.getPixelFontSmall(), assets.getMeat());
+        tutorialWidget.setX(-TUTORIAL_WIDGET_WIDTH);
+        tutorialWidget.setSize(TUTORIAL_WIDGET_WIDTH, TUTORIAL_WIDGET_HEIGHT);
+        tutorialWidget.setText("MISSING TUTORIAL TEXT");
+        tutorialWidget.setBackgroundColor(OPAQUE_TRANSPARENT);
 
         tip = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
-        tip.setSize(TIP_WIDTH, TIP_HEIGHT);
+        tip.setSize(TUTORIAL_DIALOGUE_WIDTH, TUTORIAL_DIALOGUE_HEIGHT);
         tip.setColor(OPAQUE_TRANSPARENT);
-
-        tipIcon = new Sprited(assets.getTipIcon());
-        tipIcon.setSize(TIP_ICON_SIZE);
 
         expeditionInfo = new ExpeditionInfo(assets.getGlassIcon(), assets.getPixelFont());
 
@@ -201,16 +199,12 @@ public class GameStuff extends Stuff {
         return mainBuildingMenu;
     }
 
-    public IconedSpritedText getTutorialNotification() {
-        return tutorialNotification;
+    public IconedSpritedText getTutorialWidget() {
+        return tutorialWidget;
     }
 
     public SpritedText getTip() {
         return tip;
-    }
-
-    public Sprited getTipIcon() {
-        return tipIcon;
     }
 
     public ExpeditionInfo getExpeditionInfo() {

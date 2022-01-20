@@ -1,7 +1,10 @@
 package com.epicness.newfrost.game.logic;
 
-import static com.badlogic.gdx.Input.Keys.J;
-import static com.badlogic.gdx.Input.Keys.K;
+import static com.badlogic.gdx.Input.Keys.I;
+import static com.badlogic.gdx.Input.Keys.O;
+import static com.badlogic.gdx.Input.Keys.U;
+import static com.badlogic.gdx.Input.Keys.Y;
+import static com.epicness.newfrost.game.enums.Tutorial.CONTROLS;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.fundamentals.SharedScreen;
@@ -97,16 +100,22 @@ public class GameLogic extends Logic {
         gameInputHandler.setupInput();
         gameOverHandler.init();
         tutorialHandler.hideTip();
-        tutorialHandler.showTipIcon();
+        tutorialHandler.showTutorialWidget(CONTROLS);
     }
 
     @Override
     public void update(float delta) {
-        if (Gdx.input.isKeyJustPressed(J)) {
+        if (Gdx.input.isKeyJustPressed(Y)) {
             warehouseHandler.addLogs(1);
         }
-        if (Gdx.input.isKeyJustPressed(K)) {
+        if (Gdx.input.isKeyJustPressed(U)) {
             cookhouseHandler.addMeats(1);
+        }
+        if (Gdx.input.isKeyJustPressed(I)) {
+            dayHandler.passDay();
+        }
+        if (Gdx.input.isKeyJustPressed(O)) {
+            dayHandler.passDay();
         }
         actionHandler.update();
         cameraHandler.update();

@@ -32,12 +32,9 @@ public class GameRenderer extends Renderer {
         useDynamicCamera();
         stuff.getFoodInfo().draw(spriteBatch);
         stuff.getPlayer().draw(spriteBatch);
-        useStaticCamera();
-        stuff.getTipIcon().draw(spriteBatch);
-        useDynamicCamera();
         stuff.getMainBuildingMenu().draw(spriteBatch);
         useStaticCamera();
-        stuff.getTutorialNotification().draw(spriteBatch);
+        stuff.getTutorialWidget().draw(spriteBatch);
         stuff.getTip().draw(spriteBatch);
         stuff.getExpeditionInfo().draw(spriteBatch);
         stuff.getDay().draw(spriteBatch);
