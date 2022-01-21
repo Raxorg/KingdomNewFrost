@@ -1,6 +1,7 @@
 package com.epicness.newfrost.game.logic.weather;
 
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.BACKGROUND_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -19,10 +20,10 @@ public class CloudHandler {
     private float time;
 
     public void update(float delta) {
-        time += delta;
-        if (time > 10f) {
+        time -= delta;
+        if (time <= 0f) {
             spawnCloud();
-            time = 0f;
+            time = MathUtils.random(7f, 10f);
         }
         moveClouds(delta);
     }
@@ -43,15 +44,23 @@ public class CloudHandler {
         }
         Sprited cloud = new Sprited(cloudSprite);
         cloud.setSize(cloudSprite.getWidth() * 7f, cloudSprite.getHeight() * 7f);
-        cloud.setPosition(-cloud.getWidth(), CAMERA_HEIGHT - cloud.getHeight() * MathUtils.random(1f, 2f));
+        cloud.setFlip(MathUtils.randomBoolean(), MathUtils.randomBoolean());
+        if (cloud.isFlipX()) {
+            cloud.setX(-cloud.getWidth() - BACKGROUND_WIDTH);
+        } else {
+            cloud.setX(BACKGROUND_WIDTH * 2f);
+        }
+        cloud.setY(CAMERA_HEIGHT - cloud.getHeight() * MathUtils.random(1f, 2f));
         cloud.setColor(Color.GRAY);
         stuff.getClouds().add(cloud);
     }
 
     private void moveClouds(float delta) {
         DelayedRemovalArray<Sprited> clouds = stuff.getClouds();
+        float translation = 75f * delta;
         for (int i = 0; i < clouds.size; i++) {
-            clouds.get(i).translateX(75f * delta);
+            Sprited cloud = clouds.get(i);
+            cloud.translateX(cloud.isFlipX() ? translation : -translation);
         }
     }
 
