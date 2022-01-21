@@ -224,6 +224,7 @@ public class GameAssets extends Assets {
         cloud1 = new Sprite(getTexture(CLOUD_1_PATH));
         cloud2 = new Sprite(getTexture(CLOUD_2_PATH));
         cloud3 = new Sprite(getTexture(CLOUD_3_PATH));
+
         mainBuilding = new Sprite(getTexture(MAIN_BUILDING_PATH));
         cook = new Sprite(getTexture(COOK_PATH));
         tent = new Sprite(getTexture(TENT_PATH));

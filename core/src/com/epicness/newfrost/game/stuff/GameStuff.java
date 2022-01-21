@@ -48,6 +48,7 @@ public class GameStuff extends Stuff {
     private Sprited background;
     private MultiSprited[] bgLayers;
     private DelayedRemovalArray<Building> buildings;
+    private DelayedRemovalArray<Sprited> clouds;
     private DialogueStorage dialogueStorage;
     private DelayedRemovalArray<Citizen> citizens;
     private Player player;
@@ -68,24 +69,10 @@ public class GameStuff extends Stuff {
     public void initializeStuff() {
         GameAssets assets = (GameAssets) this.assets;
 
-        background = new Sprited(assets.getBackground0());
-        background.setSize(BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
-
-        bgLayers = new MultiSprited[7];
-        bgLayers[0] = new MultiSprited(assets.getBackground1(), 3);
-        bgLayers[1] = new MultiSprited(assets.getBackground2(), 3);
-        bgLayers[2] = new MultiSprited(assets.getBackground3(), 3);
-        bgLayers[3] = new MultiSprited(assets.getBackground4(), 3);
-        bgLayers[4] = new MultiSprited(assets.getBackground5(), 3);
-        bgLayers[5] = new MultiSprited(assets.getBackground6(), 3);
-        bgLayers[6] = new MultiSprited(assets.getBackground7(), 3);
-        for (int i = 0; i < bgLayers.length; i++) {
-            bgLayers[i].setSize(BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
-            bgLayers[i].setX(-BACKGROUND_WIDTH, 1);
-            bgLayers[i].setX(BACKGROUND_WIDTH, 2);
-        }
-
+        initializeBackground(assets);
         initializeBuildings(assets);
+
+        clouds = new DelayedRemovalArray<>();
 
         dialogueStorage = new DialogueStorage();
 
@@ -137,6 +124,25 @@ public class GameStuff extends Stuff {
         gameOver.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
     }
 
+    private void initializeBackground(GameAssets assets) {
+        background = new Sprited(assets.getBackground0());
+        background.setSize(BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
+
+        bgLayers = new MultiSprited[7];
+        bgLayers[0] = new MultiSprited(assets.getBackground1(), 3);
+        bgLayers[1] = new MultiSprited(assets.getBackground2(), 3);
+        bgLayers[2] = new MultiSprited(assets.getBackground3(), 3);
+        bgLayers[3] = new MultiSprited(assets.getBackground4(), 3);
+        bgLayers[4] = new MultiSprited(assets.getBackground5(), 3);
+        bgLayers[5] = new MultiSprited(assets.getBackground6(), 3);
+        bgLayers[6] = new MultiSprited(assets.getBackground7(), 3);
+        for (int i = 0; i < bgLayers.length; i++) {
+            bgLayers[i].setSize(BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
+            bgLayers[i].setX(-BACKGROUND_WIDTH, 1);
+            bgLayers[i].setX(BACKGROUND_WIDTH, 2);
+        }
+    }
+
     private void initializeBuildings(GameAssets assets) {
         buildings = new DelayedRemovalArray<>();
 
@@ -169,6 +175,10 @@ public class GameStuff extends Stuff {
 
     public DelayedRemovalArray<Building> getBuildings() {
         return buildings;
+    }
+
+    public DelayedRemovalArray<Sprited> getClouds() {
+        return clouds;
     }
 
     public DialogueStorage getDialogueStorage() {

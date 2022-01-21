@@ -41,6 +41,11 @@ public class GameRenderer extends Renderer {
         stuff.getDayTimer().draw(spriteBatch);
         stuff.getEventView().draw(spriteBatch);
         stuff.getRain().draw(spriteBatch);
+        useDynamicCamera();
+        for (int i = 0; i < stuff.getClouds().size; i++) {
+            stuff.getClouds().get(i).draw(spriteBatch);
+        }
+        useStaticCamera();
         stuff.getGameOver().draw(spriteBatch);
 
         spriteBatch.end();

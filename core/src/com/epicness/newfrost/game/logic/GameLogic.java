@@ -17,6 +17,8 @@ import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.logic.buildings.CookhouseHandler;
 import com.epicness.newfrost.game.logic.buildings.WarehouseHandler;
+import com.epicness.newfrost.game.logic.weather.CloudHandler;
+import com.epicness.newfrost.game.logic.weather.RainHandler;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameLogic extends Logic {
@@ -26,6 +28,9 @@ public class GameLogic extends Logic {
     // Buildings
     private final CookhouseHandler cookhouseHandler;
     private final WarehouseHandler warehouseHandler;
+    // Weather
+    private final CloudHandler cloudHandler;
+    private final RainHandler rainHandler;
     // Uncategorized
     private final ActionHandler actionHandler;
     private final CameraHandler cameraHandler;
@@ -43,7 +48,6 @@ public class GameLogic extends Logic {
     private final IntroHandler introHandler;
     private final MainBuildingMenuHandler mainBuildingMenuHandler;
     private final PlayerMovementHandler playerMovementHandler;
-    private final RainHandler rainHandler;
     private final TutorialHandler tutorialHandler;
     private final WoodHandler woodHandler;
 
@@ -54,6 +58,9 @@ public class GameLogic extends Logic {
         // Buildings
         cookhouseHandler = new CookhouseHandler();
         warehouseHandler = new WarehouseHandler();
+        // Weather
+        cloudHandler = new CloudHandler();
+        rainHandler = new RainHandler();
         // Uncategorized
         actionHandler = new ActionHandler();
         cameraHandler = new CameraHandler();
@@ -71,7 +78,6 @@ public class GameLogic extends Logic {
         introHandler = new IntroHandler();
         mainBuildingMenuHandler = new MainBuildingMenuHandler();
         playerMovementHandler = new PlayerMovementHandler();
-        rainHandler = new RainHandler();
         tutorialHandler = new TutorialHandler();
         woodHandler = new WoodHandler();
 
@@ -89,6 +95,7 @@ public class GameLogic extends Logic {
 
     @Override
     public void initialLogic() {
+        // Uncategorized
         actionHandler.hideActionIcon();
         cameraHandler.configureParallax();
         citizenHandler.spawnCitizens();
@@ -117,6 +124,10 @@ public class GameLogic extends Logic {
         if (Gdx.input.isKeyJustPressed(O)) {
             dayHandler.passDay();
         }
+        // Weather
+        cloudHandler.update(delta);
+        rainHandler.update(delta);
+        // Uncategorized
         actionHandler.update();
         cameraHandler.update();
         citizenActivityHandler.update(delta);
@@ -125,7 +136,6 @@ public class GameLogic extends Logic {
         highlightHandler.update();
         mainBuildingMenuHandler.update();
         playerMovementHandler.update(delta);
-        rainHandler.update(delta);
         tutorialHandler.update(delta);
     }
 
@@ -135,6 +145,8 @@ public class GameLogic extends Logic {
         // Buildings
         cookhouseHandler.setAssets(gameAssets);
         warehouseHandler.setAssets(gameAssets);
+        // Weather
+        cloudHandler.setAssets(gameAssets);
         // Uncategorized
         citizenHandler.setAssets(gameAssets);
         introHandler.setAssets(gameAssets);
@@ -156,6 +168,9 @@ public class GameLogic extends Logic {
         // Buildings
         cookhouseHandler.setStuff(gameStuff);
         warehouseHandler.setStuff(gameStuff);
+        // Weather
+        cloudHandler.setStuff(gameStuff);
+        rainHandler.setStuff(gameStuff);
         // Uncategorized
         actionHandler.setStuff(gameStuff);
         cameraHandler.setStuff(gameStuff);
@@ -171,11 +186,11 @@ public class GameLogic extends Logic {
         highlightHandler.setStuff(gameStuff);
         mainBuildingMenuHandler.setStuff(gameStuff);
         playerMovementHandler.setStuff(gameStuff);
-        rainHandler.setStuff(gameStuff);
         tutorialHandler.setStuff(gameStuff);
         woodHandler.setStuff(gameStuff);
     }
 
+    // Uncategorized
     public ActionHandler getActionHandler() {
         return actionHandler;
     }

@@ -47,9 +47,11 @@ public class GameAssetPaths {
     public static final String BACKGROUND_5_PATH = "newfrost/images/background/bg5.png";
     public static final String BACKGROUND_6_PATH = "newfrost/images/background/bg6.png";
     public static final String BACKGROUND_7_PATH = "newfrost/images/background/bg7.png";
-    public static final String CLOUD_1_PATH = "newfrost/images/cloud1.png";
-    public static final String CLOUD_2_PATH = "newfrost/images/cloud2.png";
-    public static final String CLOUD_3_PATH = "newfrost/images/cloud3.png";
+
+    public static final String CLOUD_1_PATH = "newfrost/images/decorative/cloud1.png";
+    public static final String CLOUD_2_PATH = "newfrost/images/decorative/cloud2.png";
+    public static final String CLOUD_3_PATH = "newfrost/images/decorative/cloud3.png";
+
     public static final String MAIN_BUILDING_PATH = "newfrost/images/mainBuilding.png";
     public static final String COOK_PATH = "newfrost/images/cook.png";
     public static final String TENT_PATH = "newfrost/images/tent.png";

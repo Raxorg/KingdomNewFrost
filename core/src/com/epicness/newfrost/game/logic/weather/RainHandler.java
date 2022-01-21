@@ -1,4 +1,4 @@
-package com.epicness.newfrost.game.logic;
+package com.epicness.newfrost.game.logic.weather;
 
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.newfrost.game.stuff.GameStuff;
