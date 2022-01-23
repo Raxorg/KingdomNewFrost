@@ -1,12 +1,5 @@
 package com.epicness.newfrost.game.logic;
 
-import com.badlogic.gdx.utils.DelayedRemovalArray;
-import com.epicness.newfrost.game.stuff.GameStuff;
-import com.epicness.newfrost.game.stuff.people.Citizen;
-import com.epicness.newfrost.game.stuff.resourceinfos.ExpeditionInfo;
-
-import java.util.ArrayList;
-
 import static com.epicness.newfrost.game.GameConstants.EXPEDITION_DURATION;
 import static com.epicness.newfrost.game.GameConstants.EXPEDITION_INFO_X;
 import static com.epicness.newfrost.game.GameConstants.EXPEDITION_INFO_Y;
@@ -16,6 +9,13 @@ import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
 import static com.epicness.newfrost.game.GameConstants.RETURNING_FROM_EXPEDITION_TIME;
 import static com.epicness.newfrost.game.enums.CitizenActivity.GOING_TO_EXPEDITION;
 import static com.epicness.newfrost.game.enums.CitizenActivity.RETURNING_FROM_EXPEDITION;
+
+import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.newfrost.game.stuff.GameStuff;
+import com.epicness.newfrost.game.stuff.people.Citizen;
+import com.epicness.newfrost.game.stuff.resourceinfos.ExpeditionInfo;
+
+import java.util.ArrayList;
 
 public class ExpeditionHandler {
 
@@ -90,7 +90,7 @@ public class ExpeditionHandler {
             if (food) {
                 logic.getFoodHandler().addFood(10);
             } else {
-                logic.getWoodHandler().addWood(10);
+                logic.getWarehouseHandler().addLogs(10);
             }
             for (int i = 0; i < designatedCitizens.size(); i++) {
                 Citizen citizen = designatedCitizens.get(i);

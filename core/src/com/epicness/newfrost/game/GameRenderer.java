@@ -27,9 +27,6 @@ public class GameRenderer extends Renderer {
             stuff.getCitizens().get(i).draw(spriteBatch);
         }
         stuff.getActionIcon().draw(spriteBatch);
-        useStaticCamera();
-        stuff.getWoodInfo().draw(spriteBatch);
-        useDynamicCamera();
         stuff.getFoodInfo().draw(spriteBatch);
         stuff.getPlayer().draw(spriteBatch);
         stuff.getMainBuildingMenu().draw(spriteBatch);

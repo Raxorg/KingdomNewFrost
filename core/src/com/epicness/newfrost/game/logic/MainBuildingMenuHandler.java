@@ -171,8 +171,8 @@ public class MainBuildingMenuHandler {
                 continue;
             }
             if (technology.contains(x, y)) {
-                if (logic.getWoodHandler().getWood() >= technology.getCost()) {
-                    logic.getWoodHandler().spendWood(technology.getCost());
+                if (logic.getWarehouseHandler().getLogs() >= technology.getCost()) {
+                    logic.getWarehouseHandler().removeLogs(technology.getCost());
                     technology.setColor(Color.WHITE);
                 }
             }

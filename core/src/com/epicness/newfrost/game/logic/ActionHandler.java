@@ -1,16 +1,16 @@
 package com.epicness.newfrost.game.logic;
 
-import com.badlogic.gdx.utils.DelayedRemovalArray;
-import com.epicness.newfrost.game.stuff.GameStuff;
-import com.epicness.newfrost.game.stuff.buildings.Building;
-import com.epicness.newfrost.game.stuff.buildings.Tent;
-import com.epicness.newfrost.game.stuff.people.Player;
-
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
 import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.TENT_UPGRADE_COST;
+
+import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.newfrost.game.stuff.GameStuff;
+import com.epicness.newfrost.game.stuff.buildings.Building;
+import com.epicness.newfrost.game.stuff.buildings.Tent;
+import com.epicness.newfrost.game.stuff.people.Player;
 
 public class ActionHandler {
 
@@ -73,13 +73,13 @@ public class ActionHandler {
                 logic.getHighlightHandler().setEnabled(false);
                 break;
             case TENT:
-                int wood = logic.getWoodHandler().getWood();
-                if (wood < TENT_UPGRADE_COST) {
+                int logs = logic.getWarehouseHandler().getLogs();
+                if (logs < TENT_UPGRADE_COST) {
                     return;
                 }
                 Tent tent = (Tent) selectedBuilding;
                 tent.upgrade();
-                logic.getWoodHandler().spendWood(TENT_UPGRADE_COST);
+                logic.getWarehouseHandler().removeLogs(TENT_UPGRADE_COST);
                 break;
             case MEDICAL_POST:
                 break;

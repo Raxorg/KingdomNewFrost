@@ -78,6 +78,10 @@ public class WarehouseHandler {
     public void removeLogs(int quantity) {
         Warehouse warehouse = (Warehouse) stuff.getBuildings().get(WAREHOUSE_INDEX);
         DelayedRemovalArray<Sprited> warehouseLogs = warehouse.getWarehouseLogs();
+        for (int i = 0; i < quantity && logs > 0; i++) {
+            warehouseLogs.removeIndex(warehouseLogs.size - 1);
+            logs--;
+        }
         logPiles = logs / 10;
     }
 

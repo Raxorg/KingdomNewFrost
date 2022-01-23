@@ -41,7 +41,6 @@ import com.epicness.newfrost.game.stuff.people.Citizen;
 import com.epicness.newfrost.game.stuff.people.Player;
 import com.epicness.newfrost.game.stuff.resourceinfos.ExpeditionInfo;
 import com.epicness.newfrost.game.stuff.resourceinfos.FoodInfo;
-import com.epicness.newfrost.game.stuff.resourceinfos.WoodInfo;
 
 public class GameStuff extends Stuff {
 
@@ -53,7 +52,6 @@ public class GameStuff extends Stuff {
     private DelayedRemovalArray<Citizen> citizens;
     private Player player;
     private Sprited actionIcon;
-    private WoodInfo woodInfo;
     private FoodInfo foodInfo;
     private MainBuildingMenu mainBuildingMenu;
     private IconedSpritedText tutorialWidget;
@@ -82,8 +80,6 @@ public class GameStuff extends Stuff {
 
         actionIcon = new Sprited(assets.getActionIcon());
         actionIcon.setSize(ACTION_ICON_WIDTH, ACTION_ICON_HEIGHT);
-
-        woodInfo = new WoodInfo(assets.getWoodFrame(), assets.getPixelFont());
 
         foodInfo = new FoodInfo(assets.getMeatIcon(), assets.getPixelFont());
 
@@ -195,10 +191,6 @@ public class GameStuff extends Stuff {
 
     public Sprited getActionIcon() {
         return actionIcon;
-    }
-
-    public WoodInfo getWoodInfo() {
-        return woodInfo;
     }
 
     public FoodInfo getFoodInfo() {

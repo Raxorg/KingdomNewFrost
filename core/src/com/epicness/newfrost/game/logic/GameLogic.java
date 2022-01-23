@@ -49,7 +49,6 @@ public class GameLogic extends Logic {
     private final MainBuildingMenuHandler mainBuildingMenuHandler;
     private final PlayerMovementHandler playerMovementHandler;
     private final TutorialHandler tutorialHandler;
-    private final WoodHandler woodHandler;
 
     private final ParallaxBehavior parallaxBehavior;
 
@@ -79,7 +78,6 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler = new MainBuildingMenuHandler();
         playerMovementHandler = new PlayerMovementHandler();
         tutorialHandler = new TutorialHandler();
-        woodHandler = new WoodHandler();
 
         parallaxBehavior = new ParallaxBehavior();
 
@@ -187,7 +185,11 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler.setStuff(gameStuff);
         playerMovementHandler.setStuff(gameStuff);
         tutorialHandler.setStuff(gameStuff);
-        woodHandler.setStuff(gameStuff);
+    }
+
+    // Buildings
+    public WarehouseHandler getWarehouseHandler() {
+        return warehouseHandler;
     }
 
     // Uncategorized
@@ -229,10 +231,6 @@ public class GameLogic extends Logic {
 
     public TutorialHandler getTipHandler() {
         return tutorialHandler;
-    }
-
-    public WoodHandler getWoodHandler() {
-        return woodHandler;
     }
 
     public ParallaxBehavior getParallaxBehavior() {
