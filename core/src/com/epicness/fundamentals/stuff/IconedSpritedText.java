@@ -10,16 +10,16 @@ import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
 public class IconedSpritedText implements Buttonable, Scrollable {
 
-    private final Sprite background;
+    private final Sprited background;
     private final Text label;
-    private final Sprite icon;
+    private final Sprited icon;
 
     public IconedSpritedText(Sprite backgroundSprite, BitmapFont font, Sprite iconSprite) {
-        background = new Sprite(backgroundSprite);
+        background = new Sprited(backgroundSprite);
         label = new Text(font);
         label.setHorizontalAlignment(Align.center);
         label.setCenterVertical(true);
-        icon = new Sprite(iconSprite);
+        icon = new Sprited(iconSprite);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -71,7 +71,7 @@ public class IconedSpritedText implements Buttonable, Scrollable {
         background.setSize(width, height);
         label.setTextTargetWidth(width - height);
         label.setY(background.getY() + height / 2f);
-        icon.setSize(height, height);
+        icon.setSize(height);
         icon.setX(background.getX() + background.getWidth() - icon.getWidth());
     }
 

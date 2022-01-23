@@ -1,16 +1,6 @@
 package com.epicness.newfrost.game.stuff.mainbuildingmenu;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.assets.SharedAssets;
-import com.epicness.fundamentals.stuff.interfaces.Buttonable;
-import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.SpritedText;
-import com.epicness.newfrost.game.assets.GameAssets;
-import com.epicness.newfrost.game.enums.MainMenuState;
-import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.TechTree;
-
-import static com.epicness.fundamentals.SharedConstants.OPAQUE_TRANSPARENT;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_25;
 import static com.epicness.newfrost.game.GameConstants.LAW_TAB_X;
 import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_WIDTH;
@@ -19,6 +9,16 @@ import static com.epicness.newfrost.game.GameConstants.TAB_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.TAB_Y;
 import static com.epicness.newfrost.game.GameConstants.TECH_TAB_X;
 import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_ACTIONS_PANEL;
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.epicness.fundamentals.assets.SharedAssets;
+import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritedText;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.newfrost.game.assets.GameAssets;
+import com.epicness.newfrost.game.enums.MainMenuState;
+import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.TechTree;
 
 public class MainBuildingMenu implements Buttonable {
 
@@ -32,7 +32,7 @@ public class MainBuildingMenu implements Buttonable {
     public MainBuildingMenu(GameAssets assets, SharedAssets sharedAssets) {
         background = new Sprited(sharedAssets.getPixel());
         background.setSize(MAIN_MENU_WIDTH, MAIN_MENU_HEIGHT);
-        background.setColor(OPAQUE_TRANSPARENT);
+        background.setColor(BLACK_CLEAR_25);
 
         actionsTab = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
         actionsTab.setSize(TAB_WIDTH, TAB_HEIGHT);

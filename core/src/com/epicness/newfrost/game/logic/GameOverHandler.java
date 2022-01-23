@@ -1,10 +1,10 @@
 package com.epicness.newfrost.game.logic;
 
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_25;
+import static com.epicness.newfrost.game.GameConstants.STARTING_CITIZENS;
+
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.newfrost.game.stuff.GameStuff;
-
-import static com.epicness.fundamentals.SharedConstants.OPAQUE_TRANSPARENT;
-import static com.epicness.newfrost.game.GameConstants.STARTING_CITIZENS;
 
 public class GameOverHandler {
 
@@ -15,7 +15,7 @@ public class GameOverHandler {
     private int citizens;
 
     private void showGameOver() {
-        stuff.getGameOver().setColor(OPAQUE_TRANSPARENT);
+        stuff.getGameOver().setColor(BLACK_CLEAR_25);
         stuff.getGameOver().setTextColor(Color.WHITE);
     }
 

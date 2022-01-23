@@ -1,9 +1,9 @@
 package com.epicness.newfrost.game.stuff;
 
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_25;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.OPAQUE_TRANSPARENT;
-import static com.epicness.fundamentals.SharedConstants.TRANSPARENT;
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.BACKGROUND_HEIGHT;
@@ -93,11 +93,11 @@ public class GameStuff extends Stuff {
         tutorialWidget.setX(-TUTORIAL_WIDGET_WIDTH);
         tutorialWidget.setSize(TUTORIAL_WIDGET_WIDTH, TUTORIAL_WIDGET_HEIGHT);
         tutorialWidget.setText("MISSING TUTORIAL TEXT");
-        tutorialWidget.setBackgroundColor(OPAQUE_TRANSPARENT);
+        tutorialWidget.setBackgroundColor(BLACK_CLEAR_25);
 
         tip = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
         tip.setSize(TUTORIAL_DIALOGUE_WIDTH, TUTORIAL_DIALOGUE_HEIGHT);
-        tip.setColor(OPAQUE_TRANSPARENT);
+        tip.setColor(BLACK_CLEAR_25);
 
         expeditionInfo = new ExpeditionInfo(assets.getGlassIcon(), assets.getPixelFont());
 
@@ -113,7 +113,7 @@ public class GameStuff extends Stuff {
 
         dialogue = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
         dialogue.setSize(DIALOGUE_WIDTH, DIALOGUE_HEIGHT);
-        dialogue.setColor(TRANSPARENT);
+        dialogue.setColor(BLACK_CLEAR_50);
 
         eventView = new EventView(sharedAssets.getPixel(), sharedAssets.getPixel(), assets.getPixelFont());
 

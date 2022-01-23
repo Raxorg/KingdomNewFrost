@@ -1,15 +1,6 @@
 package com.epicness.newfrost.game.stuff.events;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.DelayedRemovalArray;
-import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.SpritedText;
-import com.epicness.fundamentals.stuff.Text;
-
-import static com.epicness.fundamentals.SharedConstants.OPAQUE_TRANSPARENT;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_25;
 import static com.epicness.newfrost.game.GameConstants.EVENT_BACKGROUND_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.EVENT_BACKGROUND_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.EVENT_BACKGROUND_X;
@@ -27,6 +18,15 @@ import static com.epicness.newfrost.game.GameConstants.EVENT_TEXT_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.EVENT_TEXT_X;
 import static com.epicness.newfrost.game.GameConstants.EVENT_TEXT_Y;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritedText;
+import com.epicness.fundamentals.stuff.Text;
+
 public class EventView {
 
     private final Sprited background, image;
@@ -37,7 +37,7 @@ public class EventView {
         background = new Sprited(backgroundSprite);
         background.setPosition(EVENT_BACKGROUND_X, EVENT_BACKGROUND_Y);
         background.setSize(EVENT_BACKGROUND_WIDTH, EVENT_BACKGROUND_HEIGHT);
-        background.setColor(OPAQUE_TRANSPARENT);
+        background.setColor(BLACK_CLEAR_25);
 
         image = new Sprited(pixel);
         image.setPosition(EVENT_IMAGE_X, EVENT_IMAGE_Y);
