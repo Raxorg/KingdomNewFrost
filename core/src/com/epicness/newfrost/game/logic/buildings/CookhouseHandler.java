@@ -38,7 +38,16 @@ public class CookhouseHandler {
     }
 
     public void removeMeats(int quantity) {
+        Cookhouse cookhouse = (Cookhouse) stuff.getBuildings().get(COOKHOUSE_INDEX);
+        DelayedRemovalArray<DualSprited> cookHouseMeats = cookhouse.getCookhouseMeats();
+        for (int i = 0; i < quantity && meats > 0; i++) {
+            cookHouseMeats.removeIndex(cookHouseMeats.size - 1);
+            meats--;
+        }
+    }
 
+    public int getMeats() {
+        return meats;
     }
 
     // Structure

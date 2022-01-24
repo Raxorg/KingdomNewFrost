@@ -1,12 +1,5 @@
 package com.epicness.newfrost.game.logic;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.DelayedRemovalArray;
-import com.epicness.newfrost.game.stuff.GameStuff;
-import com.epicness.newfrost.game.stuff.people.Citizen;
-
 import static com.epicness.newfrost.game.GameConstants.CITIZEN_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.CITIZEN_MAX_X;
 import static com.epicness.newfrost.game.GameConstants.CITIZEN_MIN_X;
@@ -20,8 +13,17 @@ import static com.epicness.newfrost.game.enums.CitizenActivity.MOVING_RANDOMLY;
 import static com.epicness.newfrost.game.enums.CitizenActivity.ON_EXPEDITION;
 import static com.epicness.newfrost.game.enums.CitizenActivity.RETURNING_FROM_EATING;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.newfrost.game.stuff.GameStuff;
+import com.epicness.newfrost.game.stuff.people.Citizen;
+
 public class CitizenActivityHandler {
 
+    // Structure
+    private GameLogic logic;
     private GameStuff stuff;
 
     public void update(float delta) {
@@ -94,9 +96,9 @@ public class CitizenActivityHandler {
         float distance = citizenCenter - DINING_X;
         if ((citizen.isFacingLeft() && distance <= 0f) ||
                 (!citizen.isFacingLeft() && distance >= 0f)) {
-            int food = stuff.getFoodInfo().getFood();
+            int food = logic.getCookhouseHandler().getMeats();
             if (food > 0) {
-                stuff.getFoodInfo().setFood(food - 1);
+                logic.getCookhouseHandler().removeMeats(1);
                 citizen.setHunger(0);
                 citizen.setActivity(EATING);
                 citizen.setActivityTime(MathUtils.random(1f, 3f));
@@ -163,6 +165,10 @@ public class CitizenActivityHandler {
     }
 
     // Structure
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
+    }
+
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
     }

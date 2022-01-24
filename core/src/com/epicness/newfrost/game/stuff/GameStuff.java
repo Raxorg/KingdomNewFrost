@@ -40,7 +40,6 @@ import com.epicness.newfrost.game.stuff.mainbuildingmenu.MainBuildingMenu;
 import com.epicness.newfrost.game.stuff.people.Citizen;
 import com.epicness.newfrost.game.stuff.people.Player;
 import com.epicness.newfrost.game.stuff.resourceinfos.ExpeditionInfo;
-import com.epicness.newfrost.game.stuff.resourceinfos.FoodInfo;
 
 public class GameStuff extends Stuff {
 
@@ -52,7 +51,6 @@ public class GameStuff extends Stuff {
     private DelayedRemovalArray<Citizen> citizens;
     private Player player;
     private Sprited actionIcon;
-    private FoodInfo foodInfo;
     private MainBuildingMenu mainBuildingMenu;
     private IconedSpritedText tutorialWidget;
     private SpritedText tip;
@@ -80,8 +78,6 @@ public class GameStuff extends Stuff {
 
         actionIcon = new Sprited(assets.getActionIcon());
         actionIcon.setSize(ACTION_ICON_WIDTH, ACTION_ICON_HEIGHT);
-
-        foodInfo = new FoodInfo(assets.getMeatIcon(), assets.getPixelFont());
 
         mainBuildingMenu = new MainBuildingMenu(assets, sharedAssets);
 
@@ -191,10 +187,6 @@ public class GameStuff extends Stuff {
 
     public Sprited getActionIcon() {
         return actionIcon;
-    }
-
-    public FoodInfo getFoodInfo() {
-        return foodInfo;
     }
 
     public MainBuildingMenu getMainBuildingMenu() {

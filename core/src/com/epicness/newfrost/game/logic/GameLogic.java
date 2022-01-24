@@ -41,7 +41,6 @@ public class GameLogic extends Logic {
     private final DialogueHandler dialogueHandler;
     private final EventHandler eventHandler;
     private final ExpeditionHandler expeditionHandler;
-    private final FoodHandler foodHandler;
     private final GameInputHandler gameInputHandler;
     private final GameOverHandler gameOverHandler;
     private final HighlightHandler highlightHandler;
@@ -70,7 +69,6 @@ public class GameLogic extends Logic {
         dialogueHandler = new DialogueHandler(); // todo
         eventHandler = new EventHandler();
         expeditionHandler = new ExpeditionHandler();
-        foodHandler = new FoodHandler();
         gameInputHandler = new GameInputHandler();
         gameOverHandler = new GameOverHandler();
         highlightHandler = new HighlightHandler();
@@ -178,7 +176,6 @@ public class GameLogic extends Logic {
         dayHandler.setStuff(gameStuff);
         eventHandler.setStuff(gameStuff);
         expeditionHandler.setStuff(gameStuff);
-        foodHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(stuff);
         gameOverHandler.setStuff(gameStuff);
         highlightHandler.setStuff(gameStuff);
@@ -188,6 +185,10 @@ public class GameLogic extends Logic {
     }
 
     // Buildings
+    public CookhouseHandler getCookhouseHandler() {
+        return cookhouseHandler;
+    }
+
     public WarehouseHandler getWarehouseHandler() {
         return warehouseHandler;
     }
@@ -207,10 +208,6 @@ public class GameLogic extends Logic {
 
     public ExpeditionHandler getExpeditionHandler() {
         return expeditionHandler;
-    }
-
-    public FoodHandler getFoodHandler() {
-        return foodHandler;
     }
 
     public GameOverHandler getGameOverHandler() {
