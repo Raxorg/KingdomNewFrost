@@ -11,7 +11,7 @@ import static com.badlogic.gdx.Input.Keys.S;
 public class GameInputHandler extends InputHandler {
 
     @Override
-    public void mouseMoved(float x, float y) {
+    public void mouseMovedDynamic(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
 
         logic.getHighlightHandler().mouseMoved(x, y);
