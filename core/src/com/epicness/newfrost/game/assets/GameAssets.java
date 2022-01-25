@@ -50,6 +50,13 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_CITIZEN_4
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_CITIZEN_5_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_CITIZEN_6_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_CITIZEN_7_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_EXPLORER_1_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_EXPLORER_2_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_EXPLORER_3_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_EXPLORER_4_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_EXPLORER_5_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_EXPLORER_6_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_EXPLORER_7_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_GOVERNOR_0_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_GOVERNOR_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.WALKING_GOVERNOR_2_PATH;
@@ -77,6 +84,8 @@ public class GameAssets extends Assets {
     private Sprite walkingCitizen0, walkingCitizen1, walkingCitizen2, walkingCitizen3, walkingCitizen4,
             walkingCitizen5, walkingCitizen6, walkingCitizen7;
     private Sprite dyingCitizen0, dyingCitizen1, dyingCitizen2, dyingCitizen3;
+    private Sprite walkingExplorer1, walkingExplorer2, walkingExplorer3, walkingExplorer4,
+            walkingExplorer5, walkingExplorer6, walkingExplorer7;
     private Sprite idleGovernor0, idleGovernor1;
     private Sprite walkingGovernor0, walkingGovernor1, walkingGovernor2, walkingGovernor3, walkingGovernor4,
             walkingGovernor5, walkingGovernor6, walkingGovernor7, walkingGovernor8;
@@ -116,6 +125,14 @@ public class GameAssets extends Assets {
         loadTexture(DYING_CITIZEN_1_PATH);
         loadTexture(DYING_CITIZEN_2_PATH);
         loadTexture(DYING_CITIZEN_3_PATH);
+
+        loadTexture(WALKING_EXPLORER_1_PATH);
+        loadTexture(WALKING_EXPLORER_2_PATH);
+        loadTexture(WALKING_EXPLORER_3_PATH);
+        loadTexture(WALKING_EXPLORER_4_PATH);
+        loadTexture(WALKING_EXPLORER_5_PATH);
+        loadTexture(WALKING_EXPLORER_6_PATH);
+        loadTexture(WALKING_EXPLORER_7_PATH);
 
         loadTexture(IDLE_GOVERNOR_0_PATH);
         loadTexture(IDLE_GOVERNOR_1_PATH);
@@ -196,6 +213,14 @@ public class GameAssets extends Assets {
         dyingCitizen1 = new Sprite(getTexture(DYING_CITIZEN_1_PATH));
         dyingCitizen2 = new Sprite(getTexture(DYING_CITIZEN_2_PATH));
         dyingCitizen3 = new Sprite(getTexture(DYING_CITIZEN_3_PATH));
+
+        walkingExplorer1 = new Sprite(getTexture(WALKING_EXPLORER_1_PATH));
+        walkingExplorer2 = new Sprite(getTexture(WALKING_EXPLORER_2_PATH));
+        walkingExplorer3 = new Sprite(getTexture(WALKING_EXPLORER_3_PATH));
+        walkingExplorer4 = new Sprite(getTexture(WALKING_EXPLORER_4_PATH));
+        walkingExplorer5 = new Sprite(getTexture(WALKING_EXPLORER_5_PATH));
+        walkingExplorer6 = new Sprite(getTexture(WALKING_EXPLORER_6_PATH));
+        walkingExplorer7 = new Sprite(getTexture(WALKING_EXPLORER_7_PATH));
 
         idleGovernor0 = new Sprite(getTexture(IDLE_GOVERNOR_0_PATH));
         idleGovernor1 = new Sprite(getTexture(IDLE_GOVERNOR_1_PATH));
@@ -316,6 +341,34 @@ public class GameAssets extends Assets {
 
     public Sprite getDyingCitizen3() {
         return dyingCitizen3;
+    }
+
+    public Sprite getWalkingExplorer1() {
+        return walkingExplorer1;
+    }
+
+    public Sprite getWalkingExplorer2() {
+        return walkingExplorer2;
+    }
+
+    public Sprite getWalkingExplorer3() {
+        return walkingExplorer3;
+    }
+
+    public Sprite getWalkingExplorer4() {
+        return walkingExplorer4;
+    }
+
+    public Sprite getWalkingExplorer5() {
+        return walkingExplorer5;
+    }
+
+    public Sprite getWalkingExplorer6() {
+        return walkingExplorer6;
+    }
+
+    public Sprite getWalkingExplorer7() {
+        return walkingExplorer7;
     }
 
     public Sprite getIdleGovernor0() {

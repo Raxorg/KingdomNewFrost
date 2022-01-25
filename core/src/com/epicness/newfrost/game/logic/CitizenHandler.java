@@ -1,12 +1,12 @@
 package com.epicness.newfrost.game.logic;
 
+import static com.epicness.newfrost.game.GameConstants.STARTING_CITIZENS;
+
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.dialogues.DialogueStorage;
 import com.epicness.newfrost.game.stuff.people.Citizen;
-
-import static com.epicness.newfrost.game.GameConstants.STARTING_CITIZENS;
 
 public class CitizenHandler {
 
@@ -22,6 +22,7 @@ public class CitizenHandler {
             Citizen citizen = new Citizen(assets, dialogueStorage.getRandomDialogue());
             citizens.add(citizen);
         }
+        citizens.sort((citizen1, citizen2) -> citizen1.getY() > citizen2.getY() ? -1 : 0);
     }
 
     // Structure

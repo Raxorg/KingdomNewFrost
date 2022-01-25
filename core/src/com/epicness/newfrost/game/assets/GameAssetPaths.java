@@ -20,6 +20,14 @@ public class GameAssetPaths {
     public static final String DYING_CITIZEN_2_PATH = "newfrost/images/citizen/dying/dying2.png";
     public static final String DYING_CITIZEN_3_PATH = "newfrost/images/citizen/dying/dying3.png";
 
+    public static final String WALKING_EXPLORER_1_PATH = "newfrost/images/citizen/walkingExplorer/walkingExplorer1.png";
+    public static final String WALKING_EXPLORER_2_PATH = "newfrost/images/citizen/walkingExplorer/walkingExplorer2.png";
+    public static final String WALKING_EXPLORER_3_PATH = "newfrost/images/citizen/walkingExplorer/walkingExplorer3.png";
+    public static final String WALKING_EXPLORER_4_PATH = "newfrost/images/citizen/walkingExplorer/walkingExplorer4.png";
+    public static final String WALKING_EXPLORER_5_PATH = "newfrost/images/citizen/walkingExplorer/walkingExplorer5.png";
+    public static final String WALKING_EXPLORER_6_PATH = "newfrost/images/citizen/walkingExplorer/walkingExplorer6.png";
+    public static final String WALKING_EXPLORER_7_PATH = "newfrost/images/citizen/walkingExplorer/walkingExplorer7.png";
+
     public static final String IDLE_GOVERNOR_0_PATH = "newfrost/images/governor/idle/idle0.png";
     public static final String IDLE_GOVERNOR_1_PATH = "newfrost/images/governor/idle/idle1.png";
 

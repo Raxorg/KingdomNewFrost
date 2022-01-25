@@ -1,5 +1,13 @@
 package com.epicness.newfrost.game.stuff.people;
 
+import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.CITIZEN_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.CITIZEN_STARTING_TEMPERATURE;
+import static com.epicness.newfrost.game.GameConstants.CITIZEN_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
+import static com.epicness.newfrost.game.enums.CitizenActivity.IDLE;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,35 +18,28 @@ import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.enums.CitizenActivity;
 import com.epicness.newfrost.game.stuff.dialogues.Dialogue;
 
-import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.newfrost.game.GameConstants.CITIZEN_HEIGHT;
-import static com.epicness.newfrost.game.GameConstants.CITIZEN_STARTING_TEMPERATURE;
-import static com.epicness.newfrost.game.GameConstants.CITIZEN_WIDTH;
-import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
-import static com.epicness.newfrost.game.enums.CitizenActivity.IDLE;
-
 public class Citizen {
 
-    private final Animation<Sprited> idleAnimation, walkingAnimation, dyingAnimation;
+    private final Animation<Sprited> idle, walking, dying, walkingExplorer;
     private float animationTime;
     private CitizenActivity activity;
     private int temperature, hunger;
     private float activityTime, xBeforeActivity;
     private final Dialogue dialogue;
+    private boolean explorer;
 
     public Citizen(GameAssets assets, Dialogue dialogue) {
-        idleAnimation = new Animation<>(
+        idle = new Animation<>(
                 0.75f,
                 new Sprited(assets.getIdleCitizen0()),
                 new Sprited(assets.getIdleCitizen1())
         );
-        for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
-            idleAnimation.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
+        for (int i = 0; i < idle.getKeyFrames().length; i++) {
+            idle.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
         }
-        idleAnimation.setPlayMode(LOOP);
+        idle.setPlayMode(LOOP);
 
-        walkingAnimation = new Animation<>(
+        walking = new Animation<>(
                 0.1f,
                 new Sprited(assets.getWalkingCitizen0()),
                 new Sprited(assets.getWalkingCitizen1()),
@@ -49,21 +50,36 @@ public class Citizen {
                 new Sprited(assets.getWalkingCitizen6()),
                 new Sprited(assets.getWalkingCitizen7())
         );
-        for (int i = 0; i < walkingAnimation.getKeyFrames().length; i++) {
-            walkingAnimation.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
+        for (int i = 0; i < walking.getKeyFrames().length; i++) {
+            walking.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
         }
-        walkingAnimation.setPlayMode(LOOP);
+        walking.setPlayMode(LOOP);
 
-        dyingAnimation = new Animation<>(
+        dying = new Animation<>(
                 0.35f,
                 new Sprited(assets.getDyingCitizen0()),
                 new Sprited(assets.getDyingCitizen1()),
                 new Sprited(assets.getDyingCitizen2()),
                 new Sprited(assets.getDyingCitizen3())
         );
-        for (int i = 0; i < dyingAnimation.getKeyFrames().length; i++) {
-            dyingAnimation.getKeyFrames()[i].setSize(CITIZEN_HEIGHT, CITIZEN_HEIGHT);
+        for (int i = 0; i < dying.getKeyFrames().length; i++) {
+            dying.getKeyFrames()[i].setSize(CITIZEN_HEIGHT, CITIZEN_HEIGHT);
         }
+
+        walkingExplorer = new Animation<>(
+                0.1f,
+                new Sprited(assets.getWalkingExplorer1()),
+                new Sprited(assets.getWalkingExplorer2()),
+                new Sprited(assets.getWalkingExplorer3()),
+                new Sprited(assets.getWalkingExplorer4()),
+                new Sprited(assets.getWalkingExplorer5()),
+                new Sprited(assets.getWalkingExplorer6()),
+                new Sprited(assets.getWalkingExplorer7())
+        );
+        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
+            walkingExplorer.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
+        }
+        walkingExplorer.setPlayMode(LOOP);
 
         setX(MathUtils.random(CAMERA_WIDTH - CITIZEN_HEIGHT));
         setY(GROUND_Y - MathUtils.random(10f, 50f));
@@ -85,104 +101,132 @@ public class Citizen {
         switch (activity) {
             case IDLE:
             case EATING:
-                idleAnimation.getKeyFrame(animationTime).draw(spriteBatch);
+                if (explorer) {
+                    walkingExplorer.getKeyFrame(0f).draw(spriteBatch);
+                } else {
+                    idle.getKeyFrame(animationTime).draw(spriteBatch);
+                }
                 break;
             case MOVING_RANDOMLY:
             case GOING_TO_EAT:
             case RETURNING_FROM_EATING:
             case GOING_TO_EXPEDITION:
             case RETURNING_FROM_EXPEDITION:
-                walkingAnimation.getKeyFrame(animationTime).draw(spriteBatch);
+                if (explorer) {
+                    walkingExplorer.getKeyFrame(animationTime).draw(spriteBatch);
+                } else {
+                    walking.getKeyFrame(animationTime).draw(spriteBatch);
+                }
                 break;
             case DYING:
-                dyingAnimation.getKeyFrame(animationTime).draw(spriteBatch);
+                dying.getKeyFrame(animationTime).draw(spriteBatch);
                 break;
         }
     }
 
     public void drawDebug(ShapeRenderer shapeRenderer) {
-        Sprited sprited = idleAnimation.getKeyFrame(0f);
+        Sprited sprited = idle.getKeyFrame(0f);
         shapeRenderer.rect(sprited.getX(), sprited.getY(), sprited.getWidth(), sprited.getHeight());
     }
 
     // Sprited
     public boolean contains(float x, float y) {
-        Sprited sprited = idleAnimation.getKeyFrame(0f);
+        Sprited sprited = idle.getKeyFrame(0f);
         return sprited.contains(x, y);
     }
 
     public float getX() {
-        Sprited sprited = idleAnimation.getKeyFrame(0f);
+        Sprited sprited = idle.getKeyFrame(0f);
         return sprited.getX();
     }
 
     public void setX(float x) {
-        for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
-            idleAnimation.getKeyFrames()[i].setX(x);
+        for (int i = 0; i < idle.getKeyFrames().length; i++) {
+            idle.getKeyFrames()[i].setX(x);
         }
-        for (int i = 0; i < walkingAnimation.getKeyFrames().length; i++) {
-            walkingAnimation.getKeyFrames()[i].setX(x);
+        for (int i = 0; i < walking.getKeyFrames().length; i++) {
+            walking.getKeyFrames()[i].setX(x);
         }
-        for (int i = 0; i < dyingAnimation.getKeyFrames().length; i++) {
-            dyingAnimation.getKeyFrames()[i].setX(x);
+        for (int i = 0; i < dying.getKeyFrames().length; i++) {
+            dying.getKeyFrames()[i].setX(x);
+        }
+        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
+            walkingExplorer.getKeyFrames()[i].setX(x);
         }
     }
 
+    public float getY() {
+        Sprited sprited = idle.getKeyFrame(0f);
+        return sprited.getY();
+    }
+
     private void setY(float y) {
-        for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
-            idleAnimation.getKeyFrames()[i].setY(y);
+        for (int i = 0; i < idle.getKeyFrames().length; i++) {
+            idle.getKeyFrames()[i].setY(y);
         }
-        for (int i = 0; i < walkingAnimation.getKeyFrames().length; i++) {
-            walkingAnimation.getKeyFrames()[i].setY(y);
+        for (int i = 0; i < walking.getKeyFrames().length; i++) {
+            walking.getKeyFrames()[i].setY(y);
         }
-        for (int i = 0; i < dyingAnimation.getKeyFrames().length; i++) {
-            dyingAnimation.getKeyFrames()[i].setY(y);
+        for (int i = 0; i < dying.getKeyFrames().length; i++) {
+            dying.getKeyFrames()[i].setY(y);
+        }
+        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
+            walkingExplorer.getKeyFrames()[i].setY(y);
         }
     }
 
     public float getCenterX() {
-        Sprited sprited = idleAnimation.getKeyFrame(0f);
+        Sprited sprited = idle.getKeyFrame(0f);
         return sprited.getX() + sprited.getWidth() / 2f;
     }
 
     public void translateX(float amount) {
-        for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
-            idleAnimation.getKeyFrames()[i].translateX(amount);
+        for (int i = 0; i < idle.getKeyFrames().length; i++) {
+            idle.getKeyFrames()[i].translateX(amount);
         }
-        for (int i = 0; i < walkingAnimation.getKeyFrames().length; i++) {
-            walkingAnimation.getKeyFrames()[i].translateX(amount);
+        for (int i = 0; i < walking.getKeyFrames().length; i++) {
+            walking.getKeyFrames()[i].translateX(amount);
         }
-        for (int i = 0; i < dyingAnimation.getKeyFrames().length; i++) {
-            dyingAnimation.getKeyFrames()[i].translateX(amount);
+        for (int i = 0; i < dying.getKeyFrames().length; i++) {
+            dying.getKeyFrames()[i].translateX(amount);
+        }
+        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
+            walkingExplorer.getKeyFrames()[i].translateX(amount);
         }
     }
 
     public boolean isFacingLeft() {
-        Sprited sprited = idleAnimation.getKeyFrame(0f);
+        Sprited sprited = idle.getKeyFrame(0f);
         return sprited.isFlipX();
     }
 
     public void setFacingLeft(boolean facingLeft) {
-        for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
-            idleAnimation.getKeyFrames()[i].setFlip(facingLeft, false);
+        for (int i = 0; i < idle.getKeyFrames().length; i++) {
+            idle.getKeyFrames()[i].setFlip(facingLeft, false);
         }
-        for (int i = 0; i < walkingAnimation.getKeyFrames().length; i++) {
-            walkingAnimation.getKeyFrames()[i].setFlip(facingLeft, false);
+        for (int i = 0; i < walking.getKeyFrames().length; i++) {
+            walking.getKeyFrames()[i].setFlip(facingLeft, false);
         }
-        for (int i = 0; i < dyingAnimation.getKeyFrames().length; i++) {
-            dyingAnimation.getKeyFrames()[i].setFlip(facingLeft, false);
+        for (int i = 0; i < dying.getKeyFrames().length; i++) {
+            dying.getKeyFrames()[i].setFlip(facingLeft, false);
+        }
+        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
+            walkingExplorer.getKeyFrames()[i].setFlip(facingLeft, false);
         }
     }
 
     public void setColor(Color color) {
-        for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
-            idleAnimation.getKeyFrames()[i].setColor(color);
+        for (int i = 0; i < idle.getKeyFrames().length; i++) {
+            idle.getKeyFrames()[i].setColor(color);
         }
-        for (int i = 0; i < walkingAnimation.getKeyFrames().length; i++) {
-            walkingAnimation.getKeyFrames()[i].setColor(color);
+        for (int i = 0; i < walking.getKeyFrames().length; i++) {
+            walking.getKeyFrames()[i].setColor(color);
         }
-        for (int i = 0; i < dyingAnimation.getKeyFrames().length; i++) {
-            dyingAnimation.getKeyFrames()[i].setColor(color);
+        for (int i = 0; i < dying.getKeyFrames().length; i++) {
+            dying.getKeyFrames()[i].setColor(color);
+        }
+        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
+            walkingExplorer.getKeyFrames()[i].setColor(color);
         }
     }
 
@@ -237,5 +281,13 @@ public class Citizen {
 
     public Dialogue getDialogue() {
         return dialogue;
+    }
+
+    public boolean isExplorer() {
+        return explorer;
+    }
+
+    public void setExplorer(boolean explorer) {
+        this.explorer = explorer;
     }
 }
