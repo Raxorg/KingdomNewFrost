@@ -79,8 +79,20 @@ public class GameConstants {
     public static final float WAREHOUSE_LOG_HEAD_SIZE = WAREHOUSE_LOG_WIDTH * 0.46f;
     public static final float WAREHOUSE_LOG_PILE_WIDTH = WAREHOUSE_LOG_HEAD_SIZE * 3 + WAREHOUSE_LOG_WIDTH;
     public static final int WAREHOUSE_MAX_LOGS = 50;
+    // Explorarium
+    public static final int EXPLORARIUM_INDEX = 4;
+    public static final float EXPLORARIUM_HEIGHT = CAMERA_HEIGHT * 0.75f;
+    public static final float EXPLORARIUM_WIDTH = EXPLORARIUM_HEIGHT * 0.81f;
+    public static final float EXPLORARIUM_X = WAREHOUSE_X + WAREHOUSE_WIDTH + 25f;
+    public static final float EXPLORARIUM_Y = GROUND_Y;
+    // Explorarium backpacks
+    public static final float EXPLORARIUM_BACKPACK_STARTING_X = EXPLORARIUM_X + EXPLORARIUM_WIDTH * 0.4f;
+    public static final float EXPLORARIUM_BACKPACK_STARTING_Y = EXPLORARIUM_Y + EXPLORARIUM_HEIGHT * 0.08f;
+    public static final float EXPLORARIUM_BACKPACK_HEIGHT = EXPLORARIUM_HEIGHT * 0.11f;
+    public static final float EXPLORARIUM_BACKPACK_WIDTH = EXPLORARIUM_WIDTH * 0.11f;
+    public static final float EXPLORARIUM_BACKPACK_SPACING = EXPLORARIUM_BACKPACK_WIDTH * 0.5f;
     // Cookhouse
-    public static final int COOKHOUSE_INDEX = 4;
+    public static final int COOKHOUSE_INDEX = 5;
     public static final float COOKHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float COOKHOUSE_WIDTH = COOKHOUSE_HEIGHT * (4f / 3f);
     public static final float COOKHOUSE_X = TENT2_X - COOKHOUSE_WIDTH - 25f;

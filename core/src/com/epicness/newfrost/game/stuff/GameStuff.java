@@ -31,6 +31,7 @@ import com.epicness.fundamentals.stuff.Text;
 import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.stuff.buildings.Building;
 import com.epicness.newfrost.game.stuff.buildings.Cookhouse;
+import com.epicness.newfrost.game.stuff.buildings.Explorarium;
 import com.epicness.newfrost.game.stuff.buildings.MainBuilding;
 import com.epicness.newfrost.game.stuff.buildings.Tent;
 import com.epicness.newfrost.game.stuff.buildings.Warehouse;
@@ -152,6 +153,9 @@ public class GameStuff extends Stuff {
 
         Warehouse warehouse = new Warehouse(assets.getWarehouseBack(), assets.getWarehouseFront());
         buildings.add(warehouse);
+
+        Explorarium explorarium = new Explorarium(assets.getExplorarium());
+        buildings.add(explorarium);
 
         Cookhouse cookhouse = new Cookhouse(assets.getCookhouse());
         buildings.add(cookhouse);

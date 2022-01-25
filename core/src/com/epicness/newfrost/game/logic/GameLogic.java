@@ -16,6 +16,7 @@ import com.epicness.fundamentals.logic.behaviors.ParallaxBehavior;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.logic.buildings.CookhouseHandler;
+import com.epicness.newfrost.game.logic.buildings.ExplorariumHandler;
 import com.epicness.newfrost.game.logic.buildings.WarehouseHandler;
 import com.epicness.newfrost.game.logic.weather.CloudHandler;
 import com.epicness.newfrost.game.logic.weather.RainHandler;
@@ -27,6 +28,7 @@ public class GameLogic extends Logic {
 
     // Buildings
     private final CookhouseHandler cookhouseHandler;
+    private final ExplorariumHandler explorariumHandler;
     private final WarehouseHandler warehouseHandler;
     // Weather
     private final CloudHandler cloudHandler;
@@ -55,6 +57,7 @@ public class GameLogic extends Logic {
         super(sharedLogic);
         // Buildings
         cookhouseHandler = new CookhouseHandler();
+        explorariumHandler = new ExplorariumHandler();
         warehouseHandler = new WarehouseHandler();
         // Weather
         cloudHandler = new CloudHandler();
@@ -81,6 +84,7 @@ public class GameLogic extends Logic {
 
         actionHandler.setLogic(this);
         cameraHandler.setLogic(this);
+        citizenActivityHandler.setLogic(this);
         citizenHungerHandler.setLogic(this);
         dayHandler.setLogic(this);
         expeditionHandler.setLogic(this);
@@ -112,10 +116,10 @@ public class GameLogic extends Logic {
             warehouseHandler.addLogs(1);
         }
         if (Gdx.input.isKeyJustPressed(U)) {
-            cookhouseHandler.addMeats(1);
+            explorariumHandler.addBackpacks(1);
         }
         if (Gdx.input.isKeyJustPressed(I)) {
-            dayHandler.passDay();
+            cookhouseHandler.addMeats(1);
         }
         if (Gdx.input.isKeyJustPressed(O)) {
             dayHandler.passDay();
@@ -140,6 +144,7 @@ public class GameLogic extends Logic {
         GameAssets gameAssets = (GameAssets) assets;
         // Buildings
         cookhouseHandler.setAssets(gameAssets);
+        explorariumHandler.setAssets(gameAssets);
         warehouseHandler.setAssets(gameAssets);
         // Weather
         cloudHandler.setAssets(gameAssets);
@@ -163,6 +168,7 @@ public class GameLogic extends Logic {
         GameStuff gameStuff = (GameStuff) stuff;
         // Buildings
         cookhouseHandler.setStuff(gameStuff);
+        explorariumHandler.setStuff(gameStuff);
         warehouseHandler.setStuff(gameStuff);
         // Weather
         cloudHandler.setStuff(gameStuff);

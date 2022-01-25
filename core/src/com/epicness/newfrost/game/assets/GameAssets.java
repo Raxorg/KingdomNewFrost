@@ -22,6 +22,8 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_0_P
 import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_2_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_3_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.EXPLORARIUM_BACKPACK_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.EXPLORARIUM_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.FROST_SONG_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.GLASS_ICON_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_CITIZEN_0_PATH;
@@ -89,6 +91,7 @@ public class GameAssets extends Assets {
     private Sprite mainBuilding, cook, tent, tentUpgrade;
     private Sprite warehouseBack, warehouseFront, warehouseLog;
     private Sprite cookhouse, cookhouseMeat, cookhouseMeatHook;
+    private Sprite explorarium, explorariumBackpack;
     private Sprite meat;
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
     private Sprite citizen;
@@ -152,6 +155,9 @@ public class GameAssets extends Assets {
         loadTexture(WAREHOUSE_BACK_PATH);
         loadTexture(WAREHOUSE_FRONT_PATH);
         loadTexture(WAREHOUSE_LOG_PATH);
+
+        loadTexture(EXPLORARIUM_PATH);
+        loadTexture(EXPLORARIUM_BACKPACK_PATH);
 
         loadTexture(COOKHOUSE_PATH);
         loadTexture(COOKHOUSE_MEAT_PATH);
@@ -233,6 +239,9 @@ public class GameAssets extends Assets {
         warehouseBack = new Sprite(getTexture(WAREHOUSE_BACK_PATH));
         warehouseFront = new Sprite(getTexture(WAREHOUSE_FRONT_PATH));
         warehouseLog = new Sprite(getTexture(WAREHOUSE_LOG_PATH));
+
+        explorarium = new Sprite(getTexture(EXPLORARIUM_PATH));
+        explorariumBackpack = new Sprite(getTexture(EXPLORARIUM_BACKPACK_PATH));
 
         cookhouse = new Sprite(getTexture(COOKHOUSE_PATH));
         cookhouseMeat = new Sprite(getTexture(COOKHOUSE_MEAT_PATH));
@@ -442,6 +451,14 @@ public class GameAssets extends Assets {
 
     public Sprite getWarehouseLog() {
         return warehouseLog;
+    }
+
+    public Sprite getExplorarium() {
+        return explorarium;
+    }
+
+    public Sprite getExplorariumBackpack() {
+        return explorariumBackpack;
     }
 
     public Sprite getCookhouse() {

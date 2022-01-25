@@ -6,5 +6,6 @@ public enum BuildingType {
     TENT,
     MEDICAL_POST,
     WAREHOUSE,
+    EXPLORARIUM,
     COOKHOUSE
 }
