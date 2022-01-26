@@ -40,3 +40,5 @@
    boolean reportFixture(long);
    float   reportRayFixture(long, float, float, float, float, float);
 }
+
+-optimizations !code/simplification/string
