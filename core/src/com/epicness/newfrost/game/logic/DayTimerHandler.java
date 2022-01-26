@@ -1,27 +1,28 @@
 package com.epicness.newfrost.game.logic;
 
+import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.Text;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
 import static com.epicness.newfrost.game.GameConstants.DAY_DURATION;
 
-public class DayHandler {
+public class DayTimerHandler {
 
+    // Structure
+    private SharedLogic sharedLogic;
     private GameLogic logic;
     private GameStuff stuff;
     // Logic
     private float time;
-    private boolean paused;
 
     public void init() {
         time = 0f;
-        paused = false;
         stuff.getDay().setText("DAY 1");
         stuff.getDayTimer().setText(DAY_DURATION + "");
     }
 
     public void update(float delta) {
-        if (paused) {
+        if (sharedLogic.getPauseHandler().isPaused()) {
             return;
         }
         time += delta;
@@ -44,11 +45,11 @@ public class DayHandler {
         logic.getCitizenHungerHandler().addHunger();
     }
 
-    public void setPaused(boolean paused) {
-        this.paused = paused;
+    // Structure
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
     }
 
-    // Structure
     public void setLogic(GameLogic logic) {
         this.logic = logic;
     }

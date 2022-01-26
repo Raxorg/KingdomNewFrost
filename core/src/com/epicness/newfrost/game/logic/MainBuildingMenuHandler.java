@@ -1,12 +1,5 @@
 package com.epicness.newfrost.game.logic;
 
-import com.badlogic.gdx.graphics.Color;
-import com.epicness.newfrost.game.stuff.GameStuff;
-import com.epicness.newfrost.game.stuff.mainbuildingmenu.ActionPanel;
-import com.epicness.newfrost.game.stuff.mainbuildingmenu.MainBuildingMenu;
-import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.TechTree;
-import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.Technology;
-
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
 import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_X;
@@ -17,8 +10,18 @@ import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_ACTIONS_PAN
 import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_LAW_TREE;
 import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_TECH_TREE;
 
+import com.badlogic.gdx.graphics.Color;
+import com.epicness.fundamentals.logic.SharedLogic;
+import com.epicness.newfrost.game.stuff.GameStuff;
+import com.epicness.newfrost.game.stuff.mainbuildingmenu.ActionPanel;
+import com.epicness.newfrost.game.stuff.mainbuildingmenu.MainBuildingMenu;
+import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.TechTree;
+import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.Technology;
+
 public class MainBuildingMenuHandler {
 
+    // Structure
+    private SharedLogic sharedLogic;
     private GameLogic logic;
     private GameStuff stuff;
     // Logic
@@ -30,7 +33,7 @@ public class MainBuildingMenuHandler {
         menu.setActionPanelPosition(HIDDEN_X, HIDDEN_Y);
         menu.setTechTreePosition(HIDDEN_X, HIDDEN_Y);
         menu.setLawTreePosition(HIDDEN_X, HIDDEN_Y);
-        logic.getDayHandler().setPaused(false);
+        sharedLogic.getPauseHandler().setPaused(false);
     }
 
     public void showMenu() {
@@ -62,7 +65,7 @@ public class MainBuildingMenuHandler {
                 menu.setLawTabColor(Color.RED.cpy().lerp(Color.BLACK, 0.3f));
                 break;
         }
-        logic.getDayHandler().setPaused(true);
+        sharedLogic.getPauseHandler().setPaused(true);
     }
 
     public void mouseMoved(float x, float y) {
@@ -180,6 +183,10 @@ public class MainBuildingMenuHandler {
     }
 
     // Structure
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
+    }
+
     public void setLogic(GameLogic logic) {
         this.logic = logic;
     }

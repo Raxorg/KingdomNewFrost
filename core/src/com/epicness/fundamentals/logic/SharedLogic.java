@@ -7,6 +7,7 @@ public class SharedLogic {
 
     private final AssetLoader assetLoader;
     private final BackgroundHandler backgroundHandler;
+    private final PauseHandler pauseHandler;
     private final PreferencesHandler preferencesHandler;
     private final TransitionHandler transitionHandler;
     private final Fader fader;
@@ -14,6 +15,7 @@ public class SharedLogic {
     public SharedLogic() {
         assetLoader = new AssetLoader();
         backgroundHandler = new BackgroundHandler();
+        pauseHandler = new PauseHandler();
         preferencesHandler = new PreferencesHandler();
         transitionHandler = new TransitionHandler();
         fader = new Fader();
@@ -33,6 +35,10 @@ public class SharedLogic {
 
     public BackgroundHandler getBackgroundHandler() {
         return backgroundHandler;
+    }
+
+    public PauseHandler getPauseHandler() {
+        return pauseHandler;
     }
 
     public PreferencesHandler getPreferencesHandler() {

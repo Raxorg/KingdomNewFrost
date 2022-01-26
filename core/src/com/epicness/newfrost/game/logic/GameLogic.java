@@ -39,7 +39,7 @@ public class GameLogic extends Logic {
     private final CitizenActivityHandler citizenActivityHandler;
     private final CitizenHandler citizenHandler;
     private final CitizenHungerHandler citizenHungerHandler;
-    private final DayHandler dayHandler;
+    private final DayTimerHandler dayTimerHandler;
     private final DialogueHandler dialogueHandler;
     private final EventHandler eventHandler;
     private final ExpeditionHandler expeditionHandler;
@@ -68,7 +68,7 @@ public class GameLogic extends Logic {
         citizenActivityHandler = new CitizenActivityHandler();
         citizenHandler = new CitizenHandler();
         citizenHungerHandler = new CitizenHungerHandler();
-        dayHandler = new DayHandler();
+        dayTimerHandler = new DayTimerHandler();
         dialogueHandler = new DialogueHandler(); // todo
         eventHandler = new EventHandler();
         expeditionHandler = new ExpeditionHandler();
@@ -81,16 +81,19 @@ public class GameLogic extends Logic {
         tutorialHandler = new TutorialHandler();
 
         parallaxBehavior = new ParallaxBehavior();
-
+        // Uncategorized
         actionHandler.setLogic(this);
         cameraHandler.setLogic(this);
         citizenActivityHandler.setLogic(this);
         citizenHungerHandler.setLogic(this);
-        dayHandler.setLogic(this);
+        dayTimerHandler.setLogic(this);
         expeditionHandler.setLogic(this);
         gameInputHandler.setLogic(this);
         gameOverHandler.setLogic(this);
         mainBuildingMenuHandler.setLogic(this);
+
+        dayTimerHandler.setSharedLogic(sharedLogic);
+        mainBuildingMenuHandler.setSharedLogic(sharedLogic);
     }
 
     @Override
@@ -99,7 +102,7 @@ public class GameLogic extends Logic {
         actionHandler.hideActionIcon();
         cameraHandler.configureParallax();
         citizenHandler.spawnCitizens();
-        dayHandler.init();
+        dayTimerHandler.init();
         eventHandler.hideEventView();
         expeditionHandler.hideExpeditionInfo();
         introHandler.startMusic();
@@ -122,7 +125,7 @@ public class GameLogic extends Logic {
             cookhouseHandler.addMeats(1);
         }
         if (Gdx.input.isKeyJustPressed(O)) {
-            dayHandler.passDay();
+            dayTimerHandler.passDay();
         }
         // Weather
         cloudHandler.update(delta);
@@ -131,7 +134,7 @@ public class GameLogic extends Logic {
         actionHandler.update();
         cameraHandler.update();
         citizenActivityHandler.update(delta);
-        dayHandler.update(delta);
+        dayTimerHandler.update(delta);
         expeditionHandler.update(delta);
         highlightHandler.update();
         mainBuildingMenuHandler.update();
@@ -179,7 +182,7 @@ public class GameLogic extends Logic {
         citizenActivityHandler.setStuff(gameStuff);
         citizenHandler.setStuff(gameStuff);
         citizenHungerHandler.setStuff(gameStuff);
-        dayHandler.setStuff(gameStuff);
+        dayTimerHandler.setStuff(gameStuff);
         eventHandler.setStuff(gameStuff);
         expeditionHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(stuff);
@@ -208,8 +211,8 @@ public class GameLogic extends Logic {
         return citizenHungerHandler;
     }
 
-    public DayHandler getDayHandler() {
-        return dayHandler;
+    public DayTimerHandler getDayHandler() {
+        return dayTimerHandler;
     }
 
     public ExpeditionHandler getExpeditionHandler() {
