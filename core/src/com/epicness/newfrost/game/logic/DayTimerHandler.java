@@ -22,7 +22,7 @@ public class DayTimerHandler {
     }
 
     public void update(float delta) {
-        if (sharedLogic.getPauseHandler().isPaused()) {
+        if (sharedLogic.getPauseTracker().get()) {
             return;
         }
         time += delta;

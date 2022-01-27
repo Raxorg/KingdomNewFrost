@@ -1,4 +1,4 @@
-package com.epicness.newfrost.game.logic;
+package com.epicness.newfrost.game.logic.people;
 
 import static com.epicness.newfrost.game.GameConstants.PLAYER_MAX_X;
 import static com.epicness.newfrost.game.GameConstants.PLAYER_MIN_X;

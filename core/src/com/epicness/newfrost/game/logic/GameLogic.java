@@ -18,6 +18,10 @@ import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.logic.buildings.CookhouseHandler;
 import com.epicness.newfrost.game.logic.buildings.ExplorariumHandler;
 import com.epicness.newfrost.game.logic.buildings.WarehouseHandler;
+import com.epicness.newfrost.game.logic.people.CitizenActivityHandler;
+import com.epicness.newfrost.game.logic.people.CitizenHandler;
+import com.epicness.newfrost.game.logic.people.CitizenHungerHandler;
+import com.epicness.newfrost.game.logic.people.PlayerMovementHandler;
 import com.epicness.newfrost.game.logic.weather.CloudHandler;
 import com.epicness.newfrost.game.logic.weather.DayNightCycler;
 import com.epicness.newfrost.game.logic.weather.RainHandler;
@@ -31,6 +35,11 @@ public class GameLogic extends Logic {
     private final CookhouseHandler cookhouseHandler;
     private final ExplorariumHandler explorariumHandler;
     private final WarehouseHandler warehouseHandler;
+    // People
+    private final CitizenActivityHandler citizenActivityHandler;
+    private final CitizenHandler citizenHandler;
+    private final CitizenHungerHandler citizenHungerHandler;
+    private final PlayerMovementHandler playerMovementHandler;
     // Weather
     private final CloudHandler cloudHandler;
     private final DayNightCycler dayNightCycler;
@@ -38,9 +47,6 @@ public class GameLogic extends Logic {
     // Uncategorized
     private final ActionHandler actionHandler;
     private final CameraHandler cameraHandler;
-    private final CitizenActivityHandler citizenActivityHandler;
-    private final CitizenHandler citizenHandler;
-    private final CitizenHungerHandler citizenHungerHandler;
     private final DayTimerHandler dayTimerHandler;
     private final DialogueHandler dialogueHandler;
     private final EventHandler eventHandler;
@@ -50,7 +56,6 @@ public class GameLogic extends Logic {
     private final HighlightHandler highlightHandler;
     private final IntroHandler introHandler;
     private final MainBuildingMenuHandler mainBuildingMenuHandler;
-    private final PlayerMovementHandler playerMovementHandler;
     private final TutorialHandler tutorialHandler;
 
     private final ParallaxBehavior parallaxBehavior;
@@ -61,6 +66,11 @@ public class GameLogic extends Logic {
         cookhouseHandler = new CookhouseHandler();
         explorariumHandler = new ExplorariumHandler();
         warehouseHandler = new WarehouseHandler();
+        // People
+        citizenActivityHandler = new CitizenActivityHandler();
+        citizenHandler = new CitizenHandler();
+        citizenHungerHandler = new CitizenHungerHandler();
+        playerMovementHandler = new PlayerMovementHandler();
         // Weather
         cloudHandler = new CloudHandler();
         dayNightCycler = new DayNightCycler();
@@ -68,9 +78,6 @@ public class GameLogic extends Logic {
         // Uncategorized
         actionHandler = new ActionHandler();
         cameraHandler = new CameraHandler();
-        citizenActivityHandler = new CitizenActivityHandler();
-        citizenHandler = new CitizenHandler();
-        citizenHungerHandler = new CitizenHungerHandler();
         dayTimerHandler = new DayTimerHandler();
         dialogueHandler = new DialogueHandler(); // todo
         eventHandler = new EventHandler();
@@ -80,7 +87,6 @@ public class GameLogic extends Logic {
         highlightHandler = new HighlightHandler();
         introHandler = new IntroHandler();
         mainBuildingMenuHandler = new MainBuildingMenuHandler();
-        playerMovementHandler = new PlayerMovementHandler();
         tutorialHandler = new TutorialHandler();
 
         parallaxBehavior = new ParallaxBehavior();
@@ -155,10 +161,11 @@ public class GameLogic extends Logic {
         cookhouseHandler.setAssets(gameAssets);
         explorariumHandler.setAssets(gameAssets);
         warehouseHandler.setAssets(gameAssets);
+        // People
+        citizenHandler.setAssets(gameAssets);
         // Weather
         cloudHandler.setAssets(gameAssets);
         // Uncategorized
-        citizenHandler.setAssets(gameAssets);
         introHandler.setAssets(gameAssets);
     }
 
@@ -179,6 +186,11 @@ public class GameLogic extends Logic {
         cookhouseHandler.setStuff(gameStuff);
         explorariumHandler.setStuff(gameStuff);
         warehouseHandler.setStuff(gameStuff);
+        // People
+        citizenActivityHandler.setStuff(gameStuff);
+        citizenHandler.setStuff(gameStuff);
+        citizenHungerHandler.setStuff(gameStuff);
+        playerMovementHandler.setStuff(gameStuff);
         // Weather
         cloudHandler.setStuff(gameStuff);
         dayNightCycler.setStuff(gameStuff);
@@ -186,9 +198,6 @@ public class GameLogic extends Logic {
         // Uncategorized
         actionHandler.setStuff(gameStuff);
         cameraHandler.setStuff(gameStuff);
-        citizenActivityHandler.setStuff(gameStuff);
-        citizenHandler.setStuff(gameStuff);
-        citizenHungerHandler.setStuff(gameStuff);
         dayTimerHandler.setStuff(gameStuff);
         eventHandler.setStuff(gameStuff);
         expeditionHandler.setStuff(gameStuff);
@@ -196,7 +205,6 @@ public class GameLogic extends Logic {
         gameOverHandler.setStuff(gameStuff);
         highlightHandler.setStuff(gameStuff);
         mainBuildingMenuHandler.setStuff(gameStuff);
-        playerMovementHandler.setStuff(gameStuff);
         tutorialHandler.setStuff(gameStuff);
     }
 
@@ -209,6 +217,15 @@ public class GameLogic extends Logic {
         return warehouseHandler;
     }
 
+    // People
+    public CitizenHungerHandler getCitizenHungerHandler() {
+        return citizenHungerHandler;
+    }
+
+    public PlayerMovementHandler getPlayerMovementHandler() {
+        return playerMovementHandler;
+    }
+
     // Weather
     public DayNightCycler getDayNightCycler() {
         return dayNightCycler;
@@ -217,10 +234,6 @@ public class GameLogic extends Logic {
     // Uncategorized
     public ActionHandler getActionHandler() {
         return actionHandler;
-    }
-
-    public CitizenHungerHandler getCitizenHungerHandler() {
-        return citizenHungerHandler;
     }
 
     public DayTimerHandler getDayHandler() {
@@ -241,10 +254,6 @@ public class GameLogic extends Logic {
 
     public MainBuildingMenuHandler getMainBuildingMenuHandler() {
         return mainBuildingMenuHandler;
-    }
-
-    public PlayerMovementHandler getPlayerMovementHandler() {
-        return playerMovementHandler;
     }
 
     public TutorialHandler getTipHandler() {

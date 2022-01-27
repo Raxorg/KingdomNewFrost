@@ -1,4 +1,4 @@
-package com.epicness.newfrost.game.logic;
+package com.epicness.newfrost.game.logic.people;
 
 import static com.epicness.newfrost.game.GameConstants.CITIZEN_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.CITIZEN_MAX_X;
@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.newfrost.game.logic.GameLogic;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.people.Citizen;
 

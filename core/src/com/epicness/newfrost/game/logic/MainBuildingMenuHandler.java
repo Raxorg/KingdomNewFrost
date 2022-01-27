@@ -33,7 +33,7 @@ public class MainBuildingMenuHandler {
         menu.setActionPanelPosition(HIDDEN_X, HIDDEN_Y);
         menu.setTechTreePosition(HIDDEN_X, HIDDEN_Y);
         menu.setLawTreePosition(HIDDEN_X, HIDDEN_Y);
-        sharedLogic.getPauseHandler().setPaused(false);
+        sharedLogic.getPauseTracker().set(false);
     }
 
     public void showMenu() {
@@ -65,7 +65,7 @@ public class MainBuildingMenuHandler {
                 menu.setLawTabColor(Color.RED.cpy().lerp(Color.BLACK, 0.3f));
                 break;
         }
-        sharedLogic.getPauseHandler().setPaused(true);
+        sharedLogic.getPauseTracker().set(true);
     }
 
     public void mouseMoved(float x, float y) {

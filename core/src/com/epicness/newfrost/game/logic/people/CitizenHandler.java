@@ -1,4 +1,4 @@
-package com.epicness.newfrost.game.logic;
+package com.epicness.newfrost.game.logic.people;
 
 import static com.epicness.newfrost.game.GameConstants.STARTING_CITIZENS;
 

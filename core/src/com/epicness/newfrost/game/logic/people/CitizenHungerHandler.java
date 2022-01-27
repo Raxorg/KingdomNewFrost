@@ -1,6 +1,7 @@
-package com.epicness.newfrost.game.logic;
+package com.epicness.newfrost.game.logic.people;
 
 import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.newfrost.game.logic.GameLogic;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.people.Citizen;
 

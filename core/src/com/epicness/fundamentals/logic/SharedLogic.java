@@ -2,12 +2,13 @@ package com.epicness.fundamentals.logic;
 
 import com.epicness.fundamentals.SharedResources;
 import com.epicness.fundamentals.logic.behaviors.Fader;
+import com.epicness.fundamentals.logic.behaviors.Tracker;
 
 public class SharedLogic {
 
     private final AssetLoader assetLoader;
     private final BackgroundHandler backgroundHandler;
-    private final PauseHandler pauseHandler;
+    private final Tracker<Boolean> pauseTracker;
     private final PreferencesHandler preferencesHandler;
     private final TransitionHandler transitionHandler;
     private final Fader fader;
@@ -15,7 +16,7 @@ public class SharedLogic {
     public SharedLogic() {
         assetLoader = new AssetLoader();
         backgroundHandler = new BackgroundHandler();
-        pauseHandler = new PauseHandler();
+        pauseTracker = new Tracker<>();
         preferencesHandler = new PreferencesHandler();
         transitionHandler = new TransitionHandler();
         fader = new Fader();
@@ -37,8 +38,8 @@ public class SharedLogic {
         return backgroundHandler;
     }
 
-    public PauseHandler getPauseHandler() {
-        return pauseHandler;
+    public Tracker<Boolean> getPauseTracker() {
+        return pauseTracker;
     }
 
     public PreferencesHandler getPreferencesHandler() {
