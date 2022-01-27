@@ -55,6 +55,10 @@ public class HighlightHandler {
         }
     }
 
+    public void updateLastCursorPosition(float cameraOffset) {
+        lastX += cameraOffset;
+    }
+
     // Structure
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;

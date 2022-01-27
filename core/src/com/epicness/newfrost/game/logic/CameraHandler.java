@@ -36,6 +36,7 @@ public class CameraHandler {
         logic.getParallaxBehavior().update(cameraX - lastCameraX);
         camera.position.x = MathUtils.clamp(playerX, MIN_CAMERA_X, MAX_CAMERA_X);
         camera.update();
+        logic.getHighlightHandler().updateLastCursorPosition(cameraX - lastCameraX);
         lastCameraX = cameraX;
     }
 

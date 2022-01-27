@@ -9,6 +9,7 @@ import com.epicness.newfrost.game.stuff.people.Player;
 
 public class PlayerMovementHandler {
 
+    // Structure
     private GameStuff stuff;
 
     public void update(float delta) {
@@ -61,6 +62,7 @@ public class PlayerMovementHandler {
         }
     }
 
+    // Structure
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
     }
