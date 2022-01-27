@@ -1,6 +1,7 @@
 package com.epicness.newfrost.game.logic.buildings;
 
 import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_INDEX;
+import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_MEAT_COLOR;
 import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_MEAT_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_MEAT_SPACING;
 import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_MEAT_STARTING_X;
@@ -30,7 +31,7 @@ public class CookhouseHandler {
             meat.setSize(COOKHOUSE_MEAT_WIDTH, COOKHOUSE_MEAT_HEIGHT);
             meat.setPosition(COOKHOUSE_MEAT_STARTING_X, COOKHOUSE_MEAT_STARTING_Y);
             meat.translateX(meats * COOKHOUSE_MEAT_SPACING);
-            meat.setBackgroundColor(Color.LIGHT_GRAY.cpy().lerp(Color.RED, 0.15f));
+            meat.setBackgroundColor(COOKHOUSE_MEAT_COLOR);
             cookhouseMeats.add(meat);
             meats++;
         }

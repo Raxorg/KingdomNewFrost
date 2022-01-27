@@ -6,6 +6,7 @@ import static com.epicness.newfrost.game.GameConstants.PLAYER_STARTING_X;
 import static com.epicness.newfrost.game.GameConstants.PLAYER_STARTING_Y;
 import static com.epicness.newfrost.game.GameConstants.PLAYER_WIDTH;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -128,6 +129,15 @@ public class Player {
         }
         for (int i = 0; i < walkingAnimation.getKeyFrames().length; i++) {
             walkingAnimation.getKeyFrames()[i].setFlip(facingLeft, false);
+        }
+    }
+
+    public void setColor(Color color) {
+        for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
+            idleAnimation.getKeyFrames()[i].setColor(color);
+        }
+        for (int i = 0; i < walkingAnimation.getKeyFrames().length; i++) {
+            walkingAnimation.getKeyFrames()[i].setColor(color);
         }
     }
 }

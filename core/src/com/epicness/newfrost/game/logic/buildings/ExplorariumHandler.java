@@ -1,5 +1,6 @@
 package com.epicness.newfrost.game.logic.buildings;
 
+import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_BACKPACK_COLOR;
 import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_BACKPACK_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_BACKPACK_SPACING;
 import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_BACKPACK_STARTING_X;
@@ -30,7 +31,7 @@ public class ExplorariumHandler {
             backpack.setSize(EXPLORARIUM_BACKPACK_WIDTH, EXPLORARIUM_BACKPACK_HEIGHT);
             backpack.setPosition(EXPLORARIUM_BACKPACK_STARTING_X, EXPLORARIUM_BACKPACK_STARTING_Y);
             backpack.translateX(backpacks * EXPLORARIUM_BACKPACK_SPACING);
-            backpack.setColor(Color.LIGHT_GRAY.cpy().lerp(Color.FOREST, 0.2f));
+            backpack.setColor(EXPLORARIUM_BACKPACK_COLOR);
             explorariumBackpacks.add(backpack);
             backpacks++;
         }

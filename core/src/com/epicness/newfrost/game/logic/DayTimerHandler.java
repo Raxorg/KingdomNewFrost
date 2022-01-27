@@ -1,10 +1,10 @@
 package com.epicness.newfrost.game.logic;
 
+import static com.epicness.newfrost.game.GameConstants.DAY_DURATION;
+
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.Text;
 import com.epicness.newfrost.game.stuff.GameStuff;
-
-import static com.epicness.newfrost.game.GameConstants.DAY_DURATION;
 
 public class DayTimerHandler {
 
@@ -27,8 +27,9 @@ public class DayTimerHandler {
         }
         time += delta;
         if (time >= 1f) {
-            int timer = Integer.parseInt(stuff.getDayTimer().getText());
-            stuff.getDayTimer().setText(timer - 1 + "");
+            int timer = Integer.parseInt(stuff.getDayTimer().getText()) - 1;
+            stuff.getDayTimer().setText(timer + "");
+            logic.getDayNightCycler().updateColors(timer);
             time = 0f;
             if (timer == 0) {
                 passDay();

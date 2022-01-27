@@ -32,9 +32,6 @@ public class HighlightHandler {
             }
         }
         if (candidates.isEmpty()) {
-            if (lastHighlightedCitizen != null) {
-                lastHighlightedCitizen.setColor(Color.WHITE);
-            }
             return;
         }
         Citizen closest = candidates.first();
@@ -45,10 +42,7 @@ public class HighlightHandler {
                 closest = citizen;
             }
         }
-        if (lastHighlightedCitizen != null) {
-            lastHighlightedCitizen.setColor(Color.WHITE);
-        }
-        closest.setColor(Color.GRAY);
+        closest.setColor(Color.NAVY.cpy().lerp(Color.LIGHT_GRAY, 0.5f));
         lastHighlightedCitizen = closest;
     }
 

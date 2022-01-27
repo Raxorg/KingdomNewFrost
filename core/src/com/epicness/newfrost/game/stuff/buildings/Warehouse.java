@@ -6,6 +6,7 @@ import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_X;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_Y;
 import static com.epicness.newfrost.game.enums.BuildingType.WAREHOUSE;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
@@ -35,6 +36,12 @@ public class Warehouse extends Building {
             warehouseLogs.get(i).draw(spriteBatch);
         }
         foreground.draw(spriteBatch);
+    }
+
+    @Override
+    public void setColor(Color color) {
+        super.setColor(color);
+        foreground.setColor(color);
     }
 
     public DelayedRemovalArray<Sprited> getWarehouseLogs() {

@@ -1,6 +1,7 @@
 package com.epicness.newfrost.game.logic.buildings;
 
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_INDEX;
+import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_COLOR;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_HEAD_SIZE;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_PILE_WIDTH;
@@ -68,7 +69,7 @@ public class WarehouseHandler {
             }
             logX += logPiles * WAREHOUSE_LOG_PILE_WIDTH;
             log.setPosition(logX, logY);
-            log.setColor(Color.GRAY.cpy().lerp(Color.BROWN, 0.25f));
+            log.setColor(WAREHOUSE_LOG_COLOR);
             warehouseLogs.add(log);
             logs++;
             logPiles = logs / 10;

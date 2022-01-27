@@ -6,6 +6,7 @@ import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameRenderer extends Renderer {
+
     @Override
     public void render() {
         GameStuff stuff = (GameStuff) this.stuff;

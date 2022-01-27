@@ -19,6 +19,7 @@ import com.epicness.newfrost.game.logic.buildings.CookhouseHandler;
 import com.epicness.newfrost.game.logic.buildings.ExplorariumHandler;
 import com.epicness.newfrost.game.logic.buildings.WarehouseHandler;
 import com.epicness.newfrost.game.logic.weather.CloudHandler;
+import com.epicness.newfrost.game.logic.weather.DayNightCycler;
 import com.epicness.newfrost.game.logic.weather.RainHandler;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
@@ -32,6 +33,7 @@ public class GameLogic extends Logic {
     private final WarehouseHandler warehouseHandler;
     // Weather
     private final CloudHandler cloudHandler;
+    private final DayNightCycler dayNightCycler;
     private final RainHandler rainHandler;
     // Uncategorized
     private final ActionHandler actionHandler;
@@ -61,6 +63,7 @@ public class GameLogic extends Logic {
         warehouseHandler = new WarehouseHandler();
         // Weather
         cloudHandler = new CloudHandler();
+        dayNightCycler = new DayNightCycler();
         rainHandler = new RainHandler();
         // Uncategorized
         actionHandler = new ActionHandler();
@@ -98,6 +101,8 @@ public class GameLogic extends Logic {
 
     @Override
     public void initialLogic() {
+        // Weather
+        dayNightCycler.initialize();
         // Uncategorized
         actionHandler.hideActionIcon();
         cameraHandler.configureParallax();
@@ -129,6 +134,7 @@ public class GameLogic extends Logic {
         }
         // Weather
         cloudHandler.update(delta);
+        dayNightCycler.applyColors();
         rainHandler.update(delta);
         // Uncategorized
         actionHandler.update();
@@ -175,6 +181,7 @@ public class GameLogic extends Logic {
         warehouseHandler.setStuff(gameStuff);
         // Weather
         cloudHandler.setStuff(gameStuff);
+        dayNightCycler.setStuff(gameStuff);
         rainHandler.setStuff(gameStuff);
         // Uncategorized
         actionHandler.setStuff(gameStuff);
@@ -200,6 +207,11 @@ public class GameLogic extends Logic {
 
     public WarehouseHandler getWarehouseHandler() {
         return warehouseHandler;
+    }
+
+    // Weather
+    public DayNightCycler getDayNightCycler() {
+        return dayNightCycler;
     }
 
     // Uncategorized

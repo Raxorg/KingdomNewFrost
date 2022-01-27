@@ -3,6 +3,8 @@ package com.epicness.newfrost.game;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
+import com.badlogic.gdx.graphics.Color;
+
 public class GameConstants {
 
     // Background
@@ -55,6 +57,11 @@ public class GameConstants {
     public static final float DIALOGUE_HEIGHT = CAMERA_HEIGHT / 2f;
     public static final float DIALOGUE_X = CAMERA_WIDTH / 2f - DIALOGUE_WIDTH / 2f;
     public static final float DIALOGUE_Y = CAMERA_HEIGHT / 2f - DIALOGUE_HEIGHT / 2f;
+    // Night
+    public static final Color NIGHT_SKY_COLOR = Color.BLACK;
+    public static final Color NIGHT_BACKGROUND_COLOR = Color.NAVY.cpy().lerp(Color.DARK_GRAY, 0.5f);
+    public static final Color NIGHT_BUILDING_COLOR = Color.NAVY.cpy().lerp(Color.GRAY, 0.5f);
+    public static final Color NIGHT_PEOPLE_COLOR = Color.NAVY.cpy().lerp(Color.GRAY, 0.75f);
     // Main building
     public static final float MAIN_BUILDING_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float MAIN_BUILDING_WIDTH = MAIN_BUILDING_HEIGHT * 1.5f;
@@ -78,6 +85,7 @@ public class GameConstants {
     public static final float WAREHOUSE_LOG_WIDTH = WAREHOUSE_LOG_HEIGHT * 2.16f;
     public static final float WAREHOUSE_LOG_HEAD_SIZE = WAREHOUSE_LOG_WIDTH * 0.46f;
     public static final float WAREHOUSE_LOG_PILE_WIDTH = WAREHOUSE_LOG_HEAD_SIZE * 3 + WAREHOUSE_LOG_WIDTH;
+    public static final Color WAREHOUSE_LOG_COLOR = Color.GRAY.cpy().lerp(Color.BROWN, 0.25f);
     public static final int WAREHOUSE_MAX_LOGS = 50;
     // Explorarium
     public static final int EXPLORARIUM_INDEX = 4;
@@ -91,6 +99,7 @@ public class GameConstants {
     public static final float EXPLORARIUM_BACKPACK_HEIGHT = EXPLORARIUM_HEIGHT * 0.11f;
     public static final float EXPLORARIUM_BACKPACK_WIDTH = EXPLORARIUM_WIDTH * 0.11f;
     public static final float EXPLORARIUM_BACKPACK_SPACING = EXPLORARIUM_BACKPACK_WIDTH * 0.5f;
+    public static final Color EXPLORARIUM_BACKPACK_COLOR = Color.LIGHT_GRAY.cpy().lerp(Color.FOREST, 0.2f);
     // Cookhouse
     public static final int COOKHOUSE_INDEX = 5;
     public static final float COOKHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
@@ -103,6 +112,7 @@ public class GameConstants {
     public static final float COOKHOUSE_MEAT_HEIGHT = COOKHOUSE_HEIGHT * 0.21f;
     public static final float COOKHOUSE_MEAT_WIDTH = COOKHOUSE_MEAT_HEIGHT * 0.47f;
     public static final float COOKHOUSE_MEAT_SPACING = COOKHOUSE_MEAT_WIDTH * 0.6f;
+    public static final Color COOKHOUSE_MEAT_COLOR = Color.LIGHT_GRAY.cpy().lerp(Color.RED, 0.15f);
     // Food
     public static final float FOOD_ICON_SIZE = 50f;
     public static final float FOOD_INFO_X = MAIN_BUILDING_X + MAIN_BUILDING_WIDTH * 0.75f;

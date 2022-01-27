@@ -1,5 +1,6 @@
 package com.epicness.newfrost.game.stuff.buildings;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -37,6 +38,10 @@ public abstract class Building {
 
     public void flipX() {
         sprited.setFlip(true, false);
+    }
+
+    public void setColor(Color color) {
+        sprited.setColor(color);
     }
 
     public BuildingType getType() {
