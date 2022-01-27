@@ -1,12 +1,12 @@
 package com.epicness.newfrost.game.logic;
 
-import com.epicness.fundamentals.input.InputHandler;
-
 import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.M;
 import static com.badlogic.gdx.Input.Keys.R;
 import static com.badlogic.gdx.Input.Keys.S;
+
+import com.epicness.fundamentals.input.InputHandler;
 
 public class GameInputHandler extends InputHandler {
 
@@ -22,10 +22,14 @@ public class GameInputHandler extends InputHandler {
     public void touchUp(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
 
-        if (logic.getMainBuildingMenuHandler().touchUp(x, y)) {
-            return;
-        }
         logic.getTipHandler().touchUp(x, y);
+    }
+
+    @Override
+    public void touchUpDynamic(float x, float y) {
+        GameLogic logic = (GameLogic) this.logic;
+
+        logic.getMainBuildingMenuHandler().touchUp(x, y);
     }
 
     @Override
