@@ -123,14 +123,14 @@ public class MainBuildingMenuHandler {
 
     }
 
-    public boolean touchUp(float x, float y) {
+    public void touchUp(float x, float y) {
         MainBuildingMenu menu = stuff.getMainBuildingMenu();
         if (menu.getState() == HIDDEN) {
-            return false;
+            return;
         }
         if (!menu.contains(x, y)) {
             hideMenu();
-            return false;
+            return;
         }
         if (menu.getActionsTab().contains(x, y)) {
             menu.setState(SHOWING_ACTIONS_PANEL);
@@ -154,7 +154,6 @@ public class MainBuildingMenuHandler {
             case SHOWING_LAW_TREE:
                 break;
         }
-        return true;
     }
 
     private void touchUpActionPanel(float x, float y) {
