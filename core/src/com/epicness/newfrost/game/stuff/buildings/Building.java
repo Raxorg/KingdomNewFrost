@@ -32,6 +32,10 @@ public abstract class Building {
         return sprited.getY();
     }
 
+    public float getWidth() {
+        return sprited.getWidth();
+    }
+
     public float getHeight() {
         return sprited.getHeight();
     }

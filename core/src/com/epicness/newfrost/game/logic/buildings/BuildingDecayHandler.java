@@ -1,4 +1,4 @@
-package com.epicness.newfrost.game.logic;
+package com.epicness.newfrost.game.logic.buildings;
 
 import com.epicness.newfrost.game.stuff.GameStuff;
 

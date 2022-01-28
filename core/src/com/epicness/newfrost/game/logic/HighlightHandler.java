@@ -11,7 +11,6 @@ public class HighlightHandler {
     private GameStuff stuff;
     // Logic
     float lastX, lastY;
-    private Citizen lastHighlightedCitizen;
     private boolean enabled = true;
 
     public void mouseMoved(float x, float y) {
@@ -43,16 +42,10 @@ public class HighlightHandler {
             }
         }
         closest.setColor(Color.NAVY.cpy().lerp(Color.LIGHT_GRAY, 0.5f));
-        lastHighlightedCitizen = closest;
     }
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-        if (!enabled) {
-            if (lastHighlightedCitizen != null) {
-                lastHighlightedCitizen.setColor(Color.WHITE);
-            }
-        }
     }
 
     public void updateLastCursorPosition(float cameraOffset) {

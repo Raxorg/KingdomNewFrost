@@ -1,18 +1,18 @@
-package com.epicness.newfrost.game.logic;
+package com.epicness.newfrost.game.logic.buildings;
 
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
-import static com.epicness.newfrost.game.GameConstants.MAIN_BUILDING_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.TENT_UPGRADE_COST;
 
 import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.newfrost.game.logic.GameLogic;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.buildings.Building;
 import com.epicness.newfrost.game.stuff.buildings.Tent;
 import com.epicness.newfrost.game.stuff.people.Player;
 
-public class ActionHandler {
+public class BuildingInteractionHandler {
 
     // Structure
     private GameLogic logic;
@@ -33,7 +33,7 @@ public class ActionHandler {
                 continue;
             }
             float distance = Math.abs(building.getCenterX() - player.getCenterX());
-            if (distance <= MAIN_BUILDING_WIDTH / 2f) {
+            if (distance <= building.getWidth() / 2f) {
                 float x = building.getCenterX() - ACTION_ICON_WIDTH / 2f;
                 float y = building.getY() + building.getHeight() * 0.85f;
                 stuff.getActionIcon().setPosition(x, y);

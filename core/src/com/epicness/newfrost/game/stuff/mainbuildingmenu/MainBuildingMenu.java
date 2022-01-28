@@ -27,7 +27,6 @@ public class MainBuildingMenu implements Buttonable {
     private final ActionPanel actionPanel;
     private final TechTree techTree;
     private final LawTree lawTree;
-    private MainMenuState state;
 
     public MainBuildingMenu(GameAssets assets, SharedAssets sharedAssets) {
         background = new Sprited(sharedAssets.getPixel());
@@ -56,8 +55,6 @@ public class MainBuildingMenu implements Buttonable {
         techTree = new TechTree(assets, sharedAssets);
 
         lawTree = new LawTree();
-
-        state = SHOWING_ACTIONS_PANEL;
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -128,13 +125,5 @@ public class MainBuildingMenu implements Buttonable {
 
     public LawTree getLawTree() {
         return lawTree;
-    }
-
-    public MainMenuState getState() {
-        return state;
-    }
-
-    public void setState(MainMenuState state) {
-        this.state = state;
     }
 }

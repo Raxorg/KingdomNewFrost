@@ -11,6 +11,7 @@ import static com.epicness.newfrost.game.GameConstants.TUTORIAL_DIALOGUE_X;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_DIALOGUE_Y;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_WIDGET_SLIDE_DURATION;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_WIDGET_WIDTH;
+import static com.epicness.newfrost.game.enums.Tutorial.CONTROLS;
 
 import com.epicness.fundamentals.stuff.IconedSpritedText;
 import com.epicness.fundamentals.stuff.SpritedText;
@@ -24,12 +25,17 @@ public class TutorialHandler {
     private float time;
     private boolean showingTip, showingTipIcon, slidingIn;
 
-    public void hideTip() {
+    public void init() {
+        hideTip();
+        showTutorialWidget(CONTROLS);
+    }
+
+    private void hideTip() {
         stuff.getTip().setPosition(HIDDEN_X, HIDDEN_Y);
         showingTip = false;
     }
 
-    public void showTip() {
+    private void showTip() {
         stuff.getTip().setPosition(TUTORIAL_DIALOGUE_X, TUTORIAL_DIALOGUE_Y);
         showingTip = true;
         hideTutorialWidget();
