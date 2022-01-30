@@ -8,7 +8,6 @@ import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_BACKPACK_STAR
 import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_BACKPACK_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_INDEX;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.newfrost.game.assets.GameAssets;
@@ -26,7 +25,7 @@ public class ExplorariumHandler {
     public void addBackpacks(int quantity) {
         Explorarium explorarium = (Explorarium) stuff.getBuildings().get(EXPLORARIUM_INDEX);
         DelayedRemovalArray<Sprited> explorariumBackpacks = explorarium.getExplorariumBackpacks();
-        for (int i = 0; i < quantity && backpacks < 10; i++) {
+        for (int i = 0; i < quantity && backpacks < 5; i++) {
             Sprited backpack = new Sprited(assets.getExplorariumBackpack());
             backpack.setSize(EXPLORARIUM_BACKPACK_WIDTH, EXPLORARIUM_BACKPACK_HEIGHT);
             backpack.setPosition(EXPLORARIUM_BACKPACK_STARTING_X, EXPLORARIUM_BACKPACK_STARTING_Y);
