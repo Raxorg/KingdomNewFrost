@@ -2,6 +2,7 @@ package com.epicness.newfrost.game;
 
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.NAVY_GRAY_50;
 
 import com.badlogic.gdx.graphics.Color;
 
@@ -57,11 +58,6 @@ public class GameConstants {
     public static final float DIALOGUE_HEIGHT = CAMERA_HEIGHT / 2f;
     public static final float DIALOGUE_X = CAMERA_WIDTH / 2f - DIALOGUE_WIDTH / 2f;
     public static final float DIALOGUE_Y = CAMERA_HEIGHT / 2f - DIALOGUE_HEIGHT / 2f;
-    // Night
-    public static final Color NIGHT_SKY_COLOR = Color.BLACK;
-    public static final Color NIGHT_BACKGROUND_COLOR = Color.NAVY.cpy().lerp(Color.DARK_GRAY, 0.5f);
-    public static final Color NIGHT_BUILDING_COLOR = Color.NAVY.cpy().lerp(Color.GRAY, 0.5f);
-    public static final Color NIGHT_PEOPLE_COLOR = Color.NAVY.cpy().lerp(Color.GRAY, 0.75f);
     // Main building
     public static final float MAIN_BUILDING_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float MAIN_BUILDING_WIDTH = MAIN_BUILDING_HEIGHT * 1.5f;
@@ -113,6 +109,15 @@ public class GameConstants {
     public static final float COOKHOUSE_MEAT_WIDTH = COOKHOUSE_MEAT_HEIGHT * 0.47f;
     public static final float COOKHOUSE_MEAT_SPACING = COOKHOUSE_MEAT_WIDTH * 0.6f;
     public static final Color COOKHOUSE_MEAT_COLOR = Color.LIGHT_GRAY.cpy().lerp(Color.RED, 0.15f);
+    // Night
+    public static final Color NIGHT_SKY_COLOR = Color.BLACK;
+    public static final Color NIGHT_BACKGROUND_COLOR = Color.NAVY.cpy().lerp(Color.DARK_GRAY, 0.5f);
+    public static final Color NIGHT_BUILDING_COLOR = NAVY_GRAY_50;
+    public static final Color NIGHT_MEAT_COLOR = COOKHOUSE_MEAT_COLOR.cpy().lerp(NAVY_GRAY_50, 0.65f);
+    public static final Color NIGHT_MEAT_HOOK_COLOR = NAVY_GRAY_50;
+    public static final Color NIGHT_LOG_COLOR = WAREHOUSE_LOG_COLOR.cpy().lerp(NAVY_GRAY_50, 0.65f);
+    public static final Color NIGHT_BACKPACK_COLOR = EXPLORARIUM_BACKPACK_COLOR.cpy().lerp(NAVY_GRAY_50, 0.65f);
+    public static final Color NIGHT_PEOPLE_COLOR = Color.NAVY.cpy().lerp(Color.GRAY, 0.75f);
     // Food
     public static final float FOOD_ICON_SIZE = 50f;
     public static final float FOOD_INFO_X = MAIN_BUILDING_X + MAIN_BUILDING_WIDTH * 0.75f;
