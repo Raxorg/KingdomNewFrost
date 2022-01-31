@@ -11,25 +11,34 @@ public class GameOverHandler {
     // Structure
     private GameLogic logic;
     private GameStuff stuff;
-    // Logic
-    private int citizens;
 
-    private void showGameOver() {
-        stuff.getGameOver().setColor(BLACK_CLEAR_25);
-        stuff.getGameOver().setTextColor(Color.WHITE);
-    }
-
-    public void init() {
+    public void hideGameOver() {
         stuff.getGameOver().setColor(Color.CLEAR);
         stuff.getGameOver().setTextColor(Color.CLEAR);
-        citizens = STARTING_CITIZENS;
     }
 
-    public void citizenDied() {
-        citizens--;
-        if (citizens <= 5) {
-            showGameOver();
+    public void lessThan6Citizens() {
+        stuff.getGameOver().setText("WE DID AS YOU ORDERED\nALMOST EVERYONE IS DEAD...\nWE HAD ENOUGH OF YOU");
+        showGameOver();
+    }
+
+    public void day10Ended() {
+        int survivors = logic.getCitizenHandler().getAliveCitizens();
+        int dead = STARTING_CITIZENS - survivors;
+        String gameOverText = "";
+        if (dead > 0) {
+            gameOverText += survivors + " SURVIVED\n" + dead + " DIED\nWE DID WHAT WE COULD...";
+        } else {
+            gameOverText += "EVERYONE UNDER YOUR RULE SURVIVED\nBUT WHAT ABOUT THE PEOPLE STILL OUT THERE...";
         }
+        stuff.getGameOver().setText(gameOverText);
+        showGameOver();
+    }
+
+    private void showGameOver() {
+        stuff.getGameOver().setText(stuff.getGameOver().getText() + "\nR TO RESTART");
+        stuff.getGameOver().setColor(BLACK_CLEAR_25);
+        stuff.getGameOver().setTextColor(Color.WHITE);
     }
 
     public void restart() {

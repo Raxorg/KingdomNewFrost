@@ -112,8 +112,7 @@ public class GameStuff extends Stuff {
 
         rain = new Rain(sharedAssets.getPixel());
 
-        gameOver = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
-        gameOver.setText("GAME OVER\nR TO RESTART");
+        gameOver = new SpritedText(sharedAssets.getPixel(), sharedAssets.getTimesSquare());
         gameOver.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
     }
 

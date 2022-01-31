@@ -41,9 +41,12 @@ public class DayTimerHandler {
         Text dayTimer = stuff.getDayTimer();
         dayTimer.setText(DAY_DURATION + "");
         String[] parts = stuff.getDay().getText().split(" ");
-        int day = Integer.parseInt(parts[1]);
-        stuff.getDay().setText("DAY " + (day + 1));
+        int currentDay = Integer.parseInt(parts[1]) + 1;
+        stuff.getDay().setText("DAY " + currentDay);
         logic.getCitizenHungerHandler().addHunger();
+        if (currentDay == 11) {
+            logic.getGameOverHandler().day10Ended();
+        }
     }
 
     // Structure

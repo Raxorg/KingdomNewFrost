@@ -106,6 +106,7 @@ public class GameLogic extends Logic {
         techTreeTabHandler.setLogic(this);
         // People
         citizenActivityHandler.setLogic(this);
+        citizenHandler.setLogic(this);
         citizenHungerHandler.setLogic(this);
         // Uncategorized
         buildingInteractionHandler.setLogic(this);
@@ -135,7 +136,7 @@ public class GameLogic extends Logic {
         expeditionHandler.hideExpeditionInfo();
         introHandler.startMusic();
         gameInputHandler.setupInput();
-        gameOverHandler.init();
+        gameOverHandler.hideGameOver();
         tutorialHandler.init();
     }
 
@@ -252,6 +253,10 @@ public class GameLogic extends Logic {
     }
 
     // People
+    public CitizenHandler getCitizenHandler() {
+        return citizenHandler;
+    }
+
     public CitizenHungerHandler getCitizenHungerHandler() {
         return citizenHungerHandler;
     }

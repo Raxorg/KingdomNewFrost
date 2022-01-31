@@ -30,7 +30,7 @@ public class CitizenHungerHandler {
             if (citizen.getHunger() == 2) {
                 citizen.setActivity(DYING);
                 citizen.setAnimationTime(0f);
-                logic.getGameOverHandler().citizenDied();
+                logic.getCitizenHandler().citizenDied();
                 continue;
             }
             int hunger = Math.min(citizen.getHunger() + 1, 2);

@@ -13,6 +13,7 @@ public class SharedConstants {
     public static final String EXPLOSION_PATH = "fundamentals/audio/explosionSound.wav";
 
     public static final String PIXEL_FONT_PATH = "fundamentals/fonts/pixelFont.fnt";
+    public static final String TIMES_SQUARE_PATH = "fundamentals/fonts/timesSquare.fnt";
 
     public static final String GLOW_PATH = "fundamentals/images/glow.png";
     public static final String PIXEL_PATH = "fundamentals/images/pixel.png";
