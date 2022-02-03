@@ -53,11 +53,11 @@ public class GameStuff extends Stuff {
     private Player player;
     private Sprited actionIcon;
     private MainBuildingMenu mainBuildingMenu;
+    private SpritedText dialogue;
     private IconedSpritedText tutorialWidget;
     private SpritedText tip;
     private ExpeditionInfo expeditionInfo;
     private Text day, dayTimer;
-    private SpritedText dialogue;
     private EventView eventView;
     private Rain rain;
     private SpritedText gameOverMessage;
@@ -83,6 +83,10 @@ public class GameStuff extends Stuff {
 
         mainBuildingMenu = new MainBuildingMenu(assets, sharedAssets);
 
+        dialogue = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
+        dialogue.setSize(DIALOGUE_WIDTH, DIALOGUE_HEIGHT);
+        dialogue.setColor(BLACK_CLEAR_50);
+
         tutorialWidget = new IconedSpritedText(sharedAssets.getPixel(), assets.getPixelFont(), assets.getTipIcon());
         tutorialWidget.setSize(TUTORIAL_WIDGET_WIDTH, TUTORIAL_WIDGET_HEIGHT);
         tutorialWidget.setText("MISSING TUTORIAL TEXT");
@@ -103,10 +107,6 @@ public class GameStuff extends Stuff {
         dayTimer.setTextTargetWidth(CAMERA_WIDTH);
         dayTimer.setHorizontalAlignment(Align.center);
         dayTimer.setY(DAY_TIMER_Y);
-
-        dialogue = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
-        dialogue.setSize(DIALOGUE_WIDTH, DIALOGUE_HEIGHT);
-        dialogue.setColor(BLACK_CLEAR_50);
 
         eventView = new EventView(sharedAssets.getPixel(), sharedAssets.getPixel(), assets.getPixelFont());
 
@@ -203,6 +203,10 @@ public class GameStuff extends Stuff {
         return mainBuildingMenu;
     }
 
+    public SpritedText getDialogue() {
+        return dialogue;
+    }
+
     public IconedSpritedText getTutorialWidget() {
         return tutorialWidget;
     }
@@ -221,10 +225,6 @@ public class GameStuff extends Stuff {
 
     public Text getDayTimer() {
         return dayTimer;
-    }
-
-    public SpritedText getDialogue() {
-        return dialogue;
     }
 
     public EventView getEventView() {

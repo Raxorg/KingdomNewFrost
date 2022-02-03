@@ -30,6 +30,7 @@ public class GameRenderer extends Renderer {
         stuff.getActionIcon().draw(spriteBatch);
         stuff.getPlayer().draw(spriteBatch);
         stuff.getMainBuildingMenu().draw(spriteBatch);
+        stuff.getDialogue().draw(spriteBatch);
         useStaticCamera();
         stuff.getTutorialWidget().draw(spriteBatch);
         stuff.getTip().draw(spriteBatch);

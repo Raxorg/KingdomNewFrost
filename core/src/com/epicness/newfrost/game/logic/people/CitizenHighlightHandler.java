@@ -12,6 +12,7 @@ public class CitizenHighlightHandler {
     // Logic
     float lastX, lastY;
     private boolean enabled = true;
+    private Citizen highlightedCitizen;
 
     public void mouseMoved(float x, float y) {
         lastX = x;
@@ -31,25 +32,30 @@ public class CitizenHighlightHandler {
             }
         }
         if (candidates.isEmpty()) {
+            highlightedCitizen = null;
             return;
         }
-        Citizen closest = candidates.first();
-        float closestDistance = Math.abs(closest.getCenterX() - lastX);
+        highlightedCitizen = candidates.first();
+        float closestDistance = Math.abs(highlightedCitizen.getCenterX() - lastX);
         for (int i = 0; i < candidates.size; i++) {
             Citizen citizen = candidates.get(i);
             if (Math.abs(citizen.getCenterX() - lastX) < closestDistance) {
-                closest = citizen;
+                highlightedCitizen = citizen;
             }
         }
-        closest.setColor(Color.NAVY.cpy().lerp(Color.LIGHT_GRAY, 0.5f));
+        highlightedCitizen.setColor(Color.NAVY.cpy().lerp(Color.LIGHT_GRAY, 0.5f));
+    }
+
+    public void updateLastCursorPosition(float cameraOffset) {
+        lastX += cameraOffset;
     }
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
-    public void updateLastCursorPosition(float cameraOffset) {
-        lastX += cameraOffset;
+    public Citizen getHighlightedCitizen() {
+        return highlightedCitizen;
     }
 
     // Structure

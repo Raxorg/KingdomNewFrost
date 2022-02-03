@@ -54,10 +54,8 @@ public class GameConstants {
     public static final float EVENT_OPTION_X = EVENT_BACKGROUND_X + EVENT_OPTION_WIDTH / 4f;
     public static final float EVENT_OPTION_Y = EVENT_BACKGROUND_Y + EVENT_OPTION_HEIGHT / 2f;
     // Dialogues
-    public static final float DIALOGUE_WIDTH = CAMERA_WIDTH / 2f;
-    public static final float DIALOGUE_HEIGHT = CAMERA_HEIGHT / 2f;
-    public static final float DIALOGUE_X = CAMERA_WIDTH / 2f - DIALOGUE_WIDTH / 2f;
-    public static final float DIALOGUE_Y = CAMERA_HEIGHT / 2f - DIALOGUE_HEIGHT / 2f;
+    public static final float DIALOGUE_WIDTH = CAMERA_WIDTH / 4f;
+    public static final float DIALOGUE_HEIGHT = DIALOGUE_WIDTH / 4f;
     // Main building
     public static final float MAIN_BUILDING_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float MAIN_BUILDING_WIDTH = MAIN_BUILDING_HEIGHT * 1.5f;

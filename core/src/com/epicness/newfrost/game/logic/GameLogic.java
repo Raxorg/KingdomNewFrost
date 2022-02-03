@@ -26,6 +26,7 @@ import com.epicness.newfrost.game.logic.people.CitizenActivityHandler;
 import com.epicness.newfrost.game.logic.people.CitizenHandler;
 import com.epicness.newfrost.game.logic.people.CitizenHighlightHandler;
 import com.epicness.newfrost.game.logic.people.CitizenHungerHandler;
+import com.epicness.newfrost.game.logic.people.DialogueHandler;
 import com.epicness.newfrost.game.logic.people.PlayerMovementHandler;
 import com.epicness.newfrost.game.logic.weather.CloudHandler;
 import com.epicness.newfrost.game.logic.weather.DayNightCycler;
@@ -49,6 +50,7 @@ public class GameLogic extends Logic {
     private final CitizenHandler citizenHandler;
     private final CitizenHighlightHandler citizenHighlightHandler;
     private final CitizenHungerHandler citizenHungerHandler;
+    private final DialogueHandler dialogueHandler;
     private final PlayerMovementHandler playerMovementHandler;
     // Weather
     private final CloudHandler cloudHandler;
@@ -58,7 +60,6 @@ public class GameLogic extends Logic {
     private final BuildingInteractionHandler buildingInteractionHandler;
     private final CameraHandler cameraHandler;
     private final DayTimerHandler dayTimerHandler;
-    private final DialogueHandler dialogueHandler;
     private final EventHandler eventHandler;
     private final ExpeditionHandler expeditionHandler;
     private final GameInputHandler gameInputHandler;
@@ -84,6 +85,7 @@ public class GameLogic extends Logic {
         citizenHandler = new CitizenHandler();
         citizenHighlightHandler = new CitizenHighlightHandler();
         citizenHungerHandler = new CitizenHungerHandler();
+        dialogueHandler = new DialogueHandler();
         playerMovementHandler = new PlayerMovementHandler();
         // Weather
         cloudHandler = new CloudHandler();
@@ -92,7 +94,6 @@ public class GameLogic extends Logic {
         // Uncategorized
         cameraHandler = new CameraHandler();
         dayTimerHandler = new DayTimerHandler();
-        dialogueHandler = new DialogueHandler(); // todo
         eventHandler = new EventHandler();
         expeditionHandler = new ExpeditionHandler();
         gameInputHandler = new GameInputHandler();
@@ -111,6 +112,7 @@ public class GameLogic extends Logic {
         citizenActivityHandler.setLogic(this);
         citizenHandler.setLogic(this);
         citizenHungerHandler.setLogic(this);
+        dialogueHandler.setLogic(this);
         // Uncategorized
         cameraHandler.setLogic(this);
         dayTimerHandler.setSharedLogic(sharedLogic);
@@ -128,6 +130,7 @@ public class GameLogic extends Logic {
         buildingInteractionHandler.hideActionIcon();
         // People
         citizenHandler.spawnCitizens();
+        dialogueHandler.hideDialogue();
         // Weather
         dayNightCycler.initialize();
         // Uncategorized
@@ -164,6 +167,7 @@ public class GameLogic extends Logic {
         rainHandler.update(delta);
         // People
         citizenHighlightHandler.update();
+        dialogueHandler.update();
         // Uncategorized
         buildingInteractionHandler.update();
         cameraHandler.update();
@@ -218,6 +222,7 @@ public class GameLogic extends Logic {
         citizenHandler.setStuff(gameStuff);
         citizenHighlightHandler.setStuff(gameStuff);
         citizenHungerHandler.setStuff(gameStuff);
+        dialogueHandler.setStuff(gameStuff);
         playerMovementHandler.setStuff(gameStuff);
         // Weather
         cloudHandler.setStuff(gameStuff);
@@ -270,6 +275,10 @@ public class GameLogic extends Logic {
 
     public CitizenHungerHandler getCitizenHungerHandler() {
         return citizenHungerHandler;
+    }
+
+    public DialogueHandler getDialogueHandler() {
+        return dialogueHandler;
     }
 
     public PlayerMovementHandler getPlayerMovementHandler() {

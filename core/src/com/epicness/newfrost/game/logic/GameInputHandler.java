@@ -19,6 +19,13 @@ public class GameInputHandler extends InputHandler {
     }
 
     @Override
+    public void touchDown(float x, float y) {
+        GameLogic logic = (GameLogic) this.logic;
+
+        logic.getDialogueHandler().touchDown();
+    }
+
+    @Override
     public void touchUp(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
 
