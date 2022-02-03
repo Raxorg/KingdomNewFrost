@@ -57,7 +57,7 @@ public class BuildingInteractionHandler {
             case MEDICAL_POST:
                 break;
         }
-        logic.getHighlightHandler().setEnabled(true);
+        logic.getCitizenHighlightHandler().setEnabled(true);
     }
 
     public void sPress() {
@@ -70,7 +70,7 @@ public class BuildingInteractionHandler {
         switch (selectedBuilding.getType()) {
             case MAIN_BUILDING:
                 logic.getMainBuildingMenuHandler().showMenu();
-                logic.getHighlightHandler().setEnabled(false);
+                logic.getCitizenHighlightHandler().setEnabled(false);
                 break;
             case TENT:
                 int logs = logic.getWarehouseHandler().getLogs();

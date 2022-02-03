@@ -37,7 +37,7 @@ public class MainBuildingMenuHandler {
         menu.setTechTreePosition(HIDDEN_X, HIDDEN_Y);
         menu.setLawTreePosition(HIDDEN_X, HIDDEN_Y);
         sharedLogic.getPauseTracker().set(false);
-        logic.getHighlightHandler().setEnabled(true);
+        logic.getCitizenHighlightHandler().setEnabled(true);
     }
 
     public void showMenu() {

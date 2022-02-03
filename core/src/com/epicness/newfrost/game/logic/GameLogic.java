@@ -24,6 +24,7 @@ import com.epicness.newfrost.game.logic.buildings.main.MainBuildingMenuHandler;
 import com.epicness.newfrost.game.logic.buildings.main.TechTreeTabHandler;
 import com.epicness.newfrost.game.logic.people.CitizenActivityHandler;
 import com.epicness.newfrost.game.logic.people.CitizenHandler;
+import com.epicness.newfrost.game.logic.people.CitizenHighlightHandler;
 import com.epicness.newfrost.game.logic.people.CitizenHungerHandler;
 import com.epicness.newfrost.game.logic.people.PlayerMovementHandler;
 import com.epicness.newfrost.game.logic.weather.CloudHandler;
@@ -46,6 +47,7 @@ public class GameLogic extends Logic {
     // People
     private final CitizenActivityHandler citizenActivityHandler;
     private final CitizenHandler citizenHandler;
+    private final CitizenHighlightHandler citizenHighlightHandler;
     private final CitizenHungerHandler citizenHungerHandler;
     private final PlayerMovementHandler playerMovementHandler;
     // Weather
@@ -61,7 +63,6 @@ public class GameLogic extends Logic {
     private final ExpeditionHandler expeditionHandler;
     private final GameInputHandler gameInputHandler;
     private final GameOverHandler gameOverHandler;
-    private final HighlightHandler highlightHandler;
     private final IntroHandler introHandler;
     private final TutorialHandler tutorialHandler;
 
@@ -81,6 +82,7 @@ public class GameLogic extends Logic {
         // People
         citizenActivityHandler = new CitizenActivityHandler();
         citizenHandler = new CitizenHandler();
+        citizenHighlightHandler = new CitizenHighlightHandler();
         citizenHungerHandler = new CitizenHungerHandler();
         playerMovementHandler = new PlayerMovementHandler();
         // Weather
@@ -95,7 +97,6 @@ public class GameLogic extends Logic {
         expeditionHandler = new ExpeditionHandler();
         gameInputHandler = new GameInputHandler();
         gameOverHandler = new GameOverHandler();
-        highlightHandler = new HighlightHandler();
         introHandler = new IntroHandler();
         tutorialHandler = new TutorialHandler();
         // Behaviors
@@ -157,6 +158,8 @@ public class GameLogic extends Logic {
         if (Gdx.input.isKeyJustPressed(O)) {
             dayTimerHandler.passDay();
         }
+        // People
+        citizenHighlightHandler.update();
         // Weather
         cloudHandler.update(delta);
         dayNightCycler.applyColors();
@@ -167,7 +170,6 @@ public class GameLogic extends Logic {
         citizenActivityHandler.update(delta);
         dayTimerHandler.update(delta);
         expeditionHandler.update(delta);
-        highlightHandler.update();
         mainBuildingMenuHandler.update();
         playerMovementHandler.update(delta);
         tutorialHandler.update(delta);
@@ -214,6 +216,7 @@ public class GameLogic extends Logic {
         // People
         citizenActivityHandler.setStuff(gameStuff);
         citizenHandler.setStuff(gameStuff);
+        citizenHighlightHandler.setStuff(gameStuff);
         citizenHungerHandler.setStuff(gameStuff);
         playerMovementHandler.setStuff(gameStuff);
         // Weather
@@ -228,7 +231,6 @@ public class GameLogic extends Logic {
         expeditionHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(stuff);
         gameOverHandler.setStuff(gameStuff);
-        highlightHandler.setStuff(gameStuff);
         tutorialHandler.setStuff(gameStuff);
     }
 
@@ -262,6 +264,10 @@ public class GameLogic extends Logic {
         return citizenHandler;
     }
 
+    public CitizenHighlightHandler getCitizenHighlightHandler() {
+        return citizenHighlightHandler;
+    }
+
     public CitizenHungerHandler getCitizenHungerHandler() {
         return citizenHungerHandler;
     }
@@ -290,10 +296,6 @@ public class GameLogic extends Logic {
 
     public GameOverHandler getGameOverHandler() {
         return gameOverHandler;
-    }
-
-    public HighlightHandler getHighlightHandler() {
-        return highlightHandler;
     }
 
     public TutorialHandler getTipHandler() {

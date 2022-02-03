@@ -1,11 +1,11 @@
-package com.epicness.newfrost.game.logic;
+package com.epicness.newfrost.game.logic.people;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.people.Citizen;
 
-public class HighlightHandler {
+public class CitizenHighlightHandler {
 
     // Structure
     private GameStuff stuff;

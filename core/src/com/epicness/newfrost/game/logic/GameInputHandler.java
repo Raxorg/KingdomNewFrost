@@ -14,7 +14,7 @@ public class GameInputHandler extends InputHandler {
     public void mouseMovedDynamic(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
 
-        logic.getHighlightHandler().mouseMoved(x, y);
+        logic.getCitizenHighlightHandler().mouseMoved(x, y);
         logic.getMainBuildingMenuHandler().mouseMoved(x, y);
     }
 
