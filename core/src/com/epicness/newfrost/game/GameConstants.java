@@ -210,8 +210,8 @@ public class GameConstants {
     public static final String COLD_PROTECTION_TUTORIAL_TEXT = "Upgrade the dwellings for better protection against cold";
     public static final String GAME_OVER_TUTORIAL_TEXT = "When half the population dies the game is over";
     // Tutorial widget
-    public static final float TUTORIAL_WIDGET_WIDTH = 300f;
-    public static final float TUTORIAL_WIDGET_HEIGHT = 100f;
+    public static final float TUTORIAL_WIDGET_WIDTH = 450f;
+    public static final float TUTORIAL_WIDGET_HEIGHT = 150f;
     public static final float TUTORIAL_WIDGET_SLIDE_DURATION = 0.7f;
     // Other
     public static final float HIDDEN_X = -10 * CAMERA_WIDTH;

@@ -23,6 +23,7 @@ public class GameInputHandler extends InputHandler {
         GameLogic logic = (GameLogic) this.logic;
 
         logic.getTipHandler().touchUp(x, y);
+        logic.getGameOverHandler().touchUp();
     }
 
     @Override

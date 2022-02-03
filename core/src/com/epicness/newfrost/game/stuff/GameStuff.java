@@ -60,7 +60,8 @@ public class GameStuff extends Stuff {
     private SpritedText dialogue;
     private EventView eventView;
     private Rain rain;
-    private SpritedText gameOver;
+    private SpritedText gameOverMessage;
+    private Sprited hanged, hangedText;
 
     @Override
     public void initializeStuff() {
@@ -82,8 +83,7 @@ public class GameStuff extends Stuff {
 
         mainBuildingMenu = new MainBuildingMenu(assets, sharedAssets);
 
-        tutorialWidget = new IconedSpritedText(sharedAssets.getPixel(), assets.getPixelFontSmall(), assets.getMeat());
-        tutorialWidget.setX(-TUTORIAL_WIDGET_WIDTH);
+        tutorialWidget = new IconedSpritedText(sharedAssets.getPixel(), assets.getPixelFont(), assets.getTipIcon());
         tutorialWidget.setSize(TUTORIAL_WIDGET_WIDTH, TUTORIAL_WIDGET_HEIGHT);
         tutorialWidget.setText("MISSING TUTORIAL TEXT");
         tutorialWidget.setBackgroundColor(BLACK_CLEAR_25);
@@ -112,8 +112,15 @@ public class GameStuff extends Stuff {
 
         rain = new Rain(sharedAssets.getPixel());
 
-        gameOver = new SpritedText(sharedAssets.getPixel(), sharedAssets.getTimesSquare());
-        gameOver.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+        gameOverMessage = new SpritedText(sharedAssets.getPixel(), sharedAssets.getTimesSquare());
+        gameOverMessage.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+
+        hanged = new Sprited(assets.getHanged());
+        hanged.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+
+        hangedText = new Sprited(assets.getHangedText());
+        hangedText.setPosition(CAMERA_WIDTH / 2f - hangedText.getWidth() / 2f, 60f);
+        hangedText.setScale(2f);
     }
 
     private void initializeBackground(GameAssets assets) {
@@ -228,7 +235,15 @@ public class GameStuff extends Stuff {
         return rain;
     }
 
-    public SpritedText getGameOver() {
-        return gameOver;
+    public SpritedText getGameOverMessage() {
+        return gameOverMessage;
+    }
+
+    public Sprited getHanged() {
+        return hanged;
+    }
+
+    public Sprited getHangedText() {
+        return hangedText;
     }
 }

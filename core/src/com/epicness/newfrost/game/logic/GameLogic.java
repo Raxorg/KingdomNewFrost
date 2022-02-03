@@ -74,6 +74,7 @@ public class GameLogic extends Logic {
         lawTreeTabHandler = new LawTreeTabHandler();
         mainBuildingMenuHandler = new MainBuildingMenuHandler();
         techTreeTabHandler = new TechTreeTabHandler();
+        buildingInteractionHandler = new BuildingInteractionHandler();
         cookhouseHandler = new CookhouseHandler();
         explorariumHandler = new ExplorariumHandler();
         warehouseHandler = new WarehouseHandler();
@@ -87,7 +88,6 @@ public class GameLogic extends Logic {
         dayNightCycler = new DayNightCycler();
         rainHandler = new RainHandler();
         // Uncategorized
-        buildingInteractionHandler = new BuildingInteractionHandler();
         cameraHandler = new CameraHandler();
         dayTimerHandler = new DayTimerHandler();
         dialogueHandler = new DialogueHandler(); // todo
@@ -98,26 +98,26 @@ public class GameLogic extends Logic {
         highlightHandler = new HighlightHandler();
         introHandler = new IntroHandler();
         tutorialHandler = new TutorialHandler();
-
+        // Behaviors
         parallaxBehavior = new ParallaxBehavior();
         // Buildings
         actionTabHandler.setLogic(this);
+        mainBuildingMenuHandler.setSharedLogic(sharedLogic);
         mainBuildingMenuHandler.setLogic(this);
         techTreeTabHandler.setLogic(this);
+        buildingInteractionHandler.setLogic(this);
         // People
         citizenActivityHandler.setLogic(this);
         citizenHandler.setLogic(this);
         citizenHungerHandler.setLogic(this);
         // Uncategorized
-        buildingInteractionHandler.setLogic(this);
         cameraHandler.setLogic(this);
+        dayTimerHandler.setSharedLogic(sharedLogic);
         dayTimerHandler.setLogic(this);
         expeditionHandler.setLogic(this);
         gameInputHandler.setLogic(this);
+        gameOverHandler.setSharedLogic(sharedLogic);
         gameOverHandler.setLogic(this);
-
-        dayTimerHandler.setSharedLogic(sharedLogic);
-        mainBuildingMenuHandler.setSharedLogic(sharedLogic);
     }
 
     @Override
@@ -138,6 +138,9 @@ public class GameLogic extends Logic {
         gameInputHandler.setupInput();
         gameOverHandler.hideGameOver();
         tutorialHandler.init();
+
+        sharedLogic.getFader().setup(1f);
+        sharedLogic.getFader().fadeOut();
     }
 
     @Override
@@ -168,6 +171,8 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler.update();
         playerMovementHandler.update(delta);
         tutorialHandler.update(delta);
+
+        sharedLogic.getFader().update(delta);
     }
 
     @Override

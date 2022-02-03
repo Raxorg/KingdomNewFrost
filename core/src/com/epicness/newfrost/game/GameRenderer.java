@@ -43,10 +43,12 @@ public class GameRenderer extends Renderer {
             stuff.getClouds().get(i).draw(spriteBatch);
         }
         useStaticCamera();
-        stuff.getGameOver().draw(spriteBatch);
+        stuff.getGameOverMessage().draw(spriteBatch);
+        stuff.getHanged().draw(spriteBatch);
+        stuff.getHangedText().draw(spriteBatch);
+        sharedStuff.getFader().draw(spriteBatch);
 
         spriteBatch.end();
-
         drawDebug();
     }
 

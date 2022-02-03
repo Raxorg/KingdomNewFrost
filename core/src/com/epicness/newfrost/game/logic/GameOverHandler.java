@@ -4,21 +4,28 @@ import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_25;
 import static com.epicness.newfrost.game.GameConstants.STARTING_CITIZENS;
 
 import com.badlogic.gdx.graphics.Color;
+import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameOverHandler {
 
     // Structure
+    private SharedLogic sharedLogic;
     private GameLogic logic;
     private GameStuff stuff;
+    // Logic
+    private boolean showingGameOverMessage, victory;
 
     public void hideGameOver() {
-        stuff.getGameOver().setColor(Color.CLEAR);
-        stuff.getGameOver().setTextColor(Color.CLEAR);
+        stuff.getGameOverMessage().setColor(Color.CLEAR);
+        stuff.getGameOverMessage().setTextColor(Color.CLEAR);
+        stuff.getHanged().setColor(Color.CLEAR);
+        stuff.getHangedText().setColor(Color.CLEAR);
     }
 
     public void lessThan6Citizens() {
-        stuff.getGameOver().setText("WE DID AS YOU ORDERED\nALMOST EVERYONE IS DEAD...\nWE HAD ENOUGH OF YOU");
+        stuff.getGameOverMessage().setText("WE DID AS YOU ORDERED\nALMOST EVERYONE IS DEAD...\nWE HAD ENOUGH OF YOU");
+        victory = false;
         showGameOver();
     }
 
@@ -31,14 +38,35 @@ public class GameOverHandler {
         } else {
             gameOverText += "EVERYONE UNDER YOUR RULE SURVIVED\nBUT WHAT ABOUT THE PEOPLE STILL OUT THERE...";
         }
-        stuff.getGameOver().setText(gameOverText);
+        stuff.getGameOverMessage().setText(gameOverText);
+        victory = true;
         showGameOver();
     }
 
     private void showGameOver() {
-        stuff.getGameOver().setText(stuff.getGameOver().getText() + "\nR TO RESTART");
-        stuff.getGameOver().setColor(BLACK_CLEAR_25);
-        stuff.getGameOver().setTextColor(Color.WHITE);
+        stuff.getGameOverMessage().setText(stuff.getGameOverMessage().getText());
+        stuff.getGameOverMessage().setColor(BLACK_CLEAR_25);
+        stuff.getGameOverMessage().setTextColor(Color.WHITE);
+        showingGameOverMessage = true;
+    }
+
+    public void touchUp() {
+        if (!showingGameOverMessage) {
+            return;
+        }
+        sharedLogic.getFader().fadeIn(this::showFinalScreen);
+    }
+
+    private void showFinalScreen() {
+        if (victory) {
+            // TODO: 3/2/2022 proper victory screen
+            stuff.getHanged().setColor(Color.WHITE);
+        } else {
+            stuff.getHanged().setColor(Color.WHITE);
+            stuff.getHangedText().setColor(Color.WHITE);
+        }
+        showingGameOverMessage = false;
+        sharedLogic.getFader().fadeOut();
     }
 
     public void restart() {
@@ -46,6 +74,10 @@ public class GameOverHandler {
     }
 
     // Structure
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
+    }
+
     public void setLogic(GameLogic logic) {
         this.logic = logic;
     }

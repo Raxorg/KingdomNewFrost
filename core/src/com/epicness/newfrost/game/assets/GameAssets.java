@@ -26,6 +26,8 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.EXPLORARIUM_BACKP
 import static com.epicness.newfrost.game.assets.GameAssetPaths.EXPLORARIUM_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.FROST_SONG_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.GLASS_ICON_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.HANGED_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.HANGED_TEXT_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_CITIZEN_0_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_CITIZEN_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_GOVERNOR_0_PATH;
@@ -105,6 +107,7 @@ public class GameAssets extends Assets {
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
     private Sprite citizen;
     private Sprite actionIcon, tipIcon, woodFrame, meatIcon, glassIcon;
+    private Sprite hanged, hangedText;
 
     @Override
     public void queueAssetLoading() {
@@ -192,6 +195,9 @@ public class GameAssets extends Assets {
         loadTexture(WOOD_FRAME_PATH);
         loadTexture(MEAT_ICON_PATH);
         loadTexture(GLASS_ICON_PATH);
+
+        loadTexture(HANGED_PATH);
+        loadTexture(HANGED_TEXT_PATH);
     }
 
     @Override
@@ -284,6 +290,9 @@ public class GameAssets extends Assets {
         woodFrame = new Sprite(getTexture(WOOD_FRAME_PATH));
         meatIcon = new Sprite(getTexture(MEAT_ICON_PATH));
         glassIcon = new Sprite(getTexture(GLASS_ICON_PATH));
+
+        hanged = new Sprite(getTexture(HANGED_PATH));
+        hangedText = new Sprite(getTexture(HANGED_TEXT_PATH));
     }
 
     // Animations
@@ -568,5 +577,13 @@ public class GameAssets extends Assets {
 
     public Sprite getGlassIcon() {
         return glassIcon;
+    }
+
+    public Sprite getHanged() {
+        return hanged;
+    }
+
+    public Sprite getHangedText() {
+        return hangedText;
     }
 }

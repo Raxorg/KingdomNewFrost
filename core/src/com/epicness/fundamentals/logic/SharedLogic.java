@@ -27,6 +27,7 @@ public class SharedLogic {
     public void setSharedResources(SharedResources sharedResources) {
         backgroundHandler.setStuff(sharedResources.getStuff());
         transitionHandler.setSharedResources(sharedResources);
+        fader.setStuff(sharedResources.getStuff());
     }
 
     // Helpers
