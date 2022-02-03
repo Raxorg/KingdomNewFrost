@@ -83,7 +83,7 @@ public class GameStuff extends Stuff {
 
         mainBuildingMenu = new MainBuildingMenu(assets, sharedAssets);
 
-        dialogue = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
+        dialogue = new SpritedText(sharedAssets.getPixel(), assets.getPixelFontMedium());
         dialogue.setSize(DIALOGUE_WIDTH, DIALOGUE_HEIGHT);
         dialogue.setColor(BLACK_CLEAR_50);
 

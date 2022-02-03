@@ -23,7 +23,7 @@ public class CitizenHandler {
         DelayedRemovalArray<Citizen> citizens = stuff.getCitizens();
         citizens.clear();
         for (int i = 0; i < STARTING_CITIZENS; i++) {
-            Citizen citizen = new Citizen(assets, dialogueStorage.getRandomDialogue());
+            Citizen citizen = new Citizen(assets, dialogueStorage.getFoodDialogue());
             citizens.add(citizen);
         }
         citizens.sort((citizen1, citizen2) -> citizen1.getY() > citizen2.getY() ? -1 : 0);

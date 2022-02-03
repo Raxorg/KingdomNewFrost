@@ -35,6 +35,7 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_GOVERNOR_1_P
 import static com.epicness.newfrost.game.assets.GameAssetPaths.MAIN_BUILDING_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.MEAT_ICON_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.MEAT_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_MEDIUM_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_SMALL_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.TECH_ICON_0_PATH;
@@ -95,7 +96,7 @@ public class GameAssets extends Assets {
     private Music frostSong;
     private Sound crafting;
     // Fonts
-    private BitmapFont pixelFont, pixelFontSmall;
+    private BitmapFont pixelFont, pixelFontMedium, pixelFontSmall;
     // Sprites
     private Sprite background0, background1, background2, background3, background4, background5, background6, background7;
     private Sprite cloud1, cloud2, cloud3;
@@ -154,6 +155,7 @@ public class GameAssets extends Assets {
         loadSound(CRAFTING_PATH);
         // Fonts
         loadFont(PIXEL_FONT_PATH);
+        loadFont(PIXEL_FONT_MEDIUM_PATH);
         loadFont(PIXEL_FONT_SMALL_PATH);
         // Sprites
         loadTexture(BACKGROUND_0_PATH);
@@ -246,6 +248,8 @@ public class GameAssets extends Assets {
         // Fonts
         pixelFont = getFont(PIXEL_FONT_PATH);
         pixelFont.getData().setScale(4f);
+        pixelFontMedium = getFont(PIXEL_FONT_MEDIUM_PATH);
+        pixelFontMedium.getData().setScale(3f);
         pixelFontSmall = getFont(PIXEL_FONT_SMALL_PATH);
         pixelFontSmall.getData().setScale(2f);
         // Sprites
@@ -436,6 +440,10 @@ public class GameAssets extends Assets {
     // Fonts
     public BitmapFont getPixelFont() {
         return pixelFont;
+    }
+
+    public BitmapFont getPixelFontMedium() {
+        return pixelFontMedium;
     }
 
     public BitmapFont getPixelFontSmall() {

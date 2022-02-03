@@ -45,6 +45,7 @@ public class GameAssetPaths {
     public static final String CRAFTING_PATH = "newfrost/audio/woodenCrafting.wav";
     // Fonts
     public static final String PIXEL_FONT_PATH = "newfrost/fonts/pixelFont.fnt";
+    public static final String PIXEL_FONT_MEDIUM_PATH = "newfrost/fonts/pixelFontMedium.fnt";
     public static final String PIXEL_FONT_SMALL_PATH = "newfrost/fonts/pixelFontSmall.fnt";
     // Sprites
     public static final String BACKGROUND_0_PATH = "newfrost/images/background/bg0.png";

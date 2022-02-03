@@ -7,7 +7,7 @@ public class DialogueStorage {
     private final Dialogue[] dialogues;
 
     public DialogueStorage() {
-        dialogues = new Dialogue[3];
+        dialogues = new Dialogue[4];
         dialogues[0] = new Dialogue(
                 "Morning sir",
                 "I dont like this weather at all",
@@ -23,10 +23,19 @@ public class DialogueStorage {
                 "Please feed us",
                 "The cold is messing with my mind"
         );
+        dialogues[3] = new Dialogue(
+                "I had enough, let others eat",
+                "I'm starting to feel hungry",
+                "So this is how it ends, starvation..."
+        );
     }
 
     public Dialogue getRandomDialogue() {
         int random = MathUtils.random(2);
         return dialogues[random];
+    }
+
+    public Dialogue getFoodDialogue() {
+        return dialogues[3];
     }
 }

@@ -29,13 +29,14 @@ public class DialogueHandler {
 
     public void update() {
         if (selectedCitizen == null) {
+            hideDialogue();
             return;
         }
         SpritedText dialogue = stuff.getDialogue();
         float x = selectedCitizen.getCenterX() - DIALOGUE_WIDTH / 2f;
         float y = selectedCitizen.getY() + CITIZEN_HEIGHT;
         dialogue.setPosition(x, y);
-        dialogue.setText(selectedCitizen.getDialogue().getRandomPhrase());
+        dialogue.setText(selectedCitizen.getDialogue().getHungerPhrase(selectedCitizen.getHunger()));
     }
 
     // Structure

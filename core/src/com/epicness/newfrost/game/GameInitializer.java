@@ -8,8 +8,8 @@ import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameInitializer extends Initializer {
 
-    public GameInitializer(GameAssets assets) {
-        super(assets);
+    public GameInitializer() {
+        super(new GameAssets());
     }
 
     @Override

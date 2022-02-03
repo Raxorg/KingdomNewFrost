@@ -24,4 +24,8 @@ public class Dialogue {
         usage[random] = true;
         return phrases[random];
     }
+
+    public String getHungerPhrase(int hunger) {
+        return phrases[hunger];
+    }
 }

@@ -51,7 +51,7 @@ public class IntroHandler {
 
     public void spacePressed() {
         assets.getNarration().dispose();
-        sharedLogic.getTransitionHandler().startTransition(new GameInitializer(new GameAssets()));
+        sharedLogic.getTransitionHandler().startTransition(new GameInitializer());
         sharedLogic.getTransitionHandler().allowTransition();
     }
 
