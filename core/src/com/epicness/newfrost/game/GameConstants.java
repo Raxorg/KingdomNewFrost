@@ -102,6 +102,8 @@ public class GameConstants {
     public static final float COOKHOUSE_WIDTH = COOKHOUSE_HEIGHT * (4f / 3f);
     public static final float COOKHOUSE_X = TENT2_X - COOKHOUSE_WIDTH - 25f;
     public static final float COOKHOUSE_Y = GROUND_Y;
+
+    public static final float DINING_X = COOKHOUSE_X + COOKHOUSE_WIDTH * 0.75f;
     // Cookhouse meats
     public static final float COOKHOUSE_MEAT_STARTING_X = COOKHOUSE_X + COOKHOUSE_WIDTH * 0.53f;
     public static final float COOKHOUSE_MEAT_STARTING_Y = COOKHOUSE_Y + COOKHOUSE_HEIGHT * 0.33f;
@@ -118,25 +120,9 @@ public class GameConstants {
     public static final Color NIGHT_LOG_COLOR = WAREHOUSE_LOG_COLOR.cpy().lerp(NAVY_GRAY_50, 0.65f);
     public static final Color NIGHT_BACKPACK_COLOR = EXPLORARIUM_BACKPACK_COLOR.cpy().lerp(NAVY_GRAY_50, 0.65f);
     public static final Color NIGHT_PEOPLE_COLOR = Color.NAVY.cpy().lerp(Color.GRAY, 0.75f);
-    // Food
-    public static final float FOOD_ICON_SIZE = 50f;
-    public static final float FOOD_INFO_X = MAIN_BUILDING_X + MAIN_BUILDING_WIDTH * 0.75f;
-    public static final float FOOD_INFO_Y = MAIN_BUILDING_Y + MAIN_BUILDING_HEIGHT * 0.35f;
-
-    public static final float DINING_X = FOOD_INFO_X + FOOD_ICON_SIZE;
-
-    public static final float FOOD_INFO_TEXT_X = FOOD_INFO_X + FOOD_ICON_SIZE;
-    public static final float FOOD_INFO_TEXT_Y = FOOD_INFO_Y + FOOD_ICON_SIZE / 2f;
     // Action icon
     public static final float ACTION_ICON_WIDTH = 70f;
     public static final float ACTION_ICON_HEIGHT = ACTION_ICON_WIDTH * 2f;
-    // Wood
-    public static final float WOOD_ICON_SIZE = 100f;
-    public static final float WOOD_INFO_X = CAMERA_WIDTH - WOOD_ICON_SIZE * 2f;
-    public static final float WOOD_INFO_Y = CAMERA_HEIGHT - WOOD_ICON_SIZE;
-
-    public static final float WOOD_INFO_TEXT_X = WOOD_INFO_X + WOOD_ICON_SIZE;
-    public static final float WOOD_INFO_TEXT_Y = WOOD_INFO_Y + WOOD_ICON_SIZE / 2f;
     // Tutorial dialogue
     public static final float TUTORIAL_DIALOGUE_WIDTH = CAMERA_WIDTH / 2f;
     public static final float TUTORIAL_DIALOGUE_HEIGHT = CAMERA_HEIGHT / 2f;
@@ -148,7 +134,7 @@ public class GameConstants {
     public static final float EXPEDITION_DURATION = 25f;
     public static final float EXPEDITION_ICON_SIZE = 100f;
     public static final float EXPEDITION_INFO_X = CAMERA_WIDTH - EXPEDITION_ICON_SIZE;
-    public static final float EXPEDITION_INFO_Y = CAMERA_HEIGHT - WOOD_ICON_SIZE - EXPEDITION_ICON_SIZE;
+    public static final float EXPEDITION_INFO_Y = CAMERA_HEIGHT - EXPEDITION_ICON_SIZE;
     // Main building menu
     public static final float MAIN_MENU_X = 100f;
     public static final float MAIN_MENU_Y = 100f;

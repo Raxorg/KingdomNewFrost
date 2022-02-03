@@ -158,12 +158,12 @@ public class GameLogic extends Logic {
         if (Gdx.input.isKeyJustPressed(O)) {
             dayTimerHandler.passDay();
         }
-        // People
-        citizenHighlightHandler.update();
         // Weather
         cloudHandler.update(delta);
         dayNightCycler.applyColors();
         rainHandler.update(delta);
+        // People
+        citizenHighlightHandler.update();
         // Uncategorized
         buildingInteractionHandler.update();
         cameraHandler.update();
