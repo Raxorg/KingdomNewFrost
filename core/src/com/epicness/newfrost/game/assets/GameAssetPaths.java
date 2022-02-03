@@ -15,6 +15,11 @@ public class GameAssetPaths {
     public static final String WALKING_CITIZEN_6_PATH = "newfrost/images/citizen/walking/walking6.png";
     public static final String WALKING_CITIZEN_7_PATH = "newfrost/images/citizen/walking/walking7.png";
 
+    public static final String EATING_CITIZEN_1_PATH = "newfrost/animations/citizen/eating/eating1.png";
+    public static final String EATING_CITIZEN_2_PATH = "newfrost/animations/citizen/eating/eating2.png";
+    public static final String EATING_CITIZEN_3_PATH = "newfrost/animations/citizen/eating/eating3.png";
+    public static final String EATING_CITIZEN_4_PATH = "newfrost/animations/citizen/eating/eating4.png";
+
     public static final String DYING_CITIZEN_0_PATH = "newfrost/images/citizen/dying/dying0.png";
     public static final String DYING_CITIZEN_1_PATH = "newfrost/images/citizen/dying/dying1.png";
     public static final String DYING_CITIZEN_2_PATH = "newfrost/images/citizen/dying/dying2.png";

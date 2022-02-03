@@ -23,6 +23,12 @@ public class CookhouseHandler {
     // Logic
     private int meats;
 
+    public void init() {
+        Cookhouse cookhouse = (Cookhouse) stuff.getBuildings().get(COOKHOUSE_INDEX);
+        DelayedRemovalArray<DualSprited> cookhouseMeats = cookhouse.getCookhouseMeats();
+        cookhouseMeats.clear();
+    }
+
     public void addMeats(int quantity) {
         Cookhouse cookhouse = (Cookhouse) stuff.getBuildings().get(COOKHOUSE_INDEX);
         DelayedRemovalArray<DualSprited> cookhouseMeats = cookhouse.getCookhouseMeats();

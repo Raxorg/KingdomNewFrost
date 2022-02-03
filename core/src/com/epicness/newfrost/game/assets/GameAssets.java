@@ -22,6 +22,10 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_0_P
 import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_2_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.DYING_CITIZEN_3_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.EATING_CITIZEN_1_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.EATING_CITIZEN_2_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.EATING_CITIZEN_3_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.EATING_CITIZEN_4_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.EXPLORARIUM_BACKPACK_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.EXPLORARIUM_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.FROST_SONG_PATH;
@@ -86,6 +90,7 @@ public class GameAssets extends Assets {
     private Sprite idleCitizen0, idleCitizen1;
     private Sprite walkingCitizen0, walkingCitizen1, walkingCitizen2, walkingCitizen3, walkingCitizen4,
             walkingCitizen5, walkingCitizen6, walkingCitizen7;
+    private Sprite eatingCitizen1, eatingCitizen2, eatingCitizen3, eatingCitizen4;
     private Sprite dyingCitizen0, dyingCitizen1, dyingCitizen2, dyingCitizen3;
     private Sprite walkingExplorer1, walkingExplorer2, walkingExplorer3, walkingExplorer4,
             walkingExplorer5, walkingExplorer6, walkingExplorer7;
@@ -124,6 +129,11 @@ public class GameAssets extends Assets {
         loadTexture(WALKING_CITIZEN_5_PATH);
         loadTexture(WALKING_CITIZEN_6_PATH);
         loadTexture(WALKING_CITIZEN_7_PATH);
+
+        loadTexture(EATING_CITIZEN_1_PATH);
+        loadTexture(EATING_CITIZEN_2_PATH);
+        loadTexture(EATING_CITIZEN_3_PATH);
+        loadTexture(EATING_CITIZEN_4_PATH);
 
         loadTexture(DYING_CITIZEN_0_PATH);
         loadTexture(DYING_CITIZEN_1_PATH);
@@ -216,6 +226,11 @@ public class GameAssets extends Assets {
         walkingCitizen5 = new Sprite(getTexture(WALKING_CITIZEN_5_PATH));
         walkingCitizen6 = new Sprite(getTexture(WALKING_CITIZEN_6_PATH));
         walkingCitizen7 = new Sprite(getTexture(WALKING_CITIZEN_7_PATH));
+
+        eatingCitizen1 = new Sprite(getTexture(EATING_CITIZEN_1_PATH));
+        eatingCitizen2 = new Sprite(getTexture(EATING_CITIZEN_2_PATH));
+        eatingCitizen3 = new Sprite(getTexture(EATING_CITIZEN_3_PATH));
+        eatingCitizen4 = new Sprite(getTexture(EATING_CITIZEN_4_PATH));
 
         dyingCitizen0 = new Sprite(getTexture(DYING_CITIZEN_0_PATH));
         dyingCitizen1 = new Sprite(getTexture(DYING_CITIZEN_1_PATH));
@@ -338,6 +353,22 @@ public class GameAssets extends Assets {
 
     public Sprite getWalkingCitizen7() {
         return walkingCitizen7;
+    }
+
+    public Sprite getEatingCitizen1() {
+        return eatingCitizen1;
+    }
+
+    public Sprite getEatingCitizen2() {
+        return eatingCitizen2;
+    }
+
+    public Sprite getEatingCitizen3() {
+        return eatingCitizen3;
+    }
+
+    public Sprite getEatingCitizen4() {
+        return eatingCitizen4;
     }
 
     public Sprite getDyingCitizen0() {

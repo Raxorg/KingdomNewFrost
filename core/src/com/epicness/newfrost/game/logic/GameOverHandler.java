@@ -16,11 +16,13 @@ public class GameOverHandler {
     // Logic
     private boolean showingGameOverMessage, victory;
 
-    public void hideGameOver() {
+    public void init() {
         stuff.getGameOverMessage().setColor(Color.CLEAR);
         stuff.getGameOverMessage().setTextColor(Color.CLEAR);
         stuff.getHanged().setColor(Color.CLEAR);
         stuff.getHangedText().setColor(Color.CLEAR);
+        showingGameOverMessage = false;
+        victory = false;
     }
 
     public void lessThan6Citizens() {
@@ -64,9 +66,9 @@ public class GameOverHandler {
         } else {
             stuff.getHanged().setColor(Color.WHITE);
             stuff.getHangedText().setColor(Color.WHITE);
+            sharedLogic.getFader().fadeOut();
         }
         showingGameOverMessage = false;
-        sharedLogic.getFader().fadeOut();
     }
 
     public void restart() {

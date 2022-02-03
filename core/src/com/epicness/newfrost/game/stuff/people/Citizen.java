@@ -18,9 +18,12 @@ import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.enums.CitizenActivity;
 import com.epicness.newfrost.game.stuff.dialogues.Dialogue;
 
+import java.util.ArrayList;
+
 public class Citizen {
 
-    private final Animation<Sprited> idle, walking, dying, walkingExplorer;
+    private final ArrayList<Animation<Sprited>> animations;
+    private final Animation<Sprited> idle, walking, eating, dying, walkingExplorer;
     private float animationTime;
     private CitizenActivity activity;
     private int temperature, hunger;
@@ -29,6 +32,7 @@ public class Citizen {
     private boolean explorer;
 
     public Citizen(GameAssets assets, Dialogue dialogue) {
+        animations = new ArrayList<>();
         idle = new Animation<>(
                 0.75f,
                 new Sprited(assets.getIdleCitizen0()),
@@ -38,6 +42,7 @@ public class Citizen {
             idle.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
         }
         idle.setPlayMode(LOOP);
+        animations.add(idle);
 
         walking = new Animation<>(
                 0.1f,
@@ -54,6 +59,20 @@ public class Citizen {
             walking.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
         }
         walking.setPlayMode(LOOP);
+        animations.add(walking);
+
+        eating = new Animation<>(
+                0.15f,
+                new Sprited(assets.getEatingCitizen1()),
+                new Sprited(assets.getEatingCitizen2()),
+                new Sprited(assets.getEatingCitizen3()),
+                new Sprited(assets.getEatingCitizen4())
+        );
+        for (int i = 0; i < eating.getKeyFrames().length; i++) {
+            eating.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
+        }
+        eating.setPlayMode(LOOP);
+        animations.add(eating);
 
         dying = new Animation<>(
                 0.35f,
@@ -65,6 +84,7 @@ public class Citizen {
         for (int i = 0; i < dying.getKeyFrames().length; i++) {
             dying.getKeyFrames()[i].setSize(CITIZEN_HEIGHT, CITIZEN_HEIGHT);
         }
+        animations.add(dying);
 
         walkingExplorer = new Animation<>(
                 0.1f,
@@ -80,6 +100,7 @@ public class Citizen {
             walkingExplorer.getKeyFrames()[i].setSize(CITIZEN_WIDTH, CITIZEN_HEIGHT);
         }
         walkingExplorer.setPlayMode(LOOP);
+        animations.add(walkingExplorer);
 
         setX(MathUtils.random(CAMERA_WIDTH - CITIZEN_HEIGHT));
         setY(GROUND_Y - MathUtils.random(10f, 50f));
@@ -100,12 +121,14 @@ public class Citizen {
     public void draw(SpriteBatch spriteBatch) {
         switch (activity) {
             case IDLE:
-            case EATING:
                 if (explorer) {
                     walkingExplorer.getKeyFrame(0f).draw(spriteBatch);
                 } else {
                     idle.getKeyFrame(animationTime).draw(spriteBatch);
                 }
+                break;
+            case EATING:
+                eating.getKeyFrame(animationTime).draw(spriteBatch);
                 break;
             case MOVING_RANDOMLY:
             case GOING_TO_EAT:
@@ -141,17 +164,11 @@ public class Citizen {
     }
 
     public void setX(float x) {
-        for (int i = 0; i < idle.getKeyFrames().length; i++) {
-            idle.getKeyFrames()[i].setX(x);
-        }
-        for (int i = 0; i < walking.getKeyFrames().length; i++) {
-            walking.getKeyFrames()[i].setX(x);
-        }
-        for (int i = 0; i < dying.getKeyFrames().length; i++) {
-            dying.getKeyFrames()[i].setX(x);
-        }
-        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
-            walkingExplorer.getKeyFrames()[i].setX(x);
+        for (int i = 0; i < animations.size(); i++) {
+            Animation<Sprited> animation = animations.get(i);
+            for (int j = 0; j < animation.getKeyFrames().length; j++) {
+                animation.getKeyFrames()[j].setX(x);
+            }
         }
     }
 
@@ -161,17 +178,11 @@ public class Citizen {
     }
 
     private void setY(float y) {
-        for (int i = 0; i < idle.getKeyFrames().length; i++) {
-            idle.getKeyFrames()[i].setY(y);
-        }
-        for (int i = 0; i < walking.getKeyFrames().length; i++) {
-            walking.getKeyFrames()[i].setY(y);
-        }
-        for (int i = 0; i < dying.getKeyFrames().length; i++) {
-            dying.getKeyFrames()[i].setY(y);
-        }
-        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
-            walkingExplorer.getKeyFrames()[i].setY(y);
+        for (int i = 0; i < animations.size(); i++) {
+            Animation<Sprited> animation = animations.get(i);
+            for (int j = 0; j < animation.getKeyFrames().length; j++) {
+                animation.getKeyFrames()[j].setY(y);
+            }
         }
     }
 
@@ -181,17 +192,11 @@ public class Citizen {
     }
 
     public void translateX(float amount) {
-        for (int i = 0; i < idle.getKeyFrames().length; i++) {
-            idle.getKeyFrames()[i].translateX(amount);
-        }
-        for (int i = 0; i < walking.getKeyFrames().length; i++) {
-            walking.getKeyFrames()[i].translateX(amount);
-        }
-        for (int i = 0; i < dying.getKeyFrames().length; i++) {
-            dying.getKeyFrames()[i].translateX(amount);
-        }
-        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
-            walkingExplorer.getKeyFrames()[i].translateX(amount);
+        for (int i = 0; i < animations.size(); i++) {
+            Animation<Sprited> animation = animations.get(i);
+            for (int j = 0; j < animation.getKeyFrames().length; j++) {
+                animation.getKeyFrames()[j].translateX(amount);
+            }
         }
     }
 
@@ -201,32 +206,20 @@ public class Citizen {
     }
 
     public void setFacingLeft(boolean facingLeft) {
-        for (int i = 0; i < idle.getKeyFrames().length; i++) {
-            idle.getKeyFrames()[i].setFlip(facingLeft, false);
-        }
-        for (int i = 0; i < walking.getKeyFrames().length; i++) {
-            walking.getKeyFrames()[i].setFlip(facingLeft, false);
-        }
-        for (int i = 0; i < dying.getKeyFrames().length; i++) {
-            dying.getKeyFrames()[i].setFlip(facingLeft, false);
-        }
-        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
-            walkingExplorer.getKeyFrames()[i].setFlip(facingLeft, false);
+        for (int i = 0; i < animations.size(); i++) {
+            Animation<Sprited> animation = animations.get(i);
+            for (int j = 0; j < animation.getKeyFrames().length; j++) {
+                animation.getKeyFrames()[j].setFlip(facingLeft, false);
+            }
         }
     }
 
     public void setColor(Color color) {
-        for (int i = 0; i < idle.getKeyFrames().length; i++) {
-            idle.getKeyFrames()[i].setColor(color);
-        }
-        for (int i = 0; i < walking.getKeyFrames().length; i++) {
-            walking.getKeyFrames()[i].setColor(color);
-        }
-        for (int i = 0; i < dying.getKeyFrames().length; i++) {
-            dying.getKeyFrames()[i].setColor(color);
-        }
-        for (int i = 0; i < walkingExplorer.getKeyFrames().length; i++) {
-            walkingExplorer.getKeyFrames()[i].setColor(color);
+        for (int i = 0; i < animations.size(); i++) {
+            Animation<Sprited> animation = animations.get(i);
+            for (int j = 0; j < animation.getKeyFrames().length; j++) {
+                animation.getKeyFrames()[j].setColor(color);
+            }
         }
     }
 

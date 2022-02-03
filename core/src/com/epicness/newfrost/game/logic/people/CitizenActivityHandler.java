@@ -102,7 +102,7 @@ public class CitizenActivityHandler {
                 logic.getCookhouseHandler().removeMeats(1);
                 citizen.setHunger(0);
                 citizen.setActivity(EATING);
-                citizen.setActivityTime(MathUtils.random(1f, 3f));
+                citizen.setActivityTime(MathUtils.random(1.5f, 3.5f));
             } else {
                 citizen.setActivity(RETURNING_FROM_EATING);
             }

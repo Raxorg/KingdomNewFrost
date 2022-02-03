@@ -128,6 +128,7 @@ public class GameLogic extends Logic {
         // Buildings
         mainBuildingMenuHandler.init();
         buildingInteractionHandler.hideActionIcon();
+        cookhouseHandler.init();
         // People
         citizenHandler.spawnCitizens();
         dialogueHandler.hideDialogue();
@@ -140,7 +141,7 @@ public class GameLogic extends Logic {
         expeditionHandler.hideExpeditionInfo();
         introHandler.startMusic();
         gameInputHandler.setupInput();
-        gameOverHandler.hideGameOver();
+        gameOverHandler.init();
         tutorialHandler.init();
 
         sharedLogic.getFader().setup(1f);

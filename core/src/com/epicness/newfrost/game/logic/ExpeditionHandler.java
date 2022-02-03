@@ -89,6 +89,7 @@ public class ExpeditionHandler {
             ongoingExpedition = false;
             if (food) {
                 logic.getCookhouseHandler().addMeats(5);
+                logic.getCitizenHungerHandler().checkHunger();
             } else {
                 logic.getWarehouseHandler().addLogs(10);
             }
