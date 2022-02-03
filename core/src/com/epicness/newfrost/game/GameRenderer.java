@@ -49,7 +49,7 @@ public class GameRenderer extends Renderer {
         sharedStuff.getFader().draw(spriteBatch);
 
         spriteBatch.end();
-        drawDebug();
+        //drawDebug();
     }
 
     private void drawDebug() {

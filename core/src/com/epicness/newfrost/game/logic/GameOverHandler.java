@@ -60,7 +60,7 @@ public class GameOverHandler {
     private void showFinalScreen() {
         if (victory) {
             // TODO: 3/2/2022 proper victory screen
-            stuff.getHanged().setColor(Color.WHITE);
+            // stuff.getHanged().setColor(Color.WHITE);
         } else {
             stuff.getHanged().setColor(Color.WHITE);
             stuff.getHangedText().setColor(Color.WHITE);
