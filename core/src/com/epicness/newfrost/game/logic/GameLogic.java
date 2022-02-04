@@ -35,7 +35,7 @@ import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class GameLogic extends Logic {
 
-    // todo silencio seplucral
+    // todo silencio seplucral cuando un ciudadano muere
 
     // Buildings
     private final ActionTabHandler actionTabHandler;
@@ -138,10 +138,10 @@ public class GameLogic extends Logic {
         cameraHandler.configureParallax();
         dayTimerHandler.init();
         eventHandler.hideEventView();
-        expeditionHandler.hideExpeditionInfo();
-        introHandler.startMusic();
+        expeditionHandler.init();
         gameInputHandler.setupInput();
         gameOverHandler.init();
+        introHandler.startMusic();
         tutorialHandler.init();
 
         sharedLogic.getFader().setup(1f);
@@ -259,6 +259,10 @@ public class GameLogic extends Logic {
 
     public CookhouseHandler getCookhouseHandler() {
         return cookhouseHandler;
+    }
+
+    public ExplorariumHandler getExplorariumHandler() {
+        return explorariumHandler;
     }
 
     public WarehouseHandler getWarehouseHandler() {

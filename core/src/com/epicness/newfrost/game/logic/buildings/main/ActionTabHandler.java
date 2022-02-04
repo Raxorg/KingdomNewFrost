@@ -31,24 +31,52 @@ public class ActionTabHandler {
 
     public void update(float lastX, float lastY) {
         ActionPanel actionPanel = stuff.getMainBuildingMenu().getActionPanel();
+
+        actionPanel.getFoodExpeditionButton().setBackgroundColor(Color.WHITE);
+        actionPanel.getFoodExpeditionBackpackButton().setBackgroundColor(Color.WHITE);
+        actionPanel.getWoodExpeditionButton().setBackgroundColor(Color.WHITE);
+        actionPanel.getWoodExpeditionBackpackButton().setBackgroundColor(Color.WHITE);
+
         if (actionPanel.getFoodExpeditionButton().contains(lastX, lastY)) {
-            actionPanel.getFoodExpeditionButton().setColor(new Color(0.5f, 0.2f, 0.2f, 1f));
-        } else {
-            actionPanel.getFoodExpeditionButton().setColor(Color.WHITE);
+            actionPanel.getFoodExpeditionButton().setBackgroundColor(new Color(0.5f, 0.2f, 0.2f, 1f));
+        }
+        if (actionPanel.getFoodExpeditionBackpackButton().contains(lastX, lastY)) {
+            if (logic.getExplorariumHandler().getBackpacks() > 5) {
+                actionPanel.getFoodExpeditionBackpackButton().setBackgroundColor(new Color(0.5f, 0.2f, 0.2f, 1f));
+            }
         }
         if (actionPanel.getWoodExpeditionButton().contains(lastX, lastY)) {
-            actionPanel.getWoodExpeditionButton().setColor(new Color(0.5f, 0.3f, 0.2f, 1f));
-        } else {
-            actionPanel.getWoodExpeditionButton().setColor(Color.WHITE);
+            actionPanel.getWoodExpeditionButton().setBackgroundColor(new Color(0.5f, 0.3f, 0.2f, 1f));
+        }
+        if (actionPanel.getWoodExpeditionBackpackButton().contains(lastX, lastY)) {
+            if (logic.getExplorariumHandler().getBackpacks() > 5) {
+                actionPanel.getWoodExpeditionBackpackButton().setBackgroundColor(new Color(0.5f, 0.3f, 0.2f, 1f));
+            }
         }
     }
 
     public void touchUp(float x, float y) {
         ActionPanel actionPanel = stuff.getMainBuildingMenu().getActionPanel();
         if (actionPanel.getFoodExpeditionButton().contains(x, y)) {
-            logic.getExpeditionHandler().sendExpedition(true);
-        } else if (actionPanel.getWoodExpeditionButton().contains(x, y)) {
-            logic.getExpeditionHandler().sendExpedition(false);
+            logic.getExpeditionHandler().sendExpedition(true, false);
+            return;
+        }
+        if (actionPanel.getFoodExpeditionBackpackButton().contains(x, y)) {
+            if (actionPanel.getFoodExpeditionBackpackButton().getBackgroundColor().equals(Color.WHITE)) {
+                return;
+            }
+            logic.getExpeditionHandler().sendExpedition(true, true);
+            return;
+        }
+        if (actionPanel.getWoodExpeditionButton().contains(x, y)) {
+            logic.getExpeditionHandler().sendExpedition(false, false);
+            return;
+        }
+        if (actionPanel.getWoodExpeditionBackpackButton().contains(x, y)) {
+            if (actionPanel.getWoodExpeditionBackpackButton().getBackgroundColor().equals(Color.WHITE)) {
+                return;
+            }
+            logic.getExpeditionHandler().sendExpedition(false, true);
         }
     }
 

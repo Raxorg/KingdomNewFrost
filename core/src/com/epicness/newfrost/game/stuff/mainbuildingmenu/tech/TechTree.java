@@ -58,7 +58,7 @@ public class TechTree {
 
         techDescription = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
         techDescription.setSize(TECH_DESCRIPTION_WIDTH, TECH_DESCRIPTION_HEIGHT);
-        techDescription.setColor(Color.BLACK);
+        techDescription.setBackgroundColor(Color.BLACK);
 
         woodIcon = new Sprited(assets.getWoodFrame());
         woodIcon.setSize(TECH_TREE_WOOD_ICON_SIZE);

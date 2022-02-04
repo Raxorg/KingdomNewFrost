@@ -23,12 +23,20 @@ public class ExpeditionHandler {
     private GameLogic logic;
     private GameStuff stuff;
     // Logic
-    private float goingToExpeditionTime;
-    private boolean ongoingExpedition, goingToExpedition;
+    private boolean ongoingExpedition;
     private ArrayList<Citizen> designatedCitizens;
-    private boolean food;
+    private boolean food, backpack;
 
-    public void sendExpedition(boolean food) {
+    public void init() {
+        hideExpeditionInfo();
+        ongoingExpedition = false;
+    }
+
+    private void hideExpeditionInfo() {
+        stuff.getExpeditionInfo().setPosition(HIDDEN_X, HIDDEN_Y);
+    }
+
+    public void sendExpedition(boolean food, boolean backpack) {
         if (ongoingExpedition) {
             return;
         }
@@ -62,20 +70,14 @@ public class ExpeditionHandler {
 
         stuff.getExpeditionInfo().setTime(EXPEDITION_DURATION);
         ongoingExpedition = true;
-        goingToExpedition = true;
         showExpeditionInfo();
         this.food = food;
+        this.backpack = backpack;
     }
 
     public void update(float delta) {
         if (!ongoingExpedition) {
             return;
-        }
-        if (goingToExpedition) {
-            goingToExpeditionTime += delta;
-            if (goingToExpeditionTime >= GOING_TO_EXPEDITION_TIME) {
-                goingToExpedition = false;
-            }
         }
         advanceExpedition(delta);
     }
@@ -89,9 +91,15 @@ public class ExpeditionHandler {
             ongoingExpedition = false;
             if (food) {
                 logic.getCookhouseHandler().addMeats(5);
+                if (backpack) {
+                    logic.getCookhouseHandler().addMeats(5);
+                }
                 logic.getCitizenHungerHandler().checkHunger();
             } else {
-                logic.getWarehouseHandler().addLogs(10);
+                logic.getWarehouseHandler().addLogs(5);
+                if (backpack) {
+                    logic.getWarehouseHandler().addLogs(5);
+                }
             }
             for (int i = 0; i < designatedCitizens.size(); i++) {
                 Citizen citizen = designatedCitizens.get(i);
@@ -100,10 +108,6 @@ public class ExpeditionHandler {
                 citizen.setFacingLeft(true);
             }
         }
-    }
-
-    public void hideExpeditionInfo() {
-        stuff.getExpeditionInfo().setPosition(HIDDEN_X, HIDDEN_Y);
     }
 
     private void showExpeditionInfo() {

@@ -9,6 +9,7 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.BACKGROUND_4_PATH
 import static com.epicness.newfrost.game.assets.GameAssetPaths.BACKGROUND_5_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.BACKGROUND_6_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.BACKGROUND_7_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.BACKPACK_ICON_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CITIZEN_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CLOUD_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.CLOUD_2_PATH;
@@ -112,7 +113,7 @@ public class GameAssets extends Assets {
     private Sprite meat;
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
     private Sprite citizen;
-    private Sprite actionIcon, tipIcon, woodFrame, meatIcon, glassIcon;
+    private Sprite actionIcon, tipIcon, woodFrame, meatIcon, backpackIcon, glassIcon;
     private Sprite hanged, hangedText;
 
     @Override
@@ -206,6 +207,7 @@ public class GameAssets extends Assets {
         loadTexture(TIP_ICON_PATH);
         loadTexture(WOOD_FRAME_PATH);
         loadTexture(MEAT_ICON_PATH);
+        loadTexture(BACKPACK_ICON_PATH);
         loadTexture(GLASS_ICON_PATH);
 
         loadTexture(HANGED_PATH);
@@ -308,6 +310,7 @@ public class GameAssets extends Assets {
         tipIcon = new Sprite(getTexture(TIP_ICON_PATH));
         woodFrame = new Sprite(getTexture(WOOD_FRAME_PATH));
         meatIcon = new Sprite(getTexture(MEAT_ICON_PATH));
+        backpackIcon = new Sprite(getTexture(BACKPACK_ICON_PATH));
         glassIcon = new Sprite(getTexture(GLASS_ICON_PATH));
 
         hanged = new Sprite(getTexture(HANGED_PATH));
@@ -612,6 +615,10 @@ public class GameAssets extends Assets {
 
     public Sprite getMeatIcon() {
         return meatIcon;
+    }
+
+    public Sprite getBackpackIcon() {
+        return backpackIcon;
     }
 
     public Sprite getGlassIcon() {

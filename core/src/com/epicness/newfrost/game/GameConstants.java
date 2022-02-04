@@ -148,13 +148,20 @@ public class GameConstants {
     public static final float ACTION_BUTTON_HEIGHT = ACTION_BUTTON_WIDTH / 4f;
 
     public static final float EXPEDITION_BUTTON_X = MAIN_MENU_WIDTH / 2f - ACTION_BUTTON_WIDTH / 2f;
-    public static final float FOOD_EXPEDITION_BUTTON_Y = MAIN_MENU_HEIGHT / 2f + ACTION_BUTTON_HEIGHT / 2f;
-    public static final float WOOD_EXPEDITION_BUTTON_Y = MAIN_MENU_HEIGHT / 2f - ACTION_BUTTON_HEIGHT * 1.5f;
+    public static final float FOOD_EXPEDITION_BUTTON_Y = MAIN_MENU_HEIGHT * 0.7f;
+    public static final float FOOD_EXPEDITION_BACKPACK_BUTTON_Y = MAIN_MENU_HEIGHT * 0.5f;
+    public static final float WOOD_EXPEDITION_BUTTON_Y = MAIN_MENU_HEIGHT * 0.3f;
+    public static final float WOOD_EXPEDITION_BACKPACK_BUTTON_Y = MAIN_MENU_HEIGHT * 0.1f;
 
     public static final float ACTION_ICON_SIZE = ACTION_BUTTON_HEIGHT;
     public static final float ACTION_ICON_X = EXPEDITION_BUTTON_X + ACTION_BUTTON_WIDTH + 20f;
+    public static final float BACKPACK_ICON_X = ACTION_ICON_X + ACTION_ICON_SIZE + 20f;
     public static final float FOOD_ACTION_ICON_Y = FOOD_EXPEDITION_BUTTON_Y;
+    public static final float FOOD_ACTION_ICON_2_Y = FOOD_EXPEDITION_BACKPACK_BUTTON_Y;
+    public static final float BACKPACK_ACTION_ICON_Y = FOOD_EXPEDITION_BACKPACK_BUTTON_Y;
     public static final float WOOD_ACTION_ICON_Y = WOOD_EXPEDITION_BUTTON_Y;
+    public static final float WOOD_ACTION_ICON_2_Y = WOOD_EXPEDITION_BACKPACK_BUTTON_Y;
+    public static final float BACKPACK_ACTION_ICON_2_Y = WOOD_EXPEDITION_BACKPACK_BUTTON_Y;
     // Tech tree
     public static final int TECHNOLOGIES = 10;
     public static final float TECHNOLOGY_SIZE = 100f;

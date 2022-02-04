@@ -8,7 +8,6 @@ import static com.epicness.newfrost.game.GameConstants.TAB_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.TAB_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.TAB_Y;
 import static com.epicness.newfrost.game.GameConstants.TECH_TAB_X;
-import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_ACTIONS_PANEL;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,7 +16,6 @@ import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.newfrost.game.assets.GameAssets;
-import com.epicness.newfrost.game.enums.MainMenuState;
 import com.epicness.newfrost.game.stuff.mainbuildingmenu.tech.TechTree;
 
 public class MainBuildingMenu implements Buttonable {
@@ -49,7 +47,8 @@ public class MainBuildingMenu implements Buttonable {
                 sharedAssets.getPixel(),
                 assets.getPixelFont(),
                 assets.getMeatIcon(),
-                assets.getWoodFrame()
+                assets.getWoodFrame(),
+                assets.getBackpackIcon()
         );
 
         techTree = new TechTree(assets, sharedAssets);
@@ -92,15 +91,15 @@ public class MainBuildingMenu implements Buttonable {
     }
 
     public void setActionsTabColor(Color color) {
-        actionsTab.setColor(color);
+        actionsTab.setBackgroundColor(color);
     }
 
     public void setTechTabColor(Color color) {
-        techTab.setColor(color);
+        techTab.setBackgroundColor(color);
     }
 
     public void setLawTabColor(Color color) {
-        lawTab.setColor(color);
+        lawTab.setBackgroundColor(color);
     }
 
     public SpritedText getActionsTab() {

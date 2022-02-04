@@ -72,7 +72,7 @@ public class EventView {
         image.setColor(color);
         text.setColor(color);
         for (int i = 0; i < options.size; i++) {
-            options.get(i).setColor(color);
+            options.get(i).setBackgroundColor(color);
         }
     }
 
@@ -84,7 +84,7 @@ public class EventView {
             options.get(i).setText(option.getText());
         }
         for (int i = options.size - 1; i >= event.getOptions().length; i--) {
-            options.get(i).setColor(Color.RED);
+            options.get(i).setBackgroundColor(Color.RED);
         }
     }
 }

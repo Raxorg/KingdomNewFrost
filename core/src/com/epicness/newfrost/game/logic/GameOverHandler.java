@@ -17,7 +17,7 @@ public class GameOverHandler {
     private boolean showingGameOverMessage, victory;
 
     public void init() {
-        stuff.getGameOverMessage().setColor(Color.CLEAR);
+        stuff.getGameOverMessage().setBackgroundColor(Color.CLEAR);
         stuff.getGameOverMessage().setTextColor(Color.CLEAR);
         stuff.getHanged().setColor(Color.CLEAR);
         stuff.getHangedText().setColor(Color.CLEAR);
@@ -47,7 +47,7 @@ public class GameOverHandler {
 
     private void showGameOver() {
         stuff.getGameOverMessage().setText(stuff.getGameOverMessage().getText());
-        stuff.getGameOverMessage().setColor(BLACK_CLEAR_25);
+        stuff.getGameOverMessage().setBackgroundColor(BLACK_CLEAR_25);
         stuff.getGameOverMessage().setTextColor(Color.WHITE);
         showingGameOverMessage = true;
     }

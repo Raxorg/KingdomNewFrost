@@ -85,7 +85,7 @@ public class GameStuff extends Stuff {
 
         dialogue = new SpritedText(sharedAssets.getPixel(), assets.getPixelFontMedium());
         dialogue.setSize(DIALOGUE_WIDTH, DIALOGUE_HEIGHT);
-        dialogue.setColor(BLACK_CLEAR_50);
+        dialogue.setBackgroundColor(BLACK_CLEAR_50);
 
         tutorialWidget = new IconedSpritedText(sharedAssets.getPixel(), assets.getPixelFont(), assets.getTipIcon());
         tutorialWidget.setSize(TUTORIAL_WIDGET_WIDTH, TUTORIAL_WIDGET_HEIGHT);
@@ -94,7 +94,7 @@ public class GameStuff extends Stuff {
 
         tip = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
         tip.setSize(TUTORIAL_DIALOGUE_WIDTH, TUTORIAL_DIALOGUE_HEIGHT);
-        tip.setColor(BLACK_CLEAR_25);
+        tip.setBackgroundColor(BLACK_CLEAR_25);
 
         expeditionInfo = new ExpeditionInfo(assets.getGlassIcon(), assets.getPixelFont());
 

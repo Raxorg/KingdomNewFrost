@@ -79,8 +79,9 @@ public class GameAssetPaths {
 
     public static final String ACTION_ICON_PATH = "newfrost/images/actionIcon.png";
     public static final String TIP_ICON_PATH = "newfrost/images/tipIcon.png";
-    public static final String WOOD_FRAME_PATH = "newfrost/images/woodFrame.png";
-    public static final String MEAT_ICON_PATH = "newfrost/images/meatIcon.png";
+    public static final String WOOD_FRAME_PATH = "newfrost/images/icons/woodFrame.png";
+    public static final String MEAT_ICON_PATH = "newfrost/images/icons/meatIcon.png";
+    public static final String BACKPACK_ICON_PATH = "newfrost/images/icons/backpackIcon.png";
     public static final String GLASS_ICON_PATH = "newfrost/images/glass.png";
 
     public static final String WAREHOUSE_BACK_PATH = "newfrost/images/warehouse/warehouseBack.png";
