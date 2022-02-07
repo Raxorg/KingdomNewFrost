@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class Citizen {
 
+    private final Sprited shadow;
     private final ArrayList<Animation<Sprited>> animations;
     private final Animation<Sprited> idle, walking, eating, dying, walkingExplorer;
     private float animationTime;
@@ -32,6 +33,9 @@ public class Citizen {
     private boolean explorer;
 
     public Citizen(GameAssets assets, Dialogue dialogue) {
+        shadow = new Sprited(assets.getShadow());
+        shadow.setSize(CITIZEN_WIDTH * 0.8f, CITIZEN_WIDTH / 7f);
+
         animations = new ArrayList<>();
         idle = new Animation<>(
                 0.75f,
@@ -119,6 +123,7 @@ public class Citizen {
     }
 
     public void draw(SpriteBatch spriteBatch) {
+        shadow.draw(spriteBatch);
         switch (activity) {
             case IDLE:
                 if (explorer) {
@@ -164,6 +169,7 @@ public class Citizen {
     }
 
     public void setX(float x) {
+        shadow.setX(x + (isFacingLeft() ? CITIZEN_WIDTH * 0.2f : 0f));
         for (int i = 0; i < animations.size(); i++) {
             Animation<Sprited> animation = animations.get(i);
             for (int j = 0; j < animation.getKeyFrames().length; j++) {
@@ -178,6 +184,7 @@ public class Citizen {
     }
 
     private void setY(float y) {
+        shadow.setY(y - shadow.getHeight() / 2f);
         for (int i = 0; i < animations.size(); i++) {
             Animation<Sprited> animation = animations.get(i);
             for (int j = 0; j < animation.getKeyFrames().length; j++) {
@@ -192,6 +199,7 @@ public class Citizen {
     }
 
     public void translateX(float amount) {
+        shadow.translateX(amount);
         for (int i = 0; i < animations.size(); i++) {
             Animation<Sprited> animation = animations.get(i);
             for (int j = 0; j < animation.getKeyFrames().length; j++) {
@@ -206,6 +214,7 @@ public class Citizen {
     }
 
     public void setFacingLeft(boolean facingLeft) {
+        shadow.setX(getX() + (facingLeft ? CITIZEN_WIDTH * 0.2f : 0f));
         for (int i = 0; i < animations.size(); i++) {
             Animation<Sprited> animation = animations.get(i);
             for (int j = 0; j < animation.getKeyFrames().length; j++) {
@@ -215,6 +224,7 @@ public class Citizen {
     }
 
     public void setColor(Color color) {
+        shadow.setColor(color);
         for (int i = 0; i < animations.size(); i++) {
             Animation<Sprited> animation = animations.get(i);
             for (int j = 0; j < animation.getKeyFrames().length; j++) {
@@ -238,6 +248,10 @@ public class Citizen {
 
     public void setActivity(CitizenActivity activity) {
         this.activity = activity;
+    }
+
+    public void hideShadow() {
+        shadow.setSize(0f, 0f);
     }
 
     public int getTemperature() {

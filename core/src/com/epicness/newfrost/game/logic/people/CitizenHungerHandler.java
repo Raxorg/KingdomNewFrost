@@ -30,6 +30,7 @@ public class CitizenHungerHandler {
             if (citizen.getHunger() == 2) {
                 citizen.setActivity(DYING);
                 citizen.setAnimationTime(0f);
+                citizen.hideShadow();
                 logic.getCitizenHandler().citizenDied();
                 continue;
             }

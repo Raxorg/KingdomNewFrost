@@ -16,12 +16,16 @@ import com.epicness.newfrost.game.assets.GameAssets;
 
 public class Player {
 
+    private final Sprited shadow;
     private final Animation<Sprited> idleAnimation;
     private final Animation<Sprited> walkingAnimation;
     private float animationTime;
     private float speed;
 
     public Player(GameAssets assets) {
+        shadow = new Sprited(assets.getShadow());
+        shadow.setSize(PLAYER_WIDTH * 0.8f, PLAYER_WIDTH / 7f);
+
         idleAnimation = new Animation<>(
                 0.75f,
                 new Sprited(assets.getIdleGovernor0()),
@@ -56,6 +60,7 @@ public class Player {
     }
 
     public void draw(SpriteBatch spriteBatch) {
+        shadow.draw(spriteBatch);
         if (speed == 0f) {
             idleAnimation.getKeyFrame(animationTime).draw(spriteBatch);
         } else {
@@ -76,6 +81,7 @@ public class Player {
     }
 
     private void setX(float x) {
+        shadow.setX(x + (isFacingLeft() ? PLAYER_WIDTH * 0.2f : 0f));
         for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
             idleAnimation.getKeyFrames()[i].setX(x);
         }
@@ -85,6 +91,7 @@ public class Player {
     }
 
     private void setY(float y) {
+        shadow.setY(y);
         for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
             idleAnimation.getKeyFrames()[i].setY(y);
         }
@@ -99,6 +106,7 @@ public class Player {
     }
 
     public void translateX(float amount) {
+        shadow.translateX(amount);
         for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
             idleAnimation.getKeyFrames()[i].translateX(amount);
         }
@@ -123,7 +131,13 @@ public class Player {
         this.speed = speed;
     }
 
+    public boolean isFacingLeft() {
+        Sprited sprited = idleAnimation.getKeyFrame(0f);
+        return sprited.isFlipX();
+    }
+
     public void setFacingLeft(boolean facingLeft) {
+        shadow.setX(getX() + (facingLeft ? PLAYER_WIDTH * 0.2f : 0f));
         for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
             idleAnimation.getKeyFrames()[i].setFlip(facingLeft, false);
         }
@@ -133,6 +147,7 @@ public class Player {
     }
 
     public void setColor(Color color) {
+        shadow.setColor(color);
         for (int i = 0; i < idleAnimation.getKeyFrames().length; i++) {
             idleAnimation.getKeyFrames()[i].setColor(color);
         }

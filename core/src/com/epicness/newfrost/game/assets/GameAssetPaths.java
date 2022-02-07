@@ -70,7 +70,7 @@ public class GameAssetPaths {
     public static final String COOK_PATH = "newfrost/images/cook.png";
     public static final String TENT_PATH = "newfrost/images/tent.png";
     public static final String TENT_UPGRADE_PATH = "newfrost/images/tentUpgrade.png";
-    public static final String MEAT_PATH = "newfrost/images/meat.png";
+    public static final String SHADOW_PATH = "newfrost/images/shadow.png";
     public static final String TECH_ICON_0_PATH = "newfrost/images/techIcon0.png";
     public static final String TECH_ICON_1_PATH = "newfrost/images/techIcon1.png";
     public static final String TECH_ICON_2_PATH = "newfrost/images/techIcon2.png";

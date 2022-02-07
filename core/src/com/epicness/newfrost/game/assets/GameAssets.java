@@ -39,10 +39,10 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_GOVERNOR_0_P
 import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_GOVERNOR_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.MAIN_BUILDING_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.MEAT_ICON_PATH;
-import static com.epicness.newfrost.game.assets.GameAssetPaths.MEAT_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_MEDIUM_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_SMALL_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.SHADOW_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.TECH_ICON_0_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.TECH_ICON_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.TECH_ICON_2_PATH;
@@ -110,7 +110,7 @@ public class GameAssets extends Assets {
     private Sprite warehouseBack, warehouseFront, warehouseLog;
     private Sprite cookhouse, cookhouseMeat, cookhouseMeatHook;
     private Sprite explorarium, explorariumBackpack;
-    private Sprite meat;
+    private Sprite shadow;
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
     private Sprite citizen;
     private Sprite actionIcon, tipIcon, woodFrame, meatIcon, backpackIcon, glassIcon;
@@ -196,7 +196,8 @@ public class GameAssets extends Assets {
         loadTexture(COOKHOUSE_MEAT_PATH);
         loadTexture(COOKHOUSE_MEAT_HOOK_PATH);
 
-        loadTexture(MEAT_PATH);
+        loadTexture(SHADOW_PATH);
+
         loadTexture(TECH_ICON_0_PATH);
         loadTexture(TECH_ICON_1_PATH);
         loadTexture(TECH_ICON_2_PATH);
@@ -299,7 +300,8 @@ public class GameAssets extends Assets {
         cookhouseMeat = new Sprite(getTexture(COOKHOUSE_MEAT_PATH));
         cookhouseMeatHook = new Sprite(getTexture(COOKHOUSE_MEAT_HOOK_PATH));
 
-        meat = new Sprite(getTexture(MEAT_PATH));
+        shadow = new Sprite(getTexture(SHADOW_PATH));
+
         techIcon0 = new Sprite(getTexture(TECH_ICON_0_PATH));
         techIcon1 = new Sprite(getTexture(TECH_ICON_1_PATH));
         techIcon2 = new Sprite(getTexture(TECH_ICON_2_PATH));
@@ -577,8 +579,8 @@ public class GameAssets extends Assets {
         return cookhouseMeatHook;
     }
 
-    public Sprite getMeat() {
-        return meat;
+    public Sprite getShadow() {
+        return shadow;
     }
 
     public Sprite getTechIcon0() {
