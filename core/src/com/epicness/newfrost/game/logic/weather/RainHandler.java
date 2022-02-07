@@ -1,10 +1,11 @@
 package com.epicness.newfrost.game.logic.weather;
 
-import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.newfrost.game.stuff.GameStuff;
-
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+
+import com.badlogic.gdx.math.MathUtils;
+import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.newfrost.game.stuff.GameStuff;
 
 public class RainHandler {
 
@@ -17,10 +18,10 @@ public class RainHandler {
             drop.translateX(-100f * delta);
             drop.translateY(-1000f * delta);
             if (drop.getX() <= 0f) {
-                drop.setX(CAMERA_WIDTH + drop.getX());
+                drop.setX(CAMERA_WIDTH);
             }
-            if (drop.getY() <= 0f) {
-                drop.setY(CAMERA_HEIGHT + drop.getY());
+            if (drop.getY() + drop.getHeight() <= 0f) {
+                drop.setY(CAMERA_HEIGHT + MathUtils.random(50f));
             }
         }
     }

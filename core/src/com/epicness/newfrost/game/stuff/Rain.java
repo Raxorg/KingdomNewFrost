@@ -1,6 +1,6 @@
 package com.epicness.newfrost.game.stuff;
 
-import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_75;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
@@ -19,10 +19,14 @@ public class Rain {
         for (int i = 0; i < drops.length; i++) {
             drops[i] = new Sprited(rainDrop);
             Sprited drop = drops[i];
-            drop.setSize(4f);
+            if (MathUtils.randomBoolean(0.75f)) {
+                drop.setSize(3f, 15f);
+            } else {
+                drop.setSize(2f, 35f);
+            }
             drop.translateX(MathUtils.random(CAMERA_WIDTH));
             drop.translateY(MathUtils.random(CAMERA_HEIGHT));
-            drop.setColor(BLACK_CLEAR_50.cpy().lerp(Color.BLUE, 0.5f));
+            drop.setColor(BLACK_CLEAR_75.cpy().lerp(Color.ROYAL, 0.4f));
         }
     }
 
