@@ -7,6 +7,7 @@ import static com.epicness.newfrost.game.GameConstants.CITIZEN_STARTING_TEMPERAT
 import static com.epicness.newfrost.game.GameConstants.CITIZEN_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
 import static com.epicness.newfrost.game.enums.CitizenActivity.IDLE;
+import static com.epicness.newfrost.game.enums.CitizenActivity.ON_EXPEDITION;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -123,7 +124,9 @@ public class Citizen {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        shadow.draw(spriteBatch);
+        if (activity != ON_EXPEDITION) {
+            shadow.draw(spriteBatch);
+        }
         switch (activity) {
             case IDLE:
                 if (explorer) {

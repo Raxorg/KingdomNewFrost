@@ -58,6 +58,7 @@ public class ExpeditionHandler {
                 case GOING_TO_EXPEDITION:
                 case ON_EXPEDITION:
                 case DYING:
+                    citizen.setExplorer(false);
                     break;
             }
         }
@@ -66,6 +67,7 @@ public class ExpeditionHandler {
             citizen.setActivity(GOING_TO_EXPEDITION);
             citizen.setFacingLeft(false);
             citizen.setActivityTime(GOING_TO_EXPEDITION_TIME);
+            citizen.setExplorer(true);
         }
         logic.getMainBuildingMenuHandler().hideMenu();
 
