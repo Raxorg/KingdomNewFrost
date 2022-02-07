@@ -12,12 +12,14 @@ public class IntroLogic extends Logic {
 
     private final IntroHandler introHandler;
     private final IntroInputHandler introInputHandler;
+    private final SubtitleHandler subtitleHandler;
 
     public IntroLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
 
         introHandler = new IntroHandler();
         introInputHandler = new IntroInputHandler();
+        subtitleHandler = new SubtitleHandler();
 
         introHandler.setSharedLogic(sharedLogic);
 
@@ -36,6 +38,7 @@ public class IntroLogic extends Logic {
         sharedLogic.getTransitionHandler().update();
 
         introHandler.update(delta);
+        subtitleHandler.update(delta);
     }
 
     @Override
@@ -56,6 +59,7 @@ public class IntroLogic extends Logic {
 
         introHandler.setStuff(introStuff);
         introInputHandler.setStuff(introStuff);
+        subtitleHandler.setStuff(introStuff);
     }
 
     public IntroHandler getIntroHandler() {

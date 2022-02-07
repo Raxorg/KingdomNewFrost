@@ -14,10 +14,10 @@ public class IntroRenderer extends Renderer {
 
         spriteBatch.begin();
 
+        stuff.getText().draw(spriteBatch);
         for (int i = 0; i < stuff.getSnow().length; i++) {
             stuff.getSnow()[i].draw(spriteBatch);
         }
-        stuff.getContinueText().draw(spriteBatch);
 
         spriteBatch.end();
     }
