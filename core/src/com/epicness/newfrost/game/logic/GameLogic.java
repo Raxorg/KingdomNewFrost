@@ -134,6 +134,7 @@ public class GameLogic extends Logic {
         dialogueHandler.hideDialogue();
         // Weather
         dayNightCycler.initialize();
+        rainHandler.init();
         // Uncategorized
         cameraHandler.configureParallax();
         dayTimerHandler.init();
