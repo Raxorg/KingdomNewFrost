@@ -129,7 +129,8 @@ public class GameConstants {
     // Expedition
     public static final float GOING_TO_EXPEDITION_TIME = 2.5f;
     public static final float RETURNING_FROM_EXPEDITION_TIME = 2.5f;
-    public static final float EXPEDITION_DURATION = 25f;
+    public static final float EXPEDITION_DURATION = 28f;
+    public static final float BACKPACK_EXPEDITION_DURATION = 22f;
     public static final float EXPEDITION_ICON_SIZE = 100f;
     public static final float EXPEDITION_INFO_X = CAMERA_WIDTH - EXPEDITION_ICON_SIZE;
     public static final float EXPEDITION_INFO_Y = CAMERA_HEIGHT - EXPEDITION_ICON_SIZE;

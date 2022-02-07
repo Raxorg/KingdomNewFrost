@@ -1,5 +1,6 @@
 package com.epicness.newfrost.game.logic;
 
+import static com.epicness.newfrost.game.GameConstants.BACKPACK_EXPEDITION_DURATION;
 import static com.epicness.newfrost.game.GameConstants.EXPEDITION_DURATION;
 import static com.epicness.newfrost.game.GameConstants.EXPEDITION_INFO_X;
 import static com.epicness.newfrost.game.GameConstants.EXPEDITION_INFO_Y;
@@ -68,7 +69,8 @@ public class ExpeditionHandler {
         }
         logic.getMainBuildingMenuHandler().hideMenu();
 
-        stuff.getExpeditionInfo().setTime(EXPEDITION_DURATION);
+        float expeditionDuration = backpack ? BACKPACK_EXPEDITION_DURATION : EXPEDITION_DURATION;
+        stuff.getExpeditionInfo().setTime(expeditionDuration);
         ongoingExpedition = true;
         showExpeditionInfo();
         this.food = food;
