@@ -32,7 +32,7 @@ public class IntroStuff extends Stuff {
         subtitleData.put(24.5f, "The so penetrating cold is a daily torture");
         subtitleData.put(29f, "I must decide over the lives of others");
         subtitleData.put(32.8f, "If necessary I will make sacrifices for the sake of the majority");
-        subtitleData.put(37.5f, "The faces of every person that fought and lost follow me...");
+        subtitleData.put(37.5f, "The faces of every person that fought and lost haunt me...");
         subtitleData.put(43f, "They judge me.");
         subtitleData.put(45.3f, "My biggest fear is that this fight is only to prolong our suffering.");
 
