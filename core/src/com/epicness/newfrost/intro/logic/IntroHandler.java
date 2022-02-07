@@ -1,18 +1,17 @@
 package com.epicness.newfrost.intro.logic;
 
-import com.badlogic.gdx.graphics.Color;
-import com.epicness.fundamentals.logic.SharedLogic;
-import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.newfrost.game.GameInitializer;
-import com.epicness.newfrost.intro.IntroAssets;
-import com.epicness.newfrost.intro.IntroStuff;
-
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.newfrost.intro.IntroConstants.SNOWFLAKE_X_SPEED_1;
 import static com.epicness.newfrost.intro.IntroConstants.SNOWFLAKE_X_SPEED_2;
 import static com.epicness.newfrost.intro.IntroConstants.SNOWFLAKE_Y_SPEED_1;
 import static com.epicness.newfrost.intro.IntroConstants.SNOWFLAKE_Y_SPEED_2;
+
+import com.epicness.fundamentals.logic.SharedLogic;
+import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.newfrost.game.GameInitializer;
+import com.epicness.newfrost.intro.IntroAssets;
+import com.epicness.newfrost.intro.IntroStuff;
 
 public class IntroHandler {
 
