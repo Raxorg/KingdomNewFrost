@@ -41,7 +41,7 @@ public class ActionTabHandler {
             actionPanel.getFoodExpeditionButton().setBackgroundColor(new Color(0.5f, 0.2f, 0.2f, 1f));
         }
         if (actionPanel.getFoodExpeditionBackpackButton().contains(lastX, lastY)) {
-            if (logic.getExplorariumHandler().getBackpacks() > 5) {
+            if (logic.getExplorariumHandler().getBackpacks() >= 5) {
                 actionPanel.getFoodExpeditionBackpackButton().setBackgroundColor(new Color(0.5f, 0.2f, 0.2f, 1f));
             }
         }
@@ -49,7 +49,7 @@ public class ActionTabHandler {
             actionPanel.getWoodExpeditionButton().setBackgroundColor(new Color(0.5f, 0.3f, 0.2f, 1f));
         }
         if (actionPanel.getWoodExpeditionBackpackButton().contains(lastX, lastY)) {
-            if (logic.getExplorariumHandler().getBackpacks() > 5) {
+            if (logic.getExplorariumHandler().getBackpacks() >= 5) {
                 actionPanel.getWoodExpeditionBackpackButton().setBackgroundColor(new Color(0.5f, 0.3f, 0.2f, 1f));
             }
         }

@@ -81,6 +81,15 @@ public class BuildingInteractionHandler {
                 tent.upgrade();
                 logic.getWarehouseHandler().removeLogs(TENT_UPGRADE_COST);
                 break;
+            case EXPLORARIUM:
+                logs = logic.getWarehouseHandler().getLogs();
+                int backpacks = logic.getExplorariumHandler().getBackpacks();
+                if (logs < 1 || backpacks == 5) {
+                    return;
+                }
+                logic.getWarehouseHandler().removeLogs(1);
+                logic.getExplorariumHandler().addBackpacks(1);
+                break;
             case MEDICAL_POST:
                 break;
         }
