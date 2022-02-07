@@ -92,15 +92,15 @@ public class ExpeditionHandler {
             hideExpeditionInfo();
             ongoingExpedition = false;
             if (food) {
-                logic.getCookhouseHandler().addMeats(5);
+                logic.getCookhouseHandler().addMeats(4);
                 if (backpack) {
-                    logic.getCookhouseHandler().addMeats(5);
+                    logic.getCookhouseHandler().addMeats(3);
                 }
                 logic.getCitizenHungerHandler().checkHunger();
             } else {
-                logic.getWarehouseHandler().addLogs(5);
+                logic.getWarehouseHandler().addLogs(4);
                 if (backpack) {
-                    logic.getWarehouseHandler().addLogs(5);
+                    logic.getWarehouseHandler().addLogs(3);
                 }
             }
             for (int i = 0; i < designatedCitizens.size(); i++) {
