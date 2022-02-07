@@ -35,17 +35,21 @@ public class CitizenHungerHandler {
             }
             int hunger = Math.min(citizen.getHunger() + 1, 2);
             citizen.setHunger(hunger);
+            checkHunger(citizen);
         }
-        checkHunger();
+    }
+
+    private void checkHunger(Citizen citizen) {
+        if (citizen.getHunger() == 2) {
+            goToEat(citizen);
+        }
     }
 
     public void checkHunger() {
         DelayedRemovalArray<Citizen> citizens = stuff.getCitizens();
         for (int i = 0; i < citizens.size; i++) {
             Citizen citizen = citizens.get(i);
-            if (citizen.getHunger() == 2) {
-                goToEat(citizen);
-            }
+            checkHunger(citizen);
         }
     }
 
