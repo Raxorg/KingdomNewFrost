@@ -18,7 +18,7 @@ public class RainHandler {
             drop.translateX(-100f * delta);
             drop.translateY(-1000f * delta);
             if (drop.getX() <= 0f) {
-                drop.setX(CAMERA_WIDTH);
+                drop.setX(CAMERA_WIDTH + MathUtils.random(50f));
             }
             if (drop.getY() + drop.getHeight() <= 0f) {
                 drop.setY(CAMERA_HEIGHT + MathUtils.random(50f));
