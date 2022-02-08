@@ -86,7 +86,6 @@ public class GameStuff extends Stuff {
         vanishingLog = new Sprited(assets.getWarehouseLog());
         vanishingLog.setPosition(HIDDEN_X, HIDDEN_Y);
         vanishingLog.setSize(WAREHOUSE_LOG_WIDTH, WAREHOUSE_LOG_HEIGHT);
-        vanishingLog.setColor(WAREHOUSE_LOG_COLOR);
 
         actionIcon = new Sprited(assets.getActionIcon());
         actionIcon.setSize(ACTION_ICON_WIDTH, ACTION_ICON_HEIGHT);
