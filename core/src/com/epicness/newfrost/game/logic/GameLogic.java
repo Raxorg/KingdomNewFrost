@@ -65,6 +65,7 @@ public class GameLogic extends Logic {
     private final GameInputHandler gameInputHandler;
     private final GameOverHandler gameOverHandler;
     private final IntroHandler introHandler;
+    private final SpendingHandler spendingHandler;
     private final TutorialHandler tutorialHandler;
 
     private final ParallaxBehavior parallaxBehavior;
@@ -99,6 +100,7 @@ public class GameLogic extends Logic {
         gameInputHandler = new GameInputHandler();
         gameOverHandler = new GameOverHandler();
         introHandler = new IntroHandler();
+        spendingHandler = new SpendingHandler();
         tutorialHandler = new TutorialHandler();
         // Behaviors
         parallaxBehavior = new ParallaxBehavior();
@@ -163,6 +165,8 @@ public class GameLogic extends Logic {
         if (Gdx.input.isKeyJustPressed(O)) {
             dayTimerHandler.passDay();
         }
+        // Buildings
+        mainBuildingMenuHandler.update();
         // Weather
         cloudHandler.update(delta);
         dayNightCycler.applyColors();
@@ -170,14 +174,14 @@ public class GameLogic extends Logic {
         // People
         citizenHighlightHandler.update();
         dialogueHandler.update();
+        playerMovementHandler.update(delta);
         // Uncategorized
         buildingInteractionHandler.update();
         cameraHandler.update();
         citizenActivityHandler.update(delta);
         dayTimerHandler.update(delta);
         expeditionHandler.update(delta);
-        mainBuildingMenuHandler.update();
-        playerMovementHandler.update(delta);
+        spendingHandler.update(delta);
         tutorialHandler.update(delta);
 
         sharedLogic.getFader().update(delta);
@@ -238,6 +242,7 @@ public class GameLogic extends Logic {
         expeditionHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(stuff);
         gameOverHandler.setStuff(gameStuff);
+        spendingHandler.setStuff(gameStuff);
         tutorialHandler.setStuff(gameStuff);
     }
 
@@ -313,7 +318,11 @@ public class GameLogic extends Logic {
         return gameOverHandler;
     }
 
-    public TutorialHandler getTipHandler() {
+    public SpendingHandler getSpendingHandler() {
+        return spendingHandler;
+    }
+
+    public TutorialHandler getTutorialHandler() {
         return tutorialHandler;
     }
 

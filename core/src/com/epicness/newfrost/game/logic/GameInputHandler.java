@@ -29,7 +29,7 @@ public class GameInputHandler extends InputHandler {
     public void touchUp(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
 
-        logic.getTipHandler().touchUp(x, y);
+        logic.getTutorialHandler().touchUp(x, y);
         logic.getGameOverHandler().touchUp();
     }
 

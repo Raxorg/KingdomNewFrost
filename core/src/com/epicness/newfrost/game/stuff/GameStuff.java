@@ -13,12 +13,17 @@ import static com.epicness.newfrost.game.GameConstants.DAY_Y;
 import static com.epicness.newfrost.game.GameConstants.DIALOGUE_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.DIALOGUE_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.GROUND_Y;
+import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
+import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
 import static com.epicness.newfrost.game.GameConstants.TENT1_X;
 import static com.epicness.newfrost.game.GameConstants.TENT2_X;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_DIALOGUE_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_DIALOGUE_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_WIDGET_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_WIDGET_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_COLOR;
+import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_WIDTH;
 
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
@@ -51,7 +56,7 @@ public class GameStuff extends Stuff {
     private DialogueStorage dialogueStorage;
     private DelayedRemovalArray<Citizen> citizens;
     private Player player;
-    private Sprited actionIcon;
+    private Sprited vanishingLog, actionIcon;
     private MainBuildingMenu mainBuildingMenu;
     private SpritedText dialogue;
     private IconedSpritedText tutorialWidget;
@@ -77,6 +82,11 @@ public class GameStuff extends Stuff {
         citizens = new DelayedRemovalArray<>();
 
         player = new Player(assets);
+
+        vanishingLog = new Sprited(assets.getWarehouseLog());
+        vanishingLog.setPosition(HIDDEN_X, HIDDEN_Y);
+        vanishingLog.setSize(WAREHOUSE_LOG_WIDTH, WAREHOUSE_LOG_HEIGHT);
+        vanishingLog.setColor(WAREHOUSE_LOG_COLOR);
 
         actionIcon = new Sprited(assets.getActionIcon());
         actionIcon.setSize(ACTION_ICON_WIDTH, ACTION_ICON_HEIGHT);
@@ -193,6 +203,10 @@ public class GameStuff extends Stuff {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Sprited getVanishingLog() {
+        return vanishingLog;
     }
 
     public Sprited getActionIcon() {

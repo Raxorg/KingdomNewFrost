@@ -64,7 +64,7 @@ public class BuildingInteractionHandler {
         if (selectedBuilding == null) {
             return;
         }
-        if (logic.getTipHandler().isShowingTip()) {
+        if (logic.getTutorialHandler().isShowingTip()) {
             return;
         }
         switch (selectedBuilding.getType()) {
@@ -80,6 +80,7 @@ public class BuildingInteractionHandler {
                 Tent tent = (Tent) selectedBuilding;
                 tent.upgrade();
                 logic.getWarehouseHandler().removeLogs(TENT_UPGRADE_COST);
+                logic.getSpendingHandler().vanishLog();
                 break;
             case EXPLORARIUM:
                 logs = logic.getWarehouseHandler().getLogs();
@@ -89,6 +90,7 @@ public class BuildingInteractionHandler {
                 }
                 logic.getWarehouseHandler().removeLogs(1);
                 logic.getExplorariumHandler().addBackpacks(1);
+                logic.getSpendingHandler().vanishLog();
                 break;
             case MEDICAL_POST:
                 break;
