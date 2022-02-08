@@ -27,9 +27,11 @@ public class DayNightCycler {
     // Structure
     private GameStuff stuff;
     // Logic
+    private float progress;
     private Color skyColor, backgroundColor, buildingColor, meatColor, meatHookColor, logColor, backpackColor, peopleColor;
 
     public void initialize() {
+        progress = 0f;
         skyColor = new Color(Color.WHITE);
         backgroundColor = new Color(Color.WHITE);
         buildingColor = new Color(Color.WHITE);
@@ -41,12 +43,12 @@ public class DayNightCycler {
     }
 
     public void updateColors(int secondsLeft) {
-        float progress;
-        if (secondsLeft > 30f) {
-            progress = MathUtils.map(60f, 30f, 0f, 1f, secondsLeft);
-        } else {
-            progress = MathUtils.map(30f, 0f, 1f, 0f, secondsLeft);
+        if (secondsLeft > 32f) {
+            progress = MathUtils.map(57f, 33f, 0f, 1f, secondsLeft);
+        } else if (secondsLeft < 28f) {
+            progress = MathUtils.map(27f, 3f, 1f, 0f, secondsLeft);
         }
+        progress = MathUtils.clamp(progress, 0f, 1f);
         skyColor.set(Color.WHITE.cpy().lerp(NIGHT_SKY_COLOR, progress));
         backgroundColor.set(Color.WHITE.cpy().lerp(NIGHT_BACKGROUND_COLOR, progress));
         buildingColor.set(Color.WHITE.cpy().lerp(NIGHT_BUILDING_COLOR, progress));
