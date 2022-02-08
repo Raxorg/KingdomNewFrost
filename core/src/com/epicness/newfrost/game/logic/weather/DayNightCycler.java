@@ -49,6 +49,7 @@ public class DayNightCycler {
             progress = MathUtils.map(27f, 3f, 1f, 0f, secondsLeft);
         }
         progress = MathUtils.clamp(progress, 0f, 1f);
+
         skyColor.set(Color.WHITE.cpy().lerp(NIGHT_SKY_COLOR, progress));
         backgroundColor.set(Color.WHITE.cpy().lerp(NIGHT_BACKGROUND_COLOR, progress));
         buildingColor.set(Color.WHITE.cpy().lerp(NIGHT_BUILDING_COLOR, progress));
