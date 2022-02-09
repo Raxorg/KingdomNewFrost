@@ -22,6 +22,13 @@ public class ExplorariumHandler {
     // Logic
     private int backpacks;
 
+    public void init() {
+        Explorarium explorarium = (Explorarium) stuff.getBuildings().get(EXPLORARIUM_INDEX);
+        DelayedRemovalArray<Sprited> explorariumBackpacks = explorarium.getExplorariumBackpacks();
+        explorariumBackpacks.clear();
+        backpacks = 0;
+    }
+
     public void addBackpacks(int quantity) {
         Explorarium explorarium = (Explorarium) stuff.getBuildings().get(EXPLORARIUM_INDEX);
         DelayedRemovalArray<Sprited> explorariumBackpacks = explorarium.getExplorariumBackpacks();

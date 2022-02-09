@@ -131,6 +131,8 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler.init();
         buildingInteractionHandler.hideActionIcon();
         cookhouseHandler.init();
+        explorariumHandler.init();
+        warehouseHandler.init();
         // People
         citizenHandler.spawnCitizens();
         dialogueHandler.hideDialogue();

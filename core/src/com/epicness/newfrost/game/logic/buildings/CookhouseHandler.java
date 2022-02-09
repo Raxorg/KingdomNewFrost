@@ -8,7 +8,6 @@ import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_MEAT_STARTING_X
 import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_MEAT_STARTING_Y;
 import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_MEAT_WIDTH;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.newfrost.game.assets.GameAssets;
@@ -27,6 +26,7 @@ public class CookhouseHandler {
         Cookhouse cookhouse = (Cookhouse) stuff.getBuildings().get(COOKHOUSE_INDEX);
         DelayedRemovalArray<DualSprited> cookhouseMeats = cookhouse.getCookhouseMeats();
         cookhouseMeats.clear();
+        meats = 0;
     }
 
     public void addMeats(int quantity) {

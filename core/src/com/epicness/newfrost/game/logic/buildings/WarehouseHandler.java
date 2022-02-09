@@ -10,7 +10,6 @@ import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_STARTING_Y;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_MAX_LOGS;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.newfrost.game.assets.GameAssets;
@@ -24,6 +23,14 @@ public class WarehouseHandler {
     private GameStuff stuff;
     // Logic
     private int logs, logPiles;
+
+    public void init() {
+        Warehouse warehouse = (Warehouse) stuff.getBuildings().get(WAREHOUSE_INDEX);
+        DelayedRemovalArray<Sprited> warehouseLogs = warehouse.getWarehouseLogs();
+        warehouseLogs.clear();
+        logs = 0;
+        logPiles = 0;
+    }
 
     public void addLogs(int quantity) {
         Warehouse warehouse = (Warehouse) stuff.getBuildings().get(WAREHOUSE_INDEX);
