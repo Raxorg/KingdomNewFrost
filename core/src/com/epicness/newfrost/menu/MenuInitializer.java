@@ -6,8 +6,8 @@ import com.epicness.newfrost.menu.logic.MenuLogic;
 
 public class MenuInitializer extends Initializer {
 
-    public MenuInitializer(MenuAssets assets) {
-        super(assets);
+    public MenuInitializer() {
+        super(new MenuAssets());
     }
 
     @Override

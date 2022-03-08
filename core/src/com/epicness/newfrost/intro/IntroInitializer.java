@@ -6,8 +6,8 @@ import com.epicness.newfrost.intro.logic.IntroLogic;
 
 public class IntroInitializer extends Initializer {
 
-    public IntroInitializer(IntroAssets assets) {
-        super(assets);
+    public IntroInitializer() {
+        super(new IntroAssets());
     }
 
     @Override

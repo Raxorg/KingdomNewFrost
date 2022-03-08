@@ -3,7 +3,6 @@ package com.epicness.newfrost.menu.logic;
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.SharedLogic;
-import com.epicness.newfrost.intro.IntroAssets;
 import com.epicness.newfrost.intro.IntroInitializer;
 import com.epicness.newfrost.menu.MenuStuff;
 
@@ -32,7 +31,7 @@ public class ButtonHandler {
 
     public void playButtonTouchUp() {
         stuff.getPlayButton().setColor(Color.WHITE);
-        sharedLogic.getTransitionHandler().startTransition(new IntroInitializer(new IntroAssets()));
+        sharedLogic.getTransitionHandler().startTransition(new IntroInitializer());
         sharedLogic.getTransitionHandler().allowTransition();
         input.setEnabled(false);
     }
