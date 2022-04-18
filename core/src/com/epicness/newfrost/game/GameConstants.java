@@ -56,18 +56,19 @@ public class GameConstants {
     // Dialogues
     public static final float DIALOGUE_WIDTH = CAMERA_WIDTH / 4f;
     public static final float DIALOGUE_HEIGHT = DIALOGUE_WIDTH / 4f;
-    // Main building
-    public static final float MAIN_BUILDING_HEIGHT = CAMERA_HEIGHT / 3f;
-    public static final float MAIN_BUILDING_WIDTH = MAIN_BUILDING_HEIGHT * 1.5f;
-    public static final float MAIN_BUILDING_X = CAMERA_WIDTH / 2f - MAIN_BUILDING_WIDTH / 2f;
-    public static final float MAIN_BUILDING_Y = GROUND_Y;
+    // Base
+    public static final float BASE_HEIGHT = CAMERA_HEIGHT / 3f;
+    public static final float BASE_WIDTH = BASE_HEIGHT * 1.5f;
+    public static final float BASE_X = CAMERA_WIDTH / 2f - BASE_WIDTH / 2f;
+    public static final float BASE_Y = GROUND_Y;
+    public static final int BASE_MAX_LOGS = 20;
+    public static final int BASE_MAX_MEATS = 5;
     // Tents
     public static final float TENT_SIZE = CAMERA_HEIGHT / 3f;
     public static final int TENT_UPGRADE_COST = 10;
-    public static final float TENT1_X = MAIN_BUILDING_X + MAIN_BUILDING_WIDTH + 25f;
-    public static final float TENT2_X = MAIN_BUILDING_X - TENT_SIZE - 25f;
+    public static final float TENT1_X = BASE_X + BASE_WIDTH + 25f;
+    public static final float TENT2_X = BASE_X - TENT_SIZE - 25f;
     // Warehouse
-    public static final int WAREHOUSE_INDEX = 3;
     public static final float WAREHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float WAREHOUSE_WIDTH = WAREHOUSE_HEIGHT * 2.64f;
     public static final float WAREHOUSE_X = TENT1_X + TENT_SIZE + 25f;
@@ -82,20 +83,16 @@ public class GameConstants {
     public static final Color WAREHOUSE_LOG_COLOR = Color.GRAY.cpy().lerp(Color.BROWN, 0.25f);
     public static final int WAREHOUSE_MAX_LOGS = 50;
     // Explorarium
-    public static final int EXPLORARIUM_INDEX = 4;
     public static final float EXPLORARIUM_HEIGHT = CAMERA_HEIGHT * 0.75f;
     public static final float EXPLORARIUM_WIDTH = EXPLORARIUM_HEIGHT * 0.81f;
     public static final float EXPLORARIUM_X = WAREHOUSE_X + WAREHOUSE_WIDTH + 25f;
     public static final float EXPLORARIUM_Y = GROUND_Y;
     // Explorarium backpacks
-    public static final float EXPLORARIUM_BACKPACK_STARTING_X = EXPLORARIUM_X + EXPLORARIUM_WIDTH * 0.4f;
-    public static final float EXPLORARIUM_BACKPACK_STARTING_Y = EXPLORARIUM_Y + EXPLORARIUM_HEIGHT * 0.08f;
     public static final float EXPLORARIUM_BACKPACK_HEIGHT = EXPLORARIUM_HEIGHT * 0.11f;
     public static final float EXPLORARIUM_BACKPACK_WIDTH = EXPLORARIUM_WIDTH * 0.11f;
     public static final float EXPLORARIUM_BACKPACK_SPACING = EXPLORARIUM_BACKPACK_WIDTH * 0.5f;
     public static final Color EXPLORARIUM_BACKPACK_COLOR = Color.LIGHT_GRAY.cpy().lerp(Color.FOREST, 0.2f);
     // Cookhouse
-    public static final int COOKHOUSE_INDEX = 5;
     public static final float COOKHOUSE_HEIGHT = CAMERA_HEIGHT / 3f;
     public static final float COOKHOUSE_WIDTH = COOKHOUSE_HEIGHT * (4f / 3f);
     public static final float COOKHOUSE_X = TENT2_X - COOKHOUSE_WIDTH - 25f;
@@ -109,6 +106,7 @@ public class GameConstants {
     public static final float COOKHOUSE_MEAT_WIDTH = COOKHOUSE_MEAT_HEIGHT * 0.47f;
     public static final float COOKHOUSE_MEAT_SPACING = COOKHOUSE_MEAT_WIDTH * 0.6f;
     public static final Color COOKHOUSE_MEAT_COLOR = Color.LIGHT_GRAY.cpy().lerp(Color.RED, 0.15f);
+    public static final int COOKHOUSE_MAX_MEATS = 10;
     // Night
     public static final Color NIGHT_SKY_COLOR = Color.BLACK;
     public static final Color NIGHT_BACKGROUND_COLOR = Color.NAVY.cpy().lerp(Color.DARK_GRAY, 0.5f);
@@ -134,25 +132,25 @@ public class GameConstants {
     public static final float EXPEDITION_ICON_SIZE = 100f;
     public static final float EXPEDITION_INFO_X = CAMERA_WIDTH - EXPEDITION_ICON_SIZE;
     public static final float EXPEDITION_INFO_Y = CAMERA_HEIGHT - EXPEDITION_ICON_SIZE;
-    // Main building menu
-    public static final float MAIN_MENU_X = 100f;
-    public static final float MAIN_MENU_Y = 100f;
-    public static final float MAIN_MENU_WIDTH = CAMERA_WIDTH - 200f;
-    public static final float MAIN_MENU_HEIGHT = CAMERA_HEIGHT - 200f;
+    // Base menu
+    public static final float BASE_MENU_X = 100f;
+    public static final float BASE_MENU_Y = 100f;
+    public static final float BASE_MENU_WIDTH = CAMERA_WIDTH - 200f;
+    public static final float BASE_MENU_HEIGHT = CAMERA_HEIGHT - 200f;
     public static final float TAB_WIDTH = 200f;
     public static final float TAB_HEIGHT = TAB_WIDTH / 3f;
     public static final float TECH_TAB_X = TAB_WIDTH;
     public static final float LAW_TAB_X = TECH_TAB_X + TAB_WIDTH;
-    public static final float TAB_Y = MAIN_MENU_HEIGHT - TAB_HEIGHT;
+    public static final float TAB_Y = BASE_MENU_HEIGHT - TAB_HEIGHT;
     // Action panel
     public static final float ACTION_BUTTON_WIDTH = 400f;
     public static final float ACTION_BUTTON_HEIGHT = ACTION_BUTTON_WIDTH / 4f;
 
-    public static final float EXPEDITION_BUTTON_X = MAIN_MENU_WIDTH / 2f - ACTION_BUTTON_WIDTH / 2f;
-    public static final float FOOD_EXPEDITION_BUTTON_Y = MAIN_MENU_HEIGHT * 0.7f;
-    public static final float FOOD_EXPEDITION_BACKPACK_BUTTON_Y = MAIN_MENU_HEIGHT * 0.5f;
-    public static final float WOOD_EXPEDITION_BUTTON_Y = MAIN_MENU_HEIGHT * 0.3f;
-    public static final float WOOD_EXPEDITION_BACKPACK_BUTTON_Y = MAIN_MENU_HEIGHT * 0.1f;
+    public static final float EXPEDITION_BUTTON_X = BASE_MENU_WIDTH / 2f - ACTION_BUTTON_WIDTH / 2f;
+    public static final float FOOD_EXPEDITION_BUTTON_Y = BASE_MENU_HEIGHT * 0.7f;
+    public static final float FOOD_EXPEDITION_BACKPACK_BUTTON_Y = BASE_MENU_HEIGHT * 0.5f;
+    public static final float WOOD_EXPEDITION_BUTTON_Y = BASE_MENU_HEIGHT * 0.3f;
+    public static final float WOOD_EXPEDITION_BACKPACK_BUTTON_Y = BASE_MENU_HEIGHT * 0.1f;
 
     public static final float ACTION_ICON_SIZE = ACTION_BUTTON_HEIGHT;
     public static final float ACTION_ICON_X = EXPEDITION_BUTTON_X + ACTION_BUTTON_WIDTH + 20f;
@@ -169,8 +167,8 @@ public class GameConstants {
     public static final float TECHNOLOGY_SPACING = 200f;
     public static final float TECHNOLOGIES_WIDTH = 3 * TECHNOLOGY_SPACING + TECHNOLOGY_SIZE;
     public static final float TECHNOLOGIES_HEIGHT = 2 * TECHNOLOGY_SPACING + TECHNOLOGY_SIZE;
-    public static final float TECHNOLOGIES_X = MAIN_MENU_WIDTH / 2f - TECHNOLOGIES_WIDTH / 2f;
-    public static final float TECHNOLOGIES_Y = MAIN_MENU_HEIGHT / 2f - TECHNOLOGIES_HEIGHT / 2f;
+    public static final float TECHNOLOGIES_X = BASE_MENU_WIDTH / 2f - TECHNOLOGIES_WIDTH / 2f;
+    public static final float TECHNOLOGIES_Y = BASE_MENU_HEIGHT / 2f - TECHNOLOGIES_HEIGHT / 2f;
     public static final String[] TECHNOLOGY_DESCRIPTIONS = {
             "BETTER CLOTHING",
             "FASTER EXPEDITIONS",
@@ -186,7 +184,7 @@ public class GameConstants {
     public static final int[] TECHNOLOGY_COSTS = {
             50, 10, 20, 30, 25, 50, 30, 100, 40, 10
     };
-    public static final float TECH_DESCRIPTION_WIDTH = MAIN_MENU_WIDTH;
+    public static final float TECH_DESCRIPTION_WIDTH = BASE_MENU_WIDTH;
     public static final float TECH_DESCRIPTION_HEIGHT = 100f;
 
     public static final float TECH_TREE_WOOD_ICON_SIZE = 50f;

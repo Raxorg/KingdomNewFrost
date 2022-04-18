@@ -2,8 +2,8 @@ package com.epicness.newfrost.game.stuff.mainbuildingmenu;
 
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_25;
 import static com.epicness.newfrost.game.GameConstants.LAW_TAB_X;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_HEIGHT;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_WIDTH;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_HEIGHT;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.TAB_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.TAB_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.TAB_Y;
@@ -28,7 +28,7 @@ public class MainBuildingMenu implements Buttonable {
 
     public MainBuildingMenu(GameAssets assets, SharedAssets sharedAssets) {
         background = new Sprited(sharedAssets.getPixel());
-        background.setSize(MAIN_MENU_WIDTH, MAIN_MENU_HEIGHT);
+        background.setSize(BASE_MENU_WIDTH, BASE_MENU_HEIGHT);
         background.setColor(BLACK_CLEAR_25);
 
         actionsTab = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());

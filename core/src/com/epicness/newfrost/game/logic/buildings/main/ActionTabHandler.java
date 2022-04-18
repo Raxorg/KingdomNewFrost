@@ -2,8 +2,8 @@ package com.epicness.newfrost.game.logic.buildings.main;
 
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_X;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_Y;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_X;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_Y;
 
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.newfrost.game.logic.GameLogic;
@@ -19,7 +19,7 @@ public class ActionTabHandler {
 
     public void show() {
         MainBuildingMenu menu = stuff.getMainBuildingMenu();
-        menu.setActionPanelPosition(MAIN_MENU_X, MAIN_MENU_Y);
+        menu.setActionPanelPosition(BASE_MENU_X, BASE_MENU_Y);
         menu.setActionsTabColor(Color.GREEN.cpy().lerp(Color.BLACK, 0.3f));
     }
 

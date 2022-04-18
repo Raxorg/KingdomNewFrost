@@ -2,8 +2,8 @@ package com.epicness.newfrost.game.logic.buildings.main;
 
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_X;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_Y;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_X;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_Y;
 import static com.epicness.newfrost.game.GameConstants.TECH_TREE_WOOD_ICON_SIZE;
 
 import com.badlogic.gdx.graphics.Color;
@@ -21,7 +21,7 @@ public class TechTreeTabHandler {
 
     public void show() {
         MainBuildingMenu menu = stuff.getMainBuildingMenu();
-        menu.setTechTreePosition(MAIN_MENU_X, MAIN_MENU_Y);
+        menu.setTechTreePosition(BASE_MENU_X, BASE_MENU_Y);
         menu.setTechTabColor(Color.BLUE.cpy().lerp(Color.BLACK, 0.3f));
     }
 
@@ -56,8 +56,8 @@ public class TechTreeTabHandler {
                 continue;
             }
             if (technology.contains(x, y)) {
-                if (logic.getWarehouseHandler().getLogs() >= technology.getCost()) {
-                    logic.getWarehouseHandler().removeLogs(technology.getCost());
+                if (logic.getLogHandler().getLogs() >= technology.getCost()) {
+                    logic.getLogHandler().removeLogs(technology.getCost());
                     technology.setColor(Color.WHITE);
                 }
             }

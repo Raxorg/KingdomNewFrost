@@ -2,8 +2,8 @@ package com.epicness.newfrost.game.logic.buildings.main;
 
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_X;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_Y;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_X;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_Y;
 import static com.epicness.newfrost.game.enums.MainMenuState.HIDDEN;
 import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_ACTIONS_PANEL;
 import static com.epicness.newfrost.game.enums.MainMenuState.SHOWING_LAW_TREE;
@@ -42,7 +42,7 @@ public class MainBuildingMenuHandler {
 
     public void showMenu() {
         MainBuildingMenu menu = stuff.getMainBuildingMenu();
-        menu.setPosition(MAIN_MENU_X, MAIN_MENU_Y);
+        menu.setPosition(BASE_MENU_X, BASE_MENU_Y);
         logic.getActionTabHandler().hide();
         logic.getLawTreeTabHandler().hide();
         logic.getTechTreeTabHandler().hide();

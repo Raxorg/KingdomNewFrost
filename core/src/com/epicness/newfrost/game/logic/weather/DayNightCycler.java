@@ -1,9 +1,7 @@
 package com.epicness.newfrost.game.logic.weather;
 
-import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_INDEX;
 import static com.epicness.newfrost.game.GameConstants.COOKHOUSE_MEAT_COLOR;
 import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_BACKPACK_COLOR;
-import static com.epicness.newfrost.game.GameConstants.EXPLORARIUM_INDEX;
 import static com.epicness.newfrost.game.GameConstants.NIGHT_BACKGROUND_COLOR;
 import static com.epicness.newfrost.game.GameConstants.NIGHT_BACKPACK_COLOR;
 import static com.epicness.newfrost.game.GameConstants.NIGHT_BUILDING_COLOR;
@@ -12,12 +10,12 @@ import static com.epicness.newfrost.game.GameConstants.NIGHT_MEAT_COLOR;
 import static com.epicness.newfrost.game.GameConstants.NIGHT_MEAT_HOOK_COLOR;
 import static com.epicness.newfrost.game.GameConstants.NIGHT_PEOPLE_COLOR;
 import static com.epicness.newfrost.game.GameConstants.NIGHT_SKY_COLOR;
-import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_INDEX;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_COLOR;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.newfrost.game.stuff.GameStuff;
+import com.epicness.newfrost.game.stuff.buildings.Building;
 import com.epicness.newfrost.game.stuff.buildings.Cookhouse;
 import com.epicness.newfrost.game.stuff.buildings.Explorarium;
 import com.epicness.newfrost.game.stuff.buildings.Warehouse;
@@ -66,20 +64,27 @@ public class DayNightCycler {
             stuff.getBGLayers()[i].setColor(backgroundColor);
         }
         for (int i = 0; i < stuff.getBuildings().size; i++) {
-            stuff.getBuildings().get(i).setColor(buildingColor);
-        }
-        Cookhouse cookhouse = (Cookhouse) stuff.getBuildings().get(COOKHOUSE_INDEX);
-        for (int i = 0; i < cookhouse.getCookhouseMeats().size; i++) {
-            cookhouse.getCookhouseMeats().get(i).setBackgroundColor(meatColor);
-            cookhouse.getCookhouseMeats().get(i).setForegroundColor(meatHookColor);
-        }
-        Warehouse warehouse = (Warehouse) stuff.getBuildings().get(WAREHOUSE_INDEX);
-        for (int i = 0; i < warehouse.getWarehouseLogs().size; i++) {
-            warehouse.getWarehouseLogs().get(i).setColor(logColor);
-        }
-        Explorarium explorarium = (Explorarium) stuff.getBuildings().get(EXPLORARIUM_INDEX);
-        for (int i = 0; i < explorarium.getExplorariumBackpacks().size; i++) {
-            explorarium.getExplorariumBackpacks().get(i).setColor(backpackColor);
+            Building building = stuff.getBuildings().get(i);
+            building.setColor(buildingColor);
+            switch (building.getType()) {
+                case BASE:
+                    break;
+                case TENT:
+                    break;
+                case MEDICAL_POST:
+                    break;
+                case WAREHOUSE:
+                    ((Warehouse) building).setLogColor(logColor);
+                    break;
+                case EXPLORARIUM:
+                    ((Explorarium) building).setBackpackColor(backpackColor);
+                    break;
+                case COOKHOUSE:
+                    Cookhouse cookhouse = (Cookhouse) building;
+                    cookhouse.setMeatColor(meatColor);
+                    cookhouse.setMeatHookColor(meatHookColor);
+                    break;
+            }
         }
         for (int i = 0; i < stuff.getCitizens().size; i++) {
             stuff.getCitizens().get(i).setColor(peopleColor);

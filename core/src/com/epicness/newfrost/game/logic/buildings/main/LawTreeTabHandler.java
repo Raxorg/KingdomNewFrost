@@ -2,8 +2,8 @@ package com.epicness.newfrost.game.logic.buildings.main;
 
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_X;
-import static com.epicness.newfrost.game.GameConstants.MAIN_MENU_Y;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_X;
+import static com.epicness.newfrost.game.GameConstants.BASE_MENU_Y;
 
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.newfrost.game.stuff.GameStuff;
@@ -16,7 +16,7 @@ public class LawTreeTabHandler {
 
     public void show() {
         MainBuildingMenu menu = stuff.getMainBuildingMenu();
-        menu.setLawTreePosition(MAIN_MENU_X, MAIN_MENU_Y);
+        menu.setLawTreePosition(BASE_MENU_X, BASE_MENU_Y);
         menu.setLawTabColor(Color.RED.cpy().lerp(Color.BLACK, 0.3f));
     }
 

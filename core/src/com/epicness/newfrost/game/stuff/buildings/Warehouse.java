@@ -15,7 +15,8 @@ import com.epicness.fundamentals.stuff.Sprited;
 public class Warehouse extends Building {
 
     protected Sprited foreground;
-    private final DelayedRemovalArray<Sprited> warehouseLogs;
+    private final DelayedRemovalArray<Sprited> logs;
+    int logPiles;
 
     public Warehouse(Sprite backgroundSprite, Sprite foregroundSprite) {
         super(backgroundSprite, WAREHOUSE);
@@ -26,14 +27,14 @@ public class Warehouse extends Building {
         foreground.setPosition(WAREHOUSE_X, WAREHOUSE_Y);
         foreground.setSize(WAREHOUSE_WIDTH, WAREHOUSE_HEIGHT);
 
-        warehouseLogs = new DelayedRemovalArray<>();
+        logs = new DelayedRemovalArray<>();
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch) {
         super.draw(spriteBatch);
-        for (int i = 0; i < warehouseLogs.size; i++) {
-            warehouseLogs.get(i).draw(spriteBatch);
+        for (int i = 0; i < logs.size; i++) {
+            logs.get(i).draw(spriteBatch);
         }
         foreground.draw(spriteBatch);
     }
@@ -44,7 +45,26 @@ public class Warehouse extends Building {
         foreground.setColor(color);
     }
 
-    public DelayedRemovalArray<Sprited> getWarehouseLogs() {
-        return warehouseLogs;
+    public void setLogColor(Color color) {
+        for (int i = 0; i < logs.size; i++) {
+            logs.get(i).setColor(color);
+        }
+    }
+
+    public int getLogs() {
+        return logs.size;
+    }
+
+    public void addLog(Sprited log) {
+        logs.add(log);
+        logPiles = logs.size / 10;
+    }
+
+    public void removeLogs(int quantity) {
+        logs.removeRange(logs.size - 1 - quantity, logs.size - 1);
+    }
+
+    public int getLogPiles() {
+        return logPiles;
     }
 }

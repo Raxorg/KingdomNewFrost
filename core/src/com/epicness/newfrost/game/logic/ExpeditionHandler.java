@@ -13,6 +13,9 @@ import static com.epicness.newfrost.game.enums.CitizenActivity.RETURNING_FROM_EX
 
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.newfrost.game.stuff.GameStuff;
+import com.epicness.newfrost.game.stuff.buildings.Building;
+import com.epicness.newfrost.game.stuff.buildings.Cookhouse;
+import com.epicness.newfrost.game.stuff.buildings.Warehouse;
 import com.epicness.newfrost.game.stuff.people.Citizen;
 import com.epicness.newfrost.game.stuff.resourceinfos.ExpeditionInfo;
 
@@ -93,17 +96,11 @@ public class ExpeditionHandler {
             expeditionInfo.setTime(0f);
             hideExpeditionInfo();
             ongoingExpedition = false;
+            int quantity = backpack ? 7 : 4;
             if (food) {
-                logic.getCookhouseHandler().addMeats(4);
-                if (backpack) {
-                    logic.getCookhouseHandler().addMeats(3);
-                }
-                logic.getCitizenHungerHandler().checkHunger();
+                addFood(quantity);
             } else {
-                logic.getWarehouseHandler().addLogs(4);
-                if (backpack) {
-                    logic.getWarehouseHandler().addLogs(3);
-                }
+                addWood(quantity);
             }
             for (int i = 0; i < designatedCitizens.size(); i++) {
                 Citizen citizen = designatedCitizens.get(i);
@@ -112,6 +109,45 @@ public class ExpeditionHandler {
                 citizen.setFacingLeft(true);
             }
         }
+    }
+
+    private void addFood(int quantity) {
+        Cookhouse cookhouse = getRandomCookhouse();
+        if (cookhouse != null) {
+            logic.getCookhouseHandler().addMeats(cookhouse, quantity);
+        } else {
+            logic.getBaseResourceHandler().addMeats(quantity);
+        }
+        logic.getCitizenHungerHandler().checkHunger();
+    }
+
+    private Cookhouse getRandomCookhouse() {
+        for (int i = 0; i < stuff.getBuildings().size; i++) {
+            Building building = stuff.getBuildings().get(i);
+            if (building instanceof Cookhouse) {
+                return (Cookhouse) building;
+            }
+        }
+        return null;
+    }
+
+    private void addWood(int quantity) {
+        Warehouse warehouse = getRandomWarehouse();
+        if (warehouse != null) {
+            logic.getLogHandler().addLogs(quantity);
+        } else {
+            logic.getBaseResourceHandler().addLogs(quantity);
+        }
+    }
+
+    private Warehouse getRandomWarehouse() {
+        for (int i = 0; i < stuff.getBuildings().size; i++) {
+            Building building = stuff.getBuildings().get(i);
+            if (building instanceof Warehouse) {
+                return (Warehouse) building;
+            }
+        }
+        return null;
     }
 
     private void showExpeditionInfo() {

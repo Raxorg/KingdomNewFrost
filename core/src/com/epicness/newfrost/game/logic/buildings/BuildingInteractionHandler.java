@@ -3,12 +3,12 @@ package com.epicness.newfrost.game.logic.buildings;
 import static com.epicness.newfrost.game.GameConstants.ACTION_ICON_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_X;
 import static com.epicness.newfrost.game.GameConstants.HIDDEN_Y;
-import static com.epicness.newfrost.game.GameConstants.TENT_UPGRADE_COST;
 
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.newfrost.game.logic.GameLogic;
 import com.epicness.newfrost.game.stuff.GameStuff;
 import com.epicness.newfrost.game.stuff.buildings.Building;
+import com.epicness.newfrost.game.stuff.buildings.Explorarium;
 import com.epicness.newfrost.game.stuff.buildings.Tent;
 import com.epicness.newfrost.game.stuff.people.Player;
 
@@ -51,7 +51,7 @@ public class BuildingInteractionHandler {
             return;
         }
         switch (selectedBuilding.getType()) {
-            case MAIN_BUILDING:
+            case BASE:
                 logic.getMainBuildingMenuHandler().hideMenu();
                 break;
             case MEDICAL_POST:
@@ -68,29 +68,15 @@ public class BuildingInteractionHandler {
             return;
         }
         switch (selectedBuilding.getType()) {
-            case MAIN_BUILDING:
+            case BASE:
                 logic.getMainBuildingMenuHandler().showMenu();
                 logic.getCitizenHighlightHandler().setEnabled(false);
                 break;
             case TENT:
-                int logs = logic.getWarehouseHandler().getLogs();
-                if (logs < TENT_UPGRADE_COST) {
-                    return;
-                }
-                Tent tent = (Tent) selectedBuilding;
-                tent.upgrade();
-                logic.getWarehouseHandler().removeLogs(TENT_UPGRADE_COST);
-                logic.getSpendingHandler().vanishLog();
+                logic.getTentHandler().interact((Tent) selectedBuilding);
                 break;
             case EXPLORARIUM:
-                logs = logic.getWarehouseHandler().getLogs();
-                int backpacks = logic.getExplorariumHandler().getBackpacks();
-                if (logs < 1 || backpacks == 5) {
-                    return;
-                }
-                logic.getWarehouseHandler().removeLogs(1);
-                logic.getExplorariumHandler().addBackpacks(1);
-                logic.getSpendingHandler().vanishLog();
+                logic.getExplorariumHandler().interact((Explorarium) selectedBuilding);
                 break;
             case MEDICAL_POST:
                 break;

@@ -21,7 +21,6 @@ import static com.epicness.newfrost.game.GameConstants.TUTORIAL_DIALOGUE_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_DIALOGUE_WIDTH;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_WIDGET_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.TUTORIAL_WIDGET_WIDTH;
-import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_COLOR;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.WAREHOUSE_LOG_WIDTH;
 
@@ -35,9 +34,8 @@ import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.fundamentals.stuff.Text;
 import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.stuff.buildings.Building;
-import com.epicness.newfrost.game.stuff.buildings.Cookhouse;
 import com.epicness.newfrost.game.stuff.buildings.Explorarium;
-import com.epicness.newfrost.game.stuff.buildings.MainBuilding;
+import com.epicness.newfrost.game.stuff.buildings.Base;
 import com.epicness.newfrost.game.stuff.buildings.Tent;
 import com.epicness.newfrost.game.stuff.buildings.Warehouse;
 import com.epicness.newfrost.game.stuff.dialogues.DialogueStorage;
@@ -154,8 +152,8 @@ public class GameStuff extends Stuff {
     private void initializeBuildings(GameAssets assets) {
         buildings = new DelayedRemovalArray<>();
 
-        MainBuilding mainBuilding = new MainBuilding(assets.getMainBuilding());
-        buildings.add(mainBuilding);
+        Base base = new Base(assets.getMainBuilding());
+        buildings.add(base);
 
         Tent tent = new Tent(assets.getTent(), assets.getTentUpgrade());
         tent.setPosition(TENT1_X, GROUND_Y);
@@ -171,9 +169,6 @@ public class GameStuff extends Stuff {
 
         Explorarium explorarium = new Explorarium(assets.getExplorarium());
         buildings.add(explorarium);
-
-        Cookhouse cookhouse = new Cookhouse(assets.getCookhouse());
-        buildings.add(cookhouse);
     }
 
     public Sprited getBackground() {

@@ -51,6 +51,10 @@ public class Sprited implements Buttonable, Parallaxable {
         sprite.setX(x);
     }
 
+    public float getCenterX() {
+        return sprite.getX() + sprite.getWidth() / 2f;
+    }
+
     public float getY() {
         return sprite.getY();
     }

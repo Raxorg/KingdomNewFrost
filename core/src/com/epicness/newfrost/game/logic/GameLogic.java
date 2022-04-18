@@ -1,9 +1,6 @@
 package com.epicness.newfrost.game.logic;
 
-import static com.badlogic.gdx.Input.Keys.I;
-import static com.badlogic.gdx.Input.Keys.O;
-import static com.badlogic.gdx.Input.Keys.U;
-import static com.badlogic.gdx.Input.Keys.Y;
+import static com.badlogic.gdx.Input.Keys.NUM_1;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.fundamentals.SharedScreen;
@@ -14,11 +11,14 @@ import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.logic.behaviors.ParallaxBehavior;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.newfrost.game.assets.GameAssets;
+import com.epicness.newfrost.game.logic.buildings.BuildingBuilder;
 import com.epicness.newfrost.game.logic.buildings.BuildingInteractionHandler;
 import com.epicness.newfrost.game.logic.buildings.CookhouseHandler;
 import com.epicness.newfrost.game.logic.buildings.ExplorariumHandler;
+import com.epicness.newfrost.game.logic.buildings.TentHandler;
 import com.epicness.newfrost.game.logic.buildings.WarehouseHandler;
 import com.epicness.newfrost.game.logic.buildings.main.ActionTabHandler;
+import com.epicness.newfrost.game.logic.buildings.main.BaseResourceHandler;
 import com.epicness.newfrost.game.logic.buildings.main.LawTreeTabHandler;
 import com.epicness.newfrost.game.logic.buildings.main.MainBuildingMenuHandler;
 import com.epicness.newfrost.game.logic.buildings.main.TechTreeTabHandler;
@@ -28,6 +28,8 @@ import com.epicness.newfrost.game.logic.people.CitizenHighlightHandler;
 import com.epicness.newfrost.game.logic.people.CitizenHungerHandler;
 import com.epicness.newfrost.game.logic.people.DialogueHandler;
 import com.epicness.newfrost.game.logic.people.PlayerMovementHandler;
+import com.epicness.newfrost.game.logic.resources.LogHandler;
+import com.epicness.newfrost.game.logic.resources.MeatHandler;
 import com.epicness.newfrost.game.logic.weather.CloudHandler;
 import com.epicness.newfrost.game.logic.weather.DayNightCycler;
 import com.epicness.newfrost.game.logic.weather.RainHandler;
@@ -39,11 +41,14 @@ public class GameLogic extends Logic {
 
     // Buildings
     private final ActionTabHandler actionTabHandler;
+    private final BaseResourceHandler baseResourceHandler;
     private final LawTreeTabHandler lawTreeTabHandler;
     private final MainBuildingMenuHandler mainBuildingMenuHandler;
     private final TechTreeTabHandler techTreeTabHandler;
+    private final BuildingBuilder buildingBuilder;
     private final CookhouseHandler cookhouseHandler;
     private final ExplorariumHandler explorariumHandler;
+    private final TentHandler tentHandler;
     private final WarehouseHandler warehouseHandler;
     // People
     private final CitizenActivityHandler citizenActivityHandler;
@@ -52,6 +57,9 @@ public class GameLogic extends Logic {
     private final CitizenHungerHandler citizenHungerHandler;
     private final DialogueHandler dialogueHandler;
     private final PlayerMovementHandler playerMovementHandler;
+    // Resources
+    private final LogHandler logHandler;
+    private final MeatHandler meatHandler;
     // Weather
     private final CloudHandler cloudHandler;
     private final DayNightCycler dayNightCycler;
@@ -74,12 +82,15 @@ public class GameLogic extends Logic {
         super(sharedLogic);
         // Buildings
         actionTabHandler = new ActionTabHandler();
+        baseResourceHandler = new BaseResourceHandler();
         lawTreeTabHandler = new LawTreeTabHandler();
         mainBuildingMenuHandler = new MainBuildingMenuHandler();
         techTreeTabHandler = new TechTreeTabHandler();
+        buildingBuilder = new BuildingBuilder();
         buildingInteractionHandler = new BuildingInteractionHandler();
         cookhouseHandler = new CookhouseHandler();
         explorariumHandler = new ExplorariumHandler();
+        tentHandler = new TentHandler();
         warehouseHandler = new WarehouseHandler();
         // People
         citizenActivityHandler = new CitizenActivityHandler();
@@ -88,6 +99,9 @@ public class GameLogic extends Logic {
         citizenHungerHandler = new CitizenHungerHandler();
         dialogueHandler = new DialogueHandler();
         playerMovementHandler = new PlayerMovementHandler();
+        // Resources
+        logHandler = new LogHandler();
+        meatHandler = new MeatHandler();
         // Weather
         cloudHandler = new CloudHandler();
         dayNightCycler = new DayNightCycler();
@@ -109,12 +123,18 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler.setSharedLogic(sharedLogic);
         mainBuildingMenuHandler.setLogic(this);
         techTreeTabHandler.setLogic(this);
+        buildingBuilder.setLogic(this);
         buildingInteractionHandler.setLogic(this);
+        explorariumHandler.setLogic(this);
+        tentHandler.setLogic(this);
         // People
         citizenActivityHandler.setLogic(this);
         citizenHandler.setLogic(this);
         citizenHungerHandler.setLogic(this);
         dialogueHandler.setLogic(this);
+        // Resources
+        logHandler.setLogic(this);
+        meatHandler.setLogic(this);
         // Uncategorized
         cameraHandler.setLogic(this);
         dayTimerHandler.setSharedLogic(sharedLogic);
@@ -130,9 +150,6 @@ public class GameLogic extends Logic {
         // Buildings
         mainBuildingMenuHandler.init();
         buildingInteractionHandler.hideActionIcon();
-        cookhouseHandler.init();
-        explorariumHandler.init();
-        warehouseHandler.init();
         // People
         citizenHandler.spawnCitizens();
         dialogueHandler.hideDialogue();
@@ -155,16 +172,7 @@ public class GameLogic extends Logic {
 
     @Override
     public void update(float delta) {
-        if (Gdx.input.isKeyJustPressed(Y)) {
-            warehouseHandler.addLogs(1);
-        }
-        if (Gdx.input.isKeyJustPressed(U)) {
-            explorariumHandler.addBackpacks(1);
-        }
-        if (Gdx.input.isKeyJustPressed(I)) {
-            cookhouseHandler.addMeats(1);
-        }
-        if (Gdx.input.isKeyJustPressed(O)) {
+        if (Gdx.input.isKeyJustPressed(NUM_1)) {
             dayTimerHandler.passDay();
         }
         // Buildings
@@ -193,11 +201,14 @@ public class GameLogic extends Logic {
     public void setAssets(Assets assets) {
         GameAssets gameAssets = (GameAssets) assets;
         // Buildings
+        buildingBuilder.setAssets(gameAssets);
         cookhouseHandler.setAssets(gameAssets);
         explorariumHandler.setAssets(gameAssets);
-        warehouseHandler.setAssets(gameAssets);
         // People
         citizenHandler.setAssets(gameAssets);
+        // Resources
+        logHandler.setAssets(gameAssets);
+        meatHandler.setAssets(gameAssets);
         // Weather
         cloudHandler.setAssets(gameAssets);
         // Uncategorized
@@ -222,9 +233,9 @@ public class GameLogic extends Logic {
         lawTreeTabHandler.setStuff(gameStuff);
         mainBuildingMenuHandler.setStuff(gameStuff);
         techTreeTabHandler.setStuff(gameStuff);
-        cookhouseHandler.setStuff(gameStuff);
+        buildingBuilder.setStuff(gameStuff);
         explorariumHandler.setStuff(gameStuff);
-        warehouseHandler.setStuff(gameStuff);
+        tentHandler.setStuff(gameStuff);
         // People
         citizenActivityHandler.setStuff(gameStuff);
         citizenHandler.setStuff(gameStuff);
@@ -232,6 +243,9 @@ public class GameLogic extends Logic {
         citizenHungerHandler.setStuff(gameStuff);
         dialogueHandler.setStuff(gameStuff);
         playerMovementHandler.setStuff(gameStuff);
+        // Resources
+        logHandler.setStuff(gameStuff);
+        meatHandler.setStuff(gameStuff);
         // Weather
         cloudHandler.setStuff(gameStuff);
         dayNightCycler.setStuff(gameStuff);
@@ -253,6 +267,10 @@ public class GameLogic extends Logic {
         return actionTabHandler;
     }
 
+    public BaseResourceHandler getBaseResourceHandler() {
+        return baseResourceHandler;
+    }
+
     public LawTreeTabHandler getLawTreeTabHandler() {
         return lawTreeTabHandler;
     }
@@ -271,6 +289,10 @@ public class GameLogic extends Logic {
 
     public ExplorariumHandler getExplorariumHandler() {
         return explorariumHandler;
+    }
+
+    public TentHandler getTentHandler() {
+        return tentHandler;
     }
 
     public WarehouseHandler getWarehouseHandler() {
@@ -296,6 +318,15 @@ public class GameLogic extends Logic {
 
     public PlayerMovementHandler getPlayerMovementHandler() {
         return playerMovementHandler;
+    }
+
+    // Resources
+    public LogHandler getLogHandler() {
+        return logHandler;
+    }
+
+    public MeatHandler getMeatHandler() {
+        return meatHandler;
     }
 
     // Weather

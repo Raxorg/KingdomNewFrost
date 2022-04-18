@@ -97,9 +97,9 @@ public class CitizenActivityHandler {
         float distance = citizenCenter - DINING_X;
         if ((citizen.isFacingLeft() && distance <= 0f) ||
                 (!citizen.isFacingLeft() && distance >= 0f)) {
-            int food = logic.getCookhouseHandler().getMeats();
+            int food = logic.getMeatHandler().getMeats();
             if (food > 0) {
-                logic.getCookhouseHandler().removeMeats(1);
+                logic.getMeatHandler().removeMeats(1);
                 citizen.setHunger(0);
                 citizen.setActivity(EATING);
                 citizen.setActivityTime(MathUtils.random(1.5f, 3.5f));

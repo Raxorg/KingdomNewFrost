@@ -20,16 +20,20 @@ public abstract class Building {
         sprited.draw(spriteBatch);
     }
 
-    public void setPosition(float x, float y) {
-        sprited.setPosition(x, y);
+    public float getX() {
+        return sprited.getX();
     }
 
     public float getCenterX() {
-        return sprited.getX() + sprited.getWidth() / 2f;
+        return sprited.getCenterX();
     }
 
     public float getY() {
         return sprited.getY();
+    }
+
+    public void setPosition(float x, float y) {
+        sprited.setPosition(x, y);
     }
 
     public float getWidth() {
