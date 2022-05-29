@@ -12,7 +12,7 @@ import com.epicness.fundamentals.logic.behaviors.ParallaxBehavior;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.newfrost.game.assets.GameAssets;
 import com.epicness.newfrost.game.logic.buildings.BuildingBuilder;
-import com.epicness.newfrost.game.logic.buildings.BuildingInteractionHandler;
+import com.epicness.newfrost.game.logic.buildings.InteractionHandler;
 import com.epicness.newfrost.game.logic.buildings.CookhouseHandler;
 import com.epicness.newfrost.game.logic.buildings.ExplorariumHandler;
 import com.epicness.newfrost.game.logic.buildings.TentHandler;
@@ -65,7 +65,7 @@ public class GameLogic extends Logic {
     private final DayNightCycler dayNightCycler;
     private final RainHandler rainHandler;
     // Uncategorized
-    private final BuildingInteractionHandler buildingInteractionHandler;
+    private final InteractionHandler interactionHandler;
     private final CameraHandler cameraHandler;
     private final DayTimerHandler dayTimerHandler;
     private final EventHandler eventHandler;
@@ -87,7 +87,7 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler = new MainBuildingMenuHandler();
         techTreeTabHandler = new TechTreeTabHandler();
         buildingBuilder = new BuildingBuilder();
-        buildingInteractionHandler = new BuildingInteractionHandler();
+        interactionHandler = new InteractionHandler();
         cookhouseHandler = new CookhouseHandler();
         explorariumHandler = new ExplorariumHandler();
         tentHandler = new TentHandler();
@@ -124,7 +124,7 @@ public class GameLogic extends Logic {
         mainBuildingMenuHandler.setLogic(this);
         techTreeTabHandler.setLogic(this);
         buildingBuilder.setLogic(this);
-        buildingInteractionHandler.setLogic(this);
+        interactionHandler.setLogic(this);
         explorariumHandler.setLogic(this);
         tentHandler.setLogic(this);
         // People
@@ -149,7 +149,7 @@ public class GameLogic extends Logic {
     public void initialLogic() {
         // Buildings
         mainBuildingMenuHandler.init();
-        buildingInteractionHandler.hideActionIcon();
+        interactionHandler.hideActionIcon();
         // People
         citizenHandler.spawnCitizens();
         dialogueHandler.hideDialogue();
@@ -186,7 +186,7 @@ public class GameLogic extends Logic {
         dialogueHandler.update();
         playerMovementHandler.update(delta);
         // Uncategorized
-        buildingInteractionHandler.update();
+        interactionHandler.update();
         cameraHandler.update();
         citizenActivityHandler.update(delta);
         dayTimerHandler.update(delta);
@@ -251,7 +251,7 @@ public class GameLogic extends Logic {
         dayNightCycler.setStuff(gameStuff);
         rainHandler.setStuff(gameStuff);
         // Uncategorized
-        buildingInteractionHandler.setStuff(gameStuff);
+        interactionHandler.setStuff(gameStuff);
         cameraHandler.setStuff(gameStuff);
         dayTimerHandler.setStuff(gameStuff);
         eventHandler.setStuff(gameStuff);
@@ -335,8 +335,8 @@ public class GameLogic extends Logic {
     }
 
     // Uncategorized
-    public BuildingInteractionHandler getActionHandler() {
-        return buildingInteractionHandler;
+    public InteractionHandler getInteractionHandler() {
+        return interactionHandler;
     }
 
     public DayTimerHandler getDayHandler() {

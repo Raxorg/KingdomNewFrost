@@ -29,6 +29,7 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.EATING_CITIZEN_3_
 import static com.epicness.newfrost.game.assets.GameAssetPaths.EATING_CITIZEN_4_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.EXPLORARIUM_BACKPACK_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.EXPLORARIUM_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.FRAME_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.FROST_SONG_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.GLASS_ICON_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.HANGED_PATH;
@@ -112,7 +113,7 @@ public class GameAssets extends Assets {
     private Sprite explorarium, explorariumBackpack;
     private Sprite shadow;
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
-    private Sprite citizen;
+    private Sprite citizen, frame;
     private Sprite actionIcon, tipIcon, woodFrame, meatIcon, backpackIcon, glassIcon;
     private Sprite hanged, hangedText;
 
@@ -203,6 +204,7 @@ public class GameAssets extends Assets {
         loadTexture(TECH_ICON_2_PATH);
         loadTexture(TECH_ICON_3_PATH);
         loadTexture(CITIZEN_PATH);
+        loadTexture(FRAME_PATH);
 
         loadTexture(ACTION_ICON_PATH);
         loadTexture(TIP_ICON_PATH);
@@ -307,6 +309,7 @@ public class GameAssets extends Assets {
         techIcon2 = new Sprite(getTexture(TECH_ICON_2_PATH));
         techIcon3 = new Sprite(getTexture(TECH_ICON_3_PATH));
         citizen = new Sprite(getTexture(CITIZEN_PATH));
+        frame = new Sprite(getTexture(FRAME_PATH));
 
         actionIcon = new Sprite(getTexture(ACTION_ICON_PATH));
         tipIcon = new Sprite(getTexture(TIP_ICON_PATH));
@@ -601,6 +604,10 @@ public class GameAssets extends Assets {
 
     public Sprite getCitizen() {
         return citizen;
+    }
+
+    public Sprite getFrame() {
+        return frame;
     }
 
     public Sprite getActionIcon() {

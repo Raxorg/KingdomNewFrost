@@ -58,7 +58,7 @@ public class GameInputHandler extends InputHandler {
                 logic.getPlayerMovementHandler().dPress();
                 break;
             case S:
-                logic.getActionHandler().sPress();
+                logic.getInteractionHandler().sPress();
                 break;
         }
     }

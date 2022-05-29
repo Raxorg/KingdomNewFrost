@@ -12,7 +12,7 @@ import com.epicness.newfrost.game.stuff.buildings.Explorarium;
 import com.epicness.newfrost.game.stuff.buildings.Tent;
 import com.epicness.newfrost.game.stuff.people.Player;
 
-public class BuildingInteractionHandler {
+public class InteractionHandler {
 
     // Structure
     private GameLogic logic;
@@ -41,7 +41,7 @@ public class BuildingInteractionHandler {
                 return;
             }
         }
-        logic.getActionHandler().hideActionIcon();
+        logic.getInteractionHandler().hideActionIcon();
         hidePanel();
         selectedBuilding = null;
     }
