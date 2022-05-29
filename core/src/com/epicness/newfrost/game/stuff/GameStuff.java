@@ -63,6 +63,7 @@ public class GameStuff extends Stuff {
     private Alert hungerAlert;
     private Text day, dayTimer;
     private EventView eventView;
+    private SpritedText message;
     private Rain rain;
     private SpritedText gameOverMessage;
     private Sprited hanged, hangedText;
@@ -107,7 +108,6 @@ public class GameStuff extends Stuff {
         expeditionInfo = new ExpeditionInfo(assets.getGlassIcon(), assets.getPixelFont());
 
         hungerAlert = new Alert(assets.getMeat(), assets.getPixelFont());
-        hungerAlert.setY(CAMERA_HEIGHT / 2f);
 
         day = new Text(assets.getPixelFont());
         day.setTextTargetWidth(CAMERA_WIDTH);
@@ -120,6 +120,9 @@ public class GameStuff extends Stuff {
         dayTimer.setY(DAY_TIMER_Y);
 
         eventView = new EventView(sharedAssets.getPixel(), sharedAssets.getPixel(), assets.getPixelFont());
+
+        message = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
+        message.setBackgroundColor(BLACK_CLEAR_50);
 
         rain = new Rain(sharedAssets.getPixel());
 
@@ -245,6 +248,10 @@ public class GameStuff extends Stuff {
 
     public EventView getEventView() {
         return eventView;
+    }
+
+    public SpritedText getMessage() {
+        return message;
     }
 
     public Rain getRain() {

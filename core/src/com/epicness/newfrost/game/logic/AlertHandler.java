@@ -1,5 +1,6 @@
 package com.epicness.newfrost.game.logic;
 
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.newfrost.game.GameConstants.ALERT_SIZE;
 
 import com.badlogic.gdx.graphics.Color;
@@ -14,6 +15,11 @@ public class AlertHandler {
     private GameStuff stuff;
     // Logic
     private boolean showingHungerAlert;
+
+    public void init() {
+        stuff.getHungerAlert().setY(CAMERA_HEIGHT / 2f);
+        showingHungerAlert = false;
+    }
 
     public void update(float delta) {
         DelayedRemovalArray<Citizen> citizens = stuff.getCitizens();

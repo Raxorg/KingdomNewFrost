@@ -74,6 +74,7 @@ public class GameLogic extends Logic {
     private final GameInputHandler gameInputHandler;
     private final GameOverHandler gameOverHandler;
     private final IntroHandler introHandler;
+    private final MessageHandler messageHandler;
     private final SpendingHandler spendingHandler;
     private final TutorialHandler tutorialHandler;
 
@@ -116,6 +117,7 @@ public class GameLogic extends Logic {
         gameInputHandler = new GameInputHandler();
         gameOverHandler = new GameOverHandler();
         introHandler = new IntroHandler();
+        messageHandler = new MessageHandler();
         spendingHandler = new SpendingHandler();
         tutorialHandler = new TutorialHandler();
         // Behaviors
@@ -159,6 +161,7 @@ public class GameLogic extends Logic {
         dayNightCycler.initialize();
         rainHandler.init();
         // Uncategorized
+        alertHandler.init();
         cameraHandler.configureParallax();
         dayTimerHandler.init();
         eventHandler.hideEventView();
@@ -166,6 +169,7 @@ public class GameLogic extends Logic {
         gameInputHandler.setupInput();
         gameOverHandler.init();
         introHandler.startMusic();
+        messageHandler.init();
         tutorialHandler.init();
 
         sharedLogic.getFader().setup(1f);
@@ -194,6 +198,7 @@ public class GameLogic extends Logic {
         citizenActivityHandler.update(delta);
         dayTimerHandler.update(delta);
         expeditionHandler.update(delta);
+        messageHandler.update(delta);
         spendingHandler.update(delta);
         tutorialHandler.update(delta);
 
@@ -262,6 +267,7 @@ public class GameLogic extends Logic {
         expeditionHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(stuff);
         gameOverHandler.setStuff(gameStuff);
+        messageHandler.setStuff(gameStuff);
         spendingHandler.setStuff(gameStuff);
         tutorialHandler.setStuff(gameStuff);
     }
