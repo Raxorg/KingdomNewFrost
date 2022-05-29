@@ -17,7 +17,7 @@ import com.epicness.newfrost.game.stuff.buildings.Building;
 import com.epicness.newfrost.game.stuff.buildings.Cookhouse;
 import com.epicness.newfrost.game.stuff.buildings.Warehouse;
 import com.epicness.newfrost.game.stuff.people.Citizen;
-import com.epicness.newfrost.game.stuff.resourceinfos.ExpeditionInfo;
+import com.epicness.newfrost.game.stuff.resources.ExpeditionInfo;
 
 import java.util.ArrayList;
 

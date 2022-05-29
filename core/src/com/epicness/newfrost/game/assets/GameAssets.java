@@ -40,6 +40,7 @@ import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_GOVERNOR_0_P
 import static com.epicness.newfrost.game.assets.GameAssetPaths.IDLE_GOVERNOR_1_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.MAIN_BUILDING_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.MEAT_ICON_PATH;
+import static com.epicness.newfrost.game.assets.GameAssetPaths.MEAT_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_MEDIUM_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_PATH;
 import static com.epicness.newfrost.game.assets.GameAssetPaths.PIXEL_FONT_SMALL_PATH;
@@ -113,7 +114,8 @@ public class GameAssets extends Assets {
     private Sprite explorarium, explorariumBackpack;
     private Sprite shadow;
     private Sprite techIcon0, techIcon1, techIcon2, techIcon3;
-    private Sprite citizen, frame;
+    private Sprite citizen;
+    private Sprite frame, meat;
     private Sprite actionIcon, tipIcon, woodFrame, meatIcon, backpackIcon, glassIcon;
     private Sprite hanged, hangedText;
 
@@ -204,7 +206,9 @@ public class GameAssets extends Assets {
         loadTexture(TECH_ICON_2_PATH);
         loadTexture(TECH_ICON_3_PATH);
         loadTexture(CITIZEN_PATH);
+
         loadTexture(FRAME_PATH);
+        loadTexture(MEAT_PATH);
 
         loadTexture(ACTION_ICON_PATH);
         loadTexture(TIP_ICON_PATH);
@@ -309,7 +313,9 @@ public class GameAssets extends Assets {
         techIcon2 = new Sprite(getTexture(TECH_ICON_2_PATH));
         techIcon3 = new Sprite(getTexture(TECH_ICON_3_PATH));
         citizen = new Sprite(getTexture(CITIZEN_PATH));
+
         frame = new Sprite(getTexture(FRAME_PATH));
+        meat = new Sprite(getTexture(MEAT_PATH));
 
         actionIcon = new Sprite(getTexture(ACTION_ICON_PATH));
         tipIcon = new Sprite(getTexture(TIP_ICON_PATH));
@@ -608,6 +614,10 @@ public class GameAssets extends Assets {
 
     public Sprite getFrame() {
         return frame;
+    }
+
+    public Sprite getMeat() {
+        return meat;
     }
 
     public Sprite getActionIcon() {

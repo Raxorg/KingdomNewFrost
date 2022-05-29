@@ -132,6 +132,8 @@ public class GameConstants {
     public static final float EXPEDITION_ICON_SIZE = 100f;
     public static final float EXPEDITION_INFO_X = CAMERA_WIDTH - EXPEDITION_ICON_SIZE;
     public static final float EXPEDITION_INFO_Y = CAMERA_HEIGHT - EXPEDITION_ICON_SIZE;
+    // Alerts
+    public static final float ALERT_SIZE = 100f;
     // Base menu
     public static final float BASE_MENU_X = 100f;
     public static final float BASE_MENU_Y = 100f;

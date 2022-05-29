@@ -1,4 +1,4 @@
-package com.epicness.newfrost.game.stuff.resourceinfos;
+package com.epicness.newfrost.game.stuff.resources;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;

@@ -33,9 +33,9 @@ import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.fundamentals.stuff.Text;
 import com.epicness.newfrost.game.assets.GameAssets;
+import com.epicness.newfrost.game.stuff.buildings.Base;
 import com.epicness.newfrost.game.stuff.buildings.Building;
 import com.epicness.newfrost.game.stuff.buildings.Explorarium;
-import com.epicness.newfrost.game.stuff.buildings.Base;
 import com.epicness.newfrost.game.stuff.buildings.Tent;
 import com.epicness.newfrost.game.stuff.buildings.Warehouse;
 import com.epicness.newfrost.game.stuff.dialogues.DialogueStorage;
@@ -43,7 +43,7 @@ import com.epicness.newfrost.game.stuff.events.EventView;
 import com.epicness.newfrost.game.stuff.mainbuildingmenu.MainBuildingMenu;
 import com.epicness.newfrost.game.stuff.people.Citizen;
 import com.epicness.newfrost.game.stuff.people.Player;
-import com.epicness.newfrost.game.stuff.resourceinfos.ExpeditionInfo;
+import com.epicness.newfrost.game.stuff.resources.ExpeditionInfo;
 
 public class GameStuff extends Stuff {
 
@@ -60,6 +60,7 @@ public class GameStuff extends Stuff {
     private IconedSpritedText tutorialWidget;
     private SpritedText tip;
     private ExpeditionInfo expeditionInfo;
+    private Alert hungerAlert;
     private Text day, dayTimer;
     private EventView eventView;
     private Rain rain;
@@ -104,6 +105,9 @@ public class GameStuff extends Stuff {
         tip.setBackgroundColor(BLACK_CLEAR_25);
 
         expeditionInfo = new ExpeditionInfo(assets.getGlassIcon(), assets.getPixelFont());
+
+        hungerAlert = new Alert(assets.getMeat(), assets.getPixelFont());
+        hungerAlert.setY(CAMERA_HEIGHT / 2f);
 
         day = new Text(assets.getPixelFont());
         day.setTextTargetWidth(CAMERA_WIDTH);
@@ -225,6 +229,10 @@ public class GameStuff extends Stuff {
 
     public ExpeditionInfo getExpeditionInfo() {
         return expeditionInfo;
+    }
+
+    public Alert getHungerAlert() {
+        return hungerAlert;
     }
 
     public Text getDay() {

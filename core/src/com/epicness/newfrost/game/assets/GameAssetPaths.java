@@ -76,7 +76,9 @@ public class GameAssetPaths {
     public static final String TECH_ICON_2_PATH = "newfrost/images/techIcon2.png";
     public static final String TECH_ICON_3_PATH = "newfrost/images/techIcon3.png";
     public static final String CITIZEN_PATH = "newfrost/images/citizen.png";
+
     public static final String FRAME_PATH = "newfrost/images/frame.png";
+    public static final String MEAT_PATH = "newfrost/images/meat.png";
 
     public static final String ACTION_ICON_PATH = "newfrost/images/actionIcon.png";
     public static final String TIP_ICON_PATH = "newfrost/images/tipIcon.png";

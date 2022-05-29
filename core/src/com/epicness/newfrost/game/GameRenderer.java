@@ -36,6 +36,7 @@ public class GameRenderer extends Renderer {
         stuff.getTutorialWidget().draw(spriteBatch);
         stuff.getTip().draw(spriteBatch);
         stuff.getExpeditionInfo().draw(spriteBatch);
+        stuff.getHungerAlert().draw(spriteBatch);
         stuff.getDay().draw(spriteBatch);
         stuff.getDayTimer().draw(spriteBatch);
         stuff.getEventView().draw(spriteBatch);

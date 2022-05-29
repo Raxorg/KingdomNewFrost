@@ -48,6 +48,7 @@ public class GameLogic extends Logic {
     private final BuildingBuilder buildingBuilder;
     private final CookhouseHandler cookhouseHandler;
     private final ExplorariumHandler explorariumHandler;
+    private final InteractionHandler interactionHandler;
     private final TentHandler tentHandler;
     private final WarehouseHandler warehouseHandler;
     // People
@@ -65,7 +66,7 @@ public class GameLogic extends Logic {
     private final DayNightCycler dayNightCycler;
     private final RainHandler rainHandler;
     // Uncategorized
-    private final InteractionHandler interactionHandler;
+    private final AlertHandler alertHandler;
     private final CameraHandler cameraHandler;
     private final DayTimerHandler dayTimerHandler;
     private final EventHandler eventHandler;
@@ -107,6 +108,7 @@ public class GameLogic extends Logic {
         dayNightCycler = new DayNightCycler();
         rainHandler = new RainHandler();
         // Uncategorized
+        alertHandler = new AlertHandler();
         cameraHandler = new CameraHandler();
         dayTimerHandler = new DayTimerHandler();
         eventHandler = new EventHandler();
@@ -186,6 +188,7 @@ public class GameLogic extends Logic {
         dialogueHandler.update();
         playerMovementHandler.update(delta);
         // Uncategorized
+        alertHandler.update(delta);
         interactionHandler.update();
         cameraHandler.update();
         citizenActivityHandler.update(delta);
@@ -235,6 +238,7 @@ public class GameLogic extends Logic {
         techTreeTabHandler.setStuff(gameStuff);
         buildingBuilder.setStuff(gameStuff);
         explorariumHandler.setStuff(gameStuff);
+        interactionHandler.setStuff(gameStuff);
         tentHandler.setStuff(gameStuff);
         // People
         citizenActivityHandler.setStuff(gameStuff);
@@ -251,7 +255,7 @@ public class GameLogic extends Logic {
         dayNightCycler.setStuff(gameStuff);
         rainHandler.setStuff(gameStuff);
         // Uncategorized
-        interactionHandler.setStuff(gameStuff);
+        alertHandler.setStuff(gameStuff);
         cameraHandler.setStuff(gameStuff);
         dayTimerHandler.setStuff(gameStuff);
         eventHandler.setStuff(gameStuff);
