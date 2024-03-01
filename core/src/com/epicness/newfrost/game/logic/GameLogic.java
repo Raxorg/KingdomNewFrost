@@ -361,6 +361,10 @@ public class GameLogic extends Logic {
         return gameOverHandler;
     }
 
+    public MessageHandler getMessageHandler() {
+        return messageHandler;
+    }
+
     public SpendingHandler getSpendingHandler() {
         return spendingHandler;
     }
